@@ -1,0 +1,32 @@
+<div class="container account-menu-container" role="navigation">
+  <ul class="nav nav-tabs nav-account">
+
+    {# admin only menu begin #}
+    {%- if is_granted("ROLE_ADMIN") -%}
+      {%- include 'WitProgramAccountUserBundle:menu:_admin.html.twig' -%}
+    {% endif %}
+    {# end admin menu #}
+
+    {# mentor only menu begin #}
+    {%- if is_granted("ROLE_MENTOR") -%}
+      {%- include 'WitProgramAccountUserBundle:menu:_mentor.html.twig' -%}
+    {% endif %}
+    {# end mentor menu #}
+
+    {# mentee only menu begin #}
+    {%- if is_granted("ROLE_MENTEE") -%}
+      {%- include 'WitProgramAccountUserBundle:menu:_mentee.html.twig' -%}
+    {% endif %}
+    {# end mentee menu #}
+
+    {# user's profile #}
+    <li{%- if app.request.attributes.get('_route') starts with 'fos_user_' %} class="active"{%- endif -%}>
+      <a href="{{ path('fos_user_profile_show') }}">{{ 'menu.account' | trans }}</a>
+    </li>
+    {# logout #}
+    <li>
+      <a title="{{ 'menu.log.out' | trans }}" href="{{ path('fos_user_security_logout') }}">{{'layout.logout' | trans({}, 'FOSUserBundle') }}</a>
+    </li>
+
+  </ul>
+</div>

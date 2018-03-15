@@ -1,0 +1,9 @@
+resetting:
+    email:
+        message: |
+            Cześć %username%!
+
+            Aby zresetować hasło - proszę przejść do %confirmationUrl%
+
+            Pozdrawiamy,
+            Zespół Tech Leaders.

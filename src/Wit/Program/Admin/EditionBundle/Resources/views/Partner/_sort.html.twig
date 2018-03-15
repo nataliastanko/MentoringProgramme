@@ -1,0 +1,20 @@
+{% if partners %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th>{{ 'partner.name' | trans }}</th>
+            </tr>
+        </thead>
+        <tbody id="sortable" data-href="{{ path("partner_sort") }}">
+        {% for partner in partners %}
+            <tr data-id="{{ partner.id }}" class="ui-state-default">
+                <td class="handle"><i class="fa fa-arrows"></i></td>
+                <td>{{ partner.name }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    {% include 'WitSiteBundle:helper:emptyResult.html.twig' %}
+{% endif %}

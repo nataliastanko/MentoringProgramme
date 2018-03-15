@@ -1,0 +1,21 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block submenu %}
+  <div class="container submenu-container">
+    {% include 'WitProgramAccountUserBundle:menu:_profile.html.twig' %}
+  </div>
+{% endblock %}
+
+{% block fos_user_content %}
+
+  {%- if user.invitation -%}
+    {%- if user.invitation.mentor -%}
+      {%- include "FOSUserBundle:Profile:show_mentor_profile.html.twig" -%}
+    {%- else -%}
+      {%- include "FOSUserBundle:Profile:show_mentee_profile.html.twig" -%}
+    {%- endif -%}
+  {%- else -%}
+    {%- include "FOSUserBundle:Profile:show_admin_profile.html.twig" -%}
+  {%- endif -%}
+
+{% endblock fos_user_content %}

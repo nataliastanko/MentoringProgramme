@@ -1,0 +1,15 @@
+services:
+
+  dates.twig.extension:
+    class: Wit\Program\Admin\EditionBundle\Twig\EditionExtension
+    arguments:
+      - '@doctrine.orm.entity_manager'
+    tags:
+      - { name: twig.extension }
+
+  program.excel.export:
+    class: Wit\Program\Admin\EditionBundle\Service\ExcelExport
+    arguments:
+      - '@phpexcel'
+      - '@translator.default'
+      - '@doctrine.orm.entity_manager'

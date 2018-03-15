@@ -1,0 +1,54 @@
+# https://github.com/dustin10/VichUploaderBundle
+vich_uploader:
+    db_driver: orm # or mongodb or propel or phpcr
+
+    mappings:
+        # give the upload mapping a name
+        mentor_photo:
+            # the web path to that directory
+            uri_prefix: /uploads/mentors
+            # configuring where it should be stored
+            upload_destination: '%kernel.root_dir%/../web/uploads/mentors'
+            # https://github.com/dustin10/VichUploaderBundle/blob/master/Resources/doc/namers.md
+            # If no namer is configured for a mapping, the bundle will simply use the name of the file that was uploaded.
+            # namer_uniqid will rename your uploaded files
+            # using a uniqueid for the name and keep the extension.
+            # Using this namer,
+            # foo.jpg will be uploaded as something like 50eb3db039715.jpg.
+            namer: vich_uploader.namer_uniqid
+        partner_photo:
+            # the web path to that directory
+            uri_prefix: /uploads/partners
+            # configuring where it should be stored
+            upload_destination: '%kernel.root_dir%/../web/uploads/partners'
+            # https://github.com/dustin10/VichUploaderBundle/blob/master/Resources/doc/namers.md
+            # If no namer is configured for a mapping, the bundle will simply use the name of the file that was uploaded.
+            # namer_uniqid will rename your uploaded files
+            # using a uniqueid for the name and keep the extension.
+            # Using this namer,
+            # foo.jpg will be uploaded as something like 50eb3db039715.jpg.
+            namer: vich_uploader.namer_uniqid
+        sponsor_photo:
+            # the web path to that directory
+            uri_prefix: /uploads/sponsors
+            # configuring where it should be stored
+            upload_destination: '%kernel.root_dir%/../web/uploads/sponsors'
+            # https://github.com/dustin10/VichUploaderBundle/blob/master/Resources/doc/namers.md
+            # If no namer is configured for a mapping, the bundle will simply use the name of the file that was uploaded.
+            # namer_uniqid will rename your uploaded files
+            # using a uniqueid for the name and keep the extension.
+            # Using this namer,
+            # foo.jpg will be uploaded as something like 50eb3db039715.jpg.
+            namer: vich_uploader.namer_uniqid
+        gallery_photo:
+            # the web path to that directory
+            uri_prefix: /uploads/gallery
+            # configuring where it should be stored
+            upload_destination: '%kernel.root_dir%/../web/uploads/gallery'
+            # https://github.com/dustin10/VichUploaderBundle/blob/master/Resources/doc/namers.md
+            # If no namer is configured for a mapping, the bundle will simply use the name of the file that was uploaded.
+            # namer_uniqid will rename your uploaded files
+            # using a uniqueid for the name and keep the extension.
+            # Using this namer,
+            # foo.jpg will be uploaded as something like 50eb3db039715.jpg.
+            namer: vich_uploader.namer_uniqid

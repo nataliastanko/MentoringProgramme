@@ -1,0 +1,18 @@
+rule:
+    content: "Rule item content"
+    list: "Rules"
+    new: "New rule item"
+    edit: "Edit rule item"
+    detail: Rule item details
+faq:
+    question: "Question"
+    answer: 'Answer'
+    list: "Mentee FAQ"
+    new: "New mentee faq item"
+    edit: "Edit mentee faq item"
+    detail: Mentee FAQ item details
+mentorfaq:
+    list: Mentor FAQ
+    new: "New mentor faq item"
+    edit: "Edit mentor faq item"
+    detail: Mentor FAQ item details

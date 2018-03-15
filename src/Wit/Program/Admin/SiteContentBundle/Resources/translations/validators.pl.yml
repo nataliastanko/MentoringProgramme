@@ -1,0 +1,3 @@
+bot:
+  form:
+    invalid: "Formularz niepoprawnie wypełniony"

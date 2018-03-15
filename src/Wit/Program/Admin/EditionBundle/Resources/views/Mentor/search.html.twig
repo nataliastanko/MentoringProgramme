@@ -1,0 +1,13 @@
+{% extends 'WitProgramAccountUserBundle::account.html.twig' %}
+
+{% block body %}
+
+    <div class="page-header">
+        <h1>{{ 'mentor.search' | trans }} <small>({{ mentors | length }})</small></h1>
+    </div>
+
+    {% include 'WitProgramAdminEditionBundle:Mentor:_search_form.html.twig' %}
+
+    {% include 'WitProgramAdminEditionBundle:Mentor:_list.html.twig' with {'searchResults' : true} %}
+
+{% endblock %}

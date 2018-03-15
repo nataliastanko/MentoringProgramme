@@ -1,0 +1,10 @@
+{# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
+{% extends 'WitSiteBundle::base.html.twig' %}
+
+{% block body %}
+    <h1>Forbidden</h1>
+
+    <p>
+         You don not have permission to access this site. <a href="{{ path('homepage') }}">Return to the homepage</a>.
+    </p>
+{% endblock %}

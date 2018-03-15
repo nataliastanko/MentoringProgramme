@@ -1,0 +1,29 @@
+page:
+    login: "Log in"
+user:
+    list: "Users list"
+    details: "User"
+    edit: "User edit"
+    name: "Name"
+    lastName: "Last name"
+    phoneNumber: "Phone number"
+    url: "WWW (e.g. blog)"
+    photo: "Photo"
+    city: "City"
+    register:
+        failure: 'You can not be logged in to this application.'
+        success: 'Hello %name%! You are successfully logged in with email %email%'
+    already:
+        logged: You are already logged in
+        registered: This user is already registered
+admin:
+    self: "Admin"
+mail:
+    apply:
+        confirmation:
+            subject: 'Confirmation mail from Tech Leaders'
+    invite:
+        already:
+            sent: "The invitation has already been sent to this person"
+        subject: 'Invitation to register to Tech Leaders programme'
+    link.to.register: 'Link to registration'

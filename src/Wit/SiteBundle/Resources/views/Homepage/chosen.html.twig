@@ -1,0 +1,247 @@
+{% extends 'WitSiteBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="page-header">
+        <h1>{{ 'mentee.list' | trans }}&nbsp;<small>{{- 'edition' | trans }} {{ edition.name -}}</small></h1>
+    </div>
+{% spaceless %}
+
+<div id="mentees">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-success">
+
+              <div class="panel-heading">
+                {{- 'mentee.chosenAre' | trans -}}
+              </div>
+
+              {# <div class="panel-body"> #}
+                {% if edition.id == 1 %}
+                <table class="table table-striped">
+                  <thead>
+                      <tr>
+                          <th>{{ 'mentor.self' | trans }}</th>
+                          <th>{{ 'mentee.self' | trans }}</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        <td>Lisa Lang</td><td>Klaudia Gębała</td>
+                      </tr>
+                      <tr>
+                        <td>Andrzej Skrzypacz</td><td>Anna Czyrko
+                      </td></tr>
+                      <tr><td>Lee Rubin</td><td>Justyna Skowyra
+                      </td></tr>
+                      <tr><td>Marek Kapturkiewicz</td><td>Justyna Janicka
+                      </td></tr>
+                      <tr><td>Paulina Skrzypińska</td><td>Sonia Wróbel
+                      </td></tr>
+                      <tr><td>Marek Wawro</td><td>Marta Musik
+                      </td></tr>
+                      <tr><td>Ewa Abel</td><td>Alicja Barcicka
+                      </td></tr>
+                      <tr><td>Przemo Nowaczyk</td><td>Małgorzata Kozłowska
+                      </td></tr>
+                      <tr><td>Paulina Mazurek</td><td>Elżbieta Wróbel
+                      </td></tr>
+                      <tr><td>Katarzyna Młynarczyk</td><td>Marta Partyka
+                      </td></tr>
+                      <tr><td>Kamila Stępniowska</td><td>Katsiaryna Rakovich
+                      </td></tr>
+                      <tr><td>Natalia Jasińska</td><td>Aleksandra Pacowska
+                      </td></tr>
+                      <tr><td>Piotr Mleczko</td><td>Katarzyna Mitrus
+                      </td></tr>
+                      <tr><td>Karolina Liberka</td><td>Joanna Groszek
+                      </td></tr>
+                      <tr><td>Julia Izmałkowa</td><td>Anna Musiał
+                      </td></tr>
+                      <tr><td>Aleksandra Jarośkiewicz</td><td>Dorota Wójcicka
+                      </td></tr>
+                      <tr><td>Agnieszka Oleszczuk-Widawska</td><td>Stefania Winkel
+                      </td></tr>
+                      <tr><td>Maria Urbanek</td><td>Anna Kril
+                      </td></tr>
+                      <tr><td>Natalia Stanko</td><td>Klaudia Lizak
+                      </td></tr>
+                      <tr><td>Anna Szwiec</td><td>Joanna Tarnowska
+                      </td></tr>
+                      <tr><td>Łukasz Siatka</td><td>Marta Nowak
+                      </td></tr>
+                      <tr><td>Radek Szczygieł</td><td>Olga Wojnarowska
+                      </td></tr>
+                      <tr><td>Agata Landzwójczak</td><td>Joanna Sitkowska
+                      </td></tr>
+                      <tr><td>Ela Ustupska</td><td>Ula Kijewska
+                      </td></tr>
+                      <tr><td>Barbara Fusińska</td><td>Antonina Krajewska
+                      </td></tr>
+                      <tr><td>Kasia Gola</td><td>Danuta Jońca
+                      </td></tr>
+                      <tr><td>Tomek Krzyszkowski</td><td>Paulina Kowal
+                      </td></tr>
+
+                      <tr><td>Adam Michalczyk</td><td>Ilona Kędracka
+                      </td></tr>
+
+                      <tr><td>Dominik Ryżko</td><td>Katarzyna Duma
+                      </td></tr>
+
+                      <tr><td>Zbigniew Skolicki</td><td>Katarzyna Rachuta
+                      </td></tr>
+
+                      <tr><td>Marek Banaszak</td><td>Anna Szwiec
+                      </td></tr>
+
+                      <tr><td>Michał Bonarowski</td><td>Monika Bogdanowicz
+                      </td></tr>
+
+                      <tr><td>Ewa Turska</td><td>Paulina Serwińska
+                      </td></tr>
+
+                      <tr><td>Bartosz Ziółko</td><td>Karolina Wojtas
+                      </td></tr>
+                      <tr><td>Jan Kraus</td><td>Małgorzata Szmaj
+                      </td></tr>
+                      <tr><td>Marta Miłkowska</td><td>Aneta Błachewicz
+                      </td></tr>
+                      <tr><td>Laura Godek</td><td>Anna Śleziak
+                      </td></tr>
+                      <tr><td>Arek Biela</td><td>Magdalena Grześko
+                      </td></tr>
+                      <tr><td>Livia Hanldovicova</td><td>Agata Bator
+                      </td></tr>
+                      <tr><td>Erik Wesner</td><td>Sabrina Kurczab
+                      </td></tr>
+                      <tr><td>Przemyslaw Stanisz</td><td>Anna Wojcieszek
+                      </td></tr>
+                      <tr><td>Bartek Józefowski</td><td>Ewa Myszkowska
+                      </td></tr>
+                      <tr><td>Marzena Arszyńska</td><td>Klaudia Gromek
+                      </td></tr>
+                      <tr><td>Tomek Przybylik</td><td>Katarzyna Wróbel
+                      </td></tr>
+                      <tr><td>Joanna Chwastowska</td><td>Anna Jurczenko
+                      </td></tr>
+                      <tr><td>Węglarz Bartłomiej</td><td>Urszula Romaniec
+                      </td></tr>
+                      <tr><td>Tomczyk Adam</td><td>Ewa Dmachowska
+                      </td></tr>
+                      <tr><td>Mateusz Gajewski</td><td>Alina Daribazaron
+                      </td></tr>
+                      <tr>
+                        <td>Mateusz Stępniak</td><td>Teresa Kędzior</td>
+                      </tr>
+                  </tbody>
+                </table>
+                {% elseif edition.id == 2 %}
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                          <th>{{ 'mentor.self' | trans }}</th>
+                          <th>{{ 'mentee.self' | trans }}</th>
+                      </tr>
+                    </thead>
+                  <tbody>
+                      <tr>
+                        <td>Joanna Chwastowska</td><td>Kinga Kalinowska-Materniak</td>
+                      </tr>
+                      <tr><td>Ewa Turska</td><td>Dominika Otmar
+                      </td></tr>
+                      <tr><td>Karolina Liberka</td><td>Karolina Stanisławska
+                      </td></tr>
+                      <tr><td>Tomek Krzyszkowski</td><td>Dominika Florczykowska
+                      </td></tr>
+                      <tr><td>Aleksandra Majchrzak</td><td>Sylwia Üçüncü
+                      </td></tr><tr><td>Jamille V. McCullough</td><td>Iwona Gruszka
+                      </td></tr><tr><td>Aleksandra Mika</td><td>Anna Pacia
+                      </td></tr><tr><td>Natalia Jasińska</td><td>Agnieszka Podgórna
+                      </td></tr><tr><td>Cezary Żminkowski</td><td>Marta Krysa
+                      </td></tr><tr><td>Natalia Stanko</td><td>Paulina Osiak
+                      </td></tr><tr><td>Monika Braun</td><td>Magdalena Seroka
+                      </td></tr><tr><td>Ela Ustupska</td><td>Julia Daroszewska
+                      </td></tr><tr><td>Dawid Pacha</td><td>Wiktoria Kowszewicz
+                      </td></tr><tr><td>Bartosz Ziółko</td><td>Ewelina Kurzeja
+                      </td></tr><tr><td>Ewa Waydowicz</td><td>Kamila Chmielewska
+                      </td></tr><tr><td>Jan Biela-Abreu</td><td>Monika Pietruczuk
+                      </td></tr><tr><td>Piotr Kwapin</td><td>Urszula Kuzińska
+                      </td></tr><tr><td>Przemysław Gałdyszyński</td><td>Natalia Ziajka
+                      </td></tr><tr><td>Adam Tomczyk</td><td>Urszula Mitas
+                      </td></tr><tr><td>Joanna Skuza</td><td>Monika Pogocka
+                      </td></tr><tr><td>Ewa Ludwiczak</td><td>Agnieszka Serafin
+                      </td></tr><tr><td>Joanna Szaniawska</td><td>Aleksandra Rzewuska
+                      </td></tr><tr><td>Piotr Pękala</td><td>Karolina Boboli
+                      </td></tr><tr><td>Jakub Nabrdalik</td><td>Kamila Malanowicz
+                      </td></tr><tr><td>Konrad Dziedzic</td><td>Marianna Krzewińska
+                      </td></tr><tr><td>Olga Wojnarowska</td><td>Katarzyna Mirowska
+                      </td></tr><tr><td>Karolina Wojtas</td><td>Paula Marciniszyn
+                      </td></tr><tr><td>Sonia Wróbel</td><td>Ewa Zielińska
+                      </td></tr><tr><td>Joanna Sitkowska</td><td>Katarzyna Nowak
+                      </td></tr><tr><td>Noemi Malska</td><td>Barbara Komorniczak
+                      </td></tr><tr><td>Sobiesław Młynarczyk</td><td>Aleksandar Simińska
+                      </td></tr><tr><td>Marta Partyka</td><td>Kamila Chyży
+                      </td></tr><tr><td>Katarzyna Rachuta</td><td>Magdalena Sulikowska
+                      </td></tr><tr><td>Jarosław Pałka</td><td>Justyna Lipska
+                      </td></tr><tr><td>Anna Czyrko</td><td>Marta Góral
+                      </td></tr><tr><td>Karolina Buchała</td><td>Alicja Karalus
+                      </td></tr><tr><td>Paweł Czarny</td><td>Marlena Nowak
+                      </td></tr><tr><td>Kamil Szczęsny</td><td>Katarzyna Stawarz
+                      </td></tr><tr><td>Monika Puchalska</td><td>Agnieszka Burczyk
+                      </td></tr><tr><td>Joanna Ostafin</td><td>Marta Sałyga
+                      </td></tr><tr><td>Łukasz Majewski</td><td>Kasia Kulas
+                      </td></tr><tr><td>Zbigniew Skolicki</td><td>Sabina Baraniewicz
+                      </td></tr><tr><td>Ewelina Wołoszyn</td><td>Anna Tokarzewska
+                      </td></tr><tr><td>Łukasz Szymiec</td><td>Justyna Koc
+                      </td></tr><tr><td>Marek Wawro</td><td>Danuta Wichniak
+                      </td></tr><tr><td>Paweł Kwieciński</td><td>Marika Anna Skrzypczak
+                      </td></tr><tr><td>Daniel Dereniowski</td><td>Kinga Serwińska
+                      </td></tr><tr><td>Monika Rutkowska</td><td>Kasia Krusiec
+                      </td></tr><tr><td>Tomasz Ronda</td><td>Agnieszka Zarzyńska
+                      </td></tr><tr><td>Ewelina Choroba</td><td>Ewelina Łakoma
+                      </td></tr><tr><td>Anna Szwiec</td><td>Monika Milczarek
+                      </td></tr><tr><td>Paweł Grudzień</td><td>Marta Skowrońska
+                      </td></tr><tr><td>Katarzyna Grobelna-Szygenda</td><td>Judyta Wolak
+                      </td></tr><tr><td>Anna Janiszewska</td><td>Karolina Wilk
+                      </td></tr><tr><td>Eoin McCoy</td><td>Anita Warkiewicz
+                      </td></tr><tr><td>Anna Borowiec</td><td>Aleksandra Janson
+                      </td></tr><tr><td>Céline Herve</td><td>Shaivya Aggarwal
+                      </td></tr><tr><td>Ewa Gasperowicz</td><td>Ewa Mitulska-Wójcik
+                      </td></tr><tr><td>Katarzyna Wocław</td><td>Aleksandra Tusz
+                      </td></tr>
+                      <tr>
+                        <td>Ewa Abel</td><td>Agnieszka Kukałowicz</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  {%- elseif edition.id == 3 -%}
+                    {%- if persons | length > 0 -%}
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>{{ 'mentor.self' | trans }}</th>
+                            <th>{{ 'mentee.self' | trans }}</th>
+                          </tr>
+                        </thead>
+                      <tbody>
+                      {%- for person in persons -%}
+                        <tr>
+                          <td>{{- person.mentor.fullname -}}</td>
+                          <td>{{- person.fullname -}}</td>
+                        </tr>
+                      {%- endfor -%}
+                        </tbody>
+                      </table>
+                    {%- endif -%}
+                  {%- endif -%}
+                </div>
+                <div class="panel-footer">
+                  {{- 'congratulations' | trans -}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endspaceless %}
+
+{% endblock %}

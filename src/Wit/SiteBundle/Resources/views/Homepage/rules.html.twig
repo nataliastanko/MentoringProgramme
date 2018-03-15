@@ -1,0 +1,20 @@
+{% extends 'WitSiteBundle::base.html.twig' %}
+
+{% block body %}
+
+<div class="page-header">
+  <h1>{{- 'menu.rules' | trans -}}</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <ul class="list-group">
+      {%- for rule in rules -%}
+      <li class="list-group-item{%- if loop.index is odd %} list-group-item-odd{% endif -%}">
+        <span class="number">{{- loop.index -}}.</span>&nbsp;{{ rule.content -}}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+{% endblock %}

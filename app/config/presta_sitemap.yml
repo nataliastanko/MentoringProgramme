@@ -1,0 +1,9 @@
+
+# sitemap presta subdomains
+# https://github.com/prestaconcept/PrestaSitemapBundle/issues/19
+
+# sections names troubleshot
+# https://github.com/prestaconcept/PrestaSitemapBundle/blob/master/Resources/doc/2-Configuration.md
+
+#presta will always take _locale from defaults
+presta_sitemap: ~

@@ -1,0 +1,23 @@
+event:
+    label: Meeting
+    list: "Meetings list"
+    calendar: "Meetings"
+    title: Title
+    new: "New meeting"
+    edit: "Edit meeting"
+    author: "Created by"
+    participants: "Participants"
+    view:
+        list: "List view"
+        calendar: "Calendar view"
+    startTime: "Starts"
+    endTime: "Ends"
+    participants: "Participants"
+    description: "Agenda"
+    title: "Title"
+eventnote:
+    list:
+        "Meeting notes"
+    new: "New note"
+    edit: "Edit note"
+    comment: "Content"

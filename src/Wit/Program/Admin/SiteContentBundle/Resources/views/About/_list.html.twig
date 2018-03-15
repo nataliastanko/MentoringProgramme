@@ -1,0 +1,24 @@
+{% if about %}
+    <table id="preview" class="table table-hover">
+        <thead>
+            <tr class="header-legend">
+                <th>{{ 'about.name' | trans }}</th>
+                <th>{{ 'about.content' | trans }}</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for text in about %}
+            <tr>
+                <td>{{ text.name | truncate(20, true, '...') }}</td>
+                <td>{{ text.content | truncate(20, true, '...') }}</td>
+                <td>
+                    <a href="{{ path('about_show', { 'id': text.id }) }}">{{ 'button.show' | trans }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    {% include 'WitSiteBundle:helper:emptyResult.html.twig' %}
+{% endif %}

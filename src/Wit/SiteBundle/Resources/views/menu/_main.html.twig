@@ -1,0 +1,82 @@
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+     <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <div class="navbar-collapse collapse" id="navbar-main" role="navigation">
+
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="{{ path('homepage') }}">
+            {% image '@techleaders_logo_g' %}
+              <img class="brand_logo" src="{{ asset_url }}" alt="Tech Leaders Logo" />
+            {% endimage %}
+          </a>
+        </li>
+          <li class="dropdown nav-item">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">{{- 'editions' | trans -}} <span class="caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="download">
+              {% for edition in getEditions() %}
+                <li{% if loop.last %} class="dropdown-current"{% endif %}>
+                  <a href="{{ path('edition_show', {'edition':edition.id} ) }}">
+                      {{- 'edition' | trans }} {{ edition.name -}}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+        <li class="nav-item">
+          <a href="{{ path('about' ) }}">{{ 'menu.about' | trans }}</a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ path('edition_mentors', {'edition': edition.id} ) }}">{{ 'menu.mentors' | trans }}</a>
+          {# <a href="{{ path('edition_show', {'edition': edition.id} ) }}#mentors">{{ 'menu.mentors' | trans }}</a> #}
+        </li>
+        <li class="nav-item">
+          {# <a href="{{ path('partners') }}">{{ 'menu.partners' | trans }}</a> #}
+          <a href="{{ path('edition_show', {'edition': edition.id} ) }}#partners">{{ 'menu.partners' | trans }}</a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ path('contact' ) }}">{{ 'menu.contact' | trans }}</a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ path('rules') }}">{{ 'menu.rules' | trans }}</a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ path('faq') }}">{{ 'menu.faq' | trans }}</a>
+        </li>
+        <li class="lang">
+          <a href="{{ path('edition_show', {'_locale' : "en", 'edition':edition.id, }) }}"><i class="fa fa-flag-o"></i>&nbsp;EN</a>
+        </li>
+        <li class="lang">
+          <a href="{{ path('edition_show', {'_locale' : "pl", 'edition':edition.id}) }}"><i class="fa fa-flag-o"></i>&nbsp;PL</a>
+        </li>
+        <li class="social">
+          <a href="https://www.facebook.com/techleadersWIT/"><i class="fa fa-facebook-square"></i></a>
+        </li>
+        {% if
+          is_granted("ROLE_USER")
+          and
+          app.request.pathInfo matches '/^(?!.*?admin).*^(?!.*?account).*$/'
+          %}
+          <li class="social">
+            <a href="{{ path('account') }}">
+              <i class="fa fa-cogs"></i>
+            </a>
+          </li>
+        {%- else -%}
+          <li class="nav-item">
+            <a href="{{ path('fos_user_security_login') }}">
+              {{- 'layout.login' | trans( {}, 'FOSUserBundle' ) -}}
+            </a>
+          </li>
+        {%- endif -%}
+      </ul>
+    </div>
+  </div>
+</div>

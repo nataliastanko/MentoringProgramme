@@ -1,0 +1,54 @@
+{% extends 'WitProgramAccountUserBundle::account.html.twig' %}
+
+{% block body %}
+ <div class="page-header">
+  <h1>{{ 'user.list' | trans }}</h1>
+</div>
+
+<div class="row">
+  <div class="col-12 col-sm-12 col-lg-12">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>{{ 'email' | trans }}/login</th>
+            <th>{{ 'name' | trans }}</th>
+            <th>{{ 'lastname' | trans }}</th>
+            {% if is_granted("ROLE_ADMIN") %}
+              <th>Username/login</th>
+            {% endif %}
+            <th>{{ 'created' | trans }}</th>
+            <th>{{ 'updated' | trans }}</th>
+            <th>{{ 'user.type' | trans }}</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+          <tr>
+            <td>{{ user.email }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.lastName }}</td>
+            {% if is_granted("ROLE_ADMIN") %}
+              <td>{{ user.username }}</td>
+            {% endif %}
+            <td>{% if user.createdAt %}{{ user.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if user.updatedAt %}{{ user.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>
+              <ul class="list-unstyled">
+                {% for role in user.getUserTypes %}
+                  <li>{{ role | humanReadableRole }}</li>
+                {% endfor %}
+              </ul>
+            </td>
+            <td>
+            <a href="{{ path('user_show', { 'id': user.id }) }}">{{ 'button.show' | trans }}</a>
+            </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

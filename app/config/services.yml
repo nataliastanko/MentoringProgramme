@@ -1,0 +1,16 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+  # knp.doctrine_behaviors.translatable_subscriber.default_locale_callable.class: AppBundle\EventListener\LocaleCallable
+
+services:
+  # truncate, wordwrap
+  twig.extension.text:
+   class: Twig_Extensions_Extension_Text
+   tags:
+      - { name: twig.extension }
+  # shuffle
+  twig.extension.array:
+    class: Twig_Extensions_Extension_Array
+    tags:
+      - { name: twig.extension }

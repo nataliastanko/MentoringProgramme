@@ -1,0 +1,68 @@
+{% extends 'WitSiteBundle::email.html.twig' %}
+
+{% block body %}
+
+<table style="color:#2D3F50;" cellpadding="0" cellspacing="0" width="100%">
+
+{# @todo include an image - server hsa some problems with embedding with absolute resource url #}
+{#   <tr>
+    <td style="padding: 20px 0;">
+      <img src="{{ headerImage }}" alt="Tech Leaders" width="800" style="display: block;" />
+    </td>
+  </tr> #}
+
+  {# <tr>
+    <td>
+      <h3 style="color:#28bb9c;">{{ 'hi' | trans }} {{ name }}!</h3>
+    </td>
+  </tr> #}
+
+  <tr>
+    <td style="padding: 20px 0 30px 0;">
+      <h4 style="color:#28bb9c;">{{- 'hi' | trans({}, null, 'en') }} {{ name }},</h4>
+
+      <p>We send you the registration link for the panel of our website below:
+        <a href="{{ registrationLink }}"><br />
+          {{- 'mail.link.to.register' | trans({}, null, 'en') -}}
+        </a><br />
+        Login: your email address<br />
+        Password: create a password during your first login<br />
+        After your first registration, you can log in to the panel from the Tech Leaders homepage (<a href="https://techleaders.eu">Tech Leaders</a>) by clicking "Login" at the top-right page corner.
+
+      </p>
+
+      <p>We have already closed the application to Tech Leaders program. After registration, you will have access to all applications from people who want to work with you (there can be one or several applications). Take a look at these applications and select only one. When you choose one mentee please accept this selected application (it is available in your panel). We are waiting for your decision until 19th of November.</p>
+
+      <p>We will announce the list of women who get into the program and mentors who they will work with in the 20th of November. After this announcement you can officially start to cooperate and make your first meeting (online or offline).</p>
+
+      <p>In your panel you will also find a calendar which makes your and mentee’s work easier. The calendar allows you to send meeting invitations and add notes with your goals and topics for upcoming meetings.</p>
+
+      {# todo dodać info o ewaluacji programu - kalendarz #}
+      <p>If you have any question, feel free to ask me aszwiec@womenintechnology.pl</p>
+
+      <p>
+        {{ 'thankyou.bestregards' | trans({}, null, 'en') }},<br />
+        {{ 'thankyou.team' | trans({}, null, 'en') }},<br />
+        <a href="https://techleaders.eu">Tech Leaders</a><br />
+        <a href="http://womenintechnology.pl">Women in Technology</a><br />
+      </p>
+    </td>
+  </tr>
+
+  {# <tr>
+    <td>
+      {{ 'thankyou.bestregards' | trans }},<br />
+      {{ 'thankyou.team' | trans }},<br />
+      <a href="https://techleaders.eu">Tech Leaders</a><br />
+      <a href="http://womenintechnology.pl">Women in Technology</a><br />
+    </td>
+  </tr> #}
+
+</table>
+
+{# TODO stopka, link do strony techleaders #}
+{# example, assuming you have a route named "login" #}
+{# To login, go to: <a href="{{ url('login') }}">...</a>. #}
+{# Makes an absolute URL to the /images/logo.png file #}
+{# <img src="{{ absolute_url(asset('images/logo.png')) }}"> #}
+{% endblock %}

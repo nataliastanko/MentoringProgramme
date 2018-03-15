@@ -1,0 +1,16 @@
+user:
+    name:
+        notBlank: "Podaj swoje imię"
+    lastName:
+        notBlank: "Podaj swoje nazwisko"
+    url:
+        taken: "Istnieje już użytkownik z taką stroną internetową"
+    email:
+        taken: "Ten email jest już zajęty"
+        notMatch: "Podaj poprawny adres email"
+        notBlank: "Podaj adres email"
+    numbers:
+        notAllowed: "Cyfry są niedozwolone w tym polu"
+    invitation:
+        empty:
+            'Coś nie tak z Twoim linkiem zapraszającym do programu'

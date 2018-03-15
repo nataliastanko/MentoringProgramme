@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Program Mentorski - Women in Technology{% endblock %}</title>
+
+        {% block stylesheets %}
+
+            {%- stylesheets
+                '@flatly_bootstrap_css'
+                '@core_css'
+                filter='cssrewrite'
+            -%}
+                <link rel="stylesheet" href="{{ base_dir ~ asset_url }}" />
+            {%- endstylesheets %}
+
+        {% endblock %}
+    </head>
+
+    <body class="pdf">
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+    </body>
+</html>

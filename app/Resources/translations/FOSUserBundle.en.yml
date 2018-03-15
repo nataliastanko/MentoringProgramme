@@ -1,0 +1,9 @@
+resetting:
+    email:
+        message: |
+            Hello %username%!
+
+            To reset your password - please visit %confirmationUrl%
+
+            Regards,
+            Tech Leaders Team.

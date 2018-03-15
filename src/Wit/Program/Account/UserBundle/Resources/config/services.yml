@@ -1,0 +1,72 @@
+services:
+  # Register your custom form type in the container:
+  program.user.form.registration:
+    class: Wit\Program\Account\UserBundle\Form\RegistrationFormType
+    arguments:
+      - '%fos_user.model.user.class%'
+      - '@fos_user.user_manager'
+      - '@request_stack' # we need invite code
+    tags:
+      - { name: "form.type", alias: "program_user_registration" }
+  # overwrite fosu profile form
+  program.user.form.profile:
+    class: Wit\Program\Account\UserBundle\Form\ProfileFormType
+    arguments:
+      - '%fos_user.model.user.class%'
+      - '@fos_user.user_manager'
+      - '@doctrine.orm.entity_manager'
+    tags:
+      - { name: "form.type", alias: "program_user_profile" }
+
+  program.user.form.data_transformer.invitation:
+    class: Wit\Program\Account\UserBundle\Form\DataTransformer\InvitationToCodeTransformer
+    arguments: ['@doctrine.orm.entity_manager']
+    public: false
+
+  program.user.form.invitation:
+    class: Wit\Program\Account\UserBundle\Form\InvitationFormType
+    arguments: ['@program.user.form.data_transformer.invitation']
+    tags:
+      - { name: "form.type", alias: "program_invitation_type" }
+
+  # user twig extension
+  program.user.twig.extension:
+    class: Wit\Program\Account\UserBundle\Twig\UserExtension
+    tags:
+      - { name: twig.extension }
+
+  # fosuser events controller hook - registration
+  program.user.registration.listener:
+    class: Wit\Program\Account\UserBundle\EventListener\RegistrationListener
+    tags:
+      - { name: kernel.event_subscriber, event: fos_user.registration.initialize, method: onRegistrationInitialize }
+      - { name: kernel.event_subscriber, event: fos_user.registration.success, method: onRegistrationSuccess }
+    arguments:
+      - '@router'
+      - '@security.authorization_checker'
+      - '@doctrine.orm.entity_manager'
+      - '@session'
+
+  # fosuser events controller hook - resetting password
+  program.user.resetting.listener:
+    class: Wit\Program\Account\UserBundle\EventListener\PasswordResettingListener
+    tags:
+      - { name: kernel.event_subscriber, event: fos_user.resetting.send_email.initialize, method: beginResettingProcess }
+    arguments:
+      - '@router'
+      - '@session'
+      - '@validator'
+
+  # on every login
+  program.user.login.listener:
+        class: Wit\Program\Account\UserBundle\EventListener\UserLocaleListener
+        arguments: ['@session']
+        tags:
+            - { name: kernel.event_listener, event: security.interactive_login, method: onInteractiveLogin }
+
+  # on every request
+  program.user.locale.listener:
+        class: Wit\Program\Account\UserBundle\EventListener\LocaleListener
+        arguments: ['%kernel.default_locale%']
+        tags:
+            - { name: kernel.event_subscriber }

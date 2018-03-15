@@ -1,0 +1,24 @@
+{% extends 'WitSiteBundle::base.html.twig' %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  {%- stylesheets
+      '@lightgallery_css'
+      filter='cssrewrite'
+  -%}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+  {%- endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  {%- javascripts
+      '@lightgallery_program'
+  -%}
+    <script src='{{ asset_url }}'></script>
+  {%- endjavascripts %}
+{% endblock %}
+
+{% block body %}
+  {% include 'WitSiteBundle:Homepage:_gallery.html.twig' %}
+{% endblock %}

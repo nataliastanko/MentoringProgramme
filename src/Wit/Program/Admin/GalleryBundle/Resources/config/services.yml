@@ -1,0 +1,6 @@
+services:
+
+  log.twig.extension:
+    class: Wit\Program\Admin\GalleryBundle\Twig\PhotoInfoExtension
+    tags:
+      - { name: twig.extension }

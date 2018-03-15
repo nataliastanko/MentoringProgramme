@@ -1,0 +1,102 @@
+{% extends 'WitProgramAccountUserBundle::account.html.twig' %}
+
+{% block javascripts %}
+
+  {{ parent() }}
+
+  {#
+  Popover requires tooltip.js,
+  kolejność dołączania skryptów ma znaczenie
+  #}
+  {%- javascripts
+    '@tooltip'
+    '@popover'
+    '@spin_js'
+  -%}
+    <script src='{{ asset_url }}'></script>
+  {%- endjavascripts %}
+
+  {#
+  https://getbootstrap.com/docs/3.3/javascript/#tooltips
+  For performance reasons, the Tooltip and Popover data-apis are opt-in, meaning you must initialize them yourself
+  #}
+
+  <script>
+    $(function () {
+      $("body").tooltip({
+          selector: '[data-toggle="tooltip"]',
+          container: 'body'
+      });
+      // $('[data-toggle="tooltip"]').tooltip();
+    });
+    $(function () {
+      $('[data-toggle="popover"]').popover();
+    });
+  </script>
+
+  <script>
+    $(function() {
+      $('form.filter-by-editions select').change(function (e) {
+        e.preventDefault();
+
+        var opts = {
+            lines: 9 // The number of lines to draw
+          , length: 47 // The length of each line
+          , width: 13 // The line thickness
+          , radius: 43 // The radius of the inner circle
+          , scale: 0.75 // Scales overall size of the spinner
+          , corners: 1 // Corner roundness (0..1)
+          , color: '#000' // #rgb or #rrggbb or array of colors
+          , opacity: 0 // Opacity of the lines
+          , rotate: 0 // The rotation offset
+          , direction: 1 // 1: clockwise, -1: counterclockwise
+          , speed: 0.7 // Rounds per second
+          , trail: 60 // Afterglow percentage
+          , fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+          , zIndex: 2e9 // The z-index (defaults to 2000000000)
+          , className: 'spinner' // The CSS class to assign to the spinner
+          , top: '30px' // Top position relative to parent
+          , left: '50%' // Left position relative to parent
+          , shadow: false // Whether to render a shadow
+          , hwaccel: false // Whether to use hardware acceleration
+          , position: 'absolute' // Element positioning
+        }
+
+        var spinner = new Spinner(opts).spin();
+        $('#itemsFiltered').addClass('loading').get(0).appendChild(spinner.el);
+
+        var actionUrl = $(this).find(':selected').data('action');
+        var xlsListUrl = $(this).find(':selected').data('list-xls');
+        var xlsChosenUrl = $(this).find(':selected').data('chosen-xls');
+
+        // refresh preview list
+        $.get(actionUrl, function(data) {
+          // refresh list
+          $('#itemsFiltered').replaceWith(data);
+
+          // update link to download xls
+          $('form.filter-by-editions a#download-mentees-list').attr('href', xlsListUrl);
+          $('form.filter-by-editions a#download-chosen-mentees').attr('href', xlsChosenUrl);
+
+          // uddate number of mentors displayed
+          var rowCount = $('#preview tr').length;
+          $('h1 small').html('(' + rowCount + ')');
+        });
+      });
+    });
+  </script>
+
+{% endblock %}
+
+{% block body -%}
+
+  <div class="page-header">
+    {# we can tell total item count from knp pagination bundle #}
+    <h1>{{ 'person.list' | trans }} <small>({{ persons | length }})</small></h1>
+  </div>
+
+  {% include 'WitProgramAdminEditionBundle:Person:_filter_by_edition_form.html.twig' %}
+
+  {% include 'WitProgramAdminEditionBundle:Person:_list.html.twig' %}
+
+{% endblock %}

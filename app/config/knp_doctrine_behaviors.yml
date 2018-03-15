@@ -1,0 +1,8 @@
+#https://github.com/KnpLabs/DoctrineBehaviors
+knp_doctrine_behaviors:
+    blameable:      false
+    geocodable:     false     # Here null is converted to false
+    loggable:       false
+    sluggable:      false
+    soft_deletable: false
+    # All others behaviors are disabled

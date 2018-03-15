@@ -1,0 +1,33 @@
+mentor:
+    name:
+        notBlank: "Please enter mentors name"
+    lastName:
+        notBlank: "Please enter mentors last name"
+    bio:
+        atLeastOne: 'Please fill in bio in at least one language'
+    occupation:
+        atLeastEn: 'Please fill in occupation at least in English'
+        min_length: 'Occupation field must be at least {{ limit }} characters long'
+        max_length: 'Occupation field cannot be longer than {{ limit }} characters'
+person:
+    originalMentorChoice:
+        notBlank: 'When changing mentor choice save the original choice'
+edition:
+    atLeastOne: 'Please assign at least one edition'
+email:
+    taken: "This email is already taken"
+    duplicatedInEdition: 'You have already filled an application to this program edition. You can not fill it twice.'
+    notMatch: "Please provide a valid email address"
+    notBlank: "Please provide an email address"
+name:
+    taken: "This name is already taken"
+    notBlank: "Please fill a name"
+url:
+    taken: "This url is already in use"
+    notBlank: "Please fill an url"
+    notTheSame: "Please give an other www address"
+tooShort: "Must be at least {{ limit }} characters long"
+tooLong: "Cannot be longer than {{ limit }} characters"
+numbers:
+    notAllowed: "Numbers are not allowed"
+choose: "Please choose"

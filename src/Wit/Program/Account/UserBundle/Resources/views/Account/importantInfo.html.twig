@@ -1,0 +1,55 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{- 'account.importantInformation' | trans -}}</h3>
+  </div>
+  <div class="panel-body">
+    {%- if is_granted("ROLE_ADMIN") -%}
+      {%- if mentorsWithoutAnyMentee | length > 0 -%}
+      <p class="text-danger">{{- 'account.admin.mentors.mentorsWithoutAnyMentee' | trans -}}:</p>
+      {%- if mentorsWithoutAnyMentee | length > 0 -%}
+        <ul>
+          {%- for mentor in mentorsWithoutAnyMentee -%}
+          <li>
+            <a href="{{ path('mentor_show', { 'id': mentor.id }) }}">
+              {{- mentor.fullname -}}
+            </a>
+          </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+      {%- endif -%}
+      {%- if mentorsWithoutChosenMentee | length > 0 -%}
+        <p class="text-warning">{{- 'account.admin.mentors.mentorsWithoutChosenMentee' | trans -}}:</p>
+        <ul>
+          {%- for mentor in mentorsWithoutChosenMentee -%}
+          <li>
+            <a href="{{ path('mentor_show', { 'id': mentor.id }) }}">
+              {{- mentor.fullname -}}
+            </a>
+          </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    {%- else -%}
+    <ul>
+        <li>
+          {{- 'account.static.programme.timetable' | trans -}}
+        </li>
+        <li>
+          {{- 'account.static.event.opening' | trans -}}
+        </li>
+        {%- if is_granted("ROLE_MENTOR") -%}
+          <li>
+            {{- 'account.static.mentor.contact' | trans -}}
+          </li>
+        {%- elseif is_granted("ROLE_MENTEE") -%}
+          <li>
+            {{- 'account.static.mentee.contact' | trans -}}
+          </li>
+        {%- endif -%}
+        {# @todo najbliższe spotkanie w kalendarzu #}
+    </ul>
+    {%- endif -%}
+  </div>
+</div>
+

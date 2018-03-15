@@ -1,0 +1,28 @@
+{% extends 'WitProgramAdminQuestionnaireBundle::layout.html.twig' %}
+
+{% block body %}
+    <div class="page-header">
+        <h1>{{ 'question.edit' | trans }}</h1>
+    </div>
+
+    {% include 'WitProgramAdminQuestionnaireBundle:Question:_form.html.twig' with {'form' : edit_form}%}
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    {#
+    collection prototype
+    http://symfony.com/doc/current/cookbook/form/form_customization.html#cookbook-form-custom-prototype
+    http://jsfiddle.net/847Kf/4/
+    #}
+
+    {%- javascripts
+        '@WitSiteBundle/Resources/public/js/prototype.js'
+    -%}
+        <script src='{{ asset_url }}'></script>
+    {%- endjavascripts %}
+
+{% endblock %}

@@ -1,0 +1,170 @@
+wit_program_calendar_event_note:
+    resource: "@WitProgramCalendarBundle/Controller/EventNoteController.php"
+    type:     annotation
+
+#------------------------------------------#
+#                Main page                 #
+#------------------------------------------#
+
+# sitemap
+# https://github.com/prestaconcept/PrestaSitemapBundle/issues/101
+PrestaSitemapBundle:
+    resource: "@PrestaSitemapBundle/Resources/config/routing.yml"
+    prefix:   /
+
+# main page resources
+homepage_locale:
+    path: /
+    defaults:  { _controller: 'WitSiteBundle:Homepage:index', _locale: '%locale%' }
+    options:
+        sitemap:
+            priority: 0.7
+            changefreq: weekly
+
+site_content:
+    resource: "@WitSiteBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}/
+    requirements:
+        _locale: en|pl
+    defaults: { _locale: '%locale%'}
+
+#------------------------------------------#
+#                  Admin                   #
+#------------------------------------------#
+
+# user account calendar
+program_calendar:
+    resource: "@WitProgramCalendarBundle/Controller/"
+    type:     annotation
+    prefix:   /account
+
+# user account
+program_user_account:
+    resource: "@WitProgramAccountUserBundle/Controller/"
+    type:     annotation
+    prefix:   /account
+# mentor account
+program_mentor_account:
+    resource: "@WitProgramAccountMentorBundle/Controller/"
+    type:     annotation
+    prefix:   /account/mentor
+# mentee account
+program_account_mentee:
+    resource: "@WitProgramAccountMenteeBundle/Controller/"
+    type:     annotation
+    prefix:   /account/mentee
+
+#fos user
+fos_user_security_locale:
+  path: /login
+  defaults:  { _controller: 'FOSUserBundle:Security:login' }
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix:   /
+    requirements:
+        _locale: en|pl
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix:   /account/profile
+    requirements:
+        _locale: en|pl
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix:   /register
+    requirements:
+        _locale: en|pl
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+    requirements:
+        _locale: en|pl
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /account/profile
+    requirements:
+        _locale: en|pl
+
+# fos_user_register:
+#     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+#     prefix: /register
+#     requirements:
+#         _locale: en|pl
+
+# begin register routes
+
+#custom register route
+# fos_user_registration_register:
+#     path: /register
+#     methods: [GET, POST]
+#     defaults:  { _controller: 'WitProgramAccountFosUserBundle:Registration:register', _locale: '%locale%' }
+#     requirements:
+#         _locale: en|pl
+
+# fos_user_registration_check_email:
+#     path: /register/check-email
+#     methods: GET
+#     defaults:  { _controller: 'FOSUserBundle:Registration:checkEmail', _locale: '%locale%' }
+#     requirements:
+#         _locale: en|pl
+
+# fos_user_registration_confirm:
+#     path: /register/confirm/{token}
+#     methods: [GET, POST]
+#     defaults:  { _controller: 'FOSUserBundle:Registration:confirm', _locale: '%locale%' }
+#     requirements:
+#         _locale: en|pl
+
+# fos_user_registration_confirmed:
+#     prefix: /register
+#     path: /register/confirmed
+#     methods: GET
+#     defaults:  { _controller: 'FOSUserBundle:Registration:confirmed', _locale: '%locale%' }
+#     requirements:
+#         _locale: en|pl
+
+#end register routes
+
+#end user account
+
+# admin
+admin_calendar:
+    resource: "@WitProgramAdminCalendarBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+admin_edition:
+    resource: "@WitProgramAdminEditionBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+admin_gallery:
+    resource: "@WitProgramAdminGalleryBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+admin_questionnaire:
+    resource: "@WitProgramAdminQuestionnaireBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+admin_site_content:
+    resource: "@WitProgramAdminSiteContentBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+admin_user:
+    resource: "@WitProgramAdminUserBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+
+# images thumbmails
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+# calendar
+adesigns_calendar:
+  resource: "@ADesignsCalendarBundle/Resources/config/routing.xml"
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

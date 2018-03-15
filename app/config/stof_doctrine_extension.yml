@@ -1,0 +1,8 @@
+stof_doctrine_extensions:
+    default_locale: '%locale%'
+    orm:
+        default:
+            timestampable: true
+            sortable: true
+            softdeleteable: true
+            translatable: false # translatable implemented with knplabs

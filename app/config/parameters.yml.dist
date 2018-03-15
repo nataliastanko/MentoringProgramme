@@ -1,0 +1,26 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     wit_techleaders
+    database_user:     techleaders
+    database_password: abc
+    # You should uncomment this if you want use pdo_sqlite
+    # database_path: "%kernel.root_dir%/data.db3"
+
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_user:       ~
+    mailer_password:   ~
+
+    # A secret key that's used to generate certain security-related tokens
+    secret:            ThisTokenIsNotSoSecretChangeIt
+
+    email_sender_address: noreply@example.pl
+    email_sender_name: Program mentorski Women in Technology # TODO translate
+    email_partner: example@example.pl # TODO set email in db field
+    router.request_context.host: techleaders.eu
+    router.request_context.scheme: http
+    wkhtmltopdf.bin: /usr/bin/xvfb-run /usr/bin/wkhtmltopdf

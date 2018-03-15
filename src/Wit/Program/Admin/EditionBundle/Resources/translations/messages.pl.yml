@@ -1,0 +1,150 @@
+invitation:
+    self: "Zaproszenie do rejestracji w systemie"
+    sent:
+        to: "Zaproszenie wysłane na adres"
+    accepted: "Zaproszenie do rejestracji konta zaakceptowane."
+    pending: "Zaproszenie do rejestracji konta oczekuje na akceptację"
+config:
+    warning:
+        isSignupMentorsEnabled: "Rekrutacja uczestniczek wciąż jeszcze trwa"
+    signup:
+        isSignupMentorsEnabled: "Zapisy dla mentorek/ów"
+        isSignupPartnersEnabled: "Zapisy dla partnerów"
+        isSignupMenteesEnabled: "Zapisy dla uczestniczek"
+        isChosenMenteesVisible: "Wyniki rekrutacji widoczne"
+        not:
+            enabled: "Zapisy nie są w tej chwili możliwe"
+        closed: "Zapisy są zamknięte. Zapraszamy do wzięcia udziału w kolejnej edycji."
+    edit: "Włącz/wyłącz zapisy"
+    current: "Aktualna konfiguracja zapisów"
+hour: "godz."
+form:
+    translations:
+        self: "Uzupełnij tłumaczenia"
+        mentor:
+            bio: "Uzupełnij pole z opisem swojej biografii w języku polskim i angielskim (8-10 zdań)"
+photo: "Zdjęcie"
+created: "Utworzony"
+updated: "Edytowany"
+url: "Strona WWW"
+result.empty: "Brak wyników"
+option:
+    not:
+        enabled: "Nie można teraz skorzystać z tej opcji"
+button:
+    profile: "Profil"
+    show: "Szczegóły"
+    back: "Powrót"
+    edit: "Edytuj"
+    save: "Zapisz"
+    new: "Dodaj nowy"
+    delete: "Usuń"
+    enable: "Aktywuj"
+    disable: "Wyłącz logowanie"
+    cancel: "Anuluj"
+    preview: 'Przeglądaj'
+    sort: 'Zmień kolejność'
+    learn.more: "Zobacz więcej"
+    close: "Zamknij"
+    search: "Szukaj"
+    invite: "Wyślij zaproszenie"
+edition: Edycja
+editions: Edycje
+partner:
+    list: "Lista partnerów"
+    name: "Nazwa"
+    new: "Nowy partner"
+    edit: "Edycja partnera"
+    description: "Dodatkowy opis"
+sponsor:
+    list: "Lista partnerów strategicznych"
+    name: "Nazwa"
+    new: "Nowy partner strategiczny"
+    edit: "Edycja partnera strategicznego"
+    description: "Dodatkowe informacje ogólne o partnerze strategicznym"
+person:
+    list: "Lista uczestniczek"
+    details: "Osoba"
+    name: "Imię"
+    lastName: "Nazwisko"
+    age: "Wiek"
+    education: "Wykształcenie"
+    video:
+        provider: "Wideo pochodzi z serwisu"
+        problem: "Problem z odtworzeniem video?"
+        bad_url: "Niestandardowa ścieżka do video:"
+        go_to: "Przejdź na adres wideo"
+    statute: "Wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z Dz.U.2015, 2135 przez Women in Technology w celu i zakresie niezbędnym udział w programie TechLeaders zgodnie z regulaminem oraz do przygotowana i przekazania odpowiedzi na Pani/Pana wiadomości, przesłaną do administratora za pomocą powyższego formularza. Administratorem danych osobowych jest Women in Technology. Uprawnionemu przysługuje prawo wglądu do przetwarzanych danych, ich poprawiania, zmiany oraz żądania ich usunięcia. Wyrażam zgodę na przetwarzanie moich danych osobowych przez Women in Technology w celach marketingowych. Podanie danych osobowych jest dobrowolne. Osobie przysługuje prawo wglądu do danych osobowych, ich poprawiania oraz usuwania. Wyrażam zgodę na przetwarzanie moich danych osobowych przez firmy współpracujące z Women in Technology. Podanie danych osobowych jest dobrowolne. Osobie przysługuje prawo wglądu do danych osobowych, ich poprawiania oraz usuwania."
+    rules: "Przeczytałam regulamin i akceptuję jego treść."
+mentee:
+    self: "Uczestniczka"
+    email: "E-mail uczestniczki"
+    list: "Lista uczestniczek"
+    chosenAre: "Otrzymaliśmy bardzo dużo zgłoszeń, a wybór był niewiarygodnie trudny. Oto lista uczestniczek, które dostały się do programu:"
+    join: "Dołącz do programu jako uczestniczka!"
+    url: "Wklej link ze swoim wideo (youtube, vimeo itp.)"
+    url.description: "Możesz dodać film video ze swoją osobą, pokaż się od najlepszej strony! Film jest nieobowiązkową opcją. Będzie odtwarzany tylko przez zespół tworzący Tech Leaders. Film ten nie będzie nigdzie publikowany."
+    education:
+        1: zawodowe
+        2: średnie
+        3: wyższe
+    originalMentorChoice: 'Oryginalny wybór mentora'
+    changeMentor:
+        button: 'Przypisz innego mentora'
+        description: 'Zmień oryginalny wybór uczestniczki. Po tej zmianie uczestniczka będzie mogła zostać wybrana przez nowo-przypisanego mentora.'
+        not:
+            enabled: 'Zmiana przypisania mentora jest możliwa po zamknieciu zapisów i przed wybraniem przez/za mentora podopiecznej, której zmiana dotyczy.'
+    isAccepted: "Zaakceptowana do mentora?"
+    isChosen: "Wybrana do programu?"
+    accept:
+        button: 'Zaakceptuj do mentora'
+        description: 'Tylko po tej akceptacji mentor może wybrać tą podopieczną. Tylko zaakceptowane uczestniczki są widoczne do wyboru dla mentorów.'
+    accepted:
+        description: 'Uczestniczka przeszła wstępną akceptację do programu'
+    choose:
+        button: 'Wybierz za mentora tą podopieczną'
+        mentorButton: 'Wybierz tą podopieczną'
+        hint: 'Wybierz z namysłem :)'
+        description: 'Ta akcja oznacza ostateczne przypisane uczestniczki do mentora i uczynienie z niej podopieczną mentora. To dokonanie wyboru uczestniczki za mentora.'
+    chosen:
+        description: 'Uczestniczka została ostatecznie wybrana do programu'
+    rejected: 'Uczestniczka ostatecznie nie została wybrana do programu'
+mentor:
+    self: "Mentor/ka"
+    email: "E-mail mentora"
+    new: "Nowy mentor"
+    edit: "Edycja mentora"
+    list: "Lista mentorów"
+    name: "Imię"
+    lastName: "Nazwisko"
+    url: "Główny link do strony www"
+    url.description: "np. portfolio"
+    personalUrl: "Dodatkowy link www"
+    personalUrl.description: "np. organizacja"
+    company.description: "Gdzie pracujesz? (jeśli chcesz zdradzić)"
+    bio: "Biogram"
+    bio.description: "8-10 zdań"
+    accepted: "Aplikacja zaakceptowana"
+    notaccepted: "Aplikacja niezaakceptowana lub odrzucona"
+    rules: "Przeczytałam/em regulamin i akceptuję jego treść."
+    occupation: "Profesja (czym się zajmuje)"
+    skills: "Umiejętności"
+    hasNoEdition: "Nie przypisana/y do żadnej edycji"
+    search: "Wyniki wyszukiwania mentorów"
+    join: "Dołącz do programu jako mentor/ka!"
+    invitation:
+        description: 'Wyślij zaproszenie do rejestracji w systemie'
+export:
+    generated: "Data wygenerowania"
+    download:
+        pdf: "Pobierz w pdf"
+        xls: "Pobierz w xls"
+    mentees:
+        list:
+            download:
+                xls: "Uczestniczki w xls"
+                description: "Pobierz szczegółową listę uczestniczek z podanej edycji"
+        chosen:
+            download:
+                xls: "Ogłoszenie wyników xls"
+                description: "Pobierz listę uczestniczek wybranych do programu wraz z przyporządkowanym mentorem z podanej edycji"

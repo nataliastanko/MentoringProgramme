@@ -1,0 +1,77 @@
+# https://github.com/liip/LiipImagineBundle
+# http://symfony.com/doc/current/bundles/LiipImagineBundle/configuration.html
+
+# Path Resolution
+# https://github.com/liip/LiipImagineBundle#path-resolution
+# example: bin/console liip:imagine:cache:resolve web/uploads/mentors/*
+
+liip_imagine:
+    resolvers:
+        default:
+            web_path : ~
+
+                # web_root: '%kernel.root_dir%/../web'
+                # # where to generate cache
+                # # cache_prefix: '%kernel.root_dir%/web/media/cache'
+                # cache_prefix: 'media/cache/resolve'
+                # # media/cache/resolve/homepage/uploads/partners/56d58bc4b7232.png
+
+    # driver: imagick # doesnt work on local
+    # driver: gd # does work on local
+
+    # Images Outside Data Root
+    # https://github.com/liip/LiipImagineBundle#images-outside-data-root
+    # When your setup requires your source images reside outside the web root, you have to set your loader's data_root parameter in your configuration (often app/config/config.yml) with the absolute path to your source image location.
+    # This location must be readable by your web server. On a system that supports setfacl or commands compatible with macOS and other environments.
+    # You need to grant read access for Apache by adding the following to your Apache VHost configuration
+    # loaders:
+    #     default:
+    #         filesystem:
+    #             # data_root: '%kernel.root_dir%/..'
+    #             data_root: '%kernel.root_dir%/../web'
+
+    # http://symfony.com/doc/current/bundles/LiipImagineBundle/filters.html
+    # https://symfony.com/doc/master/bundles/LiipImagineBundle/filters/sizing.html
+    filter_sets:
+        cache: ~
+        list_thumb:
+            quality: 80
+            filters:
+                # Option inset does a relative resize, where the height and the width will not exceed the values in the configuration
+                # Option outbound does a relative resize, but the image gets cropped if width and height are not the same
+                thumbnail: { size: [100, 50], mode: inset }
+        detail_thumb:
+            quality: 100
+            filters:
+                thumbnail: { size: [300, 300], mode: inset }
+        profile_thumb:
+            quality: 100
+            filters:
+                thumbnail: { size: [140, 140], mode: inset }
+        homepage:
+            quality: 100
+            filters:
+                thumbnail: { size: [350, 200], mode: inset }
+        homepage_partners:
+            quality: 100
+            filters:
+                thumbnail: { size: [145, 90], mode: inset }
+        gallery:
+            quality: 100
+            filters:
+                thumbnail: { size: [1000, 1000], mode: inset }
+        gallery_thumb:
+            quality: 70
+            filters: # width and height (in this order)
+                thumbnail: { size: [300, 200], mode: outbound, allow_upscale: true }
+                # crop: { start: [0, 0], size: [300, 300] }
+                # background: { size: [1026, 684], position: center, color: '#fff' }
+
+       # The images will be created upon first request and will remain in their static cached version until remove
+       # You have to remove cached images first if you want to get new ones generated
+       # e.g. ./bin/console liip:imagine:cache:remove --filters=homepage_partners
+       # then refresh page with images
+
+       # Resolving images is presenting it via browser
+       # You can resolve the image URL in your code using the getBrowserPath method
+       # You can resolve an image URL using the console command liip:imagine:cache:resolve. The only required argument is one or more relative image paths. Additionally, you can use the --filters option to specify which filter you want to resolve for (if the --filters option is omitted, all available filters will be resolved).

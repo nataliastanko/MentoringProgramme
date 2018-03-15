@@ -1,0 +1,6 @@
+image:
+    description: "Image description"
+    list: "Gallery"
+    new: "New image"
+    edit: "Edit image"
+    detail: "Image"

@@ -1,0 +1,18 @@
+{%- if about is not empty -%}
+{% spaceless %}
+<section id="about-group">
+  <div id="about">
+      <ul class="list-group about">
+          {% for text in about %}
+            <li class="list-group-item{%- if loop.index is odd %} list-group-item-odd{% endif -%}">
+              {%- if text.name -%}
+                <h4 class="list-group-item-heading">{{- text.name -}}</h4>
+              {%- endif -%}
+              <p class="list-group-item-text">{{- text.content -}}</p>
+            </li>
+          {% endfor %}
+        </ul>
+  </div>
+</section>
+{% endspaceless %}
+{%- endif -%}

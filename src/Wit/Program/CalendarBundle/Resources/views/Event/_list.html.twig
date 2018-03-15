@@ -1,0 +1,27 @@
+{%- if events | length > 0 -%}
+<div class="tab-content">
+
+    <div class="row">
+      <div class="col-12 col-sm-12 col-lg-12">
+        <div class="table-responsive">
+          <table class="table">
+            <tbody>
+            {% for event in events %}
+              <tr>
+                <td>{{ formatDateRange(event.startTime, event.endTime) }}&nbsp;<small>{{ formatTimeRange(event.startTime, event.endTime) }}</small></td>
+                <td>{{ event.title }}</td>
+                <td>
+                    <a href="{{ path('event_show', { 'id': event.id }) }}">{{ 'button.show' | trans }}</a>
+                </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+</div>
+{%- else -%}
+  {% include 'WitSiteBundle:helper:emptyResult.html.twig' %}
+{%- endif -%}

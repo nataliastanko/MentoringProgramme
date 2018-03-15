@@ -1,0 +1,204 @@
+assetic:
+    filters:
+        cssrewrite: ~
+    debug: '%kernel.debug%'
+    use_controller: false
+    # to use the {% stylesheets %} tag you must include this bundle
+    bundles:
+        - WitProgramAdminEditionBundle
+        - WitProgramAdminGalleryBundle
+        - WitProgramAdminQuestionnaireBundle
+        - WitProgramAdminSiteContentBundle
+        - WitProgramAdminUserBundle
+        - WitProgramAccountUserBundle
+        - WitProgramAccountMentorBundle
+        - WitProgramAccountMenteeBundle
+        - WitProgramCalendarBundle
+        - WitSiteBundle
+    assets:
+        #favicon black
+        favicon_b:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/img/favicon/favicon-16x16b.ico'
+        # favicon_g:
+        #     inputs:
+        #         - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/img/favicon/favicon-16x16g.ico'
+        # background
+        bg:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/img/bg.jpg'
+            output: 'img/bg.jpg' #used in css
+
+        # social media poster
+        poster:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/img/poster.jpg'
+            output: 'img/poster.jpg' #used in meta
+
+        # logos
+        wit_logo_transparent:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/img/wit_logo_transparent.png'
+            output: 'img/wit_logo_transparent.png'
+        # techleaders_small_logo:
+        #     inputs:
+        #         - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/img/techleaders_small_logo.jpg'
+        #     output: 'img/techleaders_small_logo.jpg'
+
+        #logo green
+        techleaders_logo_g:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/img/techleaders_logo_g.png'
+            output: img/techleaders_logo.png
+        # techleaders_logo_b:
+        #     inputs:
+        #         - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/img/techleaders_logo_b.png'
+        #     output: img/techleaders_logo_b.png
+
+        # gallery
+        lightgallery_gif:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/lightGallery/img/loading.gif'
+            output: img/loading.gif
+        lightgallery_css:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/lightGallery/css/lightgallery.css'
+            filters:
+                - cssrewrite
+
+        ie10workaround:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/js/ie10-viewport-bug-workaround.js'
+        forms_general:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/js/forms-general.js'
+        modal_mentors:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/bootstrap/js/modal.js'
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/js/modal-mentors.js'
+        scroll_homepage:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/js/scroll-top.js'
+        tab:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/bootstrap/js/tab.js'
+        tooltip:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/bootstrap/js/tooltip.js'
+        popover:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/bootstrap/js/popover.js'
+        dropdown:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/bootstrap/js/dropdown.js'
+        collapse:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/bootstrap/js/collapse.js'
+        alert:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/bootstrap/js/alert.js'
+        transition:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/bootstrap/js/transition.js'
+        lightgallery_program:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/js/lightgallery.js'
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/lightGallery/js/lightgallery.min.js'
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/lightGallery/js/lg-thumbnail.min.js'
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/lightGallery/js/lg-fullscreen.min.js'
+        #jquery
+        jquery:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/jquery/jquery-2.2.0.min.js'
+        jquery_ui_js:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/jqueryui/jquery-ui-1.11.4.custom/jquery-ui.min.js'
+            # output: js/ui.js
+        jquery_ui_css:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/jqueryui/jquery-ui-1.11.4.custom/jquery-ui.min.css'
+            output: css/ui.css
+            filters:
+                - cssrewrite
+
+        # spij js
+        spin_js:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/spin/js/spin.min.js'
+            output: js/spin.js
+
+        flatly_bootstrap_css:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/bootstrap/css/flatly_bootstrap.min.css'
+            filters:
+                - cssrewrite
+
+        core_css:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/font-awesome-4.5.0/css/font-awesome.min.css'
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/css/sticky-footer-navbar.css'
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/css/styles.css'
+            filters:
+                - cssrewrite
+
+        # bootstrap fonts
+        bootstrap_fonts_woff:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/bootstrap/fonts/glyphicons-halflings-regular.woff'
+            output: fonts/glyphicons-halflings-regular.woff
+        bootstrap_fonts_woff2:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/bootstrap/fonts/glyphicons-halflings-regular.woff2'
+            output: fonts/glyphicons-halflings-regular.woff2
+        bootstrap_fonts_ttf:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/bootstrap/fonts/glyphicons-halflings-regular.ttf'
+            output: fonts/glyphicons-halflings-regular.ttf
+        bootstrap_fonts_svg:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/bootstrap/fonts/glyphicons-halflings-regular.svg'
+            output: fonts/glyphicons-halflings-regular.svg
+        bootstrap_fonts_eot:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/bootstrap/fonts/glyphicons-halflings-regular.eot'
+            output: fonts/glyphicons-halflings-regular.eot
+
+        # font awesome fonts
+        font_awesome_woff:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/font-awesome-4.5.0/fonts/fontawesome-webfont.woff'
+            output: fonts/fontawesome-webfont.woff
+        font_awesome_woff2:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/font-awesome-4.5.0/fonts/fontawesome-webfont.woff2'
+            output: fonts/fontawesome-webfont.woff2
+        font_awesome_ttf:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/font-awesome-4.5.0/fonts/fontawesome-webfont.ttf'
+            output: fonts/fontawesome-webfont.ttf
+        font_awesome_svg:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/font-awesome-4.5.0/fonts/fontawesome-webfont.svg'
+            output: fonts/fontawesome-webfont.svg
+        font_awesome_eot:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/font-awesome-4.5.0/fonts/fontawesome-webfont.eot'
+            output: fonts/fontawesome-webfont.eot
+
+        # bootstrap fonts
+        lightgallery_fonts_woff:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/lightGallery/fonts/lg.ttf'
+            output: fonts/lg.ttf
+        lightgallery_fonts_ttf:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/lightGallery/fonts/lg.ttf'
+            output: fonts/lg.ttf
+        lightgallery_fonts_svg:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/lightGallery/fonts/lg.svg'
+            output: fonts/lg.svg
+        lightgallery_fonts_eot:
+            inputs:
+                - '%kernel.root_dir%/../src/Wit/SiteBundle/Resources/public/vendors/lightGallery/fonts/lg.eot'
+            output: fonts/lg.eot

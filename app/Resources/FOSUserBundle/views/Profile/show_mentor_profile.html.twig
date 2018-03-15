@@ -1,0 +1,10 @@
+{# <div class="page-header">
+  <h1>
+    {{- user.fullname -}}&nbsp;
+    <small>{{- 'mentor.self' | trans -}}</small>
+  </h1>
+</div> #}
+
+{% set mentor = user.invitation.mentor %}
+
+{% include 'WitProgramAccountMentorBundle:Account:_profile.html.twig' %}

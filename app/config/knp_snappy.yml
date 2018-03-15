@@ -1,0 +1,11 @@
+#https://github.com/KnpLabs/KnpSnappyBundle
+knp_snappy:
+    temporary_folder: '%kernel.cache_dir%/snappy'
+    pdf:
+        enabled:    true
+        binary:     '%wkhtmltopdf.bin%'
+        options:    []
+    image:
+        enabled:    true
+        binary:     /usr/local/bin/wkhtmltoimage # TODO use a parameter
+        options:    []

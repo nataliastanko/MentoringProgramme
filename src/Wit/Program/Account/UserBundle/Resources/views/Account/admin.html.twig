@@ -1,0 +1,50 @@
+{% extends 'WitProgramAccountUserBundle::account.html.twig' %}
+
+{% block body %}
+
+{% include "WitProgramAccountUserBundle:Account:_welcome.html.twig" %}
+
+{# Columns are always 50% wide, on mobile and desktop #}
+<div class="row">
+
+  <div class="col-md-6 col-xs-12">
+    {% include "WitProgramAccountUserBundle:Account:importantInfo.html.twig" %}
+  </div>{# col #}
+
+  <div class="col-md-6 col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          {{- 'account.programme.edition.current' | trans({'%edition%': edition.name}) -}}
+        </h3>
+      </div>
+
+      <div class="panel-body">
+        <div class="list-group">
+          {%- if config.getIsSignupMenteesEnabled-%}
+            {# @TODO translation #}
+            <a href="{{ path('config_index') }}" class="list-group-item list-group-item-warning">Trwają aktualnie zapisy uczestniczek</a>
+          {%- else -%}
+            {# @TODO translation #}
+            <a href="{{ path('config_index') }}" class="list-group-item list-group-item-danger">Zapisy uczestniczek są zamknięte</a>
+          {%- endif -%}
+
+          {%- if config.getIsSignupMentorsEnabled-%}
+            {# @TODO translation #}
+            <a href="{{ path('config_index') }}" class="list-group-item list-group-item-warning">Trwają aktualnie zapisy mentorek/ów</a>
+          {%- else -%}
+            {# @TODO translation #}
+            <a href="{{ path('config_index') }}" class="list-group-item list-group-item-danger">Zapisy mentorek/ów są zamknięte</a>
+          {%- endif -%}
+
+          {%- if config.getIsSignupPartnersEnabled-%}
+            {# @TODO translation #}
+            <a href="{{ path('config_index') }}" class="list-group-item list-group-item-info">Przyjmowane są aktualnie zgłoszenia partnerów</a>
+          {%- endif -%}
+        </div>{# list-group #}
+      </div>{# panel-body #}
+    </div>{# panel panel-default #}
+  </div>{# col #}
+</div>{# row #}
+
+{% endblock %}

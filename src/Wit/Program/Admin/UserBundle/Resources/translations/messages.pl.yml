@@ -1,0 +1,29 @@
+page:
+    login: "Logowanie"
+user:
+    list: "Lista użytkowników"
+    details: "Użytkownik"
+    edit: "Edycja użytkownika"
+    name: "Imię"
+    lastName: "Nazwisko"
+    phoneNumber: "Numer telefonu"
+    url: "www"
+    photo: "Zdjęcie"
+    city: "Miasto"
+    register:
+        failure: 'Nie masz odpowiednich uprawnień, by korzystać z tej aplikacji.'
+        success: 'Cześć %name%! Zostałaś poprawnie zarejestrowana w serwisie z adresem email %email%'
+    already:
+        logged: Jesteś już zalogowana
+        registered: Ten użytkownik jest już zarejestrowany
+admin:
+    self: "Admin"
+mail:
+    apply:
+        confirmation:
+            subject: 'Potwierdzenie zgłoszenia do udziału w programie Tech Leaders'
+    invite:
+        already:
+            sent: "Zaproszenie do tej osoby zostało już wysłane"
+        subject: 'Zaproszenie do rejestracji w systemie Tech Leaders'
+    link.to.register: 'Link do rejestracji'

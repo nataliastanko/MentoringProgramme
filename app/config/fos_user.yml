@@ -1,0 +1,33 @@
+# https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/configuration_reference.md
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Wit\Program\Account\UserBundle\Entity\User
+    # emails https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/emails.md
+    service:
+        mailer: fos_user.mailer.twig_swift
+    from_email:
+        address:        '%email_sender_address%'
+        sender_name:    '%email_sender_name%'
+    registration:
+        # overwrite the default RegistrationFormType with the one just created
+        form:
+            type: Wit\Program\Account\UserBundle\Form\RegistrationFormType
+            # Or for Symfony < 2.8
+            # type: program_user_registration
+        confirmation:
+            # no email confirmation (no need, register from email only)
+            enabled: false # change to true for required email confirmation
+            from_email:
+                address:        '%email_sender_address%'
+                sender_name:    '%email_sender_name%'
+    profile:
+        form:
+            type: Wit\Program\Account\UserBundle\Form\ProfileFormType
+    resetting:
+        email:
+            # template: AcmeDemoBundle:User:resetting.email.html.twig
+            from_email:
+                address:        '%email_sender_address%'
+                sender_name:    '%email_sender_name%'
+        # template:   AppBundle:Registration:email.txt.twig

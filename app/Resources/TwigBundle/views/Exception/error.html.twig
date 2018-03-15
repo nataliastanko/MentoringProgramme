@@ -1,0 +1,10 @@
+{# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
+{% extends 'WitSiteBundle::base.html.twig' %}
+
+{% block body %}
+    <h1>Internal server error</h1>
+
+    <p>
+        The Web server encountered an unexpected condition that prevented it from fulfilling the request by the client. <a href="{{ path('homepage') }}">Return to the homepage</a>.
+    </p>
+{% endblock %}

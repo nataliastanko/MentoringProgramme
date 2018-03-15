@@ -1,0 +1,37 @@
+{% extends 'WitProgramAdminQuestionnaireBundle::layout.html.twig' %}
+
+{% block body -%}
+    <div class="page-header">
+        <h1>{{ 'answer.details' | trans }}</h1>
+    </div>
+
+    <table class="table table-hover">
+        <tbody>
+            <tr>
+                <th>{{ 'person.name' | trans }} {{ 'person.lastName' | trans }}</th>
+                <td>
+                    {%- if answer.person is not empty -%}
+                        {{- answer.person.fullname -}}
+                    {% else %}
+                        {{- answer.mentor.fullname -}}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>{{ 'question.name' | trans }}</th>
+                <td>{{ answer.question.name }}</td>
+            </tr>
+            <tr class="info">
+                <th>{{ 'answer.content' | trans }}</th>
+                <td>
+                    {%- if answer.answerChoice -%}
+                    {{- answer.answerChoice.name -}}
+                    {%- else -%}
+                        {{- answer.content | nl2br -}}
+                    {%- endif -%}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

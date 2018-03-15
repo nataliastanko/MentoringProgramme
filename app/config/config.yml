@@ -1,0 +1,164 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+    - { resource: fos_user.yml }
+    - { resource: stof_doctrine_extension.yml }
+    - { resource: assetic.yml }
+    - { resource: assetic_version.yml }
+    - { resource: liip_imagine.yml }
+    - { resource: vich_uploader.yml }
+    - { resource: knp_paginator.yml }
+    - { resource: knp_doctrine_behaviors.yml }
+    - { resource: a2lix_translation_form.yml }
+    - { resource: sc_datetimepicker.yml }
+    - { resource: knp_snappy.yml }
+    - { resource: presta_sitemap.yml }
+    - { resource: isometriks_spam.yml }
+    - { resource: sensio_framework_extra.yml }
+    # - { resource: cspoo_swiftmailer_mailgun.yml }
+    - { resource: ../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml }
+    - { resource: "@WitProgramCalendarBundle/Resources/config/services.yml" }
+    - { resource: "@WitProgramAdminEditionBundle/Resources/config/services.yml" }
+    - { resource: "@WitProgramAdminGalleryBundle/Resources/config/services.yml" }
+    - { resource: "@WitProgramAccountUserBundle/Resources/config/services.yml" }
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: pl
+    # locale: en
+    email.email_partner: '%email_partner%'
+    paginate.limit: 50
+    # httpProtocol: http
+framework:
+    default_locale: "%locale%" # parameters.locale
+    translator:     { fallback: ["en"] }
+    secret:         "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    #serializer:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+        #assets_version: SomeVersionScheme
+    trusted_hosts:   ~
+    # trusted_proxies: ~ #The "framework.trusted_proxies" configuration key has been deprecated in Symfony 3.3. Use the Request::setTrustedProxies() method in your front controller instead.
+    session:
+        # handler_id set to null will use default session handler from php.ini
+        handler_id:  ~
+        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+    fragments:       ~
+    http_method_override: true
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    form_themes:
+        # - 'form/form_theme.html.twig'
+        - 'bootstrap_3_layout.html.twig'
+        - 'WitSiteBundle:form:vich_form_theme.html.twig'
+
+    globals:
+        email_partner: '%email.email_partner%'
+        pathToWeb: "%kernel.root_dir%/../web"
+
+    # https://symfony.com/doc/current/templating/namespaced_paths.html
+    # Registering your own Namespaces
+    # As an added bonus, the namespaced syntax is faster.
+    paths:
+        "%kernel.root_dir%/../src/Wit/Program/Account/MentorBundle/Resources/views/Mentee": MentorBundleMentee
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   pdo_mysql
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset: utf8mb4
+        default_table_options:
+            charset: utf8mb4
+            collate: utf8mb4_unicode_ci
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #     path:     "%database_path%"
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        # naming_strategy: doctrine.orm.naming_strategy.underscore
+        # auto_mapping: true
+
+        entity_managers:
+            default:
+                auto_mapping: true
+                # mappings: # instead of auto_mapping
+                #     gedmo_translatable:
+                #         type: annotation
+                #         prefix: Gedmo\Translatable\Entity
+                #         dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
+                #         alias: GedmoTranslatable # (optional) it will default to the name set for the mapping
+                #         is_bundle: false
+                #     gedmo_translator:
+                #         type: annotation
+                #         prefix: Gedmo\Translator\Entity
+                #         dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translator/Entity"
+                #         alias: GedmoTranslator # (optional) it will default to the name set for the mapping
+                #         is_bundle: false
+                #     gedmo_loggable:
+                #         type: annotation
+                #         prefix: Gedmo\Loggable\Entity
+                #         dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Loggable/Entity"
+                #         alias: GedmoLoggable # (optional) it will default to the name set for the mappingmapping
+                #         is_bundle: false
+                #     gedmo_tree:
+                #         type: annotation
+                #         prefix: Gedmo\Tree\Entity
+                #         dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
+                #         alias: GedmoTree # (optional) it will default to the name set for the mapping
+                #         is_bundle: false
+                filters:
+                    softdeleteable:
+                        class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+                        enabled: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
+#doctrine:
+#    orm:
+#        metadata_cache_driver: apc
+#        result_cache_driver: apc
+#        query_cache_driver: apc
+
+# http://symfony.com/doc/current/reference/configuration/monolog.html
+monolog:
+    # Additional Channels without Tagged Services
+    channels: ['mail', 'export']
+    # that creates services: monolog.logger.mail, monolog.logger.export
+    handlers:
+        # common for all environments
+        mails:
+            type: stream
+            path: "%kernel.logs_dir%/%kernel.environment%/mails.log"
+            # log all messages (since debug is the lowest level)
+            level: debug
+            channels: ['mail'] # Include only channel mails
+        export:
+            type: stream
+            path: "%kernel.logs_dir%/%kernel.environment%/export.log"
+            # log all messages (since debug is the lowest level)
+            level: debug
+            channels: ['export'] # Include only channel mails

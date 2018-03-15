@@ -1,0 +1,10 @@
+{% extends 'WitProgramAccountUserBundle::account.html.twig' %}
+
+{% block body %}
+    <div class="page-header">
+        <h1>{{ 'partner.edit' | trans }}</h1>
+    </div>
+
+    {% include 'WitProgramAdminEditionBundle:Partner:_form.html.twig' with { 'form' : edit_form } %}
+
+{% endblock %}

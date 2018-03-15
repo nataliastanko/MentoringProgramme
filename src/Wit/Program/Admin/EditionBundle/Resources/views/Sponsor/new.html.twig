@@ -1,0 +1,9 @@
+{% extends 'WitProgramAccountUserBundle::account.html.twig' %}
+
+{% block body %}
+    <div class="page-header">
+        <h1>{{ 'sponsor.new' | trans }}</h1>
+    </div>
+
+    {% include 'WitProgramAdminEditionBundle:Sponsor:_form.html.twig' %}
+{% endblock %}

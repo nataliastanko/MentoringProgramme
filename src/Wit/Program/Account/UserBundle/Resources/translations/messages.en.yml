@@ -1,0 +1,63 @@
+user:
+    login: "Log in"
+    list: "Users list"
+    details: "User"
+    edit: "User edit"
+    name: "Name"
+    lastName: "Last name"
+    phoneNumber: "Phone number"
+    url: "WWW (e.g. blog)"
+    photo: "Photo"
+    city: "City"
+    type: "Account type"
+    invited: 'An invitation to register an account has been sent'
+    already:
+        logged: 'You are already logged in'
+        registered: 'This user is already registered'
+    register: "Register"
+    # registration:
+    #     failure: 'You can not be logged in to this application.'
+    #     success: 'Hello %name%! You are successfully logged in with email %email%'
+account:
+    profile:
+        self: 'Profile'
+        edit:
+            info: "At this moment you can update only your email address"
+    warning:
+        actionNeeded: "Actions needed"
+        contact:
+            organizer: "If you can see this message then contact Tech Leaders organizer."
+    welcome: "welcome to the Tech Leaders programme"
+    confirmed: 'Your account has been created successfully'
+    edit: 'Edit your profile'
+    importantInformation: 'Important information'
+    edition: "You participate in %edition% edition"
+    mentee:
+        mentor:
+            yoursIs: "Your mentor is"
+            contact: "Contact to your mentor"
+    mentor:
+        noMenteesAccepted: "You have no mentees to choose from"
+        mentee:
+            yoursIs: "Your mentee is"
+            chosen: "Chosen mentee"
+        choose:
+            mentee: "Choose a mentee"
+            description: "We are waiting for your decision until %date%"
+    admin:
+        mentors:
+            mentorsWithoutAnyMentee: "Mentors without any mentees accepted"
+            mentorsWithoutChosenMentee: "Mentors that did not choose a mentee yet"
+    programme:
+        edition:
+            current: "Currently running the %edition% edition of Tech Leaders"
+    static:
+        programme:
+            timetable: "Programme starts 20.11.2017 and ends 20.03.2018"
+        event:
+            opening:
+                "A special launch event takes place on 7th of December, 19:00, Barka, Podgórska 16, 31-052 Kraków"
+        mentor:
+            contact: "Contact to organizer: aszwiec@womenintechnology.pl"
+        mentee:
+            contact: "Contact to organizer: elakoma@womenintechnology.pl"
