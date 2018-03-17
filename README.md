@@ -1,15 +1,15 @@
 MentoringProgram
 ================
 
-Symfony 3 application
+Symfony 3.x application
 
-#Usage
+##Usage
 
-Used for Women in Technology Techleaders Program
+Used for Women in Technology Tech Leaders Program
 
 #Installation and running
 
-### Requirements
+## Requirements
 
 Make sure you have installed the requirements for running symfony [requirements][1].
 
@@ -21,9 +21,25 @@ To install dependencies run command in project root dir:
     composer install
 
 
-### Run app
+## Run app
 
 Run the following commands in project root dir:
+
+###Permissions
+
+    HTTPDUSER=`ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
+
+ * OS X:
+
+        sudo chmod -R +a "group:_www allow read,write,delete,append,readattr,writeattr,readextattr,writeextattr,file_inherit,directory_inherit" var web/media web/uploads
+        sudo chmod -R +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" var web/media web/uploads
+
+ * Linux:
+
+        sudo setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX var web/media web/uploads
+        sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX var web/media web/uploads
+
+###Database
 
 Create database:
 
@@ -38,10 +54,12 @@ Generate assets:
     ./bin/console assets:install
     ./bin/console assetic:dump
 
+###fixtures
 Run fixtures:
 
     ./bin/console doctrine:fixtures:load
 
+###server
 Run server: [https://symfony.com/doc/current/setup/built_in_web_server.html]
 
     php bin/console server:start
@@ -109,11 +127,6 @@ TDD Tests PHPUnit 5.7.x
     ./vendor/bin/phpcbf src
 
 ### Deploy
-
-### To verify
-  - a2lix/translation-form-bundle
-  - friendsofsymfony/jsrouting-bundle
-  - presta/sitemap-bundle
 
 ### TODO
 
