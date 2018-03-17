@@ -29,8 +29,13 @@ class CalendarController extends Controller
             ->getRepository('WitProgramCalendarBundle:Event')
             ->filterByMonth($this->getUser(), new \DateTime('now'));
 
+        $eventsList = $this->getDoctrine()->getManager()
+            ->getRepository('WitProgramCalendarBundle:Event')
+            ->filterEvents($this->getUser());
+
         return [
             'events' => $events,
+            'eventsList' => $eventsList,
         ];
     }
 

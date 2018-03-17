@@ -1,14 +1,1 @@
-{% extends 'WitProgramAccountUserBundle::account.html.twig' %}
-
-{% block body %}
-
-    <div class="page-header">
-        <h3>
-            {{- 'event.calendar' | trans }}&nbsp;
-            <small>({{ events.getTotalItemCount }})</small>
-        </h3>
-    </div>
-
-    {% include 'WitProgramAdminCalendarBundle:Event:_list.html.twig' %}
-
-{% endblock %}
+{% extends 'WitProgramCalendarBundle::layout.html.twig' %}

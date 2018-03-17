@@ -21,9 +21,9 @@ class EditionExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [ // Twig_SimpleFunction
-            'getEditions' => new \Twig_Function_Method($this, 'getEditions'),
-            'getLastEdition' => new \Twig_Function_Method($this, 'getLastEdition'),
-            'getSignupConfig' => new \Twig_Function_Method($this, 'getSignupConfig'),
+            'getEditions' => new \Twig_SimpleFunction('getEditions', array($this, 'getEditions')),
+            'getLastEdition' => new \Twig_SimpleFunction('getLastEdition', array($this, 'getLastEdition')),
+            'getSignupConfig' => new \Twig_SimpleFunction('getSignupConfig', array($this, 'getSignupConfig')),
         ];
     }
 

@@ -1,4 +1,4 @@
-{%- if events | length > 0 -%}
+{%- if eventsList | length > 0 -%}
 <div class="tab-content">
 
     <div class="row">
@@ -6,7 +6,7 @@
         <div class="table-responsive">
           <table class="table">
             <tbody>
-            {% for event in events %}
+            {% for event in eventsList %}
               <tr>
                 <td>{{ formatDateRange(event.startTime, event.endTime) }}&nbsp;<small>{{ formatTimeRange(event.startTime, event.endTime) }}</small></td>
                 <td>{{ event.title }}</td>

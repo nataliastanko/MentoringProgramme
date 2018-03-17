@@ -12,9 +12,9 @@ class DateFormatExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [ // Twig_SimpleFunction
-            'formatDateRange' => new \Twig_Function_Method($this, 'formatDateRange'),
-            'formatTimeRange' => new \Twig_Function_Method($this, 'formatTimeRange'),
-            'diffDateRange' => new \Twig_Function_Method($this, 'diffDateRange'),
+            'formatDateRange' => new \Twig_SimpleFunction('formatDateRange', array($this, 'formatDateRange')),
+            'formatTimeRange' => new \Twig_SimpleFunction('formatTimeRange', array($this, 'formatTimeRange')),
+            'diffDateRange' => new \Twig_SimpleFunction('diffDateRange', array($this, 'diffDateRange')),
         ];
     }
 

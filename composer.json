@@ -50,18 +50,13 @@
         "isometriks/spam-bundle": "dev-master",
         "petkopara/multi-search-bundle": "^1.0",
         "liuggio/excelbundle": "^2.1",
-        "symfony/web-server-bundle": "^3.3"
+        "symfony/web-server-bundle": "^3.3",
+        "mwsimple/scdatetimepicker-bundle": "^2.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
         "squizlabs/php_codesniffer": "3.*"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/MWSimple/DatetimepickerBundle"
-        }
-    ],
     "scripts": {
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
