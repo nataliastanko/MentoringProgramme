@@ -1,0 +1,20 @@
+<section id="organizer-group">
+  <div id="organizer" class="page-header">
+    <h1>{{ 'menu.organizer' | trans }}</h1>
+  </div>
+  {% spaceless %}
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="thumbnail">
+          <div class="picture">
+            <a href="http://womenintechnology.pl">
+              {%- image '@wit_logo_transparent' -%}
+                  <img src="{{ asset_url }}" alt="Women in Technology Logo" />
+              {%- endimage -%}
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endspaceless %}
+</section>

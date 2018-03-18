@@ -1,0 +1,41 @@
+{% extends 'WitSiteBundle::email.html.twig' %}
+
+{% block body %}
+
+<table style="color:#2D3F50;" cellpadding="0" cellspacing="0" width="100%">
+
+{# @todo include an image - server hsa some problems with embedding with absolute resource url #}
+{#   <tr>
+    <td style="padding: 20px 0;">
+      <img src="{{ headerImage }}" alt="Tech Leaders" width="800" style="display: block;" />
+    </td>
+  </tr> #}
+
+  <tr>
+    <td>
+      <h3 style="color:#28bb9c;">{{ 'hi' | trans }} {{ name }}!</h3>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="padding: 20px 0 30px 0;">
+      {{ 'thankyou.apply' | trans({ '{{edition}}' : edition }) }}
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      {{ 'thankyou.goodluck' | trans }}<br />
+      <a href="http://womenintechnology.pl">Women in Technology</a><br />
+      <a href="https://techleaders.eu">Tech Leaders</a>
+    </td>
+  </tr>
+
+</table>
+
+{# TODO stopka, link do strony techleaders #}
+{# example, assuming you have a route named "login" #}
+{# To login, go to: <a href="{{ url('login') }}">...</a>. #}
+{# Makes an absolute URL to the /images/logo.png file #}
+{# <img src="{{ absolute_url(asset('images/logo.png')) }}"> #}
+{% endblock %}

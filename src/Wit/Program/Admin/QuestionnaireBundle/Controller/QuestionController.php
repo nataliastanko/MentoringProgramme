@@ -22,7 +22,7 @@ class QuestionController extends Controller
      *
      * @Route("/sort", name="question_sort")
      * @Method("POST")
-     * @Template("WitProgramAdminQuestionnaireBundle:Question:_list.html.twig")
+     * @Template("WitProgramAdminQuestionnaireBundle:question:_list.html.twig")
      */
     public function sortAction(Request $request)
     {

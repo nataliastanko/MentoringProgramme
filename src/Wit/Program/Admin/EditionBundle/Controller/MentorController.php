@@ -28,7 +28,7 @@ class MentorController extends Controller
      * @Method("POST")
      *
      * Refresh list of mentors
-     * @Template("WitProgramAdminEditionBundle:Mentor:_list.html.twig")
+     * @Template("WitProgramAdminEditionBundle:mentor:_list.html.twig")
      */
     public function sortAction(Request $request)
     {
@@ -137,7 +137,7 @@ class MentorController extends Controller
 
         } else {
             return $this->forward(
-                'WitProgramAdminEditionBundle:Mentor:index',
+                'WitProgramAdminEditionBundle:mentor:index',
                 [
                     'page' => 1
                 ]
@@ -229,7 +229,7 @@ class MentorController extends Controller
      *     name="edition_mentors_list"
      * )
      * @Method("GET")
-     * @Template("WitProgramAdminEditionBundle:Mentor:_list.html.twig")
+     * @Template("WitProgramAdminEditionBundle:mentor:_list.html.twig")
      */
     public function listReloadAction(Request $request, $id)
     {
@@ -287,7 +287,7 @@ class MentorController extends Controller
      *     name="edition_mentors_sort"
      * )
      * @Method("GET")
-     * @Template("WitProgramAdminEditionBundle:Mentor:_sort.html.twig")
+     * @Template("WitProgramAdminEditionBundle:mentor:_sort.html.twig")
      */
     public function sortReloadAction(Request $request, $id)
     {
@@ -421,7 +421,7 @@ class MentorController extends Controller
      *     name="mentor_persons"
      * )
      * @Method("GET")
-     * @Template("WitProgramAdminEditionBundle:Person:_list.html.twig")
+     * @Template("WitProgramAdminEditionBundle:person:_list.html.twig")
      */
     public function personsAction(Request $request, Mentor $mentor, Edition $edition)
     {

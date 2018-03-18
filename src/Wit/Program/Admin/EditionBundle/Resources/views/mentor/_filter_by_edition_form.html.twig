@@ -1,0 +1,21 @@
+{# form export to pdf persons who chose that mentor #}
+<form class="filter-by-editions">
+    <div class="row">
+        <div class="col-sm-6">
+            <select class="form-control">
+
+                {# mentors without edition #}
+                <option data-action="{{ path('edition_mentors_list', {'id' : 'hasNoEdition' }) }}" data-sort="{{ path('edition_mentors_sort', {'id' : 'hasNoEdition' }) }}" value="hasNoEdition">{{ 'mentor.hasNoEdition' | trans }}</option>
+
+                {% for e in editions %}
+                    {# on change ajax query mentors from given edition #}
+                    <option data-action="{{ path('edition_mentors_list', {'id' : e.id }) }}" data-sort="{{ path('edition_mentors_sort', {'id' : e.id }) }}" value="{{ e.id }}"
+                        {# select last edition by default #}
+                        {%- if loop.last == true  %} selected {% endif -%}
+                    >{{ 'edition' | trans }} {{ e.name }}</option>
+                {% endfor %}
+
+            </select>
+        </div>
+    </div>
+</form>

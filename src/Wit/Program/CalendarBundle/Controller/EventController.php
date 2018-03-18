@@ -29,7 +29,7 @@ class EventController extends Controller
      */
     public function indexAction()
     {
-        return $this->forward('WitProgramCalendarBundle:Calendar:index', []);
+        return $this->forward('WitProgramCalendarBundle:calendar:index', []);
     }
 
     /**
@@ -120,7 +120,7 @@ class EventController extends Controller
      *
      * @Route("/{id}/edit", name="event_edit")
      * @Method({"GET", "POST"})
-     * @Template("WitProgramCalendarBundle:Event:edit.html.twig")
+     * @Template("WitProgramCalendarBundle:event:edit.html.twig")
      */
     public function editAction(Request $request, Event $event)
     {

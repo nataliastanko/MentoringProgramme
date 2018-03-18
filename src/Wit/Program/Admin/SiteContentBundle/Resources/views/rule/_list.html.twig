@@ -1,0 +1,25 @@
+{% if rules %}
+    <table id="preview" class="table table-hover">
+        <thead>
+            <tr class="header-legend">
+                <th>&nbsp;</th>
+                <th>{{ 'rule.content' | trans }}</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rule in rules %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ rule.content | truncate(20, true, '...') }}</td>
+                <td>
+                    <a href="{{ path('rule_show', { 'id': rule.id }) }}">{{ 'button.show' | trans }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    {% include 'WitSiteBundle:helper:emptyResult.html.twig' %}
+{% endif %}
+

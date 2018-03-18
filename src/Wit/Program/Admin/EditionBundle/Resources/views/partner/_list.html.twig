@@ -1,0 +1,22 @@
+{% if partners %}
+    <table id="preview" class="table table-hover">
+        <thead>
+            <tr class="header-legend">
+                <th>{{ 'partner.name' | trans }}</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for partner in partners %}
+            <tr>
+                <td>{{ partner.name }}</td>
+                <td>
+                    <a href="{{ path('partner_show', { 'id': partner.id }) }}">{{ 'button.show' | trans }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    {% include 'WitSiteBundle:helper:emptyResult.html.twig' %}
+{% endif %}

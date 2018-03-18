@@ -1,0 +1,62 @@
+{% extends 'WitProgramAccountUserBundle::account.html.twig' %}
+
+{% block body %}
+<div class="page-header">
+    <h1>
+      User
+      {%- if user.invitation -%}&nbsp;
+        <small>
+        {%- if user.invitation.mentor -%}
+          {{ 'mentor.self' | trans }}
+        {%- elseif user.invitation.person -%}
+          {{ 'mentee.self' | trans }}
+        {%- endif -%}
+        </small>
+      {%- endif -%}
+    </h1>
+</div>
+
+<ul class="nav-internal list-unstyled">
+  {# delete #}
+  {% if is_granted("ROLE_SUPER_ADMIN") %}
+    <li>
+        <a href="{{ path('user_edit', { 'id': user.id }) }}" class="btn btn-primary btn-sm">{{ 'button.edit' | trans }}</a>
+    </li>
+  {% endif %}
+  {% if user.invitation -%}
+    <li>
+    {%- if user.invitation.mentor -%}
+      <a href="{{ path('mentor_show', { 'id': user.invitation.mentor.id }) }}" class="btn btn-primary btn-sm">{{ 'button.profile' | trans }}</a>
+    {% elseif user.invitation.person %}
+      <a href="{{ path('person_show', { 'id': user.invitation.person.id }) }}" class="btn btn-primary btn-sm">{{ 'button.profile' | trans }}</a>
+    {%- endif -%}
+    </li>
+  {%- endif %}
+  {# <li>
+      {{ form_start(delete_form) }}
+          <input class="btn btn-primary btn-sm" type="submit" value="{{ 'button.delete' | trans }}">
+      {{ form_end(delete_form) }}
+  </li> #}
+</ul>
+
+<div class="row">
+  <div class="col-md-6 col-sm-12">
+    <table class="table table-hover">
+      <tbody>
+        <tr>
+          <th>{{ 'name' | trans }}</th>
+          <td>{{ user.name }}</td>
+        </tr>
+        <tr>
+          <th>{{ 'lastname' | trans }}</th>
+          <td>{{ user.lastName }}</td>
+        </tr>
+        <tr>
+          <th>{{ 'email' | trans }}</th>
+          <td>{{ user.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

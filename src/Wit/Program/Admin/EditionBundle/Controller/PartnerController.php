@@ -23,7 +23,7 @@ class PartnerController extends Controller
      *
      * @Route("/sort", name="partner_sort")
      * @Method("POST")
-     * @Template("WitProgramAdminEditionBundle:Partner:_list.html.twig")
+     * @Template("WitProgramAdminEditionBundle:partner:_list.html.twig")
      */
     public function sortAction(Request $request)
     {

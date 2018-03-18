@@ -23,7 +23,7 @@ class SponsorController extends Controller
      *
      * @Route("/sort",                                           name="sponsor_sort")
      * @Method("POST")
-     * @Template("WitProgramAdminEditionBundle:Sponsor:_list.html.twig")
+     * @Template("WitProgramAdminEditionBundle:sponsor:_list.html.twig")
      */
     public function sortAction(Request $request)
     {

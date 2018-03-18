@@ -23,7 +23,7 @@ class RuleController extends Controller
      *
      * @Route("/sort", name="rule_sort")
      * @Method("POST")
-     * @Template("WitProgramAdminSiteContentBundle:Rule:_list.html.twig")
+     * @Template("WitProgramAdminSiteContentBundle:rule:_list.html.twig")
      */
     public function sortAction(Request $request)
     {

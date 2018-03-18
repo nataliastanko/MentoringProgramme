@@ -85,7 +85,7 @@ class MentorController extends Controller
             $em->flush();
 
             return $this->render(
-                'WitSiteBundle:Mentor:thankyou.html.twig',
+                'WitSiteBundle:mentor:thankyou.html.twig',
                 $twigArr
             );
         }

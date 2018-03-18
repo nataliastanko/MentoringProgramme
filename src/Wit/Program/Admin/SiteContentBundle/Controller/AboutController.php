@@ -23,7 +23,7 @@ class AboutController extends Controller
      *
      * @Route("/sort", name="about_sort")
      * @Method("POST")
-     * @Template("WitProgramAdminSiteContentBundle:About:_list.html.twig")
+     * @Template("WitProgramAdminSiteContentBundle:about:_list.html.twig")
      */
     public function sortAction(Request $request)
     {

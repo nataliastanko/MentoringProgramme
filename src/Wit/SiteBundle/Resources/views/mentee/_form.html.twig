@@ -1,0 +1,58 @@
+{{ form_start(form) }}
+
+{#
+    callback validation error messages for translatable fields must be printed here
+    or @FIXME elswere
+#}
+
+{% if not form.vars.valid %}
+    <div class="alert-error">
+        {{ form_errors(form) }}
+    </div>
+{% endif %}
+
+<div class="row">
+    <div class="col-md-4 col-sm-6 col-xs-12">
+            {{ form_row(form.name) }}
+            {{ form_row(form.lastName) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.age) }}
+            {{ form_row(form.education) }}
+            {# {{ form_row(form.edition) }} #}
+            {{ form_row(form.mentor) }}
+            {{ form_row(form.videoUrl) }}
+            <p>
+                <small>{{ 'mentee.url.description' | trans }}</small>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-xs-12">
+            {# iterate over each existing answer and render its only field: name #}
+            {% for answer in form.answers %}
+                <div class="form-group">
+                    {%- if answer.content is defined -%}
+                        {{ form_label(answer.content, answer.vars.value.question.name ) }}
+                        {{ form_errors(answer.content) }}
+                        {{ form_widget(answer.content, { 'attr': {'class': 'form-control'} } ) }}
+                    {%- else -%}
+                        {# @TODO how to call join with traslations and add select translations #}
+                        {{ form_label(answer.answerChoice, answer.vars.value.question.name ) }}
+                        {{ form_widget(answer.answerChoice, { 'attr': {'class': 'form-control'} } ) }}
+                    {%- endif -%}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-xs-12">
+        {{ form_row(form.statute) }}
+        {{ form_row(form.rules) }}
+
+        {{ form_rest(form) }}
+
+        <button type="submit" class="btn btn-default" id="_submit" name="_submit">{{ 'button.apply' | trans }}</button>
+
+    </div>
+</div>
+{{ form_end(form) }}

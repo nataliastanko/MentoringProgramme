@@ -1,0 +1,20 @@
+{% if sponsors %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th>{{ 'sponsor.name' | trans }}</th>
+            </tr>
+        </thead>
+        <tbody id="sortable" data-href="{{ path("sponsor_sort") }}">
+        {% for sponsor in sponsors %}
+            <tr data-id="{{ sponsor.id }}" class="ui-state-default">
+                <td class="handle"><i class="fa fa-arrows"></i></td>
+                <td>{{ sponsor.name }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    {% include 'WitSiteBundle:helper:emptyResult.html.twig' %}
+{% endif %}

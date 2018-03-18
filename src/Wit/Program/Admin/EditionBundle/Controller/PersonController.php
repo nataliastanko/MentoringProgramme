@@ -75,7 +75,7 @@ class PersonController extends Controller
      *     name="edition_persons_list"
      * )
      * @Method("GET")
-     * @Template("WitProgramAdminEditionBundle:Person:_list.html.twig")
+     * @Template("WitProgramAdminEditionBundle:person:_list.html.twig")
      */
     public function listReloadAction(Request $request, $id)
     {
