@@ -1,0 +1,28 @@
+{% if images %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th>{{ 'image.detail' | trans }}</th>
+            </tr>
+        </thead>
+        <tbody id="sortable">
+        {% for image in images %}
+            <tr data-id="{{ image.id }}" class="ui-state-default">
+                <td class="handle"><i class="fa fa-arrows"></i></td>
+                <td>
+                    {# photo #}
+                    {% if image.photoName %}
+                        <div class="cover">
+                            <img class="img-detail"
+                                src="{{ vich_uploader_asset(image, 'photoFile') | imagine_filter('list_thumb') }}" alt="{{ image.photoFile }}" />
+                        </div>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    {% include 'SiteBundle:helper:emptyResult.html.twig' %}
+{% endif %}

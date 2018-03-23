@@ -1,0 +1,12 @@
+{% extends 'UserBundle::account.html.twig' %}
+
+{% block body %}
+<div class="page-header">
+  <h1>{{ 'eventnote.edit' | trans }}</h1>
+</div>
+<div class="row">
+  <div class="col-sm-6 col-xs-12">
+    {% include 'Entity:Eventnote:_form.html.twig' with { 'form' : edit_form } %}
+ </div>
+</div>
+{% endblock %}

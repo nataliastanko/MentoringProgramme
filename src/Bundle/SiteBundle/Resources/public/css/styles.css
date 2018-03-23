@@ -1,0 +1,394 @@
+body.organization {
+    padding-top: 108px;
+}
+
+body.pdf {
+    padding-top: 0;
+}
+
+.pdf div.user-content {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/*.navbar-fixed-top {
+    height: 84px;
+}*/
+
+/* Neat trick for CSS anchors */
+#about:before,
+#mentors:before,
+#partners:before,
+#contact:before {
+    display: block;
+    content: " ";
+    margin-top:  -100px;
+    height: 100px;
+    visibility: hidden;
+}
+
+.nav.navbar-right li {
+    margin: 10px;
+}
+
+li.nav-item,
+li.lang {
+    top: 20px;
+}
+
+li.social {
+    top: 15px;
+}
+
+.dropdown-menu>li.dropdown-current>a {
+    font-weight: 800;
+    color: #081b1d;
+}
+
+.main-button {
+    text-align: center;
+}
+
+.list-group.about {
+    margin-top: 20px;
+}
+
+.list-group.about p {
+    font-size:16px;
+}
+
+ul.collection li {
+    margin: 20px 0;
+}
+
+img.brand_logo {
+    height: 70px;
+    display: inline-block;
+}
+
+footer .fa,
+.social .fa {
+    font-size: 42px;
+}
+
+footer a:link, footer a:hover {
+    text-decoration: none;
+}
+
+footer a:link, footer a:visited {
+    color: #fff;
+}
+
+footer p a:link, footer p a:visited {
+    text-decoration: underline;
+}
+
+footer a:hover {
+    color: #18bc9c;
+}
+
+.container .jumbotron p {
+    font-weight: 300;
+}
+
+.thumbnail .picture {
+    text-align: center;
+    min-height: 200px;
+    background: rgba(158, 158, 158, 0.1);
+    padding: 5px;
+    line-height: 190px;
+}
+
+.account-menu-container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 109px;
+    padding-top: 10px;
+    z-index: 10;
+    background-color: #fff;
+}
+
+.submenu-container .nav-tabs,
+.account-menu-container .nav-tabs {
+    border-bottom: 7px solid #ecf0f1;
+}
+
+.submenu-container .nav-tabs>li,
+.account-menu-container .nav-tabs>li {
+    margin-bottom: -7px;
+}
+
+.submenu-container {
+    margin-top: 15px;
+}
+
+.main-content .page-header {
+    margin: 30px 0 10px;
+}
+
+.main-content .profile {
+    margin: 30px 0 10px;
+}
+
+.single-alert {
+    margin-top: 70px;
+}
+
+.thumbnail .picture img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.partners .thumbnail .picture {
+    line-height: 85px;
+    min-height: 100px;
+    max-height: 100px;
+}
+
+.photo img {
+    padding: 5px;
+}
+
+.caption h3 {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.caption h3.mentor-name {
+    margin: 10px 0 5px 0;
+}
+
+.caption .biogram {
+    min-height: 100px;
+}
+
+/* modal styles */
+.mentor-modal .photo {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.profile img {
+    margin-bottom: 20px;
+}
+
+.loading {
+    position: relative;
+}
+
+form.edition-mentees,
+form.filter-by-editions {
+    margin-bottom: 20px;
+}
+
+.navbar-default ul.navbar-nav > li.lang > a:link,
+.navbar-default ul.navbar-nav > li.lang > a:visited,
+.navbar-default ul.navbar-nav > li.social > a:link,
+.navbar-default ul.navbar-nav > li.social > a:visited  {
+    color: #18bc9c;
+}
+
+.navbar-default ul.navbar-nav > li.lang > a:hover,
+.navbar-default ul.navbar-nav > li.social > a:hover  {
+    color: rgba(23, 186, 154, 0.5);
+}
+
+ul.nav-internal.list-unstyled li {
+    display: inline-block;
+}
+
+ul.nav-internal.list-unstyled li>a,
+ul.nav-internal.list-unstyled li input,
+ul.nav-internal.list-unstyled li button {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+
+ul.nav-internal.list-unstyled li>form .btn-primary:hover {
+     color: #ffffff;
+     background-color: #1a242f;
+     border-color: #161f29;
+}
+
+#navbar-main a {
+    line-height: 30px;
+    font-size: 18px;
+}
+
+.bg {
+    background: url('../img/bg.jpg') 50% 20%;
+    height: 350px;
+    background-size: cover;
+    margin-bottom: 20px;
+}
+
+.bglead {
+    padding-top: 80px;
+    text-align: center;
+    color: #fff;
+}
+
+.bg h1 {
+    font-weight: 600;
+    font-size: 60px;
+    margin-bottom: 50px;
+}
+
+.bg h2 {
+    font-weight: 600;
+    font-size: 30px;
+    letter-spacing: 1px;
+}
+
+.card footer ul li a {
+    color: #18bc9c;
+}
+
+.nav.nav-pills>li>form>button.btn-link {
+    border-radius: 4px;
+    font-size: 12px;
+    border-width: 0px;
+}
+
+.nav.nav-pills>li>form>button.btn-link:hover,
+.nav.nav-pills>li>form>button.btn-link:focus {
+    text-decoration: none;
+    background-color: #ecf0f1;
+}
+
+blockquote {
+    font-size: 14px;
+}
+
+blockquote footer {
+    font-size: 12px;
+}
+
+.number {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.list-group-item-odd {
+    background-color: #ecf0f1;
+    color: #2d3f51;
+}
+
+#flashes-mainpage .alert {
+    margin-bottom: 0;
+}
+
+body.account #flashes-account {
+    margin-top: 20px;
+}
+
+body.account #flashes-security {
+    margin-top: -40px;
+}
+
+section#mentors-section .thumbnail .occupation {
+    justify-content: center;
+    text-align: center;
+    top: 50%;
+    overflow: hidden;
+    max-height: 65px;
+    width: 100%;
+}
+
+section#mentors-section .thumbnail .occupation-wrapper {
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+section#mentors-section .thumbnail .caption button {
+    margin-top: 10px;
+}
+
+.header-legend {
+    color: #fff;
+    background-color: #2D3F50;
+}
+
+.nav-internal {
+    margin: 20px 0;
+}
+
+.nav-internal.nav-float-inline {
+    margin: 0;
+}
+
+.nav-account {
+    padding: 10px 0 0 0;
+    z-index: 10;
+    background: #fff;
+}
+
+.nav-account>li>a {
+    padding: 10px;
+}
+
+form .helpblock {
+    top: -15px;
+    position: relative;
+}
+
+.organization-label {
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+
+@media (max-width: 640px) {
+    body.account {
+        padding-top: 210px;
+    }
+    .organization-label {
+        left: 10px;
+        right: auto;
+    }
+}
+
+@media (min-width: 640px) {
+    body.account {
+        padding-top: 168px;
+    }
+}
+
+@media (min-width: 1200px) {
+    body.account {
+        padding-top: 168px;
+    }
+}
+
+li form input.btn {
+    border-radius: 4px;
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+
+li form input.btn:hover,
+li form input.btn:focus {
+    text-decoration: none;
+    background-color: #ecf0f1;
+}
+
+/** sm **/
+@media (max-width: 992px) {
+    .main-button {
+        margin-bottom: 15px;
+    }
+}
+
+.navbar-default.navbar-fixed-top .navbar-collapse {
+     max-height: none;
+}
+
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}
+

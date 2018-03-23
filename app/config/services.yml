@@ -14,3 +14,20 @@ services:
     class: Twig_Extensions_Extension_Array
     tags:
       - { name: twig.extension }
+
+  organization.doctrine.filter.configurator:
+    class: Repository\Filter\Configurator
+    arguments:
+        - '@doctrine.orm.entity_manager'
+        - '@annotation_reader'
+        - '@subdomain.detection'
+    tags:
+        - { name: kernel.event_listener, event: kernel.request , priority: -10}
+
+  organization.doctrine.listener.persister:
+        class: Repository\EventListener\OrganizationPersister
+        arguments:
+            - '@annotation_reader'
+            - '@subdomain.detection'
+        tags:
+            - { name: doctrine.event_listener, event: prePersist , priority: -100}

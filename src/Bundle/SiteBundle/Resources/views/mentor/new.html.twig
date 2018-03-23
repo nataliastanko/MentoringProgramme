@@ -1,0 +1,22 @@
+{% extends 'SiteBundle::base.html.twig' %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    {%- javascripts
+        'bundles/a2lixtranslationform/js/a2lix_translation_bootstrap.js'
+        '@tab'
+    -%}
+        <script src='{{ asset_url }}'></script>
+    {%- endjavascripts %}
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="page-header">
+        <h1>{{ 'mentor.join' | trans }}</h1>
+    </div>
+
+    {% include 'SiteBundle:mentor:_form.html.twig' %}
+{% endblock %}

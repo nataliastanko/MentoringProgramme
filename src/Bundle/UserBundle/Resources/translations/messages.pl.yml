@@ -1,0 +1,85 @@
+user:
+    login: "Logowanie"
+    list: "Lista użytkowników"
+    details: "Użytkownik"
+    edit: "Edycja użytkownika"
+    name: "Imię"
+    lastName: "Nazwisko"
+    phoneNumber: "Numer telefonu"
+    url: "www"
+    photo: "Zdjęcie"
+    city: "Miasto"
+    type: "Typ użytkownika"
+    invited: 'Wysłano zaproszenie do założenia konta w programie'
+    already:
+        logged: Jesteś już zalogowana/y
+        registered: Ten użytkownik jest już zarejestrowany
+    register: "Rejestracja"
+    # registration:
+        # failure: 'Nie masz odpowiednich uprawnień, by korzystać z tej aplikacji.'
+        # success: 'Cześć %name%! Zostałaś poprawnie zarejestrowana w serwisie z adresem email %email%'
+account:
+    profile:
+        self: 'Twój profil'
+        edit:
+            info: "W tej chwili możliwa jest edycja tylko adresu email"
+    warning:
+        actionNeeded: "Wymagane akcje"
+        contact:
+            organizer: "Jeśli widzisz ten komunikat, zgłoś się do organizatora Tech Leaders."
+    welcome: "witaj w programie Tech Leaders"
+    confirmed: 'Twoje konto zostało pomyślnie utworzone'
+    edit: 'Zmień swoje dane'
+    importantInformation: 'Ważne informacje'
+    edition: "Bierzesz udział w edycji %edition%"
+    mentee:
+        mentor:
+            yoursIs: "Twoim mentorem jest"
+            contact: "Kontakt do Twojego mentora"
+    mentor:
+        noMenteesAccepted: "Nie masz żadnych podopiecznych do wyboru"
+        mentee:
+            yoursIs: "Twoją podopieczną jest"
+            chosen: "Wybrana uczestniczka"
+        choose:
+            mentee: "Wybierz podopieczną"
+            description: "Czekamy na Twoją decyzję do %date%"
+    admin:
+        looksOK: "Wygląda na to, że wszystko jest  porządku :)"
+        mentors:
+            mentorsWithoutAnyMentee: "Mentorzy bez uczestniczek do wyboru"
+            mentorsWithoutChosenMentee: "Mentorzy którzy nie wybrali jeszcze uczestniczki"
+    programme:
+        edition:
+            current: Aktualnie trwa %edition% edycja programu Tech Leaders
+    static:
+        programme:
+            timetable: "Program trwa od 20.11.2017 do 20.03.2018"
+        event:
+            opening:
+                "Event otwierający 7.12.2017, godz. 19:00, Barka, Podgórska 16, 31-052 Kraków"
+        mentor:
+            contact: "Kontakt do organizatorów: aszwiec@womenintechnology.pl"
+        mentee:
+            contact: "Kontakt do organizatorów: elakoma@womenintechnology.pl"
+event:
+    label: Spotkanie
+    list: "Lista spotkań"
+    calendar: "Lista spotkań"
+    title: "Tytuł"
+    new: "Nowe spotkanie"
+    edit: "Edycja spotkania"
+    author: "Utworzył/a"
+    participants: "Uczestnicy"
+    view:
+        list: "Widok listy"
+        calendar: "Widok kalendarza"
+    startTime: "Czas rozpoczęcia"
+    endTime: "Czas zakończenia"
+    description: "Agenda"
+eventnote:
+    list:
+        "Notatki ze spotkania"
+    new: "Utwórz notatkę"
+    edit: "Edytuj notatkę"
+    comment: "Treść"

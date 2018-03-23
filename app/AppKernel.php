@@ -35,17 +35,10 @@ class AppKernel extends Kernel
             new Liuggio\ExcelBundle\LiuggioExcelBundle(),
             // new cspoo\Swiftmailer\MailgunBundle\cspooSwiftmailerMailgunBundle(),
 
-            new Wit\Program\Admin\EditionBundle\WitProgramAdminEditionBundle(),
-            new Wit\Program\Admin\GalleryBundle\WitProgramAdminGalleryBundle(),
-            new Wit\Program\Admin\UserBundle\WitProgramAdminUserBundle(),
-            new Wit\Program\Admin\QuestionnaireBundle\WitProgramAdminQuestionnaireBundle(),
-            new Wit\Program\Admin\SiteContentBundle\WitProgramAdminSiteContentBundle(),
-            new Wit\Program\Account\UserBundle\WitProgramAccountUserBundle(),
-            new Wit\Program\CalendarBundle\WitProgramCalendarBundle(),
-            new Wit\SiteBundle\WitSiteBundle(),
-            new Wit\Program\Account\MentorBundle\WitProgramAccountMentorBundle(),
-            new Wit\Program\Account\MenteeBundle\WitProgramAccountMenteeBundle(),
-            new Wit\Program\Admin\CalendarBundle\WitProgramAdminCalendarBundle(),
+            new AdminBundle\AdminBundle(),
+            new UserBundle\UserBundle(),
+            new SiteBundle\SiteBundle(),
+            new LandingPageBundle\LandingPageBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
@@ -53,6 +46,7 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            $bundles[] = new Symfony\Bundle\WebServerBundle\WebServerBundle();
         }
 
         return $bundles;

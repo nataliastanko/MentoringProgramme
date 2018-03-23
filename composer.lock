@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a0c7c386fa519d45360ef24467794cc9",
+    "content-hash": "6502e1e0ad9ee61953f27ce56b9ae50a",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -6762,14 +6762,81 @@
                 "standards"
             ],
             "time": "2018-02-20T21:35:23+00:00"
+        },
+        {
+            "name": "steevanb/php-url-test",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/steevanb/php-url-test.git",
+                "reference": "0146195a3fda3740eb2dbfc3810f4b0cad37eb62"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/steevanb/php-url-test/zipball/0146195a3fda3740eb2dbfc3810f4b0cad37eb62",
+                "reference": "0146195a3fda3740eb2dbfc3810f4b0cad37eb62",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1",
+                "steevanb/php-yaml": "^1.0",
+                "symfony/console": "^3.2||^4.0",
+                "symfony/options-resolver": "^3.2||^4.0"
+            },
+            "bin": [
+                "bin/urltest"
+            ],
+            "type": "lib",
+            "autoload": {
+                "psr-4": {
+                    "steevanb\\PhpUrlTest\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Tests all urls of your application",
+            "time": "2018-02-13T17:53:39+00:00"
+        },
+        {
+            "name": "steevanb/php-yaml",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/steevanb/php-yaml.git",
+                "reference": "e67f69a8521e4e62a63f09ae835d2f84634a09f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/steevanb/php-yaml/zipball/e67f69a8521e4e62a63f09ae835d2f84634a09f5",
+                "reference": "e67f69a8521e4e62a63f09ae835d2f84634a09f5",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/yaml": "^3.1||^4.0"
+            },
+            "type": "lib",
+            "autoload": {
+                "psr-4": {
+                    "steevanb\\PhpYaml\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Add some features to symfony/yaml",
+            "time": "2018-02-13T17:57:26+00:00"
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
         "friendsofsymfony/user-bundle": 20,
         "stof/doctrine-extensions-bundle": 20,
-        "isometriks/spam-bundle": 20
+        "isometriks/spam-bundle": 20,
+        "steevanb/php-url-test": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

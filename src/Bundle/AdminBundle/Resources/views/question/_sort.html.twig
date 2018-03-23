@@ -1,0 +1,20 @@
+{% if questions %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th>{{ 'question.name' | trans }}</th>
+            </tr>
+        </thead>
+        <tbody id="sortable" data-href="{{ path("question_sort") }}">
+        {% for question in questions %}
+            <tr data-id="{{ question.id }}" class="ui-state-default">
+                <td class="handle"><i class="fa fa-arrows"></i></td>
+                <td>{{ question.name }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    {% include 'SiteBundle:helper:emptyResult.html.twig' %}
+{% endif %}

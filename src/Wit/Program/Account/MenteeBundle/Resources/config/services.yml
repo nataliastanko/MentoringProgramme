@@ -1,4 +1,0 @@
-services:
-#    wit_program_account_mentee.example:
-#        class: Wit\Program\Account\MenteeBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]

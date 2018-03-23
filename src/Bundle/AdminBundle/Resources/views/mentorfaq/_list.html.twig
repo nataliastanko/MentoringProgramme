@@ -1,0 +1,24 @@
+{% if mentorfaq %}
+    <table id="preview" class="table table-hover">
+        <thead>
+            <tr class="header-legend">
+                <th>&nbsp;</th>
+                <th>{{ 'faq.question' | trans }}</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for faq in mentorfaq %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ faq.question | truncate(40, true, '...') }}</td>
+                <td>
+                    <a href="{{ path('mentorfaq_show', { 'id': faq.id }) }}">{{ 'button.show' | trans }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    {% include 'SiteBundle:helper:emptyResult.html.twig' %}
+{% endif %}

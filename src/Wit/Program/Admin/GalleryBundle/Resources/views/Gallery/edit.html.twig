@@ -1,9 +1,0 @@
-{% extends 'WitProgramAccountUserBundle::account.html.twig' %}
-
-{% block body %}
-    <div class="page-header">
-        <h1>{{ 'image.edit' | trans }}</h1>
-    </div>
-
-    {% include 'WitProgramAdminGalleryBundle:gallery:_form.html.twig' with { 'form' : edit_form }%}
-{% endblock %}

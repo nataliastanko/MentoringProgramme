@@ -1,0 +1,65 @@
+user:
+    name:
+        notBlank: "Podaj swoje imię"
+    lastName:
+        notBlank: "Podaj swoje nazwisko"
+    url:
+        taken: "Istnieje już użytkownik z taką stroną internetową"
+    email:
+        taken: "Ten email jest już zajęty"
+        notMatch: "Podaj poprawny adres email"
+        notBlank: "Podaj adres email"
+    numbers:
+        notAllowed: "Cyfry są niedozwolone w tym polu"
+mentor:
+    name:
+        notBlank: "Proszę podaj imię mentorki/a"
+    lastName:
+        notBlank: "Proszę podaj nazwisko mentorki/a"
+    bio:
+        atLeastOne: 'Proszę uzupełnij pole z biogramem w przynajmniej jednym języku'
+    occupation:
+        atLeastEn: 'Profesja mentora przynajmniej w języku angielskim'
+        min_length: 'Pole z profesją musi zawierać co najmniej {{ limit }} znaków'
+        max_length: 'Limit dla pola profesji do {{ limit }} znaków został przekroczony'
+person:
+    originalMentorChoice:
+        notBlank: 'Zmieniając wybór mentora, zachowaj oryginalny wybór uczestniczki'
+edition:
+    atLeastOne: 'Przyporządkuj choć do jednej edycji'
+email:
+    taken: "Ten email jest już zajęty"
+    duplicatedInEdition: 'Ten adres email już został zarejestrowany w aktualnej edycji programu. Nie możesz startować w tej samej edycji drukrotnie.'
+    notMatch: "Podaj poprawny adres email"
+    notBlank: "Podaj adres email"
+name:
+    taken: "Ta nazwa jest już zajęta"
+    notBlank: "Wpisz nazwę"
+url:
+    taken: "Ten url się powtarza"
+    notBlank: "Podaj url"
+    notTheSame: "Adress www się powtarza"
+tooShort: "Minimalna ilość znaków to {{ limit }}"
+tooLong: "Maksymalna ilość znaków to {{ limit }}"
+numbers:
+    notAllowed: "Cyfry są niedozwolone w tym polu"
+choose: "Proszę wybrać"
+question:
+    name:
+        bothNeeded: 'Proszę uzupełnij treść pytania we wszystkich wymaganych językach'
+bot:
+  form:
+    invalid: "Formularz niepoprawnie wypełniony"
+user:
+    name:
+        notBlank: "Podaj swoje imię"
+    lastName:
+        notBlank: "Podaj swoje nazwisko"
+    url:
+        taken: "Istnieje już użytkownik z taką stroną internetową"
+    email:
+        taken: "Ten email jest już zajęty"
+        notMatch: "Podaj poprawny adres email"
+        notBlank: "Podaj adres email"
+    numbers:
+        notAllowed: "Cyfry są niedozwolone w tym polu"

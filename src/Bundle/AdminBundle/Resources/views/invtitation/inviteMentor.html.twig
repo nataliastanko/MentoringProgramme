@@ -1,0 +1,16 @@
+{% extends 'UserBundle::account.html.twig' %}
+
+{% block body %}
+<div class="page-header">
+  {%- if errorMessage is defined -%}
+    <div class="alert alert-warning" role="alert">
+      {{- errorMessage | trans -}}
+    </div>
+  {%- else -%}
+    <div class="alert alert-success" role="alert">
+      {# @TODO translation #}
+      Zaproszenie zostało pomyślnie wysłane na adres {{ email }}.
+    </div>
+  {%- endif -%}
+</div>
+{% endblock %}

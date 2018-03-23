@@ -1,0 +1,16 @@
+services:
+  subdomain.aware.routing:
+    class: SiteBundle\Service\Routing\SubdomainAwareRouting
+    arguments:
+      - '@router'
+      - '@session'
+      - '@subdomain.detection'
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: onRequest , priority: 90}
+
+  subdomain.detection:
+    class: SiteBundle\Service\SubdomainDetection
+    arguments:
+      - '@doctrine.orm.entity_manager'
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: detectSubdomain , priority: 100}

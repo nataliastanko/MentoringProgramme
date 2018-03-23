@@ -8,5 +8,5 @@ knp_paginator:
         distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
     template:
         # pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
-        pagination: WitSiteBundle:menu:twitter_bootstrap_v3_pagination.html.twig
+        pagination: SiteBundle:menu:twitter_bootstrap_v3_pagination.html.twig
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
