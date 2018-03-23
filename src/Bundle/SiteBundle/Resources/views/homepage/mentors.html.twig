@@ -1,0 +1,50 @@
+{% extends 'SiteBundle::base.html.twig' %}
+
+{%- block javascripts %}
+    {{ parent() }}
+
+    {%- javascripts
+        '@modal_mentors'
+    -%}
+        <script src='{{ asset_url }}'></script>
+    {%- endjavascripts %}
+{%- endblock -%}
+
+{% block body %}
+
+{%- if mentorsFaq is not empty -%}
+  {% spaceless %}
+    <div class="page-header">
+      <h1>{{- 'menu.mentorFaqAdmin' | trans -}}</h1>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        {# collapse begin #}
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          {%- for faq in mentorsFaq -%}
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading{{ loop.index }}">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ loop.index }}" aria-expanded="false" aria-controls="collapse{{ loop.index }}">
+                  {{- faq.question -}}
+                </a>
+              </h4>
+            </div>
+            <div id="collapse{{ loop.index }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{ loop.index }}">
+              <div class="panel-body">
+                {{- faq.answer -}}
+              </div>
+            </div>
+          </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+    {# collapse end #}
+  {% endspaceless %}
+{%- endif -%}
+
+  {% include 'SiteBundle:homepage:_mentors.html.twig' %}
+
+{% endblock %}

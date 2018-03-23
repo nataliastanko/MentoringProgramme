@@ -1,0 +1,46 @@
+{% extends 'UserBundle::account.html.twig' %}
+
+{% block stylesheets %}
+
+    {{ parent() }}
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    {%- stylesheets '@jquery_ui_css' -%}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {%- endstylesheets %}
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    {%- javascripts '@jquery_ui_js' -%}
+        <script src='{{ asset_url }}'></script>
+    {%- endjavascripts %}
+
+    <script>
+        $(function() {
+            $("#sortable").sortable({
+                placeholder: "ui-state-highlight",
+                handle: ".handle",
+                update: function (event, ui) {
+                    $.ajax({
+                        data: {
+                            'id': ui.item.data('id'),
+                            'position' : ui.item.index()
+                        },
+                        type: 'POST',
+                        url: $(this).data('href'),
+                        success: function(data) {
+                            $('#preview').replaceWith(data);
+                        }
+                    });
+                }
+            });
+            $( "#sortable" ).disableSelection();
+        });
+    </script>
+
+{% endblock %}

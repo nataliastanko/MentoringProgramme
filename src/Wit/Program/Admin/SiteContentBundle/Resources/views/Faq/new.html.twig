@@ -1,9 +1,0 @@
-{% extends 'WitProgramAccountUserBundle::account.html.twig' %}
-
-{% block body %}
-    <div class="page-header">
-        <h1>{{ 'faq.new' | trans }}</h1>
-    </div>
-
-    {% include 'WitProgramAdminSiteContentBundle:Faq:_form.html.twig' with { 'form' : form }%}
-{% endblock %}

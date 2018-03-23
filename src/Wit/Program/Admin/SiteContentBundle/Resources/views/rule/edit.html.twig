@@ -1,9 +1,0 @@
-{% extends 'WitProgramAccountUserBundle::account.html.twig' %}
-
-{% block body %}
-    <div class="page-header">
-        <h1>{{ 'rule.edit' | trans }}</h1>
-    </div>
-
-    {% include 'WitProgramAdminSiteContentBundle:rule:_form.html.twig' with { 'form' : edit_form }%}
-{% endblock %}

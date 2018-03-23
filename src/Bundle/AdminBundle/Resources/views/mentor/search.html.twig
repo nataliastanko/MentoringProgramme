@@ -1,0 +1,13 @@
+{% extends 'UserBundle::account.html.twig' %}
+
+{% block body %}
+
+    <div class="page-header">
+        <h1>{{ 'mentor.search' | trans }} <small>({{ mentors | length }})</small></h1>
+    </div>
+
+    {% include 'AdminBundle:mentor:_search_form.html.twig' %}
+
+    {% include 'AdminBundle:mentor:_list.html.twig' with {'searchResults' : true} %}
+
+{% endblock %}

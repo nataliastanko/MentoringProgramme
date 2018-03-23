@@ -1,0 +1,164 @@
+{% extends 'UserBundle::account.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    {%- stylesheets '@jquery_ui_css' -%}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {%- endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    {%- javascripts '@jquery_ui_js' -%}
+        <script src='{{ asset_url }}'></script>
+    {%- endjavascripts %}
+
+    {%- javascripts '@spin_js' -%}
+        <script src='{{ asset_url }}'></script>
+    {%- endjavascripts %}
+
+    <script>
+        $(function() {
+            $('form.filter-by-editions select').change(function (e) {
+                e.preventDefault();
+
+                var opts = {
+                      lines: 9 // The number of lines to draw
+                    , length: 47 // The length of each line
+                    , width: 13 // The line thickness
+                    , radius: 43 // The radius of the inner circle
+                    , scale: 0.75 // Scales overall size of the spinner
+                    , corners: 1 // Corner roundness (0..1)
+                    , color: '#000' // #rgb or #rrggbb or array of colors
+                    , opacity: 0 // Opacity of the lines
+                    , rotate: 0 // The rotation offset
+                    , direction: 1 // 1: clockwise, -1: counterclockwise
+                    , speed: 0.7 // Rounds per second
+                    , trail: 60 // Afterglow percentage
+                    , fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+                    , zIndex: 2e9 // The z-index (defaults to 2000000000)
+                    , className: 'spinner' // The CSS class to assign to the spinner
+                    , top: '30px' // Top position relative to parent
+                    , left: '50%' // Left position relative to parent
+                    , shadow: false // Whether to render a shadow
+                    , hwaccel: false // Whether to use hardware acceleration
+                    , position: 'absolute' // Element positioning
+                }
+
+                var spinner = new Spinner(opts).spin();
+                $('#itemsFiltered').addClass('loading').get(0).appendChild(spinner.el);
+
+                var actionUrl = $(this).find(':selected').data('action');
+                var sortUrl = $(this).find(':selected').data('sort');
+
+                var selectedEditionValue = $(this).find(':selected').val();
+
+                // refresh preview list
+                $.get(actionUrl, function(data) {
+                    $('#itemsFiltered').replaceWith(data);
+                    // change number of mentors displayed
+                    var rowCount = $('#preview tr').length;
+                    $('h1 small').html('(' + rowCount + ')');
+
+                });
+
+                // refresh ordering list
+                $.get(sortUrl, function(data) {
+
+                    if (selectedEditionValue === 'hasNoEdition' ) {
+                        $('#mentorsSorted').html('Nie można sortować mentorów bez edycji');
+                        $('#sortabletab').addClass('disabled');
+                    } else {
+                        $('#mentorsSorted').replaceWith(data);
+                        initSortable();
+                        $('#sortabletab').removeClass('disabled');
+                    }
+                });
+            });
+
+            // disable functionality of disabled link
+            $('.content-tabs a').on('click', function(e) {
+                if ($(this).parent().hasClass('disabled')) {
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                }
+            });
+
+            function initSortable() {
+
+                $("#sortable").sortable({
+                    placeholder: "ui-state-highlight",
+                    handle: ".handle",
+                    update: function (event, ui) {
+
+                        var selectedEditionValue = $('form.filter-by-editions option:selected').val();
+
+                        var data = {
+                            'id': ui.item.data('id'),
+                            'position' : ui.item.index(),
+                            'edition': selectedEditionValue
+                        };
+
+                        $.ajax({
+                            data: data,
+                            type: 'POST',
+                            url: '{{ path("mentor_sort") }}',
+                            success: function(data) {
+                                console.log(data);
+                                $('#preview').replaceWith(data);
+                            }
+                        });
+                    }
+                });
+                $( "#sortable" ).disableSelection();
+            }
+
+            initSortable();
+
+        });
+    </script>
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="page-header">
+        <h1>{{ 'mentor.list' | trans }} <small>({{ mentors | length }})</small></h1>
+    </div>
+
+    {% include 'AdminBundle:mentor:_search_form.html.twig' %}
+
+    <ul class="nav-internal list-unstyled">
+      <li>
+        <a class="btn btn-primary btn-sm" href="{{ path('mentor_new') }}">{{ 'button.new' | trans }}</a>
+        </li>
+    </ul>
+
+    {% include 'AdminBundle:mentor:_filter_by_edition_form.html.twig' %}
+
+    <ul class="nav nav-tabs content-tabs">
+      <li class="active"><a href="#list" data-toggle="tab" aria-expanded="true">{{ 'button.preview' | trans }}</a></li>
+      {# Use custom JavaScript to disable links here when class="disabled" #}
+      <li id="sortabletab"><a href="#sort" data-toggle="tab" aria-expanded="false">{{ 'button.sort' | trans }}</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane fade active in" id="list">
+
+        {% include 'AdminBundle:mentor:_list.html.twig' %}
+
+      </div>
+
+      <div class="tab-pane fade" id="sort">
+
+        {% include 'AdminBundle:mentor:_sort.html.twig' %}
+
+      </div>
+    </div>
+
+{% endblock %}

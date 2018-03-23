@@ -1,0 +1,11 @@
+{% extends 'SiteBundle::base.html.twig' %}
+
+{% block body %}
+
+    <div class="page-header">
+        <h1>{{ 'mentee.join' | trans }}</h1>
+    </div>
+
+    {% include 'SiteBundle:Mentee:_form.html.twig' %}
+
+{% endblock %}

@@ -1,0 +1,91 @@
+<div id="itemsFiltered">
+{% if mentors %}
+    <table id="preview" class="table table-hover">
+        <thead>
+            <tr class="header-legend">
+                <th>{{ 'mentor.name' | trans }}</th>
+                <th>{{ 'mentor.lastName' | trans }}</th>
+                {#
+                Informacje o wyborze uczestniczki
+                oraz wysyłanie zaproszenia tylko wtedy, gdy:
+
+                zapisy nie są włączone
+                lub
+                wyświetlamy mentorów z przypisaną edycją
+                #}
+                <th class="text-center">{{ 'Czy ma przypisane uczestniczki?' | trans }}</th>
+                {%- if
+                    mentorsViewWithEdition
+                    and
+                    not config.getIsSignupMenteesEnabled
+                    and
+                    searchResults is not defined
+                -%}
+                    <th class="text-center">{{ 'invitation.self' | trans }}</th>
+                    {# @TODO translation #}
+                    <th class="text-center">{{ 'Czy wybrał/a uczestniczkę?' | trans }}</th>
+                {%- endif -%}
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mentor in mentors %}
+            <tr>
+                <td>{{ mentor.name }}</td>
+                <td>{{ mentor.lastName }}</td>
+                {%- if mentor.findAcceptedMentees | length > 0 -%}
+                    <td class="text-center success">
+                    {{- 'yes' | trans -}}
+                    </td>
+                {%- else -%}
+                    <td class="text-center danger">
+                        {{- 'no' | trans -}}
+                    </td>
+                {%- endif -%}
+                </td>
+                {%- if
+                    mentorsViewWithEdition
+                    and
+                    not config.getIsSignupMenteesEnabled
+                    and
+                    searchResults is not defined
+                -%}
+                    <td class="text-center">
+                        {# invite mentor #}
+                        {% if not mentor.invitation %}
+                            {{ form_start(inviteForms[mentor.id]) }}
+                                {{ form_widget(inviteForms[mentor.id]) }}
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    {{- 'button.invite' | trans -}}
+                                </button>
+                            {{ form_end(inviteForms[mentor.id]) }}
+                        {% elseif mentor.invitation %}
+                            {% if mentor.invitation.isAccepted %}
+                                <button type="button" class="btn btn-default btn-sm" disabled="disabled">{{- 'invitation.accepted' | trans -}}</button>
+                            {%- else -%}
+                                <button type="button" class="btn btn-default btn-sm" disabled="disabled">{{- 'invitation.pending' | trans -}}</button>
+                            {%- endif -%}
+                        {%- endif -%}
+                    </td>
+                    {%- if mentor.findChosenPerson -%}
+                        <td class="success text-center">
+                        {{- 'yes' | trans -}}
+                        </td>
+                    {%- else -%}
+                        <td class="warning text-center">
+                        {{- 'no' | trans -}}
+                        </td>
+                    {%- endif -%}
+                {%- endif -%}
+                <td class="text-center">
+                    <a href="{{ path('mentor_show', { 'id': mentor.id }) }}">{{ 'button.show' | trans }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    {% include 'SiteBundle:helper:emptyResult.html.twig' %}
+{% endif %}
+
+</div>

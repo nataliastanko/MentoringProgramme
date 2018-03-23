@@ -1,9 +1,0 @@
-{% extends 'WitProgramAccountUserBundle::account.html.twig' %}
-
-{% block body %}
-    <div class="page-header">
-        <h1>{{ 'mentorfaq.edit' | trans }}</h1>
-    </div>
-
-    {% include 'WitProgramAdminSiteContentBundle:mentorfaq:_form.html.twig' with { 'form' : edit_form }%}
-{% endblock %}

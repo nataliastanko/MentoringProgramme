@@ -4,7 +4,12 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "": "src/"
+            "Entity\\": "src/Entity/",
+            "Repository\\": "src/Repository/",
+            "LandingPageBundle\\": "src/Bundle/LandingPageBundle/",
+            "SiteBundle\\": "src/Bundle/SiteBundle/",
+            "UserBundle\\": "src/Bundle/UserBundle/",
+            "AdminBundle\\": "src/Bundle/AdminBundle/"
         },
         "classmap": [
             "app/AppKernel.php",
@@ -56,8 +61,10 @@
     },
     "require-dev": {
         "sensio/generator-bundle": "3.*",
-        "squizlabs/php_codesniffer": "3.*"
+        "squizlabs/php_codesniffer": "3.*",
+        "steevanb/php-url-test": "dev-master"
     },
+    "minimum-stability": "dev",
     "scripts": {
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
@@ -65,8 +72,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
-            "./bin/console presta:sitemaps:dump"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",

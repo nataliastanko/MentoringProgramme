@@ -1,0 +1,40 @@
+{% extends 'UserBundle::account.html.twig' %}
+
+{% block body %}
+    <div class="page-header">
+        <h1>{{ 'menu.about' | trans }}</h1>
+    </div>
+
+    <ul class="nav-internal list-unstyled">
+        <li>
+            <a href="{{ path('about_edit', { 'id': about.id }) }}" class="btn btn-primary btn-sm">{{ 'button.edit' | trans }}</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input class="btn btn-primary btn-sm" type="submit" value="{{ 'button.delete' | trans }}">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ about.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Name</th>
+                        <td>{{ about.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Content</th>
+                        <td>{{ about.content }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

@@ -93,6 +93,15 @@ TDD Tests PHPUnit 5.7.x
 
   - W - Warning
 
+### Tests all urls
+
+    sudo rm -R var/cache/* && ./vendor/bin/urltest --comparator=console -r=true tests
+    ./vendor/bin/urltest --comparator=console -r=true tests
+    ./vendor/bin/urltest --comparator=console -r=true -v tests
+    ./vendor/bin/urltest --comparator=console -r=true -vv tests
+    ./vendor/bin/urltest --comparator=console -r=true -vvvv tests
+    ./vendor/bin/urltest tests
+
 #Dev
 
 ###What's inside?
@@ -129,6 +138,8 @@ TDD Tests PHPUnit 5.7.x
 ### Deploy
 
 ### TODO
+
+post-install-cmd: ./bin/console presta:sitemaps:dump
 
 ##### Performance
   - https://github.com/liip/LiipFunctionalTestBundle

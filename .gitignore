@@ -22,3 +22,4 @@
 /web/sitemap.default.xml
 deploy.php
 !.gitignore
+tests/*

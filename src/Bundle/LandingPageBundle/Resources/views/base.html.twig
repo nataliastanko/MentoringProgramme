@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% spaceless %}
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      {# share meta #}
+      {%- include 'SiteBundle:meta:share.html.twig' -%}
+      {# title #}
+      <title>{%- block title %}{{ 'mentoring.program' | trans }} - Tech Leaders{% endblock -%}</title>
+
+      {# Favicon #}
+      {%- include 'SiteBundle:meta:favicon.html.twig' -%}
+    {% endspaceless %}
+
+    {%- block stylesheets -%}
+
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300&subset=latin-ext' rel='stylesheet' type='text/css'>
+
+        {%- stylesheets
+            '@flatly_bootstrap_css'
+            '@core_css'
+            filter='cssrewrite'
+        -%}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {%- endstylesheets -%}
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    {%- endblock -%}
+  </head>
+  <body>
+
+    <div id="flashes-mainpage">
+    {%- for label, messages in app.flashes(['warning', 'error']) -%}
+      {% for message in messages %}
+        <div class="text-center alert alert-{{ label }}">
+          {{ message | trans }}
+        </div>
+      {%- endfor -%}
+    {%- endfor -%}
+    </div>
+
+    {% block bg -%}
+    {% spaceless %}
+    <div class="bg hidden-xs hidden-sm">
+      <div class="bglead">
+        <h1>Tech Leaders</h1>
+        <h2>{{ 'homepage.lead.program' | trans }}</h2>
+      </div>
+    </div>
+    {% endspaceless %}
+    {%- endblock -%}
+
+    <div class="container">
+      {%- block body %}{% endblock -%}
+    </div>
+
+    {% spaceless %}
+    {%- include 'SiteBundle:footer:_main.html.twig' -%}
+    {% endspaceless %}
+
+    {%- block javascripts %}
+
+      {# IE10 viewport hack for Surface/desktop Windows 8 bug #}
+
+      {# collapse.js needed for menu on mobile devices #}
+      {%- javascripts
+        '@jquery'
+        '@dropdown'
+        '@collapse'
+        '@ie10workaround'
+        '@forms_general'
+      -%}
+        <script src='{{ asset_url }}'></script>
+      {% endjavascripts %}
+
+    {%- endblock -%}
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-72813970-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>

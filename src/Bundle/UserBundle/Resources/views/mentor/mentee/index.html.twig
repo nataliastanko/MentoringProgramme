@@ -1,0 +1,15 @@
+{% extends 'UserBundle::account.html.twig' %}
+
+{% block body %}
+
+<div class="page-header">
+  <h1>{{ 'person.list' | trans }} <small>({{ persons | length }})</small></h1>
+</div>
+
+{%- if persons | length > 0 -%}
+  {%- include 'UserBundle:mentor:mentee/_list.html.twig' -%}
+{%- else -%}
+  {%- include 'SiteBundle:helper:emptyResult.html.twig' -%}
+{%- endif -%}
+
+{% endblock %}

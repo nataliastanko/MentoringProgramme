@@ -18,15 +18,13 @@ imports:
     - { resource: sensio_framework_extra.yml }
     # - { resource: cspoo_swiftmailer_mailgun.yml }
     - { resource: ../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml }
-    - { resource: "@WitProgramCalendarBundle/Resources/config/services.yml" }
-    - { resource: "@WitProgramAdminEditionBundle/Resources/config/services.yml" }
-    - { resource: "@WitProgramAdminGalleryBundle/Resources/config/services.yml" }
-    - { resource: "@WitProgramAccountUserBundle/Resources/config/services.yml" }
+    - { resource: "@SiteBundle/Resources/config/services.yml" }
+    - { resource: "@UserBundle/Resources/config/services.yml" }
+    - { resource: "@AdminBundle/Resources/config/services.yml" }
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: pl
-    # locale: en
+    locale: en
     email.email_partner: '%email_partner%'
     paginate.limit: 50
     # httpProtocol: http
@@ -60,7 +58,7 @@ twig:
     form_themes:
         # - 'form/form_theme.html.twig'
         - 'bootstrap_3_layout.html.twig'
-        - 'WitSiteBundle:form:vich_form_theme.html.twig'
+        - 'SiteBundle:form:vich_form_theme.html.twig'
 
     globals:
         email_partner: '%email.email_partner%'
@@ -69,8 +67,8 @@ twig:
     # https://symfony.com/doc/current/templating/namespaced_paths.html
     # Registering your own Namespaces
     # As an added bonus, the namespaced syntax is faster.
-    paths:
-        "%kernel.root_dir%/../src/Wit/Program/Account/MentorBundle/Resources/views/Mentee": MentorBundleMentee
+    # paths:
+        # "%kernel.root_dir%/../src/Account/MentorBundle/Resources/views/Mentee": MentorBundleMentee
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -99,7 +97,13 @@ doctrine:
         entity_managers:
             default:
                 auto_mapping: true
-                # mappings: # instead of auto_mapping
+                mappings: # instead of auto_mapping/additional mapping
+                    entities:
+                        type: annotation
+                        is_bundle: false
+                        dir: '%kernel.root_dir%/../src/Entity'
+                        prefix: Entity
+                        alias: Entity
                 #     gedmo_translatable:
                 #         type: annotation
                 #         prefix: Gedmo\Translatable\Entity
@@ -128,7 +132,11 @@ doctrine:
                     softdeleteable:
                         class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
                         enabled: true
-
+                    organization_filter:
+                        class: Repository\Filter\OrganizationFilter
+                        enabled: true
+                # hydrators:
+                #     FetchColumn: Harm\StaffBundle\Hydrators\FetchColumn
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"

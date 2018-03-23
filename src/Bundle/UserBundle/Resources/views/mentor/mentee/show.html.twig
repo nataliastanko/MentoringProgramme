@@ -1,0 +1,108 @@
+{% extends 'UserBundle::account.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {#
+    Popover requires tooltip.js,
+    kolejność dołączania skryptów ma znaczenie
+    #}
+    {%- javascripts
+      '@tooltip'
+      '@popover'
+    -%}
+        <script src='{{ asset_url }}'></script>
+    {%- endjavascripts %}
+
+    {#
+    https://getbootstrap.com/docs/3.3/javascript/#tooltips
+    For performance reasons, the Tooltip and Popover data-apis are opt-in, meaning you must initialize them yourself
+    #}
+
+    <script>
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
+{% endblock %}
+
+{% block body -%}
+
+  <div class="page-header">
+    <h1>{{- person.fullname -}}
+      {%- if config.isChosenMenteesVisible -%}
+        {%- if person.isChosen -%}&nbsp;
+          <small>{{- person.email -}}</small>
+        {%- endif -%}
+      {%- endif -%}
+    </h1>
+  </div>
+
+  {%- if person.isChosen -%}
+  {# uczestniczka została wybrana #}
+    <div class="alert alert-success" role="alert">
+      {{- 'mentee.chosen.description' | trans -}}
+    </div>
+  {% elseif not config.getIsSignupMenteesEnabled and not mentor.findChosenPerson %}
+  {# wybierz podopieczna tylko gdy rekrutacja jest juz zamknieta #}
+  {# wybierz podopieczna tylko gdy jeszcze jej nie wybrałeś #}
+    <ul class="nav-internal list-unstyled">
+      <li>
+        {{ form_start(choose_form) }}
+          <button data-toggle="tooltip" data-placement="top" title="{{ 'mentee.choose.hint' | trans }}" class="btn btn-primary btn-sm" type="submit">
+            {{- 'mentee.choose.mentorButton' | trans -}}
+          </button>
+        {{ form_end(choose_form) }}
+      </li>
+    </ul>
+  {% elseif mentor.findChosenPerson %}
+  {# uczestniczka nie została wybrana a mentor wybrał inną #}
+    <div class="alert alert-danger" role="alert">
+      {{- 'mentee.rejected' | trans -}}
+    </div>
+  {%- endif -%}
+
+  <table class="table table-hover">
+      <tbody>
+          <tr>
+              <th>{{ 'person.education' | trans }}</th>
+              <td>{{ person.education | trans }}</td>
+          </tr>
+          <tr>
+              <th>{{ 'person.age' | trans }}</th>
+              <td>{{ person.age }}</td>
+          </tr>
+          <tr>
+              <th>{{ 'edition' | trans }}</th>
+              <td>{{ 'edition' | trans }} {{ person.edition.name }}</td>
+          </tr>
+      </tbody>
+  </table>
+
+  {% if person.videoUrl %}
+      <h3>Video</h3>
+          {% if videoEmbed %}
+              <p class="well">
+                  <small>{{ 'person.video.problem' | trans }} {{ 'person.video.provider' | trans }} <a href="{{ person.videoUrl }}">{{ videoEmbed.provider.name }}</a>.</small>
+              </p>
+          {{ videoEmbed.html | raw }}
+      {% else %}
+          <p>{{ 'person.video.bad_url' | trans }} <a href="{{ person.videoUrl }}">{{ 'person.video.go_to' | trans }}</a></p>
+      {% endif %}
+      <br /><br />
+  {% endif %}
+
+  {# start collapse #}
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    {% if person.answers is not empty %}
+    <div class="panel panel-default">
+      <div class="panel-heading">{{ 'answer.list' | trans }}</div>
+      <div class="panel-body">
+        {# answers if any #}
+          {% include 'UserBundle:mentor:mentee/answer/_full_list.html.twig' with {'answers' : answers} %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+
+{% endblock %}

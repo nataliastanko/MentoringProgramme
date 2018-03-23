@@ -21,6 +21,13 @@ parameters:
     email_sender_address: noreply@example.pl
     email_sender_name: Program mentorski Women in Technology # TODO translate
     email_partner: example@example.pl # TODO set email in db field
-    router.request_context.host: techleaders.eu
-    router.request_context.scheme: http
+    # router.request_context.host: techleaders.eu
+    # router.request_context.scheme: http
+
+    domain_name: techleaders # together it's techleaders.test
+    domain_ext: eu # together it's techleaders.test
+
+    locale_possible: 'en|pl|ru' #list of static translated locale
+    # http.protocol: http
+
     wkhtmltopdf.bin: /usr/bin/xvfb-run /usr/bin/wkhtmltopdf

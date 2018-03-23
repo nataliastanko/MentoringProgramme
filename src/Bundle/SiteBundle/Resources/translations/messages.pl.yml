@@ -1,0 +1,76 @@
+menu:
+    info: Informacje
+    gotopanel: "Panel admin."
+    account: "Konto"
+    users: "Użytkownicy"
+    log:
+        in: "Zaloguj się"
+        out: "Wyloguj się"
+    management: "Zarządzanie"
+    home: "Strona główna"
+    enrollment: "Rekrutacja"
+    config: "Konfiguracja zapisów"
+    enrollment.city.1: "Kraków"
+    enrollment.city.others: "Inne"
+    persons: "Uczestniczki"
+    questions: "Pytania"
+    answers: "Odpowiedzi"
+    speakers: "Prelegenci"
+    mentors: "Mentorzy"
+    gallery: "Galeria zdjęć"
+    workshops: "Warsztaty"
+    meetings: "Spotkania"
+    events: "Wydarzenia"
+    cities: "Miasta"
+    topics: "Tematy"
+    contacts: "Kontakty"
+    sponsors: "Partnerzy strategiczni"
+    partners: "Partnerzy"
+    helpers: "Osoby chętne do pomocy"
+    logs: "Ostatnia aktywność"
+    places: "Miejsca"
+    socialMedia: "Social media"
+    calendar: "Lista spotkań"
+    promo: Materiały promocyjne
+    contact: "Kontakt"
+    about: "O programie"
+    rules: "Regulamin"
+    faq: 'FAQ'
+    faqAdmin: 'FAQ uczestniczki'
+    mentorFaqAdmin: 'FAQ mentora'
+    organizer: 'Organizator'
+    sitecontent: 'Teksty na stronie'
+    mentor:
+        mentees:
+            list: 'Lista uczestniczek'
+button:
+    be_mentee: "Zostań uczestniczką"
+    be_mentor: "Zostań mentorem"
+    be_partner: "Zostań partnerem"
+    apply: Aplikuj teraz
+# year: "Rok"
+# month: "Miesiąc"
+# day: "Dzień"
+female: "Kobieta"
+male: "Mężczyzna"
+choice.choose: "Wybierz opcję"
+roles: Uprawnienia
+contact:
+    content: "Masz dodatkowe pytania? Skontaktuj się z nami :)"
+name: Imię
+lastname: Nazwisko
+email: E-mail
+yay: "Udało się!"
+hello: "Cześć"
+mentoring.program: "Program Mentorski"
+none: "Brak"
+all: "wszystko"
+yes: "tak"
+no: "nie"
+homepage:
+    lead:
+        social: "Dołącz do naszej społeczności na facebooku"
+        program: "Program mentorski dla kobiet"
+company:
+    name: "Nazwa firmy"
+congratulations: Gratulacje!

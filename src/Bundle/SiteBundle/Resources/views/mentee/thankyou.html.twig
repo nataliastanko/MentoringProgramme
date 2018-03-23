@@ -1,0 +1,12 @@
+{% extends 'SiteBundle::base.html.twig' %}
+
+{% block body %}
+    <h1>{{ 'Yay!' | trans }}</h1>
+
+    <div class="row">
+        <div class="col-xs-12">
+            {{ 'thankyou.apply' | trans({ '{{edition}}' : edition.name }) }}
+        </div>
+    </div>
+
+{% endblock %}

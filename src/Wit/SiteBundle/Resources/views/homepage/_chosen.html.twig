@@ -1,9 +1,0 @@
-{% if config.isChosenMenteesVisible %}
-<div class="jumbotron">
-    <div class="row">
-        <div class="col-md-12 main-button">
-          <a class="btn btn-success btn-lg" href="{{ path('edition_chosen', {'edition':edition.id} ) }}">{{ 'mentee.list' | trans }}</a>
-        </div>
-    </div>
-</div>
-{% endif %}
