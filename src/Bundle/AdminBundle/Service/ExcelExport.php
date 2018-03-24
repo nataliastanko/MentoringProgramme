@@ -9,6 +9,7 @@ use Liuggio\ExcelBundle\Factory as PhpExcel;
 use Entity\Edition;
 
 /**
+ * @author Natalia Stanko <contact@nataliastanko.com>
  * @link https://github.com/liuggio/ExcelBundle
  * @link https://github.com/PHPOffice/PHPExcel/tree/develop/Examples
  */

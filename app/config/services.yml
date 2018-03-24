@@ -1,6 +1,6 @@
 # Learn more about services, parameters and containers at
 # http://symfony.com/doc/current/book/service_container.html
-parameters:
+# parameters:
   # knp.doctrine_behaviors.translatable_subscriber.default_locale_callable.class: AppBundle\EventListener\LocaleCallable
 
 services:
@@ -17,17 +17,22 @@ services:
 
   organization.doctrine.filter.configurator:
     class: Repository\Filter\Configurator
-    arguments:
-        - '@doctrine.orm.entity_manager'
-        - '@annotation_reader'
-        - '@subdomain.detection'
+    autowire: true
     tags:
-        - { name: kernel.event_listener, event: kernel.request , priority: -10}
+      - { name: kernel.event_listener, event: kernel.request , priority: -10}
 
   organization.doctrine.listener.persister:
-        class: Repository\EventListener\OrganizationPersister
-        arguments:
-            - '@annotation_reader'
-            - '@subdomain.detection'
-        tags:
-            - { name: doctrine.event_listener, event: prePersist , priority: -100}
+      class: Repository\EventListener\OrganizationPersister
+      autowire: true
+      tags:
+        - { name: doctrine.event_listener, event: prePersist , priority: -100}
+
+  # form.organization.subscriber:
+  #     class: Repository\Form\Subscriber\OrganizationSubscriber
+  #     autowire: true
+
+  # form.organization.extension:
+  #     class: Repository\Form\OrganizationFormTypeExtension
+  #     autowire: true
+  #     tags:
+  #       - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FromType }

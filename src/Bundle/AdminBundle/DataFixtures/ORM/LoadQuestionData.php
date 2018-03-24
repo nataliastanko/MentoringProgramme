@@ -7,6 +7,9 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Entity\Question;
 use Entity\AnswerChoice;
 
+/**
+ * @author Natalia Stanko <contact@nataliastanko.com>
+ */
 class LoadQuestionData implements FixtureInterface
 {
     /**

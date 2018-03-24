@@ -10,6 +10,9 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Entity\Config;
 
+/**
+ * @author Natalia Stanko <contact@nataliastanko.com>
+ */
 class ConfigType extends AbstractType
 {
     /**

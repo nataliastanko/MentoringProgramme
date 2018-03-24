@@ -50,6 +50,29 @@ class Organization
     private $name;
 
     /**
+     * @var array one-dimensional array (simple array)
+     * @see http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/types.html#simple-array
+     *
+     * @ORM\Column(name="locales", type="simple_array", length=65535)
+     */
+    private $locales;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="default_locale", type="string", length=5)
+     */
+    private $defaultLocale;
+
+    /**
+     * @var array one-dimensional array (simple array)
+     * @see http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/types.html#simple-array
+     *
+     * @ORM\Column(name="required_locales", type="simple_array", length=65535)
+     */
+    private $requiredLocales;
+
+    /**
      * If is accepted to the program by superadmin
      * @ORM\Column(name="is_accepted", type="boolean", options={"default" = false})
      */
@@ -69,6 +92,7 @@ class Organization
     public function __construct()
     {
         $this->isAccepted = false;
+        $this->locale = ['en'];
     }
 
     /**
@@ -79,6 +103,72 @@ class Organization
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get possible locale list
+     *
+     * @return array
+     */
+    public function getLocales()
+    {
+        return $this->locales;
+    }
+
+    /**
+     * Set possible locale list
+     * @var array $array
+     * @return Organization
+     */
+    public function setLocales($array)
+    {
+        $this->locales = $array;
+
+        return $this;
+    }
+
+    /**
+     * Get default locale list
+     *
+     * @return array
+     */
+    public function getDefaultLocale()
+    {
+        return $this->defaultLocale;
+    }
+
+    /**
+     * Set default locale
+     * @var string $var
+     * @return Organization
+     */
+    public function setDefaultLocale($var)
+    {
+        $this->defaultLocale = $var;
+
+        return $this;
+    }
+
+    /**
+     * Get required locale list
+     *
+     * @return array
+     */
+    public function getRequiredLocales()
+    {
+        return $this->requiredLocales;
+    }
+
+    /**
+     * Set required locale list
+     * @var array $array
+     * @return Organization
+     */
+    public function setRequiredLocales($array)
+    {
+        $this->requiredLocales = $array;
+
+        return $this;
     }
 
     /**

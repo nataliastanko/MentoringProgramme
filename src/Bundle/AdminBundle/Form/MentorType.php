@@ -16,11 +16,13 @@ use Vich\UploaderBundle\Form\Type\VichImageType;
 use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
 use Entity\Mentor;
 
+/**
+ * @author Natalia Stanko <contact@nataliastanko.com>
+ */
 class MentorType extends AbstractType
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array                $options
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

@@ -13,11 +13,13 @@ use Entity\Answer;
 use Entity\Question;
 use Doctrine\ORM\EntityRepository;
 
+/**
+ * @author Natalia Stanko <contact@nataliastanko.com>
+ */
 class AnswerType extends AbstractType
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array                $options
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
