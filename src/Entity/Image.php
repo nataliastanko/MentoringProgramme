@@ -95,6 +95,7 @@ class Image
      * during Doctrine hydration.
      *
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     * @return Image
      */
     public function setPhotoFile(File $image = null)
     {
@@ -105,6 +106,8 @@ class Image
             // otherwise the event listeners won't be called and the file is lost
             $this->updatedAt = new \DateTime('now');
         }
+
+        return $this;
     }
 
     /**
@@ -117,10 +120,13 @@ class Image
 
     /**
      * @param string $photoName
+     * @return Image
      */
     public function setPhotoName($photoName)
     {
         $this->photoName = $photoName;
+
+        return $this;
     }
 
     /**
@@ -144,6 +150,8 @@ class Image
     public function setPosition($position)
     {
         $this->position = $position;
+
+        return $this;
     }
 
     public function getPosition()

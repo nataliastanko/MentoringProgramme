@@ -11,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Entity\Mentor;
 use Entity\Edition;
+use AdminBundle\Security\Annotation\SectionEnabled;
 
 /**
  * Admin Mentor controller.
@@ -19,6 +20,7 @@ use Entity\Edition;
  *
  * @Route("/mentor")
  * @Security("is_granted('ROLE_ADMIN')")
+ * @SectionEnabled(name="mentors")
  */
 class MentorController extends Controller
 {

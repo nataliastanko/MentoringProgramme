@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Entity\Faq;
+use AdminBundle\Security\Annotation\SectionEnabled;
 
 /**
  * Admin Faq controller.
@@ -17,6 +18,7 @@ use Entity\Faq;
  *
  * @Route("/faq")
  * @Security("is_granted('ROLE_ADMIN')")
+ * @SectionEnabled(name="faq")
  */
 class FaqController extends Controller
 {

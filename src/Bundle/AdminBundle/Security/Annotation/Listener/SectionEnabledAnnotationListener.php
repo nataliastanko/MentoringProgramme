@@ -5,36 +5,36 @@ namespace AdminBundle\Security\Annotation\Listener;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Util\ClassUtils;
 use Doctrine\ORM\EntityManager;
-use AdminBundle\Security\Annotation\UsersAccounts;
-use ReflectionClass;
-use ReflectionObject;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use SiteBundle\Service\SubdomainDetection;
+use AdminBundle\Security\Annotation\SectionEnabled;
 
-class UsersAccountsAnnotationListener
+/**
+ * @author delboy1978uk (https://delboy1978uk.wordpress.com/2017/10/10/creating-custom-annotations-in-symfony-3/)
+ * @author Daniel Sipos (https://www.sitepoint.com/your-own-custom-annotations/)
+ * @author Natalia Stanko <contact@nataliastanko.com>
+ */
+class SectionEnabledAnnotationListener
 {
     /** @var AnnotationReader $reader */
     private $reader;
 
-    /** @var RequestStack $requestStack */
-    private $requestStack;
+    /** @var SubdomainDetection $subdomainDetection */
+    private $subdomainDetection;
 
-    /** @var EntityManager $em */
-    private $em;
+    private $classAnnotation;
 
     /**
      * @param AnnotationReader $reader
-     * @param RequestStack $stack
+     * @param SubdomainDetection $subdomainDetection
      */
-    public function __construct(AnnotationReader $reader, RequestStack $stack, EntityManager $em)
+    public function __construct(AnnotationReader $reader, SubdomainDetection $subdomainDetection)
     {
         $this->reader = $reader;
-        $this->requestStack = $stack;
-        $this->em = $em;
+        $this->subdomainDetection = $subdomainDetection;
     }
 
     /**
@@ -56,18 +56,20 @@ class UsersAccountsAnnotationListener
         /** @var Controller $controllerObject */
         list($controllerObject, $methodName) = $controller;
 
-        $request = $this->requestStack->getCurrentRequest();
-
         // Override the response only if the annotation is used for method or class
-        if ($this->hasUsersAccountsAnnotation($controllerObject, $methodName)) {
-            $config = $this->em->getRepository('Entity:Config')->findConfig();
+        if ($this->hasSectionEnabledAnnotation($controllerObject, $methodName)) {
 
-            if (!$config) {
-                throw new NotFoundHttpException('No config found');
+            $organization = $this->subdomainDetection->getOrganization();
+
+            if (!$organization) {
+                throw new NotFoundHttpException('No organization found');
             }
 
-            if (!$config->getIsUsersAccountsEnabled()) {
-                throw new AccessDeniedHttpException('Users accounts disabled');
+            $sectionsEnabled = $organization->getSectionsEnabledArray();
+
+            if (!$this->hasSectionAvailable($sectionsEnabled)) {
+                throw new AccessDeniedHttpException('Section disabled');
+
             }
         }
     }
@@ -77,31 +79,41 @@ class UsersAccountsAnnotationListener
      * @param string $methodName
      * @return bool
      */
-    private function hasUsersAccountsAnnotation( $controllerObject, string $methodName) : bool
+    private function hasSectionEnabledAnnotation($controllerObject, string $methodName) : bool
     {
-        $tokenAnnotation = UsersAccounts::class;
+        $tokenAnnotation = SectionEnabled::class;
 
         $hasAnnotation = false;
 
+        // $class = $this->namespace . '\\' . $file->getBasename('.php');
+        $class = ClassUtils::getClass($controllerObject);
+
         // Get class annotation
         // Using ClassUtils::getClass in case the controller is an proxy
-        $classAnnotation = $this->reader->getClassAnnotation(
-            new ReflectionClass(ClassUtils::getClass($controllerObject)), $tokenAnnotation
+        $this->classAnnotation = $this->reader->getClassAnnotation(
+            new \ReflectionClass($class), $tokenAnnotation
         );
 
-        if ($classAnnotation) {
+        // class has annotation
+        if ($this->classAnnotation) {
             $hasAnnotation = true;
         }
 
         // Get method annotation
-        $controllerReflectionObject = new ReflectionObject($controllerObject);
+        $controllerReflectionObject = new \ReflectionObject($controllerObject);
         $reflectionMethod = $controllerReflectionObject->getMethod($methodName);
         $methodAnnotation = $this->reader->getMethodAnnotation($reflectionMethod, $tokenAnnotation);
 
+        // method has annotation
         if ($methodAnnotation) {
             $hasAnnotation = true;
         }
 
         return $hasAnnotation;
+    }
+
+    private function hasSectionAvailable(array $sectionsEnabled) : bool
+    {
+        return array_key_exists($this->classAnnotation->getName(), $sectionsEnabled);
     }
 }

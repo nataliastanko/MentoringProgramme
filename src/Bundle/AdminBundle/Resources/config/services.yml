@@ -4,6 +4,7 @@ services:
     class: AdminBundle\Twig\EditionExtension
     arguments:
       - '@doctrine.orm.entity_manager'
+      - '@subdomain.detection'
     tags:
       - { name: twig.extension }
 
@@ -20,7 +21,7 @@ services:
       - { name: twig.extension }
 
   annotation.event_listener.users_accounts:
-    class: AdminBundle\Security\Annotation\Listener\UsersAccountsAnnotationListener
+    class: AdminBundle\Security\Annotation\Listener\SectionEnabledAnnotationListener
     autowire: true
     tags:
         - { name: kernel.event_listener, event: kernel.controller }

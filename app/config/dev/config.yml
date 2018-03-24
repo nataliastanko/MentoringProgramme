@@ -31,3 +31,9 @@ monolog:
         #chromephp:
         #    type:   chromephp
         #    level:  info
+
+services:
+    twig.extension.debug:
+        class: Twig_Extension_Debug
+        tags:
+            - { name: twig.extension }

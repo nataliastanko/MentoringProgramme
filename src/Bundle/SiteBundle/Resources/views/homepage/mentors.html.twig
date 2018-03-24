@@ -12,6 +12,7 @@
 
 {% block body %}
 
+{%- if sections.mentorsfaq is defined -%}
 {%- if mentorsFaq is not empty -%}
   {% spaceless %}
     <div class="page-header">
@@ -43,6 +44,7 @@
     </div>
     {# collapse end #}
   {% endspaceless %}
+{%- endif -%}
 {%- endif -%}
 
   {% include 'SiteBundle:homepage:_mentors.html.twig' %}

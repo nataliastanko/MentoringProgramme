@@ -11,11 +11,13 @@ use Entity\Answer;
 use Entity\Question;
 use Entity\Person;
 use SiteBundle\Form\PersonType;
+use AdminBundle\Security\Annotation\SectionEnabled;
 
 /**
  * @author Natalia Stanko <contact@nataliastanko.com>
  *
  * @Route("/mentee")
+ * @SectionEnabled(name="mentees")
  */
 class MenteeController extends Controller
 {

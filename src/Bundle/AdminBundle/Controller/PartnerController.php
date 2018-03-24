@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Entity\Partner;
+use AdminBundle\Security\Annotation\SectionEnabled;
 
 /**
  * Admin Partner controller.
@@ -17,6 +18,7 @@ use Entity\Partner;
  *
  * @Route("/partner")
  * @Security("is_granted('ROLE_ADMIN')")
+ * @SectionEnabled(name="partners")
  */
 class PartnerController extends Controller
 {

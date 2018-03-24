@@ -12,6 +12,8 @@ use Repository\Annotation\OrganizationAware;
 /**
  * Edition.
  *
+ * @todo manage editions using forms
+ *
  * @author Natalia Stanko <contact@nataliastanko.com>
  *
  * @ORM\Table(
@@ -146,6 +148,8 @@ class Edition
     public function setOrganization($var)
     {
         $this->organization = $var;
+
+        return $this;
     }
 
     public function __call($method, $arguments)

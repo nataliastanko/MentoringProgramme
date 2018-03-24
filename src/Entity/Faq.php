@@ -83,6 +83,8 @@ class Faq
     public function setOrganization($var)
     {
         $this->organization = $var;
+
+        return $this;
     }
 
     // public function __call($method, $arguments)

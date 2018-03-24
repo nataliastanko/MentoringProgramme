@@ -295,6 +295,8 @@ class Partner
     public function setPosition($position)
     {
         $this->position = $position;
+
+        return $this;
     }
 
     public function getPosition()
@@ -339,6 +341,8 @@ class Partner
     public function setOrganization($var)
     {
         $this->organization = $var;
+
+        return $this;
     }
 
     /**

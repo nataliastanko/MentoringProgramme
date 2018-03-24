@@ -37,6 +37,12 @@ class ConfigController extends Controller
             throw $this->createNotFoundException('No config found');
         }
 
+        $organization = $this->get('subdomain.detection')->getOrganization();
+
+        if (!$organization) {
+            throw $this->createNotFoundException('No organization found');
+        }
+
         $edition = $em->getRepository('Entity:Edition')
             ->findLastEdition();
 
@@ -45,6 +51,7 @@ class ConfigController extends Controller
         }
 
         return [
+            'buttonsSectionsEnabled' => $organization->getButtonsSectionsEnabledArray(),
             'config' => $config,
             'edition' => $edition
         ];
@@ -59,7 +66,17 @@ class ConfigController extends Controller
      */
     public function editAction(Request $request, Config $config)
     {
-        $editForm = $this->createForm('AdminBundle\Form\ConfigType', $config);
+        $organization = $this->get('subdomain.detection')->getOrganization();
+
+        if (!$organization) {
+            throw $this->createNotFoundException('No organization found');
+        }
+
+        $editForm = $this->createForm(
+            'AdminBundle\Form\ConfigType',
+            $config,
+            ['sectionsEnabled' => $organization->getSectionsEnabledArray()]
+        );
         $editForm->handleRequest($request);
 
         $edition = $this->getDoctrine()->getRepository('Entity:Edition')

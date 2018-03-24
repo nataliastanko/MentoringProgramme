@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Entity\Image;
-use AdminBundle\Security\Annotation\UsersAccounts;
+use AdminBundle\Security\Annotation\SectionEnabled;
 
 /**
  * Gallery controller.
@@ -18,7 +18,7 @@ use AdminBundle\Security\Annotation\UsersAccounts;
  *
  * @Route("/gallery")
  * @Security("is_granted('ROLE_ADMIN')")
- * @UsersAccounts
+ * @SectionEnabled(name="gallery")
  */
 class GalleryController extends Controller
 {

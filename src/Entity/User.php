@@ -299,6 +299,8 @@ class User extends FosUser
     public function setOrganization($var)
     {
         $this->organization = $var;
+
+        return $this;
     }
 
     public function getRoleName()

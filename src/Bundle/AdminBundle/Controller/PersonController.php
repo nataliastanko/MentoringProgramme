@@ -13,6 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Entity\Person;
 use Entity\Edition;
+use AdminBundle\Security\Annotation\SectionEnabled;
 
 /**
  * Person controller.
@@ -21,6 +22,7 @@ use Entity\Edition;
  *
  * @Route("/person")
  * @Security("is_granted('ROLE_ADMIN')")
+ * @SectionEnabled(name="mentees")
  */
 class PersonController extends Controller
 {

@@ -60,6 +60,8 @@ class MentorFaq
     public function setPosition($position)
     {
         $this->position = $position;
+
+        return $this;
     }
 
     public function getPosition()
@@ -70,6 +72,8 @@ class MentorFaq
     public function setOrganization($var)
     {
         $this->organization = $var;
+
+        return $this;
     }
 
     public function __call($method, $arguments)

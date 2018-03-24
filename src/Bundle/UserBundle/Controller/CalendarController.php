@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use AdminBundle\Security\Annotation\UsersAccounts;
+use AdminBundle\Security\Annotation\SectionEnabled;
 
 /**
  * Calendar controller.
@@ -16,7 +16,7 @@ use AdminBundle\Security\Annotation\UsersAccounts;
  *
  * @Route("/calendar")
  * @Security("is_granted('ROLE_USER')")
- * @UsersAccounts
+ * @SectionEnabled(name="calendar")
  */
 class CalendarController extends Controller
 {

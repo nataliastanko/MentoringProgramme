@@ -61,6 +61,8 @@ class About
     public function setPosition($position)
     {
         $this->position = $position;
+
+        return $this;
     }
 
     public function getPosition()
@@ -71,6 +73,8 @@ class About
     public function setOrganization($var)
     {
         $this->organization = $var;
+
+        return $this;
     }
 
     public function __call($method, $arguments)

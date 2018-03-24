@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
+use AdminBundle\Security\Annotation\SectionEnabled;
 
 /**
  * Eventnote controller.
@@ -18,6 +19,8 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @Route("eventnote")
  * @Security("is_granted('ROLE_USER')")
+ * @SectionEnabled(name="calendar")
+ *
  * @TODO only mentor and mentee, not mentor! ROLE_USER is a mentor too
  */
 class EventnoteController extends Controller

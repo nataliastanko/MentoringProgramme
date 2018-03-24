@@ -4,9 +4,13 @@ namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Doctrine\Common\Collections\Criteria;
 
 /**
  * Organization
+ *
+ * @todo add contact section here (contact email, partners apply email)
+ * @todo add uploadable org logo
  *
  * @author Natalia Stanko <contact@nataliastanko.com>
  *
@@ -50,6 +54,11 @@ class Organization
      * @ORM\Column(name="is_accepted", type="boolean", options={"default" = false})
      */
     private $isAccepted;
+
+    /**
+     * @ORM\OneToMany(targetEntity="SectionConfig", mappedBy="organization")
+     **/
+    private $sections;
 
     /*
      * Hook timestampable behavior
@@ -152,5 +161,68 @@ class Organization
     public function getIsAccepted()
     {
         return $this->isAccepted;
+    }
+
+    /**
+     * Get menu sections
+     * @return ArrayCollection
+     */
+    public function getSections()
+    {
+        return $this->sections;
+    }
+
+    /**
+     * Get enabled menu sections
+     * @return ArrayCollection
+     */
+    public function getSectionsEnabled()
+    {
+        $criteria = Criteria::create()->where(
+            Criteria::expr()->eq('isEnabled', true)
+        );
+
+        $sections = $this->getSections()->matching($criteria);
+
+        return $sections;
+    }
+
+    /**
+     * Get enabled sections
+     * @return array
+     */
+    public function getSectionsEnabledArray()
+    {
+        $enabledSections = [];
+
+        foreach ($this->getSectionsEnabled() as $i) {
+            $enabledSections[$i->getSection()] = true;
+        }
+
+        return $enabledSections;
+    }
+
+    /**
+     * Get buttons that are enabled
+     * from enabled sections
+     * @return array
+     */
+    public function getButtonsSectionsEnabledArray()
+    {
+        $enabledButtons = [];
+
+        foreach ($this->getSectionsEnabled() as $i) {
+            if (
+                $i->getSection() === 'mentees'
+                ||
+                $i->getSection() === 'partners'
+                ||
+                $i->getSection() === 'mentors'
+            ) {
+                $enabledButtons[$i->getSection()] = true;
+            }
+        }
+
+        return $enabledButtons;
     }
 }

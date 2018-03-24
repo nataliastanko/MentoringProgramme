@@ -469,6 +469,8 @@ class Mentor
     public function setPosition($position)
     {
         $this->position = $position;
+
+        return $this;
     }
 
     public function getPosition()
@@ -506,6 +508,8 @@ class Mentor
     public function setOrganization($var)
     {
         $this->organization = $var;
+
+        return $this;
     }
 
     /**

@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Entity\Question;
+use AdminBundle\Security\Annotation\SectionEnabled;
 
 /**
  * Question controller.
@@ -17,6 +18,7 @@ use Entity\Question;
  *
  * @Route("/question")
  * @Security("is_granted('ROLE_ADMIN')")
+ * @SectionEnabled(name="mentees")
  */
 class QuestionController extends Controller
 {
