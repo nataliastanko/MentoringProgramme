@@ -1,6 +1,8 @@
 <div class="container account-menu-container" role="navigation">
   <ul class="nav nav-tabs nav-account">
 
+    {%- set sections = getSectionsEnabled() -%}
+
     {# admin only menu begin #}
     {%- if is_granted("ROLE_ADMIN") -%}
       {%- include 'UserBundle:menu:_admin.html.twig' -%}

@@ -9,6 +9,8 @@ use Repository\Annotation\OrganizationAware;
 /**
  * Config
  *
+ * @todo move config columns to organization table (one join less)
+ *
  * @author Natalia Stanko <contact@nataliastanko.com>
  *
  * @ORM\Table(name="config")
@@ -34,6 +36,7 @@ class Config
     private $isSignupMentorsEnabled;
 
     /**
+     * @todo rename to is_signup_pertners_enabled when moving to organization
      * @var bool
      *
      * @ORM\Column(name="is_signup_pertaners_enabled", type="boolean", options={"default" = false})
@@ -53,13 +56,6 @@ class Config
      * @ORM\Column(name="is_chosen_mentees_visible", type="boolean", options={"default" = false})
      */
     private $isChosenMenteesVisible;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="is_users_accounts_enabled", type="boolean", options={"default" = false})
-     */
-    private $isUsersAccountsEnabled;
 
     /**
      * Belongs to organization
@@ -177,47 +173,58 @@ class Config
     }
 
     /**
-     * Set isUsersAccountsEnabled
+     * Set isSectionEnabledEnabled
      *
-     * @param boolean $isUsersAccountsEnabled
+     * @param boolean $isSectionEnabledEnabled
      *
      * @return Config
      */
-    public function setIsUsersAccountsEnabled($var)
+    public function setIsSectionEnabledEnabled($var)
     {
-        $this->isUsersAccountsEnabled = $var;
+        $this->isSectionEnabledEnabled = $var;
 
         return $this;
-    }
-
-    /**
-     * Get isUsersAccountsEnabled
-     *
-     * @return bool
-     */
-    public function getIsUsersAccountsEnabled()
-    {
-        return $this->isUsersAccountsEnabled;
     }
 
     public function setOrganization($var)
     {
         $this->organization = $var;
+
+        return $this;
     }
 
     /**
-     * Frontend needs that config
-     * @return integer
+     * Get organization
+     *
+     * @return Organization
      */
-    public function getNumberOfEnabled()
+    public function getOrganization()
     {
-        $enabled = [
-            $this->isSignupMenteesEnabled,
-            $this->isSignupMentorsEnabled,
-            $this->isSignupPartnersEnabled
-        ];
+        return $this->organization;
+    }
 
-        return count(array_filter($enabled));
+    /**
+     * Final buttons
+     * Eenabled buttons from enabled sections
+     * @return array
+     */
+    public function getEnabledButtons()
+    {
+        $buttonsSectionsEnabled = $this->getOrganization()->getButtonsSectionsEnabledArray();
+
+        $enabled = [];
+
+        if ($this->isSignupMenteesEnabled && isset($buttonsSectionsEnabled['mentees'])) {
+            $enabled['mentees'] = true;
+        }
+        if ($this->isSignupMentorsEnabled && isset($buttonsSectionsEnabled['mentors'])) {
+            $enabled['mentors'] = true;
+        }
+        if ($this->isSignupPartnersEnabled && isset($buttonsSectionsEnabled['partners'])) {
+            $enabled['partners'] = true;
+        }
+
+        return $enabled;
     }
 }
 

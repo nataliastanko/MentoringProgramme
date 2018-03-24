@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Entity\Event;
 use Entity\EventNote;
-use AdminBundle\Security\Annotation\UsersAccounts;
+use AdminBundle\Security\Annotation\SectionEnabled;
 
 /**
  * Event controller for mentors and mentees.
@@ -21,7 +21,7 @@ use AdminBundle\Security\Annotation\UsersAccounts;
  *
  * @Route("/event")
  * @Security("is_granted('ROLE_USER')")
- * @UsersAccounts
+ * @SectionEnabled(name="calendar")
  */
 class EventController extends Controller
 {

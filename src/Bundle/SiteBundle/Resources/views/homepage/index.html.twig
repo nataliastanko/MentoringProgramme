@@ -12,18 +12,33 @@
 {%- endblock -%}
 
 {%- block body -%}
-    {% set config = getSignupConfig() %}
-    {% set lastEdition = getLastEdition() %}
+  {% set config = getSignupConfig() %}
+  {% set lastEdition = getLastEdition() %}
 
+  {%- if sections.mentees is defined -%}
     {%- include 'SiteBundle:homepage:_chosen.html.twig' -%}
-    {%- include 'SiteBundle:homepage:_signupButtons.html.twig' -%}
+  {%- endif -%}
+  {%- include 'SiteBundle:homepage:_signupButtons.html.twig' -%}
+  {%- if sections.about is defined -%}
     {%- include 'SiteBundle:homepage:_about.html.twig' -%}
+  {%- endif -%}
+  {%- if sections.mentors is defined -%}
     {%- include 'SiteBundle:homepage:_mentors.html.twig' -%}
+  {%- endif -%}
+  {%- if sections.sponsors is defined -%}
     {%- include 'SiteBundle:homepage:_sponsors.html.twig' -%}
+  {%- endif -%}
+  {%- if sections.partners is defined -%}
     {%- include 'SiteBundle:homepage:_partners.html.twig' -%}
+  {%- endif -%}
+  {# {%- if sections.gallery is defined -%} #}
     {# {%- include 'SiteBundle:homepage:_gallery.html.twig' -%} #}
-    {%- include 'SiteBundle:homepage:_organizer.html.twig' -%}
-    {%- include 'SiteBundle:homepage:_contact.html.twig' -%}
+  {# {%- endif -%} #}
+
+  {# parts of every organization #}
+  {%- include 'SiteBundle:homepage:_organizer.html.twig' -%}
+  {%- include 'SiteBundle:homepage:_contact.html.twig' -%}
+
 {%- endblock -%}
 
 {%- block javascripts %}

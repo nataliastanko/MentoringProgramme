@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Entity\Sponsor;
+use AdminBundle\Security\Annotation\SectionEnabled;
 
 /**
  * Admin Sponsor controller.
@@ -17,6 +18,7 @@ use Entity\Sponsor;
  *
  * @Route("/sponsor")
  * @Security("is_granted('ROLE_ADMIN')")
+ * @SectionEnabled(name="sponsors")
  */
 class SponsorController extends Controller
 {

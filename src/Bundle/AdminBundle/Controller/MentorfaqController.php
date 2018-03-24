@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Entity\MentorFaq;
+use AdminBundle\Security\Annotation\SectionEnabled;
 
 /**
  * Admin MentorFaq controller.
@@ -17,6 +18,7 @@ use Entity\MentorFaq;
  *
  * @Route("/mentorfaq")
  * @Security("is_granted('ROLE_ADMIN')")
+ * @SectionEnabled(name="mentorfaq")
  */
 class MentorfaqController extends Controller
 {

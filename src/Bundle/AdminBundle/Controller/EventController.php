@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Entity\Event;
-use AdminBundle\Security\Annotation\UsersAccounts;
+use AdminBundle\Security\Annotation\SectionEnabled;
 
 /**
  * Event controller.
@@ -20,7 +20,7 @@ use AdminBundle\Security\Annotation\UsersAccounts;
  *
  * @Route("/event")
  * @Security("is_granted('ROLE_ADMIN')")
- * @UsersAccounts
+ * @SectionEnabled(name="calendar")
  */
 class EventController extends Controller
 {

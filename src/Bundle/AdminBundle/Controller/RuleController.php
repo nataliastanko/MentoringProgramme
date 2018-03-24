@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Entity\Rule;
+use AdminBundle\Security\Annotation\SectionEnabled;
 
 /**
  * Admin Rule controller.
@@ -17,6 +18,7 @@ use Entity\Rule;
  *
  * @Route("/rule")
  * @Security("is_granted('ROLE_ADMIN')")
+ * @SectionEnabled(name="rules")
  */
 class RuleController extends Controller
 {

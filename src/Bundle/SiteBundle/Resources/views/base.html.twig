@@ -35,8 +35,10 @@
     {%- endblock -%}
   </head>
   <body class="organization">
+    {%- set sections = getSectionsEnabled() -%}
+
     {% spaceless %}
-      {%- include 'SiteBundle:menu:_main.html.twig' -%}
+      {%- include 'SiteBundle:menu:_org_main_menu.html.twig' -%}
     {% endspaceless %}
 
     <div id="flashes-mainpage">

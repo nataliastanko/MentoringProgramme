@@ -1,5 +1,4 @@
 {# homepage account #}
-{%- set config = getSignupConfig() -%}
 <li{%-
     if app.request.attributes.get('_route') ends with 'account_admin'
     or
@@ -21,22 +20,30 @@
   </a>
   <ul class="dropdown-menu">
     {# rules #}
-    <li{%- if app.request.attributes.get('_route') starts with 'rule_' %} class="active"{% endif -%}>
-      <a href="{{ path('rule_index') }}">{{ 'menu.rules' | trans }}</a>
-    </li>
+    {%- if sections.rules is defined -%}
+      <li{%- if app.request.attributes.get('_route') starts with 'rule_' %} class="active"{% endif -%}>
+        <a href="{{ path('rule_index') }}">{{ 'menu.rules' | trans }}</a>
+      </li>
+    {%- endif -%}
     {# faq #}
-    <li{%- if app.request.attributes.get('_route') starts with 'faq_' %} class="active"{% endif -%}>
-      <a href="{{ path('faq_index') }}">{{ 'menu.faqAdmin' | trans }}</a>
-    </li>
+    {%- if sections.faq is defined -%}
+      <li{%- if app.request.attributes.get('_route') starts with 'faq_' %} class="active"{% endif -%}>
+        <a href="{{ path('faq_index') }}">{{ 'menu.faqAdmin' | trans }}</a>
+      </li>
+    {%- endif -%}
     {# mentor faq #}
-    <li{%- if app.request.attributes.get('_route') starts with 'mentorfaq_' %} class="active"{% endif -%}>
-      <a href="{{ path('mentorfaq_index') }}">{{ 'menu.mentorFaqAdmin' | trans }}</a>
-    </li>
+    {%- if sections.mentorfaq is defined -%}
+      <li{%- if app.request.attributes.get('_route') starts with 'mentorfaq_' %} class="active"{% endif -%}>
+        <a href="{{ path('mentorfaq_index') }}">{{ 'menu.mentorFaqAdmin' | trans }}</a>
+      </li>
+    {%- endif -%}
     {# about #}
-    <li{%- if app.request.attributes.get('_route') starts with 'about_' %} class="active"{% endif -%}>
-      <a href="{{ path('about_index') }}">{{ 'menu.about' | trans }}</a>
-    </li>
-    {%- if config.isUsersAccountsEnabled -%}
+    {%- if sections.about is defined -%}
+      <li{%- if app.request.attributes.get('_route') starts with 'about_' %} class="active"{% endif -%}>
+        <a href="{{ path('about_index') }}">{{ 'menu.about' | trans }}</a>
+      </li>
+    {%- endif -%}
+    {%- if sections.gallery is defined -%}
       {# gallery #}
       <li{%- if app.request.attributes.get('_route') starts with 'gallery_' %} class="active"{% endif -%}>
         <a href="{{ path('gallery_index') }}">{{ 'menu.gallery' | trans }}</a>
@@ -59,18 +66,20 @@
   </a>
   <ul class="dropdown-menu">
     {# persons #}
-    <li{%- if app.request.attributes.get('_route') starts with 'person_' %} class="active"{% endif -%}>
-      <a href="{{ path('person_index') }}">{{ 'menu.persons' | trans }}</a>
-    </li>
-    <li role="separator" class="divider"></li>
-    {# question or answer #}
-    <li{%- if
-      app.request.attributes.get('_route') starts with 'question_'
-      or
-      app.request.attributes.get('_route') starts with 'answer_'
-    %} class="active"{% endif -%}>
-      <a href="{{ path('question_index') }}">{{ 'menu.questions' | trans }}</a>
-    </li>
+    {%- if sections.mentees is defined -%}
+      <li{%- if app.request.attributes.get('_route') starts with 'person_' %} class="active"{% endif -%}>
+        <a href="{{ path('person_index') }}">{{ 'menu.persons' | trans }}</a>
+      </li>
+      <li role="separator" class="divider"></li>
+      {# question or answer #}
+      <li{%- if
+        app.request.attributes.get('_route') starts with 'question_'
+        or
+        app.request.attributes.get('_route') starts with 'answer_'
+      %} class="active"{% endif -%}>
+        <a href="{{ path('question_index') }}">{{ 'menu.questions' | trans }}</a>
+      </li>
+    {%- endif -%}
     {# config #}
     <li{%- if app.request.attributes.get('_route') starts with 'config_' %} class="active"{% endif -%}>
       <a href="{{ path('config_index') }}">{{ 'menu.config' | trans }}</a>
@@ -87,27 +96,33 @@
   </a>
   <ul class="dropdown-menu">
     {# partners #}
+    {%- if sections.partners is defined -%}
     <li{%- if app.request.attributes.get('_route') starts with 'partner_' %} class="active"{% endif -%}>
       <a href="{{ path('partner_index') }}">{{ 'menu.partners' | trans }}</a>
     </li>
+    {%- endif -%}
     {# sponsors #}
+    {%- if sections.sponsors is defined -%}
     <li{%- if app.request.attributes.get('_route') starts with 'sponsor_' %} class="active"{% endif -%}>
       <a href="{{ path('sponsor_index') }}">{{ 'menu.sponsors' | trans }}</a>
     </li>
+    {%- endif -%}
   </ul>
 </li>
 {# mentors #}
+{%- if sections.mentors is defined -%}
 <li{%- if app.request.attributes.get('_route') starts with 'mentor_'
   or
   app.request.attributes.get('_route') starts with 'invite_mentor' %} class="active"{% endif -%}>
   <a href="{{ path('mentor_index') }}">{{ 'menu.mentors' | trans }}</a>
 </li>
+{%- endif -%}
 {# users #}
 <li{%- if app.request.attributes.get('_route') starts with 'user_' %} class="active"{% endif -%}>
   <a href="{{ path('user_index') }}">{{ 'menu.users' | trans }}</a>
 </li>
-{%- if config.isUsersAccountsEnabled -%}
-  {# calendar #}
+{# calendar #}
+{%- if sections.calendar is defined -%}
   <li{%- if app.request.attributes.get('_route') starts with 'admin_event_'
     or
     app.request.attributes.get('_route') starts with 'admin_event_' %} class="active"{%- endif -%}>

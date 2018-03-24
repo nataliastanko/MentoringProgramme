@@ -486,5 +486,7 @@ class Person
     public function setOrganization($var)
     {
         $this->organization = $var;
+
+        return $this;
     }
 }

@@ -13,7 +13,7 @@ use Entity\User;
 use Entity\Invitation;
 use Entity\Mentor;
 use Entity\Person;
-use AdminBundle\Security\Annotation\UsersAccounts;
+use AdminBundle\Security\Annotation\SectionEnabled;
 
 /**
  * Invitation controller.
@@ -24,7 +24,7 @@ use AdminBundle\Security\Annotation\UsersAccounts;
  *
  * @Route("/invite")
  * @Security("is_granted('ROLE_ADMIN')")
- * @UsersAccounts
+ * @SectionEnabled(name="mentees")
  */
 class InvitationController extends Controller
 {

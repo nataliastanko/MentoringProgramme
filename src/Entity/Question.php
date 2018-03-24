@@ -155,6 +155,8 @@ class Question
     public function setPosition($position)
     {
         $this->position = $position;
+
+        return $this;
     }
 
     public function getPosition()
@@ -185,6 +187,8 @@ class Question
     public function setOrganization($var)
     {
         $this->organization = $var;
+
+        return $this;
     }
 
     /**

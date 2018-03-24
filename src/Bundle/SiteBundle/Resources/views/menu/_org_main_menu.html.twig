@@ -18,38 +18,48 @@
             {% endimage %}
           </a>
         </li>
-          <li class="dropdown nav-item">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">{{- 'editions' | trans -}} <span class="caret"></span></a>
-            <ul class="dropdown-menu" aria-labelledby="download">
-              {% for edition in getEditions() %}
-                <li{% if loop.last %} class="dropdown-current"{% endif %}>
-                  <a href="{{ path('edition_show', {'edition':edition.id} ) }}">
-                      {{- 'edition' | trans }} {{ edition.name -}}
-                  </a>
-                </li>
-              {% endfor %}
-            </ul>
-          </li>
+        <li class="dropdown nav-item">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">{{- 'editions' | trans -}} <span class="caret"></span></a>
+          <ul class="dropdown-menu" aria-labelledby="download">
+            {% for edition in getEditions() %}
+              <li{% if loop.last %} class="dropdown-current"{% endif %}>
+                <a href="{{ path('edition_show', {'edition':edition.id} ) }}">
+                    {{- 'edition' | trans }} {{ edition.name -}}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+        {%- if sections.about is defined -%}
         <li class="nav-item">
           <a href="{{ path('about' ) }}">{{ 'menu.about' | trans }}</a>
-        </li>
+        </li>ions
+        {%- endif -%}
+        {%- if sections.mentors is defined -%}
         <li class="nav-item">
           <a href="{{ path('edition_mentors', {'edition': edition.id} ) }}">{{ 'menu.mentors' | trans }}</a>
           {# <a href="{{ path('edition_show', {'edition': edition.id} ) }}#mentors">{{ 'menu.mentors' | trans }}</a> #}
         </li>
+        {%- endif -%}
+        {%- if sections.partners is defined -%}
         <li class="nav-item">
           {# <a href="{{ path('partners') }}">{{ 'menu.partners' | trans }}</a> #}
           <a href="{{ path('edition_show', {'edition': edition.id} ) }}#partners">{{ 'menu.partners' | trans }}</a>
         </li>
+        {%- endif -%}
         <li class="nav-item">
           <a href="{{ path('contact' ) }}">{{ 'menu.contact' | trans }}</a>
         </li>
+        {%- if sections.rules is defined -%}
         <li class="nav-item">
           <a href="{{ path('rules') }}">{{ 'menu.rules' | trans }}</a>
         </li>
+        {%- endif -%}
+        {%- if sections.faq is defined -%}
         <li class="nav-item">
           <a href="{{ path('faq') }}">{{ 'menu.faq' | trans }}</a>
         </li>
+        {%- endif -%}
         <li class="lang">
           <a href="{{ path('edition_show', {'_locale' : "en", 'edition':edition.id, }) }}"><i class="fa fa-flag-o"></i>&nbsp;EN</a>
         </li>

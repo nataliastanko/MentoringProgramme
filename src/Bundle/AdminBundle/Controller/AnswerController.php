@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Entity\Answer;
+use AdminBundle\Security\Annotation\SectionEnabled;
 
 /**
  * Answer controller.
@@ -17,6 +18,7 @@ use Entity\Answer;
  *
  * @Route("/answer")
  * @Security("is_granted('ROLE_ADMIN')")
+ * @SectionEnabled(name="mentees")
  */
 class AnswerController extends Controller
 {

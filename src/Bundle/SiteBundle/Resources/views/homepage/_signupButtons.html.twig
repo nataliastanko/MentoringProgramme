@@ -1,34 +1,56 @@
 {# display buttons only in current edition #}
-{% if edition.id == lastEdition.id %}
-{% if config is not empty and config.getNumberOfEnabled > 0 %} {# tested! #}
+{%- if edition.id == lastEdition.id -%}
 
-{% spaceless %}
+{%- set enabledButtons = getEnabledButtons() -%}
+
+{%- spaceless -%}
+    {%-
+        if
+        enabledButtons | length > 0
+    -%}
     <div class="jumbotron">
         <div class="row">
-            {% if config.getNumberOfEnabled == 1 %}
+            {%-
+                if
+                enabledButtons | length == 1
+            -%}
                 {# 1 col #}
                 <div class="col-md-12 main-button">
-                    {% if config.isSignupMenteesEnabled %}
+                    {%-
+                        if
+                        enabledButtons.mentees is defined
+                    -%}
                         {# be a mentee only #}
                         <a href="{{ path('mentee_apply') }}" class="btn btn-primary btn-lg">
                           {{- 'button.be_mentee' | trans -}}
                         </a>
-                    {% elseif config.isSignupMentorsEnabled %}
+                    {%-
+                        elseif
+                        enabledButtons.mentors is defined
+                    -%}
                         {# be a mentor only #}
                         <a href="{{ path('mentor_apply') }}" class="btn btn-primary btn-lg">
                           {{- 'button.be_mentor' | trans -}}
                         </a>
-                    {% elseif config.isSignupPartnersEnabled %}
+                    {%-
+                        elseif
+                        enabledButtons.partners is defined
+                    -%}
                         {# be a partner only #}
                         <a href="mailto:{{- email_partner | url_encode -}}" class="btn btn-primary btn-lg">
                           {{- 'button.be_partner' | trans -}}
                         </a>
-                    {% endif %}
+                    {%- endif -%}
                 </div>
-
-            {% elseif config.getNumberOfEnabled == 2 %}
+            {%-
+                elseif
+                enabledButtons | length == 2
+            -%}
                 {# 2 cols #}
-                {% if config.isSignupMenteesEnabled and config.isSignupMentorsEnabled %}
+                {%-
+                    if
+                    (enabledButtons.mentees is defined and enabledButtons.mentors is defined)
+                -%}
                     {# be a mentee, be a mentor #}
                     <div class="col-md-6 main-button">
                         <a href="{{ path('mentee_apply') }}" class="btn btn-primary btn-lg">
@@ -40,7 +62,10 @@
                             {{- 'button.be_mentor' | trans -}}
                         </a>
                     </div>
-                {% elseif config.isSignupMenteesEnabled and config.isSignupPartnersEnabled %}
+                {%-
+                    elseif
+                    (enabledButtons.mentees is defined and enabledButtons.partners is defined)
+                -%}
                     {# be a mentee, be a partner #}
                     <div class="col-md-6 main-button">
                         <a href="{{ path('mentee_apply') }}" class="btn btn-primary btn-lg">
@@ -52,7 +77,10 @@
                           {{- 'button.be_partner' | trans -}}
                         </a>
                     </div>
-                {% elseif config.isSignupMentorsEnabled and config.isSignupPartnersEnabled %}
+                {%-
+                    elseif
+                    (enabledButtons.mentors is defined and enabledButtons.partners is defined)
+                -%}
                     {# be a mentor, be a partner #}
                     <div class="col-md-6 main-button">
                         <a href="{{ path('mentor_apply') }}" class="btn btn-primary btn-lg">
@@ -64,9 +92,12 @@
                           {{- 'button.be_partner' | trans -}}
                         </a>
                     </div>
-                {% endif %}
+                {%- endif -%}
 
-            {% elseif config.getNumberOfEnabled == 3 %}
+            {%-
+                elseif
+                enabledButtons | length == 3
+            -%}
                 {# 3 cols #}
                 <div class="col-md-4 main-button">
                     <a href="{{ path('mentee_apply') }}" class="btn btn-primary btn-lg">
@@ -83,10 +114,9 @@
                       {{- 'button.be_partner' | trans -}}
                     </a>
                 </div>
-            {% endif %}
-
+            {%- endif -%}
         </div><!-- row -->
     </div><!-- jumbotron -->
-{% endspaceless %}
-{% endif %}
-{% endif %}
+    {%- endif -%}
+{%- endspaceless -%}
+{%- endif -%}

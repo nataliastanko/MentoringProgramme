@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Entity\About;
+use AdminBundle\Security\Annotation\SectionEnabled;
 
 /**
  * Admin About controller.
@@ -17,6 +18,7 @@ use Entity\About;
  *
  * @Route("/about")
  * @Security("is_granted('ROLE_ADMIN')")
+ * @SectionEnabled(name="about")
  */
 class AboutController extends Controller
 {
