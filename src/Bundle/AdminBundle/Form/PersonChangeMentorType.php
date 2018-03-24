@@ -12,6 +12,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Entity\Person;
 
+/**
+ * @author Natalia Stanko <contact@nataliastanko.com>
+ */
 class PersonChangeMentorType extends AbstractType
 {
     /**

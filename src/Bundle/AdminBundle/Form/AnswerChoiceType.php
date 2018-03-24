@@ -9,11 +9,13 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 // use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
 
+/**
+ * @author Natalia Stanko <contact@nataliastanko.com>
+ */
 class AnswerChoiceType extends AbstractType
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array                $options
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

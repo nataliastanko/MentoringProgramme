@@ -12,11 +12,13 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
 use Entity\Question;
 
+/**
+ * @author Natalia Stanko <contact@nataliastanko.com>
+ */
 class QuestionType extends AbstractType
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array                $options
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

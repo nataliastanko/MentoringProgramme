@@ -8,11 +8,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
 
+/**
+ * @author Natalia Stanko <contact@nataliastanko.com>
+ */
 class RuleType extends AbstractType
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array                $options
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -20,24 +22,15 @@ class RuleType extends AbstractType
             ->add(
                 'translations', TranslationsType::class, [
                     'label' => 'form.translations.self',
-                    'locales' => ['pl', 'en'],
-                    'required_locales' => ['pl'],
                     'fields' => [
                         'content' => [
                             'field_type' => TextareaType::class,
                             'label' => 'rule.content',
-                            // 'locale_options' => [
-                            //     'en' => [
-                            //         'label' => 'abc en'
-                            //     ],
-                            //     'pl' => [
-                            //         'label' => 'abc pl'
-                            //     ]
-                            // ]
                         ],
                     ],
                 ]
-            );
+            )
+            ;
     }
 
     /**

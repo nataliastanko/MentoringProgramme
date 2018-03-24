@@ -6,6 +6,9 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Entity\User;
 
+/**
+ * @author Natalia Stanko <contact@nataliastanko.com>
+ */
 class LoadUserData implements FixtureInterface
 {
     /**

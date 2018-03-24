@@ -6,6 +6,9 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Entity\About;
 
+/**
+ * @author Natalia Stanko <contact@nataliastanko.com>
+ */
 class LoadTextData implements FixtureInterface
 {
     /**

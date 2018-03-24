@@ -25,3 +25,11 @@ services:
     autowire: true
     tags:
         - { name: kernel.event_listener, event: kernel.controller }
+
+  locale.form.provider:
+    class: AdminBundle\Service\Locale\LocaleFormProvider
+    arguments: #default values for parent constructor
+      - ['en']
+      - 'en'
+      - ['en']
+      - '@subdomain.detection'

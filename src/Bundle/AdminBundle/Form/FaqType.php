@@ -8,11 +8,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
 
+/**
+ * @author Natalia Stanko <contact@nataliastanko.com>
+ */
 class FaqType extends AbstractType
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array                $options
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

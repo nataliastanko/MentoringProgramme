@@ -10,11 +10,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 // use Entity\Mentor;
 use Petkopara\MultiSearchBundle\Form\Type\MultiSearchType;
 
+/**
+ * @author Natalia Stanko <contact@nataliastanko.com>
+ */
 class MentorSearch extends AbstractType
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array                $options
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
