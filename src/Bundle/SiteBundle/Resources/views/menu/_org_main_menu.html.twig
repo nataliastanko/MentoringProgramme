@@ -60,12 +60,11 @@
           <a href="{{ path('faq') }}">{{ 'menu.faq' | trans }}</a>
         </li>
         {%- endif -%}
-        <li class="lang">
-          <a href="{{ path('edition_show', {'_locale' : "en", 'edition':edition.id, }) }}"><i class="fa fa-flag-o"></i>&nbsp;EN</a>
-        </li>
-        <li class="lang">
-          <a href="{{ path('edition_show', {'_locale' : "pl", 'edition':edition.id}) }}"><i class="fa fa-flag-o"></i>&nbsp;PL</a>
-        </li>
+        {%- for l in organization.locales -%}
+          <li class="lang">
+            <a href="{{ path('edition_show', {'_locale' : l, 'edition':edition.id, }) }}"><i class="fa fa-flag-o"></i>&nbsp;{{- l|upper -}}</a>
+          </li>
+        {%- endfor -%}
         <li class="social">
           <a href="https://www.facebook.com/techleadersWIT/"><i class="fa fa-facebook-square"></i></a>
         </li>

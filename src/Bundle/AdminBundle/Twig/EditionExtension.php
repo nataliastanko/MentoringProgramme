@@ -35,6 +35,7 @@ class EditionExtension extends \Twig_Extension
             'getSignupConfig' => new \Twig_SimpleFunction('getSignupConfig', array($this, 'getSignupConfig')),
             'getEnabledButtons' => new \Twig_SimpleFunction('getEnabledButtons', array($this, 'getEnabledButtons')),
             'getSectionsEnabled' => new \Twig_SimpleFunction('getSectionsEnabled', array($this, 'getSectionsEnabled')),
+            'getOrganization' => new \Twig_SimpleFunction('getOrganization', array($this, 'getOrganization')),
         ];
     }
 

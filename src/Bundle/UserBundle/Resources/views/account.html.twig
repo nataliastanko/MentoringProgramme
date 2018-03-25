@@ -33,7 +33,7 @@
 </head>
 
 <body class="account">
-
+  {%- set organization = getOrganization() -%}
   <div class="navbar navbar-default navbar-fixed-top">
     <div class="container">
      <span class="label label-success organization-label">
@@ -56,12 +56,11 @@
               {% endimage %}
             </a>
           </li>
+          {%- for l in organization.locales -%}
           <li class="lang">
-            <a href="{{ path('account_change_locale', {'locale' : "en", }) }}"><i class="fa fa-flag-o"></i>&nbsp;EN</a>
+            <a href="{{ path('account_change_locale', {'locale' : l, }) }}"><i class="fa fa-flag-o"></i>&nbsp;{{- l|upper -}}</a>
           </li>
-          <li class="lang">
-            <a href="{{ path('account_change_locale', {'locale' : "pl" }) }}"><i class="fa fa-flag-o"></i>&nbsp;PL</a>
-          </li>
+          {%- endfor -%}
         </ul>
       </div>
     </div>
