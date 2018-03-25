@@ -27,12 +27,14 @@ services:
       tags:
         - { name: doctrine.event_listener, event: prePersist , priority: -100}
 
-  # form.organization.subscriber:
-  #     class: Repository\Form\Subscriber\OrganizationSubscriber
-  #     autowire: true
+  form.organization.subscriber:
+      class: Repository\Form\Subscriber\OrganizationSubscriber
+      autowire: true
+      tags:
+        - { name: kernel.event_listener, event: form.pre_bind, method: onSubmit }
 
-  # form.organization.extension:
-  #     class: Repository\Form\OrganizationFormTypeExtension
-  #     autowire: true
-  #     tags:
-  #       - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FromType }
+  form.organization.extension:
+      class: Repository\Form\OrganizationFormTypeExtension
+      autowire: true
+      tags:
+        - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }
