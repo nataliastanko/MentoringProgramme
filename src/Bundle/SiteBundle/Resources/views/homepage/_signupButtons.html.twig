@@ -37,7 +37,7 @@
                         enabledButtons.partners is defined
                     -%}
                         {# be a partner only #}
-                        <a href="mailto:{{- email_partner | url_encode -}}" class="btn btn-primary btn-lg">
+                        <a href="mailto:{{- organization.partnersEmail -}}" class="btn btn-primary btn-lg">
                           {{- 'button.be_partner' | trans -}}
                         </a>
                     {%- endif -%}
@@ -73,7 +73,7 @@
                         </a>
                     </div>
                     <div class="col-md-6 main-button">
-                        <a href="mailto:{{- email_partner | url_encode -}}" class="btn btn-primary btn-lg">
+                        <a href="mailto:{{- organization.partnersEmail -}}" class="btn btn-primary btn-lg">
                           {{- 'button.be_partner' | trans -}}
                         </a>
                     </div>
@@ -88,7 +88,7 @@
                         </a>
                     </div>
                     <div class="col-md-6 main-button">
-                        <a href="mailto:{{- email_partner | url_encode -}}" class="btn btn-primary btn-lg">
+                        <a href="mailto:{{- organization.partnersEmail -}}" class="btn btn-primary btn-lg">
                           {{- 'button.be_partner' | trans -}}
                         </a>
                     </div>
@@ -110,7 +110,7 @@
                     </a>
                 </div>
                 <div class="col-md-4 main-button">
-                    <a href="mailto:{{- email_partner | url_encode -}}" class="btn btn-primary btn-lg">
+                    <a href="mailto:{{- organization.partnersEmail -}}" class="btn btn-primary btn-lg">
                       {{- 'button.be_partner' | trans -}}
                     </a>
                 </div>

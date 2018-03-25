@@ -60,7 +60,7 @@ class Partner
     /**
      * Email address.
      *
-     * @var                       string
+     * @var string
      * Assert\NotBlank(
      *     message = "email.notBlank",
      *     groups={"settings"}

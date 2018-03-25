@@ -1,5 +1,6 @@
 menu:
     info: Informacje
+    organization: Organizator
     gotopanel: "Panel admin."
     account: "Konto"
     users: "Użytkownicy"

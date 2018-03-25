@@ -52,7 +52,7 @@ class PartnerController extends Controller
     /**
      * Lists all Partner entities.
      *
-     * @Route("/",    name="partner_index")
+     * @Route("/", name="partner_index")
      * @Method("GET")
      * @Template
      */
@@ -70,7 +70,7 @@ class PartnerController extends Controller
     /**
      * Creates a new Partner entity.
      *
-     * @Route("/new",  name="partner_new")
+     * @Route("/new", name="partner_new")
      * @Method({"GET", "POST"})
      * @Template
      */
@@ -115,7 +115,7 @@ class PartnerController extends Controller
      * Displays a form to edit an existing Partner entity.
      *
      * @Route("/{id}/edit", name="partner_edit")
-     * @Method({"GET",      "POST"})
+     * @Method({"GET", "POST"})
      * @Template
      */
     public function editAction(Request $request, Partner $partner)
@@ -142,7 +142,7 @@ class PartnerController extends Controller
     /**
      * Deletes a Partner entity.
      *
-     * @Route("/{id}",   name="partner_delete")
+     * @Route("/{id}", name="partner_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Partner $partner)

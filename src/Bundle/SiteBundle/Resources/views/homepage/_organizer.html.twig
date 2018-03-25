@@ -6,13 +6,17 @@
   <div class="row">
     <div class="col-sm-12 col-md-12">
       <div class="thumbnail">
-          <div class="picture">
-            <a href="http://womenintechnology.pl">
-              {%- image '@wit_logo_transparent' -%}
-                  <img src="{{ asset_url }}" alt="Women in Technology Logo" />
-              {%- endimage -%}
-            </a>
-        </div>
+            {%- if organization.url -%}<a href="{{ organization.url }}">{% endif -%}
+            {%- if organization.logoFileName -%}
+              <div class="picture">
+                <img src="{{ vich_uploader_asset(organization, 'logoFile') | imagine_filter('organization_logo_homepage') }}" alt="{{ 'menu.organization'|trans }}" />
+              </div>
+            {% endif %}
+            <div class="caption text-center">
+              <h5>{{- organization.name -}}</h5>
+            </div>
+            {%- if organization.url -%}</a>{%- endif -%}
+            {# url ends #}
       </div>
     </div>
   </div>
