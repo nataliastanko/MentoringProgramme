@@ -38,14 +38,10 @@ class InvitationFormType extends AbstractType
 
     /**
      * Hidden form field
-     * @return [type] [description]
      */
     public function getParent()
     {
         return 'Symfony\Component\Form\Extension\Core\Type\HiddenType';
-
-        // Or for Symfony < 2.8
-        // return 'text'; // hidden
     }
 
     public function getBlockPrefix()

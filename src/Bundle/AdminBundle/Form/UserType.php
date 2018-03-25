@@ -16,7 +16,6 @@ use Entity\Invitation;
  */
 class UserType extends AbstractType
 {
-
     /**
      * {@inheritdoc}
      */

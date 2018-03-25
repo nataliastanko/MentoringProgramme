@@ -24,19 +24,29 @@ class OrganizationSubscriber implements EventSubscriberInterface
     {
         // Tells the dispatcher that you want to listen on the form.pre_set_data
         // event and that the preSetData method should be called.
-        return array(
-            // FormEvents::PRE_SUBMIT   => 'preSubmit',
-            FormEvents::PRE_SUBMIT   => 'onPreSubmit',
-        );
+        return [
+            FormEvents::SUBMIT => 'onSubmit',
+        ];
     }
 
-    public function onPreSubmit(FormEvent $event)
+    public function onSubmit(FormEvent $event)
     {
-        $entity = $event->getData();
         $form = $event->getForm();
 
-        $organization = $this->subdomainDetection->getOrganization();
-        $entity->setOrganization($organization);
-
+        /**
+         * Temporary fix
+         * @todo replace with kernel.event_subscriber
+         * and check for the correct form
+         * @see https://stackoverflow.com/questions/36111439/symfony-access-entity-manager-inside-eventsubscriber
+         * example
+         */
+        if (!$form->isRoot()) {
+            $form = $form->getRoot();
+            if (!$form->has('organization')) {
+                $entity = $form->getData();
+                $organization = $this->subdomainDetection->getOrganization();
+                $entity->setOrganization($organization);
+            }
+        }
     }
 }
