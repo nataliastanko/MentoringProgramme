@@ -1,5 +1,10 @@
 page:
     login: "Log in"
+organization:
+    edit: "Edit organization details"
+    email:
+        partners: "Partners to apply email address"
+        contact: "Contact address"
 user:
     list: "Users list"
     details: "User"

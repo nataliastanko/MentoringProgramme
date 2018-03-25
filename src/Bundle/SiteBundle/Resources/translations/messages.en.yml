@@ -1,5 +1,6 @@
 menu:
     info: Info
+    organization: Organizer
     gotopanel: "Admin panel"
     account: "Account"
     users: "Users"

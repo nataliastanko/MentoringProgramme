@@ -11,20 +11,23 @@
         <div class="col-sm-4{%- if (loop.index) % 2 == 1 %} col-md-offset-2{%- endif -%}">
           <div class="thumbnail">
             <div class="picture">
+              {%- if o.logoFileName -%}
+                <img src="{{ vich_uploader_asset(o, 'logoFile') | imagine_filter('organization_logo_thumb') }}" alt="{{ 'menu.organization'|trans }}" />
+              {% endif %}
             </div>
-          <div class="caption text-center">
-            <h3 class="mentor-name">{{- o.country -}}</h3>
-            <div class="occupation-wrapper">
-              <div class="occupation">
-                {{- o.name -}}
+            <div class="caption text-center">
+              <h3 class="mentor-name">{{- o.country -}}</h3>
+              <div class="occupation-wrapper">
+                <div class="occupation">
+                  {{- o.name -}}
+                </div>
+                <br />
+                <a class="btn btn-success" href="{{ path('homepage', {'subdomain':o.subdomain}) }}" role="button">Enter the program »</a>
               </div>
-              <br />
-              <a class="btn btn-success" href="{{ path('homepage', {'subdomain':o.subdomain}) }}" role="button">Enter the program »</a>
             </div>
-          </div>
           </div>
         </div><!-- /.col-lg-4 -->
-    {%- if loop.index % 3 == 0 or loop.last -%}
+      {%- if loop.index % 3 == 0 or loop.last -%}
       </div>{# row ends#}
     {%- endif -%}
   {%- endfor -%}

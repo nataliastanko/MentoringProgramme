@@ -25,7 +25,6 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-    email.email_partner: '%email_partner%'
     paginate.limit: 50
     # httpProtocol: http
 framework:
@@ -61,7 +60,6 @@ twig:
         - 'SiteBundle:form:vich_form_theme.html.twig'
 
     globals:
-        email_partner: '%email.email_partner%'
         pathToWeb: "%kernel.root_dir%/../web"
 
     # https://symfony.com/doc/current/templating/namespaced_paths.html

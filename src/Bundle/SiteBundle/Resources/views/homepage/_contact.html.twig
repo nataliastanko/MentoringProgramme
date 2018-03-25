@@ -1,3 +1,4 @@
+{%- if organization.contactEmail -%}
 <section id="contact-group">
   <div id="contact" class="page-header">
       <h1>{{ 'menu.contact' | trans }}</h1>
@@ -5,9 +6,9 @@
   {% spaceless %}
   <div class="row">
     <div class="col-md-6 col-sm-12">
-      <div class="list-group">
-        <a class="list-group-item" href="mailto:{{ "krakow@womenintechnology.pl" | url_encode  }}">
-          <h4 class="list-group-item-heading"><i class="fa fa-envelope"></i>&nbsp;&nbsp;krakow at womenintechnology.pl</h4>
+      <div class="list-group">{# organization.contactEmail | url_encode #}
+        <a class="list-group-item" href="mailto:{{ organization.contactEmail }}">
+          <h4 class="list-group-item-heading"><i class="fa fa-envelope"></i>&nbsp;&nbsp;{{ organization.contactEmail }}</h4>
           <p class="list-group-item-text">{{ 'contact.content' | trans }}</p>
         </a>
       </div>
@@ -15,3 +16,4 @@
   </div>
   {% endspaceless %}
 </section>
+{%- endif -%}

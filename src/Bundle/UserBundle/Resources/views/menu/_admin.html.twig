@@ -14,6 +14,8 @@
   app.request.attributes.get('_route') starts with 'rule_'
   or
   app.request.attributes.get('_route') starts with 'about_'
+  or
+  app.request.attributes.get('_route') starts with 'organization_'
 %} active{%- endif -%}">
   <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
     {{- 'menu.sitecontent' | trans }} <span class="caret"></span>
@@ -49,6 +51,10 @@
         <a href="{{ path('gallery_index') }}">{{ 'menu.gallery' | trans }}</a>
       </li>
     {%- endif -%}
+    {# organizer info #}
+    <li{%- if app.request.attributes.get('_route') starts with 'organization_' %} class="active"{% endif -%}>
+      <a href="{{ path('organization_show') }}">{{ 'menu.organization' | trans }}</a>
+    </li>
   </ul>
 </li>
 
