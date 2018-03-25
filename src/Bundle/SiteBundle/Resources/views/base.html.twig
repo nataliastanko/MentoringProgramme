@@ -36,6 +36,7 @@
   </head>
   <body class="organization">
     {%- set sections = getSectionsEnabled() -%}
+    {%- set organization = getOrganization() -%}
 
     {% spaceless %}
       {%- include 'SiteBundle:menu:_org_main_menu.html.twig' -%}
