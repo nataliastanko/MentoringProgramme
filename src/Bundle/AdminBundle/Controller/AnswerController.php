@@ -41,7 +41,7 @@ class AnswerController extends Controller
         $question = $em->getRepository('Entity:Question')->findOneById($id);
 
         $query = $em
-            ->createQuery('SELECT a FROM AdminQuestionnaireBundle:Answer a WHERE a.question = :id')
+            ->createQuery('SELECT a FROM AdminBundle:Answer a WHERE a.question = :id')
             ->setParameter(':id', $id);
 
         $answers = $this->get('knp_paginator')->paginate(

@@ -55,10 +55,6 @@ class MenteeController extends Controller
             throw $this->createNotFoundException('No edition found');
         }
 
-        // return $this->render('SiteBundle:Signup:closed.html.twig',
-        //   ['edition' => $edition]
-        // );
-
         $repo = $em->getRepository('Entity:Question');
         $questions = $repo->getFromType(Question::TYPE_MENTEE);
 
@@ -102,7 +98,7 @@ class MenteeController extends Controller
             $this->sendEmail($person->getEmail(), $templateArgs);
 
             return $this->render(
-                'SiteBundle:Mentee:thankyou.html.twig',
+                'SiteBundle:mentee:thankyou.html.twig',
                 $twigArr
             );
         }
