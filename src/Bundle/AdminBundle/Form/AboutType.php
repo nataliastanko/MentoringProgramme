@@ -20,20 +20,9 @@ class AboutType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            // ->add('name', TextType::class, [
-            //         'label' => 'about.name',
-            //         'required' => false
-            //     ]
-            // )
-            // ->add('content', TextareaType::class, [
-            //         'label' => 'about.content',
-            //     ]
-            // )
             ->add(
                 'translations', TranslationsType::class, [
                     'label' => 'form.translations.self',
-                    'locales' => ['pl', 'en'],
-                    'required_locales' => ['pl'],
                     'fields' => [
                         'name' => [
                             'field_type' => TextType::class,

@@ -29,16 +29,10 @@ class ImageType extends AbstractType
                  'download_link' => true, // not mandatory, default is true
                  ]
             )
-            // ->add('description', TextareaType::class, [
-            //         'label' => 'rule.content',
-            //     ]
-            // )
             ->add(
                 'translations', TranslationsType::class, [
                     'required' => false,
                     'label' => 'form.translations.self',
-                    'locales' => ['pl', 'en'],
-                    'required_locales' => ['pl'],
                     'fields' => [
                         'description' => [
                             'field_type' => TextareaType::class,

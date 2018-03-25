@@ -1,6 +1,6 @@
 <?php
 
-namespace Repository\Form;
+namespace AdminBundle\Form\Extension;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -9,7 +9,7 @@ use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use SiteBundle\Service\SubdomainDetection;
-use Repository\Form\Subscriber\OrganizationSubscriber;
+use AdminBundle\Form\Subscriber\OrganizationSubscriber;
 
 /**
  * Form Type Extension
@@ -32,8 +32,23 @@ class OrganizationFormTypeExtension extends AbstractTypeExtension
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        // @todo Add organization subscriber to translatable forms only
-        $builder->addEventSubscriber(new OrganizationSubscriber($this->subdomainDetection));
+        // Add organization subscriber to translatable forms only
+        $formName = $builder->getForm()->getName();
+
+        // underscored short class name, (e.g. "UserProfileType" => "user_profile")
+        $translatableFormsWithOrganization = [
+            'rule',
+            'about',
+            'faq',
+            'mentor_faq',
+            'mentor',
+            'person',
+            'question'
+        ];
+
+        if (in_array($formName, $translatableFormsWithOrganization)) {
+            $builder->addEventSubscriber(new OrganizationSubscriber($this->subdomainDetection));
+        }
     }
 
     /**

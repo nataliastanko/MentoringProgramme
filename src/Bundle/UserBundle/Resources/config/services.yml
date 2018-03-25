@@ -70,6 +70,7 @@ services:
     arguments: ['%kernel.default_locale%']
     tags:
       - { name: kernel.event_subscriber }
+
   dateformat.twig.extension:
     class: UserBundle\Twig\DateFormatExtension
     tags:

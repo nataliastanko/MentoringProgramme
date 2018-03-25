@@ -23,8 +23,6 @@ class MentorFaqType extends AbstractType
             ->add(
                 'translations', TranslationsType::class, [
                     'label' => 'form.translations.self',
-                    'locales' => ['pl', 'en'],
-                    'required_locales' => ['pl'],
                     'fields' => [
                         'question' => [
                             'field_type' => TextareaType::class,

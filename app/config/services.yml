@@ -4,6 +4,14 @@
   # knp.doctrine_behaviors.translatable_subscriber.default_locale_callable.class: AppBundle\EventListener\LocaleCallable
 
 services:
+  # New in Symfony 3.3: Simpler service configuration
+  # _defaults:
+  #   autowire: true
+  # _instanceof:
+  #   # Add tag to all services defined in this file having this type
+  #   Symfony\Component\EventDispatcher\EventSubscriberInterface:
+  #     tags: ['kernel.event_subscriber']
+
   # truncate, wordwrap
   twig.extension.text:
    class: Twig_Extensions_Extension_Text
@@ -26,15 +34,3 @@ services:
       autowire: true
       tags:
         - { name: doctrine.event_listener, event: prePersist , priority: -100}
-
-  form.organization.subscriber:
-      class: Repository\Form\Subscriber\OrganizationSubscriber
-      autowire: true
-      tags:
-        - { name: kernel.event_listener, event: form.pre_bind, method: onSubmit }
-
-  form.organization.extension:
-      class: Repository\Form\OrganizationFormTypeExtension
-      autowire: true
-      tags:
-        - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }

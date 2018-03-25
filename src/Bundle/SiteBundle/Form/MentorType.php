@@ -91,9 +91,7 @@ class MentorType extends AbstractType
             // bio is translatable
             ->add(
                 'translations', TranslationsType::class, [
-                    'locales' => ['pl', 'en'], // @FIXME hardcoded locale list
                     'required' => false, // backend validation - atLeastOneBio
-                    // 'required_locales' => ['pl'],
                     'label' => 'form.translations.self',
                     // 'error_bubbling' => true,
                     'fields' => [
