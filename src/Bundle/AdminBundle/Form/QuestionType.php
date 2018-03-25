@@ -49,9 +49,7 @@ class QuestionType extends AbstractType
             )
             ->add(
                 'translations', TranslationsType::class, [
-                    'locales' => ['pl', 'en'], // @FIXME hardcoded locale list
                     'required' => false, // backend validation - atLeastOneBio
-                    // 'required_locales' => ['pl', 'en'],
                     'label' => 'form.translations.self',
                     'fields' => [
                         'name' => [

@@ -33,3 +33,15 @@ services:
       - 'en'
       - ['en']
       - '@subdomain.detection'
+
+  form.organization.subscriber:
+      class: AdminBundle\Form\Subscriber\OrganizationSubscriber
+      autowire: true
+      tags:
+        - { name: kernel.event_listener, event: form.pre_bind, method: onSubmit }
+
+  form.organization.extension:
+      class: AdminBundle\Form\Extension\OrganizationFormTypeExtension
+      autowire: true
+      tags:
+        - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }

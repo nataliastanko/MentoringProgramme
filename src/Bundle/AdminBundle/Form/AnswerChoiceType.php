@@ -20,15 +20,9 @@ class AnswerChoiceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            // ->add('name', TextType::class, [
-            //         'label' => 'choice.name',
-            //     ]
-            // )
             ->add(
                 'translations', TranslationsType::class, [
                     'label' => 'form.translations.self',
-                    'locales' => ['pl', 'en'],
-                    'required_locales' => ['pl'],
                     'fields' => [
                         'name' => [
                             'field_type' => TextType::class,
