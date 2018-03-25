@@ -22,7 +22,7 @@ class Version20180323222509 extends AbstractMigration
 
         // insert organization data
         // poland
-        $this->addSql("INSERT INTO `section_config` (`organization_id`, `section`, `is_enabled`) VALUES (1, 'about', 1), (1, 'mentors', 1), (1, 'partners', 1), (1, 'rules', 1), (1, 'mentorsfaq', 1), (1, 'mentees', 1), (1, 'gallery', 1), (1, 'sponsors', 1),(1, 'calendar', 1)");
+        $this->addSql("INSERT INTO `section_config` (`organization_id`, `section`, `is_enabled`) VALUES (1, 'about', 1), (1, 'mentors', 1), (1, 'faq', 1), (1, 'partners', 1), (1, 'rules', 1), (1, 'mentorfaq', 1), (1, 'mentees', 1), (1, 'gallery', 1), (1, 'sponsors', 1),(1, 'calendar', 1)");
         // russia
         $this->addSql("INSERT INTO `section_config` (`organization_id`, `section`, `is_enabled`) VALUES (2, 'partners', 1), (2, 'about', 1), (2, 'faq', 1), (2, 'rules', 1), (2, 'sponsors', 1)");
         // end inserting new organization data
