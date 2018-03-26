@@ -4,10 +4,8 @@
        {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
             {{ form_widget(form) }}
             <div>
-                {# @TODO @FIXME button.save translation #}
                 <input class="btn btn-primary btn-sm" type="submit" value="{{ 'button.save' | trans({}, null) }}" />
             </div>
         {{ form_end(form) }}
     </div>
 </div>
-{# @TODO refresh user in session after saved changes (eg email) #}

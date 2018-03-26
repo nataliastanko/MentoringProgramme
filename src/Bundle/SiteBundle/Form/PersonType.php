@@ -38,7 +38,7 @@ class PersonType extends AbstractType
             )
             ->add(
                 'lastName', TextType::class, [
-                    'label' => 'person.lastName',
+                    'label' => 'lastname',
                 ]
             )
             ->add(
@@ -81,7 +81,7 @@ class PersonType extends AbstractType
             )
             ->add(
                 'videoUrl', UrlType::class, [
-                    'label' => 'mentee.url',
+                    'label' => 'mentee.url.self',
                     'required' => false,
                 ]
             )

@@ -34,6 +34,7 @@ class AppKernel extends Kernel
             new Petkopara\MultiSearchBundle\PetkoparaMultiSearchBundle(),
             new Liuggio\ExcelBundle\LiuggioExcelBundle(),
             // new cspoo\Swiftmailer\MailgunBundle\cspooSwiftmailerMailgunBundle(),
+            new Lexik\Bundle\TranslationBundle\LexikTranslationBundle(),
 
             new AdminBundle\AdminBundle(),
             new UserBundle\UserBundle(),

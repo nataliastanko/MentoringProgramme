@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\Common\Annotations\Reader;
 use Entity\Organization;
 use SiteBundle\Service\SubdomainDetection;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @author Michaël Perrin (http://blog.michaelperrin.fr)
@@ -22,7 +23,7 @@ class Configurator
     /** @var SubdomainDetection */
     private $subdomainDetection;
 
-    public function __construct(EntityManager $em, Reader $reader, SubdomainDetection $subdomainDetection)
+    public function __construct(EntityManagerInterface $em, Reader $reader, SubdomainDetection $subdomainDetection)
     {
         $this->em = $em;
         $this->reader = $reader;

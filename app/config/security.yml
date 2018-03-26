@@ -10,6 +10,7 @@ security:
         ROLE_MENTEE: ROLE_USER
         ROLE_MENTOR: ROLE_USER
         ROLE_ADMIN: ROLE_USER
+        ROLE_TRANSLATOR: ROLE_USER
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
@@ -43,4 +44,5 @@ security:
 
         - { path: '^/admin', role: ROLE_ADMIN }
         - { path: '^/account', role: ROLE_USER }
+        - { path: '^/translations', role: ROLE_TRANSLATOR }
         - { path: '^/', role: IS_AUTHENTICATED_ANONYMOUSLY }

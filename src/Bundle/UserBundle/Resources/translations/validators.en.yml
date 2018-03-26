@@ -1,16 +1,15 @@
 user:
     name:
-        notBlank: "Please enter your name"
+        notBlank: 'Please enter your name'
     lastName:
-        notBlank: "Please enter your last name"
+        notBlank: 'Please enter your last name'
     url:
-        taken: "User with that url already exists"
+        taken: 'User with that url already exists'
     email:
-        taken: "This email is already taken"
-        notMatch: "Please provide a valid email address"
-        notBlank: "Please provide an email address"
+        taken: 'This email is already taken'
+        notMatch: 'Please provide a valid email address'
+        notBlank: 'Please provide an email address'
     numbers:
-        notAllowed: "Numbers are not allowed"
+        notAllowed: 'Numbers are not allowed'
     invitation:
-        empty:
-            'There is something wrong with your invitation'
+        empty: 'There is something wrong with your invitation'

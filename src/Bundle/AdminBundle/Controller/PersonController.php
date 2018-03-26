@@ -273,7 +273,7 @@ class PersonController extends Controller
             );
 
             // flash message
-            $request->getSession() ->getFlashBag()
+            $request->getSession()->getFlashBag()
                 ->add('warning', 'Unable to generate xls file');
             return $this->redirectToRoute('person_index');
         }

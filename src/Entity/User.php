@@ -35,7 +35,7 @@ use Repository\Annotation\OrganizationAware;
  * )
  * @UniqueEntity(
  *     fields="email",
- *     message="user.email.taken",
+ *     message="email.taken",
  *     groups={"settings", "register"}
  * )
  * @ORM\Entity(repositoryClass="Repository\UserRepository")

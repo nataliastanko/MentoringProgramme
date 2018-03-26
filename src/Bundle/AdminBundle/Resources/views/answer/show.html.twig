@@ -2,13 +2,13 @@
 
 {% block body -%}
     <div class="page-header">
-        <h1>{{ 'answer.details' | trans }}</h1>
+        <h1>{{ 'answer.name' | trans }}</h1>
     </div>
 
     <table class="table table-hover">
         <tbody>
             <tr>
-                <th>{{ 'person.name' | trans }} {{ 'person.lastName' | trans }}</th>
+                <th>{{ 'person.name' | trans }} {{ 'lastname' | trans }}</th>
                 <td>
                     {%- if answer.person is not empty -%}
                         {{- answer.person.fullname -}}

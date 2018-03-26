@@ -1,274 +1,161 @@
-page:
-    login: "Log in"
-organization:
-    edit: "Edit organization details"
-    email:
-        partners: "Partners to apply email address"
-        contact: "Contact address"
-user:
-    list: "Users list"
-    details: "User"
-    edit: "User edit"
-    name: "Name"
-    lastName: "Last name"
-    phoneNumber: "Phone number"
-    url: "WWW (e.g. blog)"
-    photo: "Photo"
-    city: "City"
-    register:
-        failure: 'You can not be logged in to this application.'
-        success: 'Hello %name%! You are successfully logged in with email %email%'
-    already:
-        logged: You are already logged in
-        registered: This user is already registered
-admin:
-    self: "Admin"
-mail:
-    apply:
-        confirmation:
-            subject: 'Confirmation mail from Tech Leaders'
-    invite:
-        already:
-            sent: "The invitation has already been sent to this person"
-        subject: 'Invitation to register to Tech Leaders programme'
-    link.to.register: 'Link to registration'
-invitation:
-    self: "Invite to signup"
-    sent:
-        to: "Invitation sent to"
-    accepted: "Invitation to register to the program has been accepted"
-    pending: "Pending acceptance do register to the program"
-config:
-    warning:
-        isSignupMentorsEnabled: "Signup for mentees is still open"
-    signup:
-        isSignupMentorsEnabled: "Signup for mentors enabled?"
-        isSignupPartnersEnabled: "Signup for partners enabled?"
-        isSignupMenteesEnabled: "Signup for mentees enabled?"
-        isChosenMenteesVisible: "Chosen mentees list visible?"
-        not:
-            enabled: "Sign up not enabled"
-        closed: "Signup is closed. We invite you to take part in a next edition."
-    edit: "Set signup configuration"
-    current: "Current signup setup"
-hour: "h."
-form:
-    translations:
-        self: "Fill in translations"
-        mentor:
-            bio: "Please write your biogram in English (and other languages if you are able to)"
-photo: "Photo"
-created: "Created at"
-updated: "Updated at"
-url: "WWW page"
-result.empty: "Empty result"
-option:
-    not:
-        enabled: "Feature unavailable"
-button:
-    profile: "Profile"
-    show: "Details"
-    back: "Back"
-    edit: "Edit"
-    save: "Save"
-    new: "Add new"
-    delete: "Delete"
-    enable: "Enable"
-    disable: "Disable"
-    cancel: "Cancel"
-    preview: 'Preview'
-    sort: 'Sort'
-    learn.more: "Learn more"
-    close: "Close"
-    search: "Search"
-    invite: "Send invite"
-edition: Edition
-editions: Editions
-partner:
-    list: "Partner list"
-    name: "Name"
-    new: "New partner"
-    edit: "Edit partner"
-    description: "Additional description"
-sponsor:
-    list: "Sponsor list"
-    name: "Name"
-    new: "New sponsor"
-    edit: "Edit sponsor"
-    description: "Additional info about sponsor"
-person:
-    list: "Mentees list"
-    details: "Person"
-    name: "Name"
-    lastName: "Last name"
-    age: "Age"
-    education: "Education background"
-    video:
-        provider: "Link to video comes from"
-        problem: "Problems with rendering video?"
-        bad_url: "Problems with unrecognizable wideo:"
-        go_to: "Go to movie link"
-    statute: "I hereby give consent for my personal data included in my application to be processed for the purposes of the Tech Leaders mentoring programme under the Personal Data Protection Act as of 29 August 1997, consolidated text: Journal of Laws 2016, item 922 as amended."
-    rules: "I accept techleaders program rules."
 mentee:
-    self: "Mentee"
-    email: "Mentee's e-mail"
-    list: "Mentees"
-    chosenAre: "It was very difficult choice because we've received many applications but the winners are:"
-    join: "Join the program as a mentee!"
-    url: "Paste the url with video (youtube, vimeo etc)"
-    url.description: "You can add a video with yourself, show us the best side of you! The film is a non-mandatory option. It will be played only by the team that created Tech Leaders. This film will not be published anywhere."
-    education:
-        1: vocational school
-        2: secondary education
-        3: bachelor's degree or master's degree
-    originalMentorChoice: "Mentee's original mentor choice"
+    originalMentorChoice: 'Mentee`s original mentor choice'
     changeMentor:
-        button: "Change person's mentor choice"
-        description: "Change original mentee's choice. After this choice the mentee could be chosen by this newly chosen mentor."
+        button: 'Change person`s mentor choice'
+        description: 'Change original mentee`s choice. After this choice the mentee could be chosen by this newly chosen mentor.'
         not:
             enabled: 'Changing mentor is possible only after the end of mentees signup and before the person is chosen.'
-    isAccepted: "Accepted for the mentor's choice?"
-    isChosen: "Chosen to the program?"
+    isAccepted: 'Accepted for the mentor`s choice?'
+    isChosen: 'Chosen to the program?'
     accept:
-        button: "Accept for the mentor's choice"
-        description: "First accept the mentee. Only after acceptation mentee becomes visible for mentor choice."
+        button: 'Accept for the mentor`s choice'
+        description: 'First accept the mentee. Only after acceptation mentee becomes visible for mentor choice.'
     accepted:
         description: 'The mentee has undergone initial recruitment to the programme'
     choose:
         button: 'Choose this mentee on behalf of mentor'
         mentorButton: 'Choose this mentee'
-        hint: "Choose wisely :)"
+        hint: 'Choose wisely :)'
         description: 'This action means assigning this person to chosen mentor as her/his mentee. This is making decision on behalf of mentor.'
     chosen:
         description: 'Mentee has been chosen to the program'
     rejected: 'Mentee has not been chosen to the program'
 mentor:
-    self: "Mentor"
-    email: "Mentor's e-mail"
-    new: "New mentor"
-    edit: "Edit mentor"
-    list: "Mentors list"
-    name: "Name"
-    lastName: "Last name"
-    url: "Main page url"
-    url.description: "Portfolio webpage"
-    personalUrl: "Additional page url"
-    personalUrl.description: "Organization"
-    company.description: "Where do you work (if relevant)"
-    bio: "Bio"
-    bio.description: "8-10 sentences"
-    accepted: "Accepted"
-    notaccepted: "Not accepted or rejected"
-    rules: "I accept techleaders program rules."
-    occupation: "Occupation"
-    skills: "Skills"
-    hasNoEdition: "Not assigned to any edition"
-    search: "Search result for mentors"
-    join: "Join the program as a mentor!"
-    invitation:
-        description: 'Send invitation to register in the system'
+    self: Mentor
+    email: 'Mentor`s e-mail'
+    new: 'New mentor'
+    edit: 'Edit mentor'
+    list: 'Mentors list'
+    url:
+        self: 'Main page url'
+        description: 'Portfolio webpage'
+    personalUrl:
+        self: 'Additional page url'
+        description: Organization
+    company:
+        description: 'Where do you work (if relevant)'
+    bio:
+        self: Bio
+        description: '8-10 sentences'
+    accepted: Accepted
+    notaccepted: 'Not accepted or rejected'
+    occupation: Occupation
+    skills: Skills
+    hasNoEdition: 'Not assigned to any edition'
+    search: 'Search result for mentors'
+form:
+    translations:
+        self: 'Fill in translations'
+        mentor:
+            bio: 'Please write your biogram in English (and other languages if you are able to)'
+organization:
+    edit: 'Edit organization details'
+    email:
+        partners: 'Partners to apply email address'
+        contact: 'Contact address'
+        mentees: 'Contact to organizer:'
+        mentors: 'Contact to organizer:'
+warning:
+    signup.signupMentorsEnabled: 'Signup for mentees is still open'
+submission:
+    date: 'Submission date'
+info:
+    signup:
+        disabled: 'Sign up not enabled'
+        closed: 'Signup is closed. We invite you to take part in a next edition.'
+        mentees:
+            enabled: 'Signup for mentees is currently in progress'
+            disabled: 'Signup for mentees is currently closed'
+        mentors:
+            enabled: 'Signup for mentors is currently in progress'
+            disabled: 'Signup for mentors is currently closed'
+        partners:
+            enabled: 'Signup for partners is currently in progress'
+            disabled: 'Signup for partners is currently closed'
+config:
+    signup:
+        isSignupMentorsEnabled: 'Signup for mentors enabled?'
+        isSignupPartnersEnabled: 'Signup for partners enabled?'
+        isSignupMenteesEnabled: 'Signup for mentees enabled?'
+        isChosenMenteesVisible: 'Chosen mentees list visible?'
+    edit: 'Set signup configuration'
+    current: 'Current signup setup'
+partner:
+    list: 'Partner list'
+    name: Name
+    new: 'New partner'
+    edit: 'Edit partner'
+    description: 'Additional description'
+sponsor:
+    list: 'Sponsor list'
+    name: Name
+    new: 'New sponsor'
+    edit: 'Edit sponsor'
+    description: 'Additional info about sponsor'
+rule:
+    content: 'Rule item content'
+    list: Rules
+    new: 'New rule item'
+    edit: 'Edit rule item'
+    detail: 'Rule item details'
+faq:
+    question: Question
+    answer: Answer
+    list: 'Mentee FAQ'
+    new: 'New mentee faq item'
+    edit: 'Edit mentee faq item'
+    detail: 'Mentee FAQ item details'
+mentorfaq:
+    list: 'Mentor FAQ'
+    new: 'New mentor faq item'
+    edit: 'Edit mentor faq item'
+    detail: 'Mentor FAQ item details'
 export:
-    generated: "Gegerated"
+    generated: Gegerated
     download:
-        pdf: "Download pdf"
-        xls: "Download xls"
+        pdf: 'Download pdf'
+        xls: 'Download xls'
     mentees:
         list:
             download:
-                xls: "Mentees list xls"
-                description: "Download detailed mentees list from given edition"
+                xls: 'Mentees list xls'
+                description: 'Download detailed mentees list from given edition'
         chosen:
             download:
-                xls: "Results announcement xls"
-                description: "Download list of chosen mentees from given edition"
+                xls: 'Results announcement xls'
+                description: 'Download list of chosen mentees from given edition'
 image:
-    description: "Image description"
-    list: "Gallery"
-    new: "New image"
-    edit: "Edit image"
-    detail: "Image"
-submission:
-    date: "Submission date"
+    description: 'Image description'
+    list: Gallery
+    new: 'New image'
+    edit: 'Edit image'
+    detail: Image
 question:
-    new: "New question"
-    edit: "Edit question"
-    name: "Question"
-    list: "Questions list"
-    details: "Question"
-    description: "Description"
-    browse: "Browse by answers"
-    isVisibleForMentor: "Is visible for mentor"
+    new: 'New question'
+    edit: 'Edit question'
+    name: Question
+    list: 'Questions list'
+    details: Question
+    description: Description
+    browse: 'Browse by answers'
+    isVisibleForMentor: 'Is visible for mentor'
     type:
-        self: "To whom is this question?"
-        mentee: "Question for a mentee"
-        mentor: "Question for a mentor"
+        self: 'To whom is this question directed?'
+        mentee: 'Question for a mentee'
+        mentor: 'Question for a mentor'
 choice:
-    name: "Option to answer"
-    option: "Options to answer"
+    name: 'Option to answer'
+    option: 'Options to answer'
 answer:
-    name: "Answer"
-    list: "Answers"
-    details: "Answer"
-    content: "Content"
+    name: Answer
+    list: Answers
+    details: Answer
+    content: Content
 about:
-    list: "About entires"
-    name: "Title"
-    content: "Paragraph"
-    new: "New paragraph"
-    edit: "Edit paragraph"
-thankyou:
-    apply: "Thank you for filling in the Tech Leaders {{edition}} edition application!"
-    goodluck: "Good luck!"
-    bestregards: "Best regards"
-    team: 'Tech Leaders team'
-hi: 'Hi'
-no:
-    submissions: "There are no submissions"
-rule:
-    content: "Rule item content"
-    list: "Rules"
-    new: "New rule item"
-    edit: "Edit rule item"
-    detail: Rule item details
-faq:
-    question: "Question"
-    answer: 'Answer'
-    list: "Mentee FAQ"
-    new: "New mentee faq item"
-    edit: "Edit mentee faq item"
-    detail: Mentee FAQ item details
-mentorfaq:
-    list: Mentor FAQ
-    new: "New mentor faq item"
-    edit: "Edit mentor faq item"
-    detail: Mentor FAQ item details
-page:
-    login: "Log in"
-user:
-    list: "Users list"
-    details: "User"
-    edit: "User edit"
-    name: "Name"
-    lastName: "Last name"
-    phoneNumber: "Phone number"
-    url: "WWW (e.g. blog)"
-    photo: "Photo"
-    city: "City"
-    register:
-        failure: 'You can not be logged in to this application.'
-        success: 'Hello %name%! You are successfully logged in with email %email%'
-    already:
-        logged: You are already logged in
-        registered: This user is already registered
-admin:
-    self: "Admin"
-mail:
-    apply:
-        confirmation:
-            subject: 'Confirmation mail from Tech Leaders'
-    invite:
-        already:
-            sent: "The invitation has already been sent to this person"
-        subject: 'Invitation to register to Tech Leaders programme'
-    link.to.register: 'Link to registration'
+    list: 'About entires'
+    name: Title
+    content: Paragraph
+    new: 'New paragraph'
+person:
+    list: 'Mentees list'
+    details: Person

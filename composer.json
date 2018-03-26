@@ -57,7 +57,8 @@
         "liuggio/excelbundle": "^2.1",
         "symfony/web-server-bundle": "^3.3",
         "mwsimple/scdatetimepicker-bundle": "^2.0",
-        "twig/twig": "~2.0"
+        "twig/twig": "~2.0",
+        "lexik/translation-bundle": "~4.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "3.*",

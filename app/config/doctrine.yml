@@ -1,0 +1,56 @@
+# Doctrine Configuration
+doctrine:
+    dbal:
+        default_connection: default
+        connections:
+            default:
+                driver:   pdo_mysql
+                host:     "%database_host%"
+                port:     "%database_port%"
+                dbname:   "%database_name%"
+                user:     "%database_user%"
+                password: "%database_password%"
+                charset: utf8mb4
+                default_table_options:
+                    charset: utf8mb4
+                    collate: utf8mb4_unicode_ci
+            translations:
+                driver:   pdo_mysql
+                host:     "%translations_database_host%"
+                port:     "%translations_database_port%"
+                dbname:   "%translations_database_name%"
+                user:     "%translations_database_user%"
+                password: "%translations_database_password%"
+                charset: utf8mb4
+                default_table_options:
+                    charset: utf8mb4
+                    collate: utf8mb4_unicode_ci
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        # naming_strategy: doctrine.orm.naming_strategy.underscore
+        # auto_mapping: true
+        # metadata_cache_driver: apc
+        # result_cache_driver: apc
+        # query_cache_driver: apc
+        entity_managers:
+            default:
+                auto_mapping: true
+                mappings: # instead of auto_mapping/additional mapping
+                    entities:
+                        type: annotation
+                        is_bundle: false
+                        dir: '%kernel.root_dir%/../src/Entity'
+                        prefix: Entity
+                        alias: Entity
+                filters:
+                    softdeleteable:
+                        class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+                        enabled: true
+                    organization_filter:
+                        class: Repository\Filter\OrganizationFilter
+                        enabled: true
+                connection: default
+            translations:
+                mappings:
+                    LexikTranslationBundle: ~
+                connection: translations

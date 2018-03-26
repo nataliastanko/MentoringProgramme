@@ -64,7 +64,7 @@
       </div>
     </div>
   </div>
-
+  {% block lexik_content '' %}
   <div class="container">
     <div id="{%- block flashmessages -%}flashes-account{%- endblock -%}">
     {% for label, messages in app.flashes(['warning', 'error']) %}
@@ -107,6 +107,9 @@
           <script src='{{ asset_url }}'></script>
       {%- endjavascripts %}
 
+    {% endblock %}
+
+    {% block lexik_javascript_footer %}
     {% endblock %}
 
   </body>
