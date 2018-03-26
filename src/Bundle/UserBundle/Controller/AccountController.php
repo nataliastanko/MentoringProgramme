@@ -57,8 +57,14 @@ class AccountController extends Controller
                     '_route_params' => $request->attributes->get('_route_params')
                 ]
             );
+        } else if ($this->get('security.authorization_checker')->isGranted('ROLE_TRANSLATOR')) {
+            return $this->redirectToRoute('fos_user_profile_show');
         } else {
-            return new Response('Who are you?');
+            // return new Response('Who are you?');
+            // flash message
+            $request->getSession()->getFlashBag()
+                ->add('warning', 'Who are you?');
+            return $this->redirectToRoute('fos_user_profile_show');
         }
     }
 

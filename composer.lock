@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6502e1e0ad9ee61953f27ce56b9ae50a",
+    "content-hash": "d62e0929040b680859fef5dc2b9435de",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -1511,7 +1511,7 @@
                     "homepage": "https://github.com/friendsofsymfony/FOSJsRoutingBundle/contributors"
                 },
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2439,6 +2439,72 @@
                 "minification"
             ],
             "time": "2016-11-11T18:43:20+00:00"
+        },
+        {
+            "name": "lexik/translation-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lexik/LexikTranslationBundle.git",
+                "reference": "5ed8963d21b50e40fa02445d6fd6ae6c9569cf91"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lexik/LexikTranslationBundle/zipball/5ed8963d21b50e40fa02445d6fd6ae6c9569cf91",
+                "reference": "5ed8963d21b50e40fa02445d6fd6ae6c9569cf91",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0",
+                "symfony/framework-bundle": "~2.8|~3.0|~4.0"
+            },
+            "require-dev": {
+                "doctrine/data-fixtures": "~1.1",
+                "doctrine/doctrine-bundle": "~1.2",
+                "doctrine/mongodb-odm-bundle": "~3.0",
+                "doctrine/orm": "^2.2.3",
+                "phpunit/phpunit": "^5.7",
+                "propel/propel": "@dev",
+                "propel/propel-bundle": "^3.0@dev|^4.0@dev"
+            },
+            "suggest": {
+                "doctrine/mongodb-odm-bundle": "~3.0",
+                "doctrine/orm": ">=2.4"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.x.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lexik\\Bundle\\TranslationBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dev Lexik",
+                    "email": "dev@lexik.fr"
+                },
+                {
+                    "name": "Cedric Girard",
+                    "email": "c.girard@lexik.fr"
+                }
+            ],
+            "description": "This bundle allows to import translation files content into the database and provide a GUI to edit translations.",
+            "homepage": "https://github.com/lexik/LexikTranslationBundle",
+            "keywords": [
+                "Symfony2",
+                "bundle",
+                "i18n",
+                "translation"
+            ],
+            "time": "2018-03-15 09:55:30"
         },
         {
             "name": "liip/imagine-bundle",
@@ -6797,7 +6863,7 @@
                 "MIT"
             ],
             "description": "Tests all urls of your application",
-            "time": "2018-02-13T17:53:39+00:00"
+            "time": "2018-02-13 17:53:39"
         },
         {
             "name": "steevanb/php-yaml",

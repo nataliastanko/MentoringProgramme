@@ -58,7 +58,7 @@ class Person
      * @Assert\Regex(
      *     pattern="/\d/",
      *     match=false,
-     *     message="user.numbers.notAllowed",
+     *     message="numbers.notAllowed",
      *     groups={"add"}
      * )
      * @ORM\Column(name="name", type="string", length=255)
@@ -71,7 +71,7 @@ class Person
      * @Assert\Regex(
      *     pattern="/\d/",
      *     match=false,
-     *     message="user.numbers.notAllowed",
+     *     message="numbers.notAllowed",
      *     groups={"add"}
      * )
      * @ORM\Column(name="last_name", type="string", length=255, nullable=true)

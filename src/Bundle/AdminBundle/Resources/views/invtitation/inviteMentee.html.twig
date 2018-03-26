@@ -8,8 +8,7 @@
     </div>
   {%- else -%}
     <div class="alert alert-success" role="alert">
-      {# @TODO translation #}
-      Zaproszenie zostało pomyślnie wysłane na adres {{ email }}.
+      {{- 'invitation.sent' | trans }} {{ email }}.
     </div>
   {%- endif -%}
 </div>

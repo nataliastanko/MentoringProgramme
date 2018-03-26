@@ -29,12 +29,12 @@ class MentorType extends AbstractType
         $builder
             ->add(
                 'name', TextType::class, [
-                    'label' => 'mentor.name',
+                    'label' => 'person.name',
                 ]
             )
             ->add(
                 'lastName', TextType::class, [
-                    'label' => 'mentor.lastName',
+                    'label' => 'lastname',
                 ]
             )
             ->add(
@@ -44,13 +44,13 @@ class MentorType extends AbstractType
             )
             ->add(
                 'url', UrlType::class, [
-                    'label' => 'mentor.url',
+                    'label' => 'mentor.url.self',
                     'required' => false,
                 ]
             )
             ->add(
                 'personalUrl', UrlType::class, [
-                    'label' => 'mentor.personalUrl',
+                    'label' => 'mentor.personalUrl.self',
                     'required' => false,
                 ]
             )
@@ -95,7 +95,7 @@ class MentorType extends AbstractType
                     'fields' => [
                         'bio' => [
                             'field_type' => TextareaType::class,
-                            'label' => 'mentor.bio',
+                            'label' => 'mentor.bio.self',
                             'attr' => [
                                 'rows' => '10'
                             ],

@@ -7,6 +7,13 @@ parameters:
     database_name:     wit_techleaders
     database_user:     techleaders
     database_password: abc
+
+    translations_database_host: 127.0.0.1
+    translations_database_port: ~
+    translations_database_name: wit_techleaders_translations
+    translations_database_user: rotechleadersot
+    translations_database_password: abc
+
     # You should uncomment this if you want use pdo_sqlite
     # database_path: "%kernel.root_dir%/data.db3"
 
@@ -19,7 +26,7 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
 
     email_sender_address: noreply@example.pl
-    email_sender_name: Program mentorski Women in Technology # TODO translate
+    email_sender_name: Tech Leaders
     # router.request_context.host: techleaders.eu
     # router.request_context.scheme: http
 
@@ -30,3 +37,6 @@ parameters:
     # http.protocol: http
 
     wkhtmltopdf.bin: /usr/bin/xvfb-run /usr/bin/wkhtmltopdf
+
+    lexik_translation.managed_locales: [en]
+    lexik_translation.resources_registration.type: all # all | files | database

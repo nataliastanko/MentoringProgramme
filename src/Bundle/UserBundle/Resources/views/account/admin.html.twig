@@ -21,30 +21,41 @@
 
       <div class="panel-body">
         <div class="list-group">
-          {%- if config.getIsSignupMenteesEnabled-%}
-            {# @TODO translation #}
-            <a href="{{ path('config_index') }}" class="list-group-item list-group-item-warning">Trwają aktualnie zapisy uczestniczek</a>
+
+          {%- if config.getIsSignupMenteesEnabled -%}
+            <a href="{{ path('config_index') }}" class="list-group-item list-group-item-warning">
+              {{- 'info.signup.mentees.enabled' | trans -}}
+            </a>
           {%- else -%}
-            {# @TODO translation #}
-            <a href="{{ path('config_index') }}" class="list-group-item list-group-item-danger">Zapisy uczestniczek są zamknięte</a>
+            <a href="{{ path('config_index') }}" class="list-group-item list-group-item-danger">
+              {{- 'info.signup.mentees.disabled' | trans -}}
+            </a>
           {%- endif -%}
 
-          {%- if config.getIsSignupMentorsEnabled-%}
-            {# @TODO translation #}
-            <a href="{{ path('config_index') }}" class="list-group-item list-group-item-warning">Trwają aktualnie zapisy mentorek/ów</a>
+          {%- if config.getIsSignupMentorsEnabled -%}
+            <a href="{{ path('config_index') }}" class="list-group-item list-group-item-warning">
+              {{- 'info.signup.mentors.enabled' | trans -}}
+            </a>
           {%- else -%}
-            {# @TODO translation #}
-            <a href="{{ path('config_index') }}" class="list-group-item list-group-item-danger">Zapisy mentorek/ów są zamknięte</a>
+            <a href="{{ path('config_index') }}" class="list-group-item list-group-item-danger">
+              {{- 'info.signup.mentors.disabled' | trans -}}
+            </a>
           {%- endif -%}
 
-          {%- if config.getIsSignupPartnersEnabled-%}
-            {# @TODO translation #}
-            <a href="{{ path('config_index') }}" class="list-group-item list-group-item-info">Przyjmowane są aktualnie zgłoszenia partnerów</a>
+          {%- if config.getIsSignupPartnersEnabled -%}
+            <a href="{{ path('config_index') }}" class="list-group-item list-group-item-info">
+              {{- 'info.signup.partners.enabled' | trans -}}
+            </a>
+          {%- else -%}
+            <a href="{{ path('config_index') }}" class="list-group-item list-group-item-info">
+              {{- 'info.signup.partners.disabled' | trans -}}
+            </a>
           {%- endif -%}
+
         </div>{# list-group #}
       </div>{# panel-body #}
     </div>{# panel panel-default #}
   </div>{# col #}
 </div>{# row #}
 
-{% endblock %}
+{%- endblock -%}

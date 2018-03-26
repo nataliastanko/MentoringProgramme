@@ -41,19 +41,13 @@
       {%- endif -%}
     {%- else -%}
     <ul>
-        <li>
-          {{- 'account.static.programme.timetable' | trans -}}
-        </li>
-        <li>
-          {{- 'account.static.event.opening' | trans -}}
-        </li>
         {%- if is_granted("ROLE_MENTOR") -%}
           <li>
-            {{- 'account.static.mentor.contact' | trans -}}
+            {{- 'organization.email.mentors' | trans -}}
           </li>
         {%- elseif is_granted("ROLE_MENTEE") -%}
           <li>
-            {{- 'account.static.mentee.contact' | trans -}}
+            {{- 'organization.email.mentees' | trans -}}
           </li>
         {%- endif -%}
         {# @todo najbliższe spotkanie w kalendarzu #}

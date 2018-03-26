@@ -37,7 +37,7 @@
           {% elseif config.getIsSignupMenteesEnabled %}
             <div class="alert alert-info" role="alert">
               <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-              &nbsp;{{- 'config.warning.isSignupMentorsEnabled' | trans -}}
+              &nbsp;{{- 'warning.signup.signupMentorsEnabled' | trans -}}
             </div>
           {%- elseif persons | length > 0 -%}
             <div class="alert alert-danger" role="alert">

@@ -15,7 +15,11 @@
       {%- include "FOSUserBundle:Profile:show_mentee_profile.html.twig" -%}
     {%- endif -%}
   {%- else -%}
+    {%- if is_granted("ROLE_ADMIN") -%}
     {%- include "FOSUserBundle:Profile:show_admin_profile.html.twig" -%}
+    {%- elseif is_granted("ROLE_TRANSLATOR") -%}
+    {%- include "FOSUserBundle:Profile:show_translator_profile.html.twig" -%}
+    {%- endif -%}
   {%- endif -%}
 
 {% endblock fos_user_content %}

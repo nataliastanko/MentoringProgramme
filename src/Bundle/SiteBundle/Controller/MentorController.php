@@ -43,9 +43,9 @@ class MentorController extends Controller
         if (!$config->getIsSignupMentorsEnabled()) {
             // flash message
             $request->getSession()->getFlashBag()
-                ->add('warning', 'config.signup.closed');
+                ->add('warning', 'info.signup.closed');
             return $this->redirectToRoute('homepage');
-            // throw $this->createNotFoundException('config.signup.not.enabled');
+            // throw $this->createNotFoundException('info.signup.disabled');
         }
 
         $edition = $em->getRepository('Entity:Edition')

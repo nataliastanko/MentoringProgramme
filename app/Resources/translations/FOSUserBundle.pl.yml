@@ -1,9 +1,1 @@
-resetting:
-    email:
-        message: |
-            Cześć %username%!
-
-            Aby zresetować hasło - proszę przejść do %confirmationUrl%
-
-            Pozdrawiamy,
-            Zespół Tech Leaders.
+resetting.email.message: "Cześć %username%!\n\nAby zresetować hasło - proszę przejść do %confirmationUrl%\n\nPozdrawiamy,\nZespół Tech Leaders.\n"

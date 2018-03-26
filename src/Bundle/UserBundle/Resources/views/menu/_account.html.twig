@@ -21,6 +21,14 @@
     {% endif %}
     {# end mentee menu #}
 
+    {# translations #}
+    {# translator only #}
+    {%- if is_granted("ROLE_TRANSLATOR") -%}
+    <li{%- if app.request.attributes.get('_route') starts with 'lexik_translation_' %} class="active"{%- endif -%}>
+      <a href="{{ path('lexik_translation_overview') }}">{{ 'translations.page_title' | trans({}, 'LexikTranslationBundle') }}</a>
+    </li>
+    {%- endif -%}
+
     {# user's profile #}
     <li{%- if app.request.attributes.get('_route') starts with 'fos_user_' %} class="active"{%- endif -%}>
       <a href="{{ path('fos_user_profile_show') }}">{{ 'menu.account' | trans }}</a>

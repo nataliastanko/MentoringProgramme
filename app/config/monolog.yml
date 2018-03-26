@@ -1,0 +1,19 @@
+# http://symfony.com/doc/current/reference/configuration/monolog.html
+monolog:
+    # Additional Channels without Tagged Services
+    channels: ['mail', 'export']
+    # that creates services: monolog.logger.mail, monolog.logger.export
+    handlers:
+        # common for all environments
+        mails:
+            type: stream
+            path: "%kernel.logs_dir%/%kernel.environment%/mails.log"
+            # log all messages (since debug is the lowest level)
+            level: debug
+            channels: ['mail'] # Include only channel mails
+        export:
+            type: stream
+            path: "%kernel.logs_dir%/%kernel.environment%/export.log"
+            # log all messages (since debug is the lowest level)
+            level: debug
+            channels: ['export'] # Include only channel mails

@@ -1,19 +1,17 @@
-MentoringProgram
+Tech Leaders
 ================
 
-Symfony 3.x application
+## Usage
 
-##Usage
+Women in Technology - Tech Leaders Program
 
-Used for Women in Technology Tech Leaders Program
-
-#Installation and running
+# Installation and running
 
 ## Requirements
 
 Make sure you have installed the requirements for running symfony [requirements][1].
 
-PHP >= 5.4
+PHP >=7.2
 
 Install [composer][2] to manage dependencies.
 To install dependencies run command in project root dir:
@@ -25,7 +23,7 @@ To install dependencies run command in project root dir:
 
 Run the following commands in project root dir:
 
-###Permissions
+### Files and directories permissions
 
     HTTPDUSER=`ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
 
@@ -39,7 +37,7 @@ Run the following commands in project root dir:
         sudo setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX var web/media web/uploads
         sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX var web/media web/uploads
 
-###Database
+### Database
 
 Create database:
 
@@ -48,25 +46,48 @@ Create database:
 Create/update tables:
 
     ./bin/console doctrine:schema:update --force
+or
+    ./bin/console doctrine:migrations:migrate
+
+### Frontend resources
 
 Generate assets:
 
     ./bin/console assets:install
     ./bin/console assetic:dump
 
-###fixtures
-Run fixtures:
+### Fixtures
+
+Load data:
 
     ./bin/console doctrine:fixtures:load
 
-###server
+### Server
+
 Run server: [https://symfony.com/doc/current/setup/built_in_web_server.html]
 
-    php bin/console server:start
+    ./bin/console server:start
 
 Check [http://localhost:8000][3].
 
-#Testing
+### Static translations
+
+Prepare database
+    ./bin/console doctrine:database:create --connection=translations && ./bin/console doctrine:schema:update --force --em=translations
+
+Reset database
+    ./bin/console doctrine:database:drop --connection=translations --force && ./bin/console doctrine:database:create --connection=translations && ./bin/console doctrine:schema:update --force --em=translations
+
+Import translations from files to db (to edit)
+    ./bin/console lexik:translations:import
+
+Grid view:
+    ./bin/console assets:install
+
+Export translations from db to files (to use)
+    ./bin/console lexik:translations:export
+
+# Testing
 
 Tests library included in composer ./vendor/bin/phpunit
 TDD Tests PHPUnit 5.7.x
@@ -102,7 +123,9 @@ TDD Tests PHPUnit 5.7.x
     ./vendor/bin/urltest --comparator=console -r=true -vvvv tests
     ./vendor/bin/urltest tests
 
-#Dev
+# Dev
+
+### Roadmap
 
 ###What's inside?
 

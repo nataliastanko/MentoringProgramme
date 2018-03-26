@@ -89,7 +89,7 @@ class ExcelExport
         $phpExcelObject->getActiveSheet()
             ->setCellValue('A1', $this->translator->trans('edition'))
             ->setCellValue('B1', $this->translator->trans('person.name'))
-            ->setCellValue('C1', $this->translator->trans('person.lastName'))
+            ->setCellValue('C1', $this->translator->trans('lastname'))
             ->setCellValue('D1', $this->translator->trans('submission.date'))
             ->setCellValue('E1', $this->translator->trans('email'))
             ->setCellValue('F1', $this->translator->trans('mentee.isAccepted'))
