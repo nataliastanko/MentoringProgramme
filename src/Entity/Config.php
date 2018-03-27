@@ -9,7 +9,7 @@ use Repository\Annotation\OrganizationAware;
 /**
  * Config
  *
- * @todo move config columns to organization table (one join less)
+ * @todo signup belongs to edition
  *
  * @author Natalia Stanko <contact@nataliastanko.com>
  *

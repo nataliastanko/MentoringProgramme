@@ -1,20 +1,22 @@
-hour: h.
-photo: Photo
+name: 'Name'
+description: 'Description'
+hour: 'h.'
+photo: 'Photo'
 created: 'Created at'
 updated: 'Updated at'
 url: 'WWW page'
-edition: Edition
-editions: Editions
-hi: Hi
-female: Female
-male: Male
-roles: Roles
-email: Email
-yay: Yay!
-none: None
-all: all
+edition: 'Edition'
+editions: 'Editions'
+hi: 'Hi'
+female: 'Female'
+male: 'Male'
+roles: 'Roles'
+email: 'Email'
+yay: 'Yay!'
+none: 'None'
+all: 'all'
 'yes': 'yes'
-congratulations: Congratulations!
+congratulations: 'Congratulations!'
 result:
     empty: 'Empty result'
 choice:

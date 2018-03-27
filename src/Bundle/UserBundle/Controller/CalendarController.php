@@ -29,10 +29,13 @@ class CalendarController extends Controller
      */
     public function indexAction()
     {
+        // calendar events
         $events = $this->getDoctrine()->getManager()
             ->getRepository('Entity:Event')
             ->filterByMonth($this->getUser(), new \DateTime('now'));
 
+        // all events in a list
+        /** @todo pagination and filter by edition */
         $eventsList = $this->getDoctrine()->getManager()
             ->getRepository('Entity:Event')
             ->filterEvents($this->getUser());

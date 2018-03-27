@@ -35,6 +35,7 @@ class AppKernel extends Kernel
             new Liuggio\ExcelBundle\LiuggioExcelBundle(),
             // new cspoo\Swiftmailer\MailgunBundle\cspooSwiftmailerMailgunBundle(),
             new Lexik\Bundle\TranslationBundle\LexikTranslationBundle(),
+            new Kachkaev\AssetsVersionBundle\KachkaevAssetsVersionBundle(),
 
             new AdminBundle\AdminBundle(),
             new UserBundle\UserBundle(),
