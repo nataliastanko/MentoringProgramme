@@ -1,15 +1,17 @@
-hour: godz.
-photo: Zdjęcie
-created: Utworzony
-updated: Edytowany
+name: 'Nazwa'
+description: 'Opis'
+hour: 'godz.'
+photo: 'Zdjęcie'
+created: 'Utworzony'
+updated: 'Edytowany'
 url: 'Strona WWW'
-edition: Edycja
-editions: Edycje
-hi: Cześć
-female: Kobieta
-male: Mężczyzna
-roles: Uprawnienia
-email: Email
+edition: 'Edycja'
+editions: 'Edycje'
+hi: 'Cześć'
+female: 'Kobieta'
+male: 'Mężczyzna'
+roles: 'Uprawnienia'
+email: 'Email'
 yay: 'Udało się!'
 none: Brak
 all: wszystko

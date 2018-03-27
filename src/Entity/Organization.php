@@ -125,6 +125,19 @@ class Organization
     private $url;
 
     /**
+     * Facebook page url
+     *
+     * @var string
+     * @Assert\Url(
+     *    message = "url.not_match",
+     *    protocols = {"http", "https"},
+     *    checkDNS = true
+     * )
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $fbUrl;
+
+    /**
      * Email contact address.
      *
      * @var string
@@ -480,6 +493,30 @@ class Organization
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * Set fbUrl.
+     *
+     * @param string $url
+     *
+     * @return Organization
+     */
+    public function setFbUrl($url)
+    {
+        $this->fbUrl = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get fbUrl.
+     *
+     * @return string
+     */
+    public function getFbUrl()
+    {
+        return $this->fbUrl;
     }
 
     /**

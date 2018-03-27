@@ -48,6 +48,12 @@ class OrganizationType extends AbstractType
                 ]
             )
             ->add(
+                'fbUrl', UrlType::class, [
+                    'label' => 'Facebook page',
+                    'required' => false,
+                ]
+            )
+            ->add(
                 'description', TextareaType::class, [
                     'label' => 'description',
                     'required' => false,

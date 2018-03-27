@@ -19,7 +19,7 @@ class Version20180319232316 extends AbstractMigration
         $this->addSql('CREATE TABLE organizations (id INT AUTO_INCREMENT NOT NULL, subdomain VARCHAR(15) NOT NULL, country VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, is_accepted TINYINT(1) DEFAULT \'0\' NOT NULL, createdAt DATETIME NOT NULL, updatedAt DATETIME NOT NULL, UNIQUE INDEX UNIQ_427C1C7FC1D5962E (subdomain), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
 
         // insert new organization data
-        $this->addSql("INSERT INTO `organizations` (`id`, `subdomain`, `country`, `name`, `is_accepted`, `createdAt`, `updatedAt`) VALUES (1, 'poland', 'Poland', 'Women in Technology', '1', '2015-09-01 00:00:00', '2018-03-19 00:00:00'), (2, 'russia', 'Russia', 'Women Techmakers Russia', '1', '2018-03-19 00:00:00', '2018-03-19 00:00:00')");
+        $this->addSql("INSERT INTO `organizations` (`id`, `subdomain`, `country`, `name`, `is_accepted`, `createdAt`, `updatedAt`) VALUES (1, 'poland', 'Poland', 'Women in Technology', '1', '2015-09-01 00:00:00', '2018-03-19 00:00:00'), (2, 'russia', 'Russia', 'Women Techmakers Voronezh', '1', '2018-03-19 00:00:00', '2018-03-19 00:00:00')");
         // end inserting new organization data
 
         $this->addSql('ALTER TABLE about ADD organization_id INT DEFAULT NULL');

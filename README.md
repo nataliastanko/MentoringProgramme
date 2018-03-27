@@ -116,12 +116,8 @@ TDD Tests PHPUnit 5.7.x
 
 ### Tests all urls
 
-    sudo rm -R var/cache/* && ./vendor/bin/urltest --comparator=console -r=true tests
-    ./vendor/bin/urltest --comparator=console -r=true tests
-    ./vendor/bin/urltest --comparator=console -r=true -v tests
-    ./vendor/bin/urltest --comparator=console -r=true -vv tests
+    sudo rm -R var/cache/* && ./vendor/bin/urltest tests
     ./vendor/bin/urltest --comparator=console -r=true -vvvv tests
-    ./vendor/bin/urltest tests
 
 # Dev
 

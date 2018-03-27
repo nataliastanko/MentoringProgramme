@@ -8,6 +8,7 @@ imports:
     - { resource: stof_doctrine_extension.yml }
     - { resource: assetic.yml }
     - { resource: assetic_version.yml }
+    - { resource: kachkaev_assets_version.yml }
     - { resource: twig.yml }
     - { resource: liip_imagine.yml }
     - { resource: vich_uploader.yml }

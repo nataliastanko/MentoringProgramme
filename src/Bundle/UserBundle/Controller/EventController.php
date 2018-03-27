@@ -125,7 +125,7 @@ class EventController extends Controller
      *
      * @Route("/{id}/edit", name="event_edit")
      * @Method({"GET", "POST"})
-     * @Template("Entity:Event:edit.html.twig")
+     * @Template("UserBundle:event:edit.html.twig")
      */
     public function editAction(Request $request, Event $event)
     {

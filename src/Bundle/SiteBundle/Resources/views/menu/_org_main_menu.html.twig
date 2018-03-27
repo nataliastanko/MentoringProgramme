@@ -65,9 +65,11 @@
             <a href="{{ path('edition_show', {'_locale' : l, 'edition':edition.id, }) }}"><i class="fa fa-flag-o"></i>&nbsp;{{- l|upper -}}</a>
           </li>
         {%- endfor -%}
+        {%- if organization.fbUrl -%}
         <li class="social">
-          <a href="https://www.facebook.com/techleadersWIT/"><i class="fa fa-facebook-square"></i></a>
+          <a href="{{- organization.fbUrl -}}"><i class="fa fa-facebook-square"></i></a>
         </li>
+        {%- endif -%}
         {% if
           is_granted("ROLE_USER")
           and
