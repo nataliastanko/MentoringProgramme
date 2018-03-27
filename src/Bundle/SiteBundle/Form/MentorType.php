@@ -91,7 +91,7 @@ class MentorType extends AbstractType
             // bio is translatable
             ->add(
                 'translations', TranslationsType::class, [
-                    'required' => false, // backend validation - atLeastOneBio
+                    'required' => false, // backend validation - atLeastEnBio
                     'label' => 'form.translations.self',
                     // 'error_bubbling' => true,
                     'fields' => [

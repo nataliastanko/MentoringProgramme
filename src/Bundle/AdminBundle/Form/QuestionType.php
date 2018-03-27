@@ -49,7 +49,7 @@ class QuestionType extends AbstractType
             )
             ->add(
                 'translations', TranslationsType::class, [
-                    'required' => false, // backend validation - atLeastOneBio
+                    'required' => false,
                     'label' => 'form.translations.self',
                     'fields' => [
                         'name' => [

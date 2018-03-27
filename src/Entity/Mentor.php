@@ -513,13 +513,14 @@ class Mentor
     }
 
     /**
+     * 'en' is a default locale
      * Bio is a translatable field (in another table)
      * @Assert\Callback(groups={"mentor_apply", "settings"})
      */
-    public function atLeastOneBio(ExecutionContextInterface $context)
+    public function atLeastEnBio(ExecutionContextInterface $context)
     {
-        /* @FIXME hardcoded locale list*/
-        if ( ! ($this->translate('en', false)->getBio() || $this->translate('pl', false)->getBio()) ) {
+        // if (!($this->translate('en', false)->getBio() || $this->translate('pl', false)->getBio())) {
+        if (!($this->translate('en', false)->getBio())) {
             $context->buildViolation('mentor.bio.atLeastOne')
                     ->atPath('bio')
                     ->addViolation();
@@ -527,12 +528,12 @@ class Mentor
     }
 
     /**
+     * 'en' is a default locale
      * Occupation is a translatable field (in another table)
      * @Assert\Callback(groups={"settings"})
      */
     public function atLeastEnOccupation(ExecutionContextInterface $context)
     {
-        /* @FIXME hardcoded locale list*/
         if ( !$this->translate('en', false)->getOccupation() ) {
             $context->buildViolation('mentor.occupation.atLeastEn')
                     ->atPath('occupation')

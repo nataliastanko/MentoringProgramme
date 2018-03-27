@@ -47,3 +47,7 @@ question:
     name.bothNeeded: 'Proszę uzupełnij treść pytania we wszystkich wymaganych językach'
 bot:
     form.invalid: 'Formularz niepoprawnie wypełniony'
+config:
+    partners:
+        email:
+            notBlank: 'Żeby włączyć zapisy dla partnerów, wypełnij najpierw email dla partnerów w danych organizacji'
