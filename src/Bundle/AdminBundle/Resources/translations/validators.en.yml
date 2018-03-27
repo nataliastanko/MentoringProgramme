@@ -47,3 +47,7 @@ question:
     name.bothNeeded: 'Please type in question in all required languages'
 bot:
     form.invalid: 'Form invalid'
+config:
+    partners:
+        email:
+            notBlank: 'To enable signup for partners please fill in email to apply for partners in organization details.'

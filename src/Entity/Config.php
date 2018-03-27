@@ -4,8 +4,8 @@ namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Repository\Annotation\OrganizationAware;
-
 /**
  * Config
  *
@@ -16,6 +16,7 @@ use Repository\Annotation\OrganizationAware;
  * @ORM\Table(name="config")
  * @ORM\Entity(repositoryClass="Repository\ConfigRepository")
  * @OrganizationAware(organizationFieldName="organization_id")
+ * @Assert\Callback({"AdminBundle\Form\Constraint\Callback\ConfigCallback", "checkPartnersEmail"})
  */
 class Config
 {
@@ -226,5 +227,6 @@ class Config
 
         return $enabled;
     }
+
 }
 

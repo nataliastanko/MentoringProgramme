@@ -15,7 +15,8 @@ email: 'Email'
 yay: 'Udało się!'
 none: Brak
 all: wszystko
-'yes': tak
+'yes': 'tak'
+'no': 'nie'
 congratulations: Gratulacje!
 result:
     empty: 'Brak wyników'

@@ -16,6 +16,7 @@ yay: 'Yay!'
 none: 'None'
 all: 'all'
 'yes': 'yes'
+'no': 'no'
 congratulations: 'Congratulations!'
 result:
     empty: 'Empty result'

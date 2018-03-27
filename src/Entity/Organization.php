@@ -118,7 +118,8 @@ class Organization
      * @Assert\Url(
      *    message = "url.not_match",
      *    protocols = {"http", "https"},
-     *    checkDNS = true
+     *    checkDNS = true,
+     *    groups={"settings"}
      * )
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -131,7 +132,8 @@ class Organization
      * @Assert\Url(
      *    message = "url.not_match",
      *    protocols = {"http", "https"},
-     *    checkDNS = true
+     *    checkDNS = true,
+     *    groups={"settings"}
      * )
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -158,16 +160,13 @@ class Organization
      * Partners apply email address.
      *
      * @var string
-     * @Assert\NotBlank(
-     *     message = "email.notBlank",
-     *     groups={"settings"}
-     * )
+     *
      * @Gedmo\Versioned
      * @Assert\Email(
      *     message = "email.notMatch",
      *     groups={"settings"}
      * )
-     * @ORM\Column(type="string", name="partners_email", length=255)
+     * @ORM\Column(type="string", name="partners_email", length=255, nullable=true)
      */
     private $partnersEmail;
 

@@ -33,6 +33,10 @@
                         <td>{% if organization.url %}<a href="{{ organization.url }}">{{ organization.url }}</a>{% endif %}</td>
                     </tr>
                     <tr>
+                        <th>{{ 'Facebook page' | trans }}</th>
+                        <td>{% if organization.fbUrl %}<a href="{{ organization.url }}">{{ organization.fbUrl }}</a>{% endif %}</td>
+                    </tr>
+                    <tr>
                         <th>{{ 'description' | trans }}</th>
                         <td>{{ organization.description | nl2br }}</td>
                     </tr>
