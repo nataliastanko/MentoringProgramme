@@ -4,7 +4,7 @@ namespace UserBundle\Form\DataTransformer;
 
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\UnexpectedTypeException;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Entity\Invitation;
 
 /**
@@ -17,13 +17,13 @@ use Entity\Invitation;
 class InvitationToCodeTransformer implements DataTransformerInterface
 {
     /**
-     * @var EntityManager
+     * @var EntityManagerInterface
      */
-    private $entityManager;
+    private $em;
 
-    public function __construct(EntityManager $entityManager)
+    public function __construct(EntityManagerInterface $em)
     {
-        $this->em = $entityManager;
+        $this->em = $em;
     }
 
     public function transform($value)

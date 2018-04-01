@@ -11,7 +11,7 @@ use Entity\Answer;
 use Entity\Question;
 use Entity\Mentor;
 use SiteBundle\Form\MentorType;
-use AdminBundle\Security\Annotation\SectionEnabled;
+use Annotation\Controller\SectionEnabled;
 
 /**
  * @author Natalia Stanko <contact@nataliastanko.com>

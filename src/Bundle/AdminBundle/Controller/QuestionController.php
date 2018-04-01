@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Entity\Question;
-use AdminBundle\Security\Annotation\SectionEnabled;
+use Annotation\Controller\SectionEnabled;
 
 /**
  * Question controller.

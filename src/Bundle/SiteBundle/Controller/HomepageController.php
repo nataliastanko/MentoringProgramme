@@ -6,9 +6,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-// use Symfony\Component\HttpFoundation\Request;
-// use Symfony\Component\HttpFoundation\Response;
 use Entity\Edition;
+use Annotation\Controller\SectionEnabled;
 
 /**
  * @author Natalia Stanko <contact@nataliastanko.com>
@@ -73,6 +72,7 @@ class HomepageController extends Controller
      *     }
      * )
      * @Template
+     * @SectionEnabled(name="about")
      */
     public function aboutAction()
     {
@@ -91,43 +91,6 @@ class HomepageController extends Controller
         return [
             'edition' => $edition,
             'about' => $about,
-        ];
-    }
-
-    /**
-     * Route(
-     *     "/gallery",
-     *     name="gallery",
-     *     options=
-     *     {
-     *         "sitemap" = {
-     *             "priority" = 0.7,
-     *             "changefreq" = "monthly"
-     *         }
-     *     }
-     * )
-     * @Template
-     */
-    public function galleryAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $edition = $em->getRepository('Entity:Edition')
-            ->findLastEdition();
-
-        if (!$edition) {
-            throw $this->createNotFoundException('No edition found');
-        }
-
-        $images = $em->getRepository('Entity:Image')
-            ->getBySortableGroupsQuery()->getResult();
-
-        $editions = $em->getRepository('Entity:Edition')
-            ->getBySortableGroupsQuery()->getResult();
-
-        return [
-            'images' => $images,
-            'edition' => $edition,
         ];
     }
 
@@ -168,6 +131,7 @@ class HomepageController extends Controller
      *     }
      * )
      * @Template
+     * @SectionEnabled(name="rules")
      */
     public function rulesAction()
     {
@@ -199,6 +163,7 @@ class HomepageController extends Controller
      *     }
      * )
      * @Template
+     * @SectionEnabled(name="faq")
      */
     public function faqAction($subdomain)
     {
@@ -230,6 +195,7 @@ class HomepageController extends Controller
      * )
      * @Method("GET")
      * @Template
+     * @SectionEnabled(name="mentees")
      */
     public function chosenAction(Edition $edition)
     {

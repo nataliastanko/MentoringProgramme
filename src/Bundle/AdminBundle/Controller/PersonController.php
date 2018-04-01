@@ -13,7 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Entity\Person;
 use Entity\Edition;
-use AdminBundle\Security\Annotation\SectionEnabled;
+use Annotation\Controller\SectionEnabled;
 
 /**
  * Person controller.
@@ -210,7 +210,7 @@ class PersonController extends Controller
             /**
              * @var StreamedResponse
              */
-            $response = $this->get('program.excel.export')->exportEditionMenteesList($edition);
+            $response = $this->get('excel.export')->exportEditionMenteesList($edition);
             // adding headers
             $dispositionHeader = $response->headers->makeDisposition(
                 ResponseHeaderBag::DISPOSITION_ATTACHMENT,
@@ -251,7 +251,7 @@ class PersonController extends Controller
             /**
              * @var StreamedResponse
              */
-            $response = $this->get('program.excel.export')->exportEditionChosen($edition);
+            $response = $this->get('excel.export')->exportEditionChosen($edition);
             // adding headers
             $dispositionHeader = $response->headers->makeDisposition(
                 ResponseHeaderBag::DISPOSITION_ATTACHMENT,

@@ -7,7 +7,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Knp\DoctrineBehaviors\Model\Translatable\Translatable;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Validator\Constraints as Assert;
-use Repository\Annotation\OrganizationAware;
+use Annotation\Doctrine\OrganizationAware;
 
 /**
  * MentorFaq.

@@ -2,9 +2,9 @@
 
 namespace AdminBundle\Service;
 
-use Symfony\Bundle\FrameworkBundle\Translation\Translator;
+use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\HttpFoundation\StreamedResponse;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Liuggio\ExcelBundle\Factory as PhpExcel;
 use Entity\Edition;
 
@@ -21,15 +21,20 @@ class ExcelExport
     private $phpexcel;
 
     /**
-     * @var EntityManager
+     * @var EntityManagerInterface
      */
     private $em;
+
+    /**
+     * @var translator
+     */
+    private $translator;
 
     /**
      * @param PhpExcel        $phpexcel        PHPExcel service version 1.x for symfony ~2.4
      * @param EntityManager   $em
      */
-    public function __construct(PhpExcel $phpexcel, Translator $translator, EntityManager $em
+    public function __construct(PhpExcel $phpexcel, TranslatorInterface $translator, EntityManagerInterface $em
     ) {
         $this->phpexcel = $phpexcel;
         $this->translator = $translator;

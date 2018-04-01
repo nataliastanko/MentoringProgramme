@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Entity\Sponsor;
-use AdminBundle\Security\Annotation\SectionEnabled;
+use Annotation\Controller\SectionEnabled;
 
 /**
  * Admin Sponsor controller.

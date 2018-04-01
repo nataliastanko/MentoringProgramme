@@ -7,12 +7,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Annotation\Controller\SectionEnabled;
 
 /**
  * @author Natalia Stanko <contact@nataliastanko.com>
  *
  * @Route("/mentor")
  * @Security("is_granted('ROLE_MENTOR')")
+ * @SectionEnabled(name="mentees")
  */
 class MentorController extends Controller
 {

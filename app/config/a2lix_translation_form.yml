@@ -1,6 +1,6 @@
 #http://a2lix.fr/bundles/translation-form/
 a2lix_translation_form:
-    locale_provider: locale.form.provider
+    locale_provider: Service\Form\LocaleFormProvider
     locales: [en]
     default_locale: en
     required_locales: [en]

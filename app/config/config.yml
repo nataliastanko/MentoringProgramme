@@ -24,7 +24,6 @@ imports:
     - { resource: lexik_translation.yml }
     # - { resource: cspoo_swiftmailer_mailgun.yml }
     - { resource: ../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml }
-    - { resource: "@SiteBundle/Resources/config/services.yml" }
     - { resource: "@UserBundle/Resources/config/services.yml" }
     - { resource: "@AdminBundle/Resources/config/services.yml" }
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -34,6 +33,7 @@ parameters:
     paginate.limit: 50
 framework:
     default_locale: "%locale%" # parameters.locale
+    # https://symfony.com/doc/current/service_container/parameters.html#array-parameters
     translator: { fallback: 'en' }
     secret: "%secret%"
     router:
@@ -50,6 +50,8 @@ framework:
     session:
         # handler_id set to null will use default session handler from php.ini
         handler_id:  ~
+        # cookie_lifetime: 0
         save_path: "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+        # cookie_domain: '.%domain_name%.%domain_ext%'
     fragments: ~
     http_method_override: true

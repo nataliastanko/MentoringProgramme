@@ -10,11 +10,8 @@ fos_user:
         address:        '%email_sender_address%'
         sender_name:    '%email_sender_name%'
     registration:
-        # overwrite the default RegistrationFormType with the one just created
         form:
             type: UserBundle\Form\RegistrationFormType
-            # Or for Symfony < 2.8
-            # type: program_user_registration
         confirmation:
             # no email confirmation (no need, register from email only)
             enabled: false # change to true for required email confirmation
@@ -26,8 +23,6 @@ fos_user:
             type: UserBundle\Form\ProfileFormType
     resetting:
         email:
-            # template: AcmeDemoBundle:User:resetting.email.html.twig
             from_email:
                 address:        '%email_sender_address%'
                 sender_name:    '%email_sender_name%'
-        # template:   AppBundle:Registration:email.txt.twig

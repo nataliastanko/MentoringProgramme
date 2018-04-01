@@ -4,7 +4,7 @@ namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Repository\Annotation\OrganizationAware;
+use Annotation\Doctrine\OrganizationAware;
 
 /**
  * Sections config
@@ -17,6 +17,17 @@ use Repository\Annotation\OrganizationAware;
  */
 class SectionConfig
 {
+    const sectionAbout = 'about';
+    const sectionRules = 'rules';
+    const sectionFaq = 'faq';
+    const sectionMentees = 'mentees';
+    const sectionPartners = 'partners';
+    const sectionSponsors = 'sponsors';
+    const sectionMentors = 'mentors';
+    const sectionMentorfaq = 'mentorfaq';
+    const sectionGallery = 'gallery';
+    const sectionCalendar = 'calendar';
+
     /**
      * @var int
      *

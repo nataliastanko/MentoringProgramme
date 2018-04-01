@@ -47,7 +47,7 @@ doctrine:
                         class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
                         enabled: true
                     organization_filter:
-                        class: Repository\Filter\OrganizationFilter
+                        class: Annotation\Doctrine\Filter\OrganizationFilter
                         enabled: true
                 connection: default
             translations:

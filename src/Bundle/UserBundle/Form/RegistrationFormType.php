@@ -32,7 +32,7 @@ class RegistrationFormType extends FosRegistrationFormType
      * Add constructor with UserManager
      * @param $class
      * @param UserManager  $userManager
-     * @param RequestStack $requestStack
+     * @param RequestStack $requestStack we need invite code
      */
     public function __construct($class, UserManager $userManager, RequestStack $requestStack)
     {
@@ -41,6 +41,9 @@ class RegistrationFormType extends FosRegistrationFormType
         $this->requestStack = $requestStack;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -105,12 +108,12 @@ class RegistrationFormType extends FosRegistrationFormType
 
     public function getBlockPrefix()
     {
-        return 'program_user_registration';
+        return 'overrides_user_registration';
     }
 
     // Not necessary on Symfony 3+
     public function getName()
     {
-        return 'program_user_registration';
+        return 'overrides_user_registration';
     }
 }

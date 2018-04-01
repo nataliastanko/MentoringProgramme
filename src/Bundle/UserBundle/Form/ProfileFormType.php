@@ -7,12 +7,13 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use FOS\UserBundle\Form\Type\ProfileFormType as FosProfileFormType;
 use FOS\UserBundle\Model\UserManager;
 use Entity\Invitation;
 
 /**
+ * Overwrite FOSu profile form
  * @author Natalia Stanko <contact@nataliastanko.com>
  */
 class ProfileFormType extends FosProfileFormType
@@ -20,15 +21,15 @@ class ProfileFormType extends FosProfileFormType
     /**
      * @var UserManager
      */
-    protected $userManager;
+    protected $um;
 
     /**
-     * @var EntityManager
+     * @var EntityManagerInterface
      */
-    private $entityManager;
+    private $em;
 
     // Add constructor with UserManager
-    public function __construct($class, UserManager $userManager, EntityManager $em)
+    public function __construct($class, UserManager $userManager, EntityManagerInterface $em)
     {
         parent::__construct($class);
         $this->um = $userManager;
@@ -83,12 +84,12 @@ class ProfileFormType extends FosProfileFormType
 
     public function getBlockPrefix()
     {
-        return 'program_user_profile';
+        return 'overrides_user_profile';
     }
 
     // Not necessary on Symfony 3+
     public function getName()
     {
-        return 'program_user_profile';
+        return 'overrides_user_profile';
     }
 }

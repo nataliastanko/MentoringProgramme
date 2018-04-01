@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Knp\DoctrineBehaviors\Model\Translatable\Translatable;
 use Symfony\Component\Validator\Constraints as Assert;
-use Repository\Annotation\OrganizationAware;
+use Annotation\Doctrine\OrganizationAware;
 
 /**
  * Rule.
