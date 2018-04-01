@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Repository\Annotation\OrganizationAware;
+use Annotation\Doctrine\OrganizationAware;
 
 /**
  * Person

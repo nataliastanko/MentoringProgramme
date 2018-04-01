@@ -29,6 +29,9 @@ page:
 option:
     not.enabled: 'Nie można teraz skorzystać z tej opcji'
 button:
+    be_mentor: 'Zostań mentorką/em'
+    be_partner: 'Zostań partnerem'
+    be_mentee: 'Zostań uczestniczką'
     profile: Profil
     show: Szczegóły
     back: Powrót

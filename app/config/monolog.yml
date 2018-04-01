@@ -8,12 +8,10 @@ monolog:
         mails:
             type: stream
             path: "%kernel.logs_dir%/%kernel.environment%/mails.log"
-            # log all messages (since debug is the lowest level)
             level: debug
-            channels: ['mail'] # Include only channel mails
+            channels: ['mail']
         export:
             type: stream
             path: "%kernel.logs_dir%/%kernel.environment%/export.log"
-            # log all messages (since debug is the lowest level)
             level: debug
-            channels: ['export'] # Include only channel mails
+            channels: ['export']

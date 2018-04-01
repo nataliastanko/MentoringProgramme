@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use FOS\UserBundle\Model\User as FosUser;
 // use Repository\UserRepository;
-use Repository\Annotation\OrganizationAware;
+use Annotation\Doctrine\OrganizationAware;
 
 /**
  * User.
@@ -40,7 +40,6 @@ use Repository\Annotation\OrganizationAware;
  * )
  * @ORM\Entity(repositoryClass="Repository\UserRepository")
  * @OrganizationAware(organizationFieldName="organization_id")
- *
  */
 class User extends FosUser
 {

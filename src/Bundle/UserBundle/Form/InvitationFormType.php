@@ -46,12 +46,6 @@ class InvitationFormType extends AbstractType
 
     public function getBlockPrefix()
     {
-        return 'program_invitation_type';
-    }
-
-    // Not necessary on Symfony 3+
-    public function getName()
-    {
-        return 'program_invitation_type';
+        return 'overrides_invitation_type';
     }
 }

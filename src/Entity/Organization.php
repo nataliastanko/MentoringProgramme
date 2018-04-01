@@ -568,11 +568,11 @@ class Organization
 
         foreach ($this->getSectionsEnabled() as $i) {
             if (
-                $i->getSection() === 'mentees'
+                $i->getSection() === SectionConfig::sectionMentees
                 ||
-                $i->getSection() === 'partners'
+                $i->getSection() === SectionConfig::sectionPartners
                 ||
-                $i->getSection() === 'mentors'
+                $i->getSection() === SectionConfig::sectionMentors
             ) {
                 $enabledButtons[$i->getSection()] = true;
             }

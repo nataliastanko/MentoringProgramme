@@ -29,6 +29,9 @@ page:
 option:
     not.enabled: 'Feature unavailable'
 button:
+    be_mentor: 'Become a mentor'
+    be_partner: 'Become a partner'
+    be_mentee: 'Become a mentee'
     profile: Profile
     show: Details
     back: Back

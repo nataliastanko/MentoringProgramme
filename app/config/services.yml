@@ -1,36 +1,69 @@
-# Learn more about services, parameters and containers at
-# http://symfony.com/doc/current/book/service_container.html
-# parameters:
-  # knp.doctrine_behaviors.translatable_subscriber.default_locale_callable.class: AppBundle\EventListener\LocaleCallable
-
 services:
-  # New in Symfony 3.3: Simpler service configuration
-  # _defaults:
-  #   autowire: true
-  # _instanceof:
-  #   # Add tag to all services defined in this file having this type
-  #   Symfony\Component\EventDispatcher\EventSubscriberInterface:
-  #     tags: ['kernel.event_subscriber']
+    # New in Symfony 3.3: Simpler service configuration
+    # https://symfony.com/doc/3.4/service_container/3.3-di-changes.html
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        public: false
 
-  # truncate, wordwrap
-  twig.extension.text:
-   class: Twig_Extensions_Extension_Text
-   tags:
-      - { name: twig.extension }
-  # shuffle
-  twig.extension.array:
-    class: Twig_Extensions_Extension_Array
-    tags:
-      - { name: twig.extension }
+    _instanceof:
+        # Add tag to all services defined in this file having this type
+        Symfony\Component\EventDispatcher\EventSubscriberInterface:
+            tags: ['kernel.event_subscriber']
+        Doctrine\Common\EventSubscriber:
+            tags: ['doctrine.event_subscriber']
+        Twig_ExtensionInterface:
+            tags: ['twig.extension']
 
-  organization.doctrine.filter.configurator:
-    class: Repository\Filter\Configurator
-    autowire: true
-    tags:
-      - { name: kernel.event_listener, event: kernel.request , priority: -10}
+    Service\EventSubscriber\:
+        resource: '../../src/Service/EventSubscriber/*'
 
-  organization.doctrine.listener.persister:
-      class: Repository\EventListener\OrganizationPersister
-      autowire: true
-      tags:
-        - { name: doctrine.event_listener, event: prePersist , priority: -100}
+    Service\Twig\:
+        resource: '../../src/Service/Twig/*'
+
+    Service\Form\Extension\:
+        resource: '../../src/Service/Form/Extension/*'
+        tags: ['form.type_extension']
+
+    Annotation\EventSubscriber\:
+        resource: '../../src/Annotation/EventSubscriber/*'
+
+    # funtions truncate, wordwrap
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }
+
+    # function shuffle
+    twig.extension.array:
+        class: Twig_Extensions_Extension_Array
+        tags:
+            - { name: twig.extension }
+
+    Service\EventSubscriber\UserLocaleSubscriber:
+        autowire: false
+        arguments:
+            - '@session'
+            - '@event_dispatcher'
+            - '@fos_user.user_manager.default' # @todo check for autowire
+            - '@security.token_storage'
+            - '%kernel.default_locale%'
+            - '%lexik_translation.managed_locales%'
+            # $defaultLocale: '%kernel.default_locale%'
+            # $possibleLocales: '%lexik_translation.managed_locales%'
+
+    Service\Form\LocaleFormProvider:
+        arguments: # default values for parent constructor
+            $locales: ['en']
+            $defaultLocale: 'en'
+            $requiredLocales: ['en']
+
+    Service\Form\Extension\OrganizationFormTypeExtension:
+        tags:
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }
+
+    # Create an alias for public service
+    # @todo get rid of alias
+    subdomain.detection:
+        class: Service\EventSubscriber\SubdomainAwareSubscriber
+        public: true

@@ -27,10 +27,12 @@ security:
             security: false
         # Unless you have two legitimately different authentication systems and users (e.g. form login for the main site and a token system for your API only), we recommend having only one firewall entry with the anonymous key enabled.
         main:
+            # regexp that redirect to login page on this firewall
+            # pattern: ^/((en|pl)/)?(account|admin)
             pattern: ^/
             logout:
-                path:           fos_user_security_logout
-                target:         fos_user_security_login
+                path: fos_user_security_logout
+                target: fos_user_security_login
             anonymous: true # you should use the anonymous key under your firewall
             form_login:
                 provider: fos_userbundle
@@ -38,11 +40,9 @@ security:
                 check_path: fos_user_security_check
 
     access_control:
-        - { path: '^/media/cache/resolve/', role: IS_AUTHENTICATED_ANONYMOUSLY }
-
-        # - { path: '^/((en|pl)/?)?$', role: IS_AUTHENTICATED_ANONYMOUSLY }
-
         - { path: '^/admin', role: ROLE_ADMIN }
         - { path: '^/account', role: ROLE_USER }
-        - { path: '^/translations', role: ROLE_TRANSLATOR }
         - { path: '^/', role: IS_AUTHENTICATED_ANONYMOUSLY }
+        # - { path: '^/media/cache/resolve/', role: IS_AUTHENTICATED_ANONYMOUSLY }
+        # - { path: '^/((en|pl)/?)?$', role: IS_AUTHENTICATED_ANONYMOUSLY }
+        # - { path: '.%domain_name%.%domain_ext%', role: IS_AUTHENTICATED_ANONYMOUSLY }

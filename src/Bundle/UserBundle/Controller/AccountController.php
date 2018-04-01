@@ -4,6 +4,7 @@ namespace UserBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -113,21 +114,13 @@ class AccountController extends Controller
      */
     public function changeLocaleAction($locale, Request $request)
     {
-        $user = $this->getUser();
-        /**
-         * @todo check if in array of available translations
-         */
-        $user->setLocale($locale);
+        $event = new \Service\Event\LocaleEvent();
+        $event->setLocale($locale);
 
-        $userManager = $this->get('fos_user.user_manager');
-
-        $userManager->updateUser($user);
-
-        $em = $this->getDoctrine()->getManager();
-        $em->flush();
-
-        // set locale after user preference
-        $this->get('session')->set('_locale', $locale);
+        $this->get('event_dispatcher')->dispatch(
+            \Service\Event\LocaleEvents::PREFERRENCE_CHANGE,
+            $event
+        );
 
         return $this->redirectToRoute('account');
     }

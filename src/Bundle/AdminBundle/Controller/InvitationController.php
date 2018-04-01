@@ -13,7 +13,7 @@ use Entity\User;
 use Entity\Invitation;
 use Entity\Mentor;
 use Entity\Person;
-use AdminBundle\Security\Annotation\SectionEnabled;
+use Annotation\Controller\SectionEnabled;
 
 /**
  * Invitation controller.

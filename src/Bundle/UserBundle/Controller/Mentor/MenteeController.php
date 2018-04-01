@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Entity\User;
 use Entity\Person;
+use Annotation\Controller\SectionEnabled;
 
 /**
  * @author Natalia Stanko <contact@nataliastanko.com>
@@ -17,6 +18,7 @@ use Entity\Person;
  * Account mentor controller.
  * @Route("/mentor/mentee")
  * @Security("is_granted('ROLE_MENTOR')")
+ * @SectionEnabled(name="mentees")
  */
 class MenteeController extends Controller
 {
