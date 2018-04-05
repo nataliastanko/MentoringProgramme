@@ -113,14 +113,14 @@ fos_user_profile:
 admin:
     resource: "@AdminBundle/Controller/"
     type: annotation
-    prefix: /admin
+    prefix: /account/admin
     host: "{subdomain}.{domain_name}.{domain_ext}"
     defaults: { _locale: '%locale%', domain_name: '%domain_name%', domain_ext: '%domain_ext%'}
 
 # static translations
 lexik_translation_edition:
     resource: "@LexikTranslationBundle/Resources/config/routing.yml"
-    prefix: /admin/translations
+    prefix: /account/admin/translations
     host: "{subdomain}.{domain_name}.{domain_ext}"
     defaults: { _locale: '%locale%', domain_name: '%domain_name%', domain_ext: '%domain_ext%'}
 

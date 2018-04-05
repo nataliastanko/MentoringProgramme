@@ -5,13 +5,14 @@ namespace Service\EventSubscriber;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -41,7 +42,7 @@ class SubdomainAwareSubscriber implements EventSubscriberInterface
     /** @var AuthorizationChecker */
     private $authorizationChecker;
 
-    public function __construct(Router $router, Session $session, EntityManagerInterface $em, TokenStorage $token, AuthorizationChecker $authorization)
+    public function __construct(Router $router, Session $session, EntityManagerInterface $em, TokenStorage $token, AuthorizationCheckerInterface $authorization)
     {
         $this->router = $router;
         $this->userToken = $token;
@@ -59,7 +60,7 @@ class SubdomainAwareSubscriber implements EventSubscriberInterface
             KernelEvents::REQUEST => [
                 ['detectSubdomain', 100],
                 ['setSubdomainContext', 90],
-                ['checkSubdomainAccess', -100]
+                ['checkSubdomainAccess', 30]
             ],
         ];
     }
@@ -71,14 +72,23 @@ class SubdomainAwareSubscriber implements EventSubscriberInterface
      */
     public function checkSubdomainAccess(GetResponseEvent $event)
     {
-        if ($this->isSubdomainPresent()) {
-            // if ($this->authorizationChecker->isGranted('ROLE_USER')) {
-            //     $user = $this->userToken->getToken()->getUser();
+        $request = $event->getRequest(); //$event->getKernel();
 
-            //     if ($user->getOrganization()->getId() !== $this->getOrganization()->getId()) {
-            //         throw new AccessDeniedException();
-            //     }
-            // }
+        if (null === $this->userToken->getToken()) {
+            return;
+        }
+
+        // only when subdomain routing
+        if ($this->isSubdomainPresent()) {
+            // only if logged in
+            if ($this->authorizationChecker->isGranted('ROLE_USER')) {
+                $user = $this->userToken->getToken()->getUser();
+
+                // check access for subdomain admin panel
+                if ($user->getOrganization()->getId() !== $this->getOrganization()->getId()) {
+                    throw new AccessDeniedException('Not allowed to manage current organization');
+                }
+            }
         }
     }
 

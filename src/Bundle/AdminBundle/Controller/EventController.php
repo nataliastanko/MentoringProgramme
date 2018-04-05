@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Entity\Event;
 use Annotation\Controller\SectionEnabled;
+use Knp\Component\Pager\Paginator;
 
 /**
  * Event controller.
@@ -36,7 +37,7 @@ class EventController extends Controller
      * @Method("GET")
      * @Template
      */
-    public function indexAction($page, Request $request)
+    public function indexAction($page, Request $request, Paginator $paginator)
     {
 
         $em = $this->getDoctrine()->getManager();
@@ -44,10 +45,10 @@ class EventController extends Controller
         $query = $em
             ->createQuery('SELECT e FROM Entity:Event e order by e.startTime desc');
 
-        $events = $this->get('knp_paginator')->paginate(
+        $events = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', $page) /*page number*/,
-            $this->get('service_container')->getParameter('paginate.limit') /*limit per page*/
+            $this->getParameter('paginate.limit') /*limit per page*/
         );
 
         return [

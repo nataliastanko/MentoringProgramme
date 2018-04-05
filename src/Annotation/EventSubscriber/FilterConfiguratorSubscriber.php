@@ -5,6 +5,7 @@ namespace Annotation\EventSubscriber;
 use Doctrine\ORM\EntityManager;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Service\EventSubscriber\SubdomainAwareSubscriber;
@@ -37,14 +38,14 @@ class FilterConfiguratorSubscriber implements EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-        return array(
-            KernelEvents::REQUEST => array(
-                array('configureAnnotationFilter', -10),
-            ),
-        );
+        return [
+            KernelEvents::REQUEST => [
+                'configureAnnotationFilter', -10,
+            ]
+        ];
     }
 
-    public function configureAnnotationFilter()
+    public function configureAnnotationFilter(GetResponseEvent $event)
     {
         if ($org = $this->subdomainDetection->getOrganization()) {
             $filter = $this->em->getFilters()->enable('organization_filter');
