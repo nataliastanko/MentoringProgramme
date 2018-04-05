@@ -257,11 +257,40 @@ class User extends FosUser
         return $this->lastName;
     }
 
+    /**
+     * Set organization.
+     *
+     * @param string $lastName
+     *
+     * @return User
+     */
+    public function setOrganization(Organization $var)
+    {
+        $this->organization = $var;
+
+        return $this;
+    }
+
+    /**
+     * Get organization
+     *
+     * @return Organization
+     */
+    public function getOrganization()
+    {
+        return $this->organization;
+    }
+
     public function setInvitation(Invitation $invitation)
     {
         $this->invitation = $invitation;
     }
 
+    /**
+     * Get invitation
+     *
+     * @return Invitation
+     */
     public function getInvitation()
     {
         return $this->invitation;
@@ -293,13 +322,6 @@ class User extends FosUser
     public function setLocale($locale)
     {
         $this->locale = $locale;
-    }
-
-    public function setOrganization($var)
-    {
-        $this->organization = $var;
-
-        return $this;
     }
 
     public function getRoleName()

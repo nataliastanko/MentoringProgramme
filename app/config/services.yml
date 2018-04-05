@@ -61,9 +61,3 @@ services:
     Service\Form\Extension\OrganizationFormTypeExtension:
         tags:
             - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }
-
-    # Create an alias for public service
-    # @todo get rid of alias
-    subdomain.detection:
-        class: Service\EventSubscriber\SubdomainAwareSubscriber
-        public: true

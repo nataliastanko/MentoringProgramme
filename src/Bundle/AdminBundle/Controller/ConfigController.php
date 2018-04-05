@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Entity\Config;
+use Service\EventSubscriber\SubdomainAwareSubscriber;
 
 /**
  * Config controller.
@@ -27,7 +28,7 @@ class ConfigController extends Controller
      * @Method("GET")
      * @Template
      */
-    public function indexAction()
+    public function indexAction(SubdomainAwareSubscriber $subdomainDetection)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -37,7 +38,7 @@ class ConfigController extends Controller
             throw $this->createNotFoundException('No config found');
         }
 
-        $organization = $this->get('subdomain.detection')->getOrganization();
+        $organization = $subdomainDetection->getOrganization();
 
         if (!$organization) {
             throw $this->createNotFoundException('No organization found');
@@ -64,9 +65,9 @@ class ConfigController extends Controller
      * @Method({"GET", "POST"})
      * @Template
      */
-    public function editAction(Request $request, Config $config)
+    public function editAction(Request $request, Config $config, SubdomainAwareSubscriber $subdomainDetection)
     {
-        $organization = $this->get('subdomain.detection')->getOrganization();
+        $organization = $subdomainDetection->getOrganization();
 
         if (!$organization) {
             throw $this->createNotFoundException('No organization found');

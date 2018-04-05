@@ -39,10 +39,10 @@ security:
                 default_target_path: account
                 check_path: fos_user_security_check
 
+    # https://symfony.com/doc/current/security/access_control.html
     access_control:
-        - { path: '^/admin', role: ROLE_ADMIN }
+        # - { path: '^/((en|pl)/?)?account/login', role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: '^/account', role: ROLE_USER }
         - { path: '^/', role: IS_AUTHENTICATED_ANONYMOUSLY }
         # - { path: '^/media/cache/resolve/', role: IS_AUTHENTICATED_ANONYMOUSLY }
-        # - { path: '^/((en|pl)/?)?$', role: IS_AUTHENTICATED_ANONYMOUSLY }
         # - { path: '.%domain_name%.%domain_ext%', role: IS_AUTHENTICATED_ANONYMOUSLY }

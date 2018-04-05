@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Entity\Organization;
 use Annotation\Controller\SectionEnabled;
+use Service\EventSubscriber\SubdomainAwareSubscriber;
 
 /**
  * Admin Organization controller.
@@ -73,10 +74,10 @@ class OrganizationController extends Controller
      * @Method("GET")
      * @Template
      */
-    public function showAction()
+    public function showAction(SubdomainAwareSubscriber $subdomainDetection)
     {
         // allow to edit only current organization
-        $currentOrganization = $this->get('subdomain.detection')->getOrganization();
+        $currentOrganization = $subdomainDetection->getOrganization();
 
         return [
             'organization' => $currentOrganization,
@@ -90,9 +91,9 @@ class OrganizationController extends Controller
      * @Method({"GET", "POST"})
      * @Template
      */
-    public function editAction(Request $request, Organization $organization)
+    public function editAction(Request $request, Organization $organization, SubdomainAwareSubscriber $subdomainDetection)
     {
-        $currentOrganization = $this->get('subdomain.detection')->getOrganization();
+        $currentOrganization = $subdomainDetection->getOrganization();
 
         if (
             $currentOrganization->getId() !== $organization->getId()

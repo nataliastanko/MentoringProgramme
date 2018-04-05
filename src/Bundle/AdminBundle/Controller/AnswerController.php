@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Entity\Answer;
 use Annotation\Controller\SectionEnabled;
+use Knp\Component\Pager\Paginator;
 
 /**
  * Answer controller.
@@ -34,7 +35,7 @@ class AnswerController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function indexAction($id, $page, Request $request)
+    public function indexAction($id, $page, Request $request, Paginator $paginator)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -44,10 +45,10 @@ class AnswerController extends Controller
             ->createQuery('SELECT a FROM AdminBundle:Answer a WHERE a.question = :id')
             ->setParameter(':id', $id);
 
-        $answers = $this->get('knp_paginator')->paginate(
+        $answers = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1) /*page number*/,
-            $this->get('service_container')->getParameter('paginate.limit') /*limit per page*/
+            $this->getParameter('paginate.limit') /*limit per page*/
         );
 
         return [
