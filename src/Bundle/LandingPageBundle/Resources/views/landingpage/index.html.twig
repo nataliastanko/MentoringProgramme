@@ -8,7 +8,7 @@
     {%- if loop.first or (loop.index - 1) % 3 == 0 -%}
       <div class="row">
     {%- endif -%}
-        <div class="col-sm-4{%- if (loop.index) % 2 == 1 %} col-md-offset-2{%- endif -%}">
+        <div class="col-sm-4{#- if (loop.index) % 3 == 1 %} col-md-offset-2{%- endif -#}">
           <div class="thumbnail">
             <div class="picture">
               {%- if o.logoFileName -%}
@@ -22,7 +22,7 @@
                   {{- o.name -}}
                 </div>
                 <br />
-                <a class="btn btn-success" href="{{ path('homepage', {'subdomain':o.subdomain}) }}" role="button">Enter the program »</a>
+                <a class="btn btn-success" href="{{ path('homepage', {'subdomain':o.subdomain}) }}" role="button">Enter the programme »</a>
               </div>
             </div>
           </div>
@@ -37,7 +37,7 @@
   <div class="row featurette">
     <div class="col-md-12">
       <h2 class="featurette-heading">Invest in yourself.&nbsp;<span class="text-muted">It is the best thing you can do for yourself and others.</span></h2>
-      <p class="lead">Tech Leaders is a free mentoring program. It is a great opportunity to work and learn with mentors for several months. You can cooperate with mentor online or offline. You can apply to the program by filling the application form (Become a mentee). Select a mentor from the list in our website and send us an application. Give yourself a chance to share your experiences, explore your potential and choose the next career steps.</p>
+      <p class="lead">Tech Leaders is a free mentoring programme. It is a great opportunity to work and learn with mentors for several months. You can cooperate with mentor online or offline. You can apply to the programme by filling the application form (Become a mentee). Select a mentor from the list in our website and send us an application. Give yourself a chance to share your experiences, explore your potential and choose the next career steps.</p>
     </div>
   </div>
 
@@ -59,7 +59,7 @@
 
   <div class="row featurette">
     <div class="col-md-7">
-      <h2 class="featurette-heading">Expected program effects. <span class="text-muted"></span></h2>
+      <h2 class="featurette-heading">Expected programme effects. <span class="text-muted"></span></h2>
       <p class="lead">We want you to create your own project, get a better position at work, believe in your own abilities, change jobs, increase your programming skills or IT and technology knowledge. This is what participants in previous editions did.</p>
     </div>
     <div class="col-md-5">
