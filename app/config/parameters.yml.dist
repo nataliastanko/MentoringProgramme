@@ -11,7 +11,7 @@ parameters:
     translations_database_host: 127.0.0.1
     translations_database_port: ~
     translations_database_name: wit_techleaders_translations
-    translations_database_user: rotechleadersot
+    translations_database_user: techleaders
     translations_database_password: abc
 
     # You should uncomment this if you want use pdo_sqlite
@@ -33,11 +33,15 @@ parameters:
     domain_name: techleaders # together it's techleaders.test
     domain_ext: eu # together it's techleaders.test
 
-    locale_possible: 'en|pl|ru' #list of static translated locale
+    locale_possible: 'en|pl|ru|sw' #list of static translated locale
     # http.protocol: http
 
     wkhtmltopdf.bin: /usr/bin/xvfb-run /usr/bin/wkhtmltopdf
 
-    lexik_translation.managed_locales: [en]
+    lexik_translation.managed_locales:
+        - en
+        - pl
+        - ru
+        - sw
     lexik_translation.resources_registration.type: all # all | files | database
     assets_version: v0
