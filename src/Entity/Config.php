@@ -37,10 +37,10 @@ class Config
     private $isSignupMentorsEnabled;
 
     /**
-     * @todo rename to is_signup_pertners_enabled when moving to organization
+     * @todo rename to is_signup_partners_enabled when moving to organization
      * @var bool
      *
-     * @ORM\Column(name="is_signup_pertaners_enabled", type="boolean", options={"default" = false})
+     * @ORM\Column(name="is_signup_partners_enabled", type="boolean", options={"default" = false})
      */
     private $isSignupPartnersEnabled;
 
