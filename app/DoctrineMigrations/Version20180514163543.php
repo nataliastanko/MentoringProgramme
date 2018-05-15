@@ -31,7 +31,7 @@ final class Version20180514163543 extends AbstractMigration
         // end inserting new organization data
 
         // insert organization data
-        $this->addSql("INSERT INTO `section_config` (`organization_id`, `section`, `is_enabled`) VALUES (3, 'about', 1), (1, 'mentors', 1), (1, 'partners', 1), (1, 'rules', 1)");
+        $this->addSql("INSERT INTO `section_config` (`organization_id`, `section`, `is_enabled`) VALUES (3, 'about', 1), (3, 'mentors', 1), (3, 'partners', 1), (3, 'rules', 1)");
     }
 
     public function down(Schema $schema) : void
