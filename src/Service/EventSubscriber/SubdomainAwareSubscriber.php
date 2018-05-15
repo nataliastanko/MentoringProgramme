@@ -80,13 +80,17 @@ class SubdomainAwareSubscriber implements EventSubscriberInterface
 
         // only when subdomain routing
         if ($this->isSubdomainPresent()) {
+
+            // only when on '^/account' route
+            preg_match('/account/', $request->getPathInfo(), $matches);
+
             // only if logged in
-            if ($this->authorizationChecker->isGranted('ROLE_USER')) {
+            if ($matches && $this->authorizationChecker->isGranted('ROLE_USER')) {
                 $user = $this->userToken->getToken()->getUser();
 
                 // check access for subdomain admin panel
                 if ($user->getOrganization()->getId() !== $this->getOrganization()->getId()) {
-                    throw new AccessDeniedException('Not allowed to manage current organization');
+                    throw new AccessDeniedException('Not allowed to manage given organization');
                 }
             }
         }
