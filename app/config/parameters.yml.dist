@@ -33,7 +33,7 @@ parameters:
     domain_name: techleaders # together it's techleaders.test
     domain_ext: eu # together it's techleaders.test
 
-    locale_possible: 'en|pl|ru|sw' #list of static translated locale
+    locale_possible: 'en|pl|ru|sw|hi' #list of static translated locale
     # http.protocol: http
 
     wkhtmltopdf.bin: /usr/bin/xvfb-run /usr/bin/wkhtmltopdf
@@ -43,5 +43,6 @@ parameters:
         - pl
         - ru
         - sw
+        - hi
     lexik_translation.resources_registration.type: all # all | files | database
     assets_version: v0
