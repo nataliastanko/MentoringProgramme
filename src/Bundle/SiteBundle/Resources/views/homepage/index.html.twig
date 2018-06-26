@@ -2,11 +2,10 @@
 
 {% block bg -%}
     {% spaceless %}
-        <div class="bg hidden-xs hidden-sm">
-            <div class="bglead">
-                <h1>Tech Leaders</h1>
-                <h2>{{ 'homepage.lead.program' | trans }}</h2>
-            </div>
+        <div class="bglead">
+            <h1>Tech Leaders</h1>
+            <h2>{{ organization.country |capitalize }}</h2>
+            <h3>{{ 'homepage.lead.program' | trans }}</h3>
         </div>
     {% endspaceless %}
 {%- endblock -%}
