@@ -34,7 +34,7 @@ account:
         actionNeeded: 'Wymagane akcje'
         contact:
             organizer: 'Jeśli widzisz ten komunikat, zgłoś się do organizatora Tech Leaders.'
-    welcome: 'witaj w programie Tech Leaders'
+    welcome: 'witaj w programie Tech Leaders %org%'
     confirmed: 'Twoje konto zostało pomyślnie utworzone'
     edit: 'Zmień swoje dane'
     importantInformation: 'Ważne informacje'

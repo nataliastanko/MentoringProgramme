@@ -2,6 +2,6 @@
   {# @todo translation #}
   <h1>{{ app.user.fullname }},&nbsp;
     {# <small> #}
-      {{- 'account.welcome' | trans -}}!</h1>
+      {{- 'account.welcome' | trans({'%org%':organization.country}) -}}!</h1>
     {# </small> #}
 </div>
