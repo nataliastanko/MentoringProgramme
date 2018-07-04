@@ -34,7 +34,7 @@ account:
         actionNeeded: 'Actions needed'
         contact:
             organizer: 'If you can see this message then contact Tech Leaders organizer.'
-    welcome: 'welcome to the Tech Leaders programme'
+    welcome: 'welcome to the Tech Leaders %org% programme'
     confirmed: 'Your account has been created successfully'
     edit: 'Edit your profile'
     importantInformation: 'Important information'
