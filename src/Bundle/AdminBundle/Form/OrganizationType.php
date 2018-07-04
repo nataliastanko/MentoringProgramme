@@ -25,9 +25,6 @@ class OrganizationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        /* @var array */
-        $sectionsEnabled = $options['sectionsEnabled'];
-
         $builder
             ->add(
                 'name', TextType::class, [
@@ -72,28 +69,7 @@ class OrganizationType extends AbstractType
                 'download_link' => true, // not mandatory, default is true
                 ]
             )
-            ->add(
-                'partnersEmail', EmailType::class, [
-                    'label' => 'organization.email.partners',
-                    'required' => false
-                ]
-            );
-
-            $builder->addEventListener(
-                FormEvents::PRE_SET_DATA, function (FormEvent $event) use ($sectionsEnabled) {
-
-                    $form = $event->getForm();
-
-                    if (array_key_exists('menteesExternalSignup', $sectionsEnabled)) {
-                        $form->add(
-                            'menteesExternalSignupUrl', UrlType::class, [
-                                'label' => 'organization.menteesExternalSignupUrl',
-                                'required' => false
-                            ]
-                        );
-                    }
-                }
-            );
+        ;
     }
 
     /**
@@ -108,7 +84,6 @@ class OrganizationType extends AbstractType
                     'validation_groups' => ['settings'],
                 ]
             )
-            ->setRequired('sectionsEnabled');
         ;
     }
 }

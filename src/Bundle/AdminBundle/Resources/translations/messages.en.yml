@@ -51,11 +51,10 @@ form:
 organization:
     edit: 'Edit organization details'
     email:
-        partners: 'Partners to apply email address'
+        partners: 'Email address to apply as a partner'
         contact: 'Contact address'
         mentees: 'Contact to organizer:'
         mentors: 'Contact to organizer:'
-    menteesExternalSignupUrl: 'External link for mentees signup'
 warning:
     signup.signupMentorsEnabled: 'Signup for mentees is still open'
 submission:
@@ -78,8 +77,9 @@ config:
         isSignupMentorsEnabled: 'Signup for mentors enabled?'
         isSignupPartnersEnabled: 'Signup for partners enabled?'
         isSignupMenteesEnabled: 'Signup for mentees enabled?'
-    edit: 'Set signup configuration'
-    current: 'Current signup setup'
+        menteesExternalSignupUrl: 'External URL for mentees signup'
+    edit: 'Signup configuration'
+    current: 'Current signup configuration'
 partner:
     list: 'Partner list'
     name: Name

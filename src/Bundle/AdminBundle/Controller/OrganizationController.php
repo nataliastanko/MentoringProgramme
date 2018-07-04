@@ -109,8 +109,7 @@ class OrganizationController extends Controller
         // $deleteForm = $this->createDeleteForm($organization);
         $editForm = $this->createForm(
             'AdminBundle\Form\OrganizationType',
-            $organization,
-            ['sectionsEnabled' => $currentOrganization->getSectionsEnabledArray()]
+            $organization
         );
         $editForm->handleRequest($request);
 

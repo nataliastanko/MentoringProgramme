@@ -7,7 +7,6 @@ use Doctrine\Common\Collections\Criteria;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use Gedmo\Mapping\Annotation as Gedmo;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -147,7 +146,7 @@ class Organization
      *     message = "email.notBlank",
      *     groups={"settings"}
      * )
-     * @Gedmo\Versioned
+     *
      * @Assert\Email(
      *     message = "email.notMatch",
      *     groups={"settings"}
@@ -155,32 +154,6 @@ class Organization
      * @ORM\Column(type="string", name="contact_email", length=255)
      */
     private $contactEmail;
-
-    /**
-     * Partners apply email address.
-     *
-     * @var string
-     *
-     * @Gedmo\Versioned
-     * @Assert\Email(
-     *     message = "email.notMatch",
-     *     groups={"settings"}
-     * )
-     * @ORM\Column(type="string", name="partners_email", length=255, nullable=true)
-     */
-    private $partnersEmail;
-
-    /**
-     * @var string
-     * @Assert\Url(
-     *    message = "url.not_match",
-     *    protocols = {"https"},
-     *    checkDNS = true,
-     *    groups={"settings"}
-     * )
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $menteesExternalSignupUrl;
 
     /**
      * @var string
@@ -435,30 +408,6 @@ class Organization
     }
 
     /**
-     * Set partners email.
-     *
-     * @param string $email
-     *
-     * @return Organization
-     */
-    public function setPartnersEmail($email)
-    {
-        $this->partnersEmail = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get partners email.
-     *
-     * @return string
-     */
-    public function getPartnersEmail()
-    {
-        return $this->partnersEmail;
-    }
-
-    /**
      * Set contact email.
      *
      * @param string $email
@@ -528,30 +477,6 @@ class Organization
     public function getFbUrl()
     {
         return $this->fbUrl;
-    }
-
-    /**
-     * Set external link for mentees signup.
-     *
-     * @param string $url
-     *
-     * @return Organization
-     */
-    public function setMenteesExternalSignupUrl($url)
-    {
-        $this->menteesExternalSignupUrl = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get external link for mentees signup.
-     *
-     * @return string
-     */
-    public function getMenteesExternalSignupUrl()
-    {
-        return $this->menteesExternalSignupUrl;
     }
 
     /**

@@ -103,7 +103,7 @@ class Mentor
      *     message = "email.notBlank",
      *     groups={"settings", "mentor_apply"}
      * )
-     * @Gedmo\Versioned
+     *
      * @Assert\Email(
      *     message = "email.notMatch",
      *     groups={"settings", "mentor_apply"}
@@ -114,7 +114,7 @@ class Mentor
 
     /**
      * @var string
-     * @Gedmo\Versioned
+     *
      * @Assert\Url(
      *    message = "url.not_match",
      *    protocols = {"http", "https"},
@@ -127,7 +127,7 @@ class Mentor
 
     /**
      * @var string
-     * @Gedmo\Versioned
+     *
      * @Assert\Url(
      *    message = "url.not_match",
      *    protocols = {"http", "https"},

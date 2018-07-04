@@ -89,6 +89,11 @@ class SubdomainAwareSubscriber implements EventSubscriberInterface
                 $user = $this->userToken->getToken()->getUser();
 
                 // check access for subdomain admin panel
+
+                if ($this->authorizationChecker->isGranted('ROLE_SUPER_ADMIN')) {
+                    return;
+                }
+
                 if ($user->getOrganization()->getId() !== $this->getOrganization()->getId()) {
                     throw new AccessDeniedException('Not allowed to manage given organization');
                 }

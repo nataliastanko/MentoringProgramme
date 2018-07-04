@@ -55,16 +55,10 @@ organization:
         contact: 'Email kontaktowy'
         mentees: 'Kontakt do organizatorów:'
         mentors: 'Kontakt do organizatorów:'
-    menteesExternalSignupUrl: 'Zewnętrzny link do zapisów uczestniczek'
+submission:
+    date: 'Data zgłoszenia'
 warning:
     signup.signupMentorsEnabled: 'Rekrutacja uczestniczek wciąż jeszcze trwa'
-config:
-    signup:
-        isSignupMentorsEnabled: 'Zapisy dla mentorek/ów włączone?'
-        isSignupPartnersEnabled: 'Zapisy dla partnerów włączone?'
-        isSignupMenteesEnabled: 'Zapisy dla uczestniczek włączone?'
-    edit: 'Włącz/wyłącz zapisy'
-    current: 'Aktualna konfiguracja zapisów'
 info:
     signup:
         disabled: 'Zapisy nie są w tej chwili możliwe'
@@ -78,6 +72,14 @@ info:
         partners:
             enabled: 'Przyjmowane są aktualnie zgłoszenia partnerów'
             disabled: 'Zgłoszenia od partnerów są wyłączenie'
+config:
+    signup:
+        isSignupMentorsEnabled: 'Zapisy dla mentorek/ów włączone?'
+        isSignupPartnersEnabled: 'Zapisy dla partnerów włączone?'
+        isSignupMenteesEnabled: 'Zapisy dla uczestniczek włączone?'
+        menteesExternalSignupUrl: 'Link URL do zapisów dla uczestniczek w zewnętrznym serwisie'
+    edit: 'Ustawienia zapisów'
+    current: 'Aktualna konfiguracja zapisów'
 partner:
     list: 'Lista partnerów'
     name: Nazwa
@@ -128,8 +130,6 @@ image:
     new: 'Nowe zdjęcie do gallerii'
     edit: 'Edycja galerii'
     detail: Obraz
-submission:
-    date: 'Data zgłoszenia'
 question:
     new: 'Nowe pytanie'
     edit: 'Edycja pytania'
