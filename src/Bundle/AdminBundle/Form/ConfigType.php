@@ -28,9 +28,6 @@ class ConfigType extends AbstractType
 
                 $form = $event->getForm();
 
-                /* @var Config */
-                $config = $event->getData();
-
                 if (array_key_exists('partners', $sectionsEnabled)) {
                     $form->add(
                         'isSignupPartnersEnabled', CheckboxType::class,
@@ -51,22 +48,18 @@ class ConfigType extends AbstractType
                     );
                 }
 
-                if (array_key_exists('mentees', $sectionsEnabled)) {
-                    $form
-                        ->add(
+                if (
+                    array_key_exists('mentees', $sectionsEnabled)
+                    ||
+                    array_key_exists('menteesExternalSignup', $sectionsEnabled)
+                ) {
+                    $form->add(
                         'isSignupMenteesEnabled', CheckboxType::class,
                         [
                             'label'    => 'config.signup.isSignupMenteesEnabled',
                             'required' => false,
                         ]
-                        )
-                        ->add(
-                            'isChosenMenteesVisible', CheckboxType::class, [
-                            'label'    => 'config.signup.isChosenMenteesVisible',
-                            'required' => false,
-                            ]
-                        )
-                    ;
+                    );
                 }
             }
         );

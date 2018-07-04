@@ -35,4 +35,26 @@ class ConfigCallback
             }
         }
     }
+
+    /**
+     * @param  Config $object
+     * @param  ExecutionContextInterface $context
+     * @param  $payload
+     * @return void
+     */
+    public static function checkMenteesExternalSignupUrl(Config $object, ExecutionContextInterface $context, $payload)
+    {
+        $organization = $object->getOrganization();
+        $buttonsSectionsEnabled = $organization->getButtonsSectionsEnabledArray();
+
+        // if menteesExternalSignup enabled
+        if (isset($buttonsSectionsEnabled['menteesExternalSignup']) && $object->getIsSignupMenteesEnabled()) {
+
+            if (!$organization->getMenteesExternalSignupUrl()) {
+                $context->buildViolation('config.mentees.externalSignupUrl.notBlank')
+                    ->atPath('isSignupMenteesEnabled')
+                    ->addViolation();
+            }
+        }
+    }
 }

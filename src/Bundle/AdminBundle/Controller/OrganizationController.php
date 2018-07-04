@@ -95,6 +95,9 @@ class OrganizationController extends Controller
     {
         $currentOrganization = $subdomainDetection->getOrganization();
 
+        /**
+         * @todo create voters
+         */
         if (
             $currentOrganization->getId() !== $organization->getId()
             &&
@@ -104,7 +107,11 @@ class OrganizationController extends Controller
         }
 
         // $deleteForm = $this->createDeleteForm($organization);
-        $editForm = $this->createForm('AdminBundle\Form\OrganizationType', $organization);
+        $editForm = $this->createForm(
+            'AdminBundle\Form\OrganizationType',
+            $organization,
+            ['sectionsEnabled' => $currentOrganization->getSectionsEnabledArray()]
+        );
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

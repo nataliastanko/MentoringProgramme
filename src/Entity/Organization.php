@@ -7,8 +7,8 @@ use Doctrine\Common\Collections\Criteria;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Organization
@@ -169,6 +169,18 @@ class Organization
      * @ORM\Column(type="string", name="partners_email", length=255, nullable=true)
      */
     private $partnersEmail;
+
+    /**
+     * @var string
+     * @Assert\Url(
+     *    message = "url.not_match",
+     *    protocols = {"https"},
+     *    checkDNS = true,
+     *    groups={"settings"}
+     * )
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $menteesExternalSignupUrl;
 
     /**
      * @var string
@@ -519,6 +531,30 @@ class Organization
     }
 
     /**
+     * Set external link for mentees signup.
+     *
+     * @param string $url
+     *
+     * @return Organization
+     */
+    public function setMenteesExternalSignupUrl($url)
+    {
+        $this->menteesExternalSignupUrl = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get external link for mentees signup.
+     *
+     * @return string
+     */
+    public function getMenteesExternalSignupUrl()
+    {
+        return $this->menteesExternalSignupUrl;
+    }
+
+    /**
      * Get menu sections
      * @return ArrayCollection
      */
@@ -528,7 +564,8 @@ class Organization
     }
 
     /**
-     * Get enabled menu sections
+     * Get enabled organization's sections as collection
+     * raw db results
      * @return ArrayCollection
      */
     public function getSectionsEnabled()
@@ -543,7 +580,8 @@ class Organization
     }
 
     /**
-     * Get enabled sections
+     * Get enabled organization's sections as array
+     * raw db results
      * @return array
      */
     public function getSectionsEnabledArray()
@@ -558,8 +596,8 @@ class Organization
     }
 
     /**
-     * Get buttons that are enabled
-     * from enabled sections
+     * Get organization's main page buttons that are enabled
+     * based on enabled sections
      * @return array
      */
     public function getButtonsSectionsEnabledArray()
@@ -568,7 +606,13 @@ class Organization
 
         foreach ($this->getSectionsEnabled() as $i) {
             if (
-                $i->getSection() === SectionConfig::sectionMentees
+                (   // menteesExternalSignup checked first
+                    // as it has higher priority of mentees section settings
+                    // and only one of them can be enabled
+                    $i->getSection() === SectionConfig::menteesExternalSignup
+                    ||
+                    $i->getSection() === SectionConfig::sectionMentees
+                )
                 ||
                 $i->getSection() === SectionConfig::sectionPartners
                 ||

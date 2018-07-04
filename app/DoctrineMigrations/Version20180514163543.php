@@ -37,8 +37,8 @@ final class Version20180514163543 extends AbstractMigration
     public function down(Schema $schema) : void
     {
         // delete new organization data
-        $this->addSql('DELETE FROM `section_config` WHERE `organization_id` = 3 LIMIT 1');
-        $this->addSql('DELETE FROM `config` WHERE `organization_id` = 3 LIMIT 1');
+        $this->addSql('DELETE FROM `section_config` WHERE `organization_id` = 3');
+        $this->addSql('DELETE FROM `config` WHERE `organization_id` = 3 LIMIT');
         $this->addSql('DELETE FROM `edition` WHERE `organization_id` = 3 LIMIT 1');
         $this->addSql('DELETE FROM `users` WHERE `organization_id` = 3 LIMIT 1');
         $this->addSql('DELETE FROM `organizations` WHERE `id` = 3 LIMIT 1');
