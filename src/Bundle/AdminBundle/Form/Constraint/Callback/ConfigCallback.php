@@ -28,9 +28,12 @@ class ConfigCallback
         // if partners section enabled
         if (isset($buttonsSectionsEnabled['partners']) && $object->getIsSignupPartnersEnabled()) {
 
-            if (!$organization->getPartnersEmail()) {
+            if (!$object->getPartnersEmail()) {
                 $context->buildViolation('config.partners.email.notBlank')
                     ->atPath('isSignupPartnersEnabled')
+                    ->addViolation();
+                $context->buildViolation('config.partners.email.notBlank')
+                    ->atPath('partnersEmail')
                     ->addViolation();
             }
         }
@@ -50,9 +53,12 @@ class ConfigCallback
         // if menteesExternalSignup enabled
         if (isset($buttonsSectionsEnabled['menteesExternalSignup']) && $object->getIsSignupMenteesEnabled()) {
 
-            if (!$organization->getMenteesExternalSignupUrl()) {
+            if (!$object->getMenteesExternalSignupUrl()) {
                 $context->buildViolation('config.mentees.externalSignupUrl.notBlank')
                     ->atPath('isSignupMenteesEnabled')
+                    ->addViolation();
+                $context->buildViolation('config.mentees.externalSignupUrl.notBlank')
+                    ->atPath('menteesExternalSignupUrl')
                     ->addViolation();
             }
         }

@@ -63,6 +63,31 @@ class Config
     private $isSignupMenteesEnabled;
 
     /**
+     * @var string
+     * @Assert\Url(
+     *    message = "url.not_match",
+     *    protocols = {"https"},
+     *    checkDNS = true,
+     *    groups={"settings"}
+     * )
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $menteesExternalSignupUrl;
+
+    /**
+     * Partners apply email address.
+     *
+     * @var string
+     *
+     * @Assert\Email(
+     *     message = "email.notMatch",
+     *     groups={"settings"}
+     * )
+     * @ORM\Column(type="string", name="partners_email", length=255, nullable=true)
+     */
+    private $partnersEmail;
+
+    /**
      * Belongs to organization
      *
      * @Assert\NotNull
@@ -151,6 +176,54 @@ class Config
     public function getIsSignupMenteesEnabled()
     {
         return $this->isSignupMenteesEnabled;
+    }
+
+    /**
+     * Set partners email.
+     *
+     * @param string $email
+     *
+     * @return Organization
+     */
+    public function setPartnersEmail($email)
+    {
+        $this->partnersEmail = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get partners email.
+     *
+     * @return string
+     */
+    public function getPartnersEmail()
+    {
+        return $this->partnersEmail;
+    }
+
+    /**
+     * Set external URL for mentees signup.
+     *
+     * @param string $url
+     *
+     * @return Organization
+     */
+    public function setMenteesExternalSignupUrl($url)
+    {
+        $this->menteesExternalSignupUrl = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get external URL for mentees signup.
+     *
+     * @return string
+     */
+    public function getMenteesExternalSignupUrl()
+    {
+        return $this->menteesExternalSignupUrl;
     }
 
     public function setOrganization($var)

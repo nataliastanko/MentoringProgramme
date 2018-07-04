@@ -16,6 +16,16 @@
 
             <table class="table table-hover">
                 <tbody>
+                    <tr>
+                        <th>{{ 'organization.email.partners' | trans }}</th>
+                        <td>{{ config.partnersEmail }}</td>
+                    </tr>
+                    {%- if buttonsSectionsEnabled.menteesExternalSignup -%}
+                    <tr>
+                        <th>{{ 'config.signup.menteesExternalSignupUrl' | trans }}</th>
+                        <td>{{ config.menteesExternalSignupUrl }}</td>
+                    </tr>
+                    {%- endif -%}
                     {%- if buttonsSectionsEnabled.mentors is defined -%}
                     <tr>
                         <th>{{ 'config.signup.isSignupMentorsEnabled' | trans }}</th>

@@ -48,7 +48,7 @@ class Partner
      * Name.
      *
      * @var                     string
-     * @Gedmo\Versioned
+     *
      * @Assert\NotBlank(
      *     message = "name.notBlank",
      *     groups={"settings"}
@@ -65,7 +65,7 @@ class Partner
      *     message = "email.notBlank",
      *     groups={"settings"}
      * )
-     * @Gedmo\Versioned
+     *
      * @Assert\Email(
      *     message = "email.notMatch",
      *     groups={"settings"}
@@ -76,7 +76,7 @@ class Partner
 
     /**
      * @var string
-     * @Gedmo\Versioned
+     *
      * @Assert\Url(
      *    message = "url.not_match",
      *    protocols = {"http", "https"},

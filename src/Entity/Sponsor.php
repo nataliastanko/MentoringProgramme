@@ -49,7 +49,7 @@ class Sponsor
      * Name.
      *
      * @var                     string
-     * @Gedmo\Versioned
+     *
      * @Assert\NotBlank(
      *     message = "name.notBlank",
      *     groups={"settings"}
@@ -66,7 +66,7 @@ class Sponsor
      *     message = "email.notBlank",
      *     groups={"settings"}
      * )
-     * @Gedmo\Versioned
+     *
      * @Assert\Email(
      *     message = "email.notMatch",
      *     groups={"settings"}
@@ -77,7 +77,7 @@ class Sponsor
 
     /**
      * @var string
-     * @Gedmo\Versioned
+     *
      * @Assert\Url(
      *    message = "url.not_match",
      *    protocols = {"http", "https"},

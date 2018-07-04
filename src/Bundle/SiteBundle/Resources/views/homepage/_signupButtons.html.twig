@@ -10,7 +10,7 @@
 
     {# establish link to mentees signup if any #}
     {%- if enabledButtons.menteesExternalSignup is defined -%}
-        {%- set mentee_apply = organization.menteesExternalSignupUrl -%}
+        {%- set mentee_apply = config.menteesExternalSignupUrl -%}
     {%- elseif enabledButtons.mentees is defined -%}
         {%- set mentee_apply = path('mentee_apply') -%}
     {%- else -%}
@@ -48,7 +48,7 @@
                         enabledButtons.partners is defined
                     -%}
                         {# be a partner only #}
-                        <a href="mailto:{{- organization.partnersEmail -}}" class="btn btn-primary btn-lg">
+                        <a href="mailto:{{- config.config -}}" class="btn btn-primary btn-lg">
                           {{- 'button.be_partner' | trans -}}
                         </a>
                     {%- endif -%}
@@ -100,7 +100,7 @@
                         </a>
                     </div>
                     <div class="col-md-6 main-button">
-                        <a href="mailto:{{- organization.partnersEmail -}}" class="btn btn-primary btn-lg">
+                        <a href="mailto:{{- config.config -}}" class="btn btn-primary btn-lg">
                           {{- 'button.be_partner' | trans -}}
                         </a>
                     </div>
@@ -119,7 +119,7 @@
                         </a>
                     </div>
                     <div class="col-md-6 main-button">
-                        <a href="mailto:{{- organization.partnersEmail -}}" class="btn btn-primary btn-lg">
+                        <a href="mailto:{{- config.config -}}" class="btn btn-primary btn-lg">
                           {{- 'button.be_partner' | trans -}}
                         </a>
                     </div>
@@ -141,7 +141,7 @@
                     </a>
                 </div>
                 <div class="col-md-4 main-button">
-                    <a href="mailto:{{- organization.partnersEmail -}}" class="btn btn-primary btn-lg">
+                    <a href="mailto:{{- config.config -}}" class="btn btn-primary btn-lg">
                       {{- 'button.be_partner' | trans -}}
                     </a>
                 </div>

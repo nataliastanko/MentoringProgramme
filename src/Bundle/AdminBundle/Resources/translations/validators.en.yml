@@ -50,7 +50,7 @@ bot:
 config:
     partners:
         email:
-            notBlank: 'To enable signup for partners please fill in email to apply for partners in organization details.'
+            notBlank: 'To enable signup for partners please fill in email address to apply as a partner.'
     mentees:
         externalSignupUrl:
-            notBlank: 'To enable signup for mentees please fill in the external signup form url in organization details.'
+            notBlank: 'To enable signup for mentees please fill in the external URL for mentees signup.'
