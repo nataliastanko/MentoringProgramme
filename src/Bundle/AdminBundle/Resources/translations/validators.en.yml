@@ -51,3 +51,6 @@ config:
     partners:
         email:
             notBlank: 'To enable signup for partners please fill in email to apply for partners in organization details.'
+    mentees:
+        externalSignupUrl:
+            notBlank: 'To enable signup for mentees please fill in the external signup form url in organization details.'

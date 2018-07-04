@@ -55,6 +55,7 @@ organization:
         contact: 'Email kontaktowy'
         mentees: 'Kontakt do organizatorów:'
         mentors: 'Kontakt do organizatorów:'
+    menteesExternalSignupUrl: 'Zewnętrzny link do zapisów uczestniczek'
 warning:
     signup.signupMentorsEnabled: 'Rekrutacja uczestniczek wciąż jeszcze trwa'
 config:
@@ -62,7 +63,6 @@ config:
         isSignupMentorsEnabled: 'Zapisy dla mentorek/ów włączone?'
         isSignupPartnersEnabled: 'Zapisy dla partnerów włączone?'
         isSignupMenteesEnabled: 'Zapisy dla uczestniczek włączone?'
-        isChosenMenteesVisible: 'Wyniki rekrutacji widoczne?'
     edit: 'Włącz/wyłącz zapisy'
     current: 'Aktualna konfiguracja zapisów'
 info:

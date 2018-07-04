@@ -8,6 +8,7 @@ use Annotation\Doctrine\OrganizationAware;
 
 /**
  * Sections config
+ * Defines which sections are enabled (active) for organization
  *
  * @author Natalia Stanko <contact@nataliastanko.com>
  *
@@ -17,15 +18,84 @@ use Annotation\Doctrine\OrganizationAware;
  */
 class SectionConfig
 {
+    /**
+     * About:
+     * organization
+     * program
+     * signup
+     * dates
+     *
+     * @todo about per edition
+     */
     const sectionAbout = 'about';
+
+    /**
+     * Organization's program's rules paragraphs
+     *
+     * @todo rules per edition
+     */
     const sectionRules = 'rules';
+
+    /**
+     * Organization's program's FAQ paragraphs
+     */
     const sectionFaq = 'faq';
+
+    /**
+     * Enables:
+     * Mentees signup (internal system)
+     * Mentees management
+     * Mentee - mentor management
+     * Mentees accounts
+     */
     const sectionMentees = 'mentees';
+
+    /**
+     * Enables:
+     * Ability to signup via external form instead of using internal system
+     * External db, external system option
+     */
+    const menteesExternalSignup = 'menteesExternalSignup';
+
+    /**
+     * Enables:
+     * Partners signup ability
+     * Adding partners manually
+     * Dispaying partners on organization page
+     */
     const sectionPartners = 'partners';
+
+    /**
+     * Enables:
+     * Adding sponsors manually
+     * Dispaying sponsors on organization page
+     */
     const sectionSponsors = 'sponsors';
+
+    /**
+     * Enables:
+     * Mentors signup
+     * Adding mentors manually
+     * Dispaying mentors on organization page
+     * Mentors accounts
+     */
     const sectionMentors = 'mentors';
+
+    /**
+     * Enables:
+     * Mentors faq
+     *
+     * Runs only if sectionMentors enabled
+     */
     const sectionMentorfaq = 'mentorfaq';
     const sectionGallery = 'gallery';
+
+    /**
+     * Enables:
+     * Mentee - mentor calendar
+     *
+     * Runs only if sectionMentors or sectionMentees enabled
+     */
     const sectionCalendar = 'calendar';
 
     /**

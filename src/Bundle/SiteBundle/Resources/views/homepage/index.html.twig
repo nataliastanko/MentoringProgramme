@@ -14,9 +14,6 @@
   {% set config = getSignupConfig() %}
   {% set lastEdition = getLastEdition() %}
 
-  {%- if sections.mentees is defined -%}
-    {%- include 'SiteBundle:homepage:_chosen.html.twig' -%}
-  {%- endif -%}
   {%- include 'SiteBundle:homepage:_signupButtons.html.twig' -%}
   {%- if sections.about is defined -%}
     {%- include 'SiteBundle:homepage:_about.html.twig' -%}

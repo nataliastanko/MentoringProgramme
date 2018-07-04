@@ -3,14 +3,16 @@
 namespace AdminBundle\Form;
 
 use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 /**
@@ -23,6 +25,9 @@ class OrganizationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        /* @var array */
+        $sectionsEnabled = $options['sectionsEnabled'];
+
         $builder
             ->add(
                 'name', TextType::class, [
@@ -35,13 +40,9 @@ class OrganizationType extends AbstractType
                     'required' => false
                 ]
             )
-            ->add(
-                'partnersEmail', EmailType::class, [
-                    'label' => 'organization.email.partners',
-                    'required' => false
-                ]
-            )
-            ->add(
+            ;
+
+            $builder->add(
                 'url', UrlType::class, [
                     'label' => 'url',
                     'required' => false,
@@ -65,11 +66,33 @@ class OrganizationType extends AbstractType
             ->add(
                 'logoFile', VichImageType::class,
                 [
-                'label' => 'logo',
+                'label' => 'Logo',
                 'required' => false,
                 'allow_delete' => true, // not mandatory, default is true
                 'download_link' => true, // not mandatory, default is true
                 ]
+            )
+            ->add(
+                'partnersEmail', EmailType::class, [
+                    'label' => 'organization.email.partners',
+                    'required' => false
+                ]
+            );
+
+            $builder->addEventListener(
+                FormEvents::PRE_SET_DATA, function (FormEvent $event) use ($sectionsEnabled) {
+
+                    $form = $event->getForm();
+
+                    if (array_key_exists('menteesExternalSignup', $sectionsEnabled)) {
+                        $form->add(
+                            'menteesExternalSignupUrl', UrlType::class, [
+                                'label' => 'organization.menteesExternalSignupUrl',
+                                'required' => false
+                            ]
+                        );
+                    }
+                }
             );
     }
 
@@ -78,11 +101,14 @@ class OrganizationType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(
-            array(
-            'data_class' => 'Entity\Organization',
-            'validation_groups' => array('settings'),
+        $resolver
+            ->setDefaults(
+                [
+                    'data_class' => 'Entity\Organization',
+                    'validation_groups' => ['settings'],
+                ]
             )
-        );
+            ->setRequired('sectionsEnabled');
+        ;
     }
 }

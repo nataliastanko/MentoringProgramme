@@ -5,9 +5,18 @@
 
 {%- spaceless -%}
     {%-
-        if
-        enabledButtons | length > 0
+        if enabledButtons | length > 0
     -%}
+
+    {# establish link to mentees signup if any #}
+    {%- if enabledButtons.menteesExternalSignup is defined -%}
+        {%- set mentee_apply = organization.menteesExternalSignupUrl -%}
+    {%- elseif enabledButtons.mentees is defined -%}
+        {%- set mentee_apply = path('mentee_apply') -%}
+    {%- else -%}
+        {%- set mentee_apply = '#' -%}
+    {%- endif -%}
+
     <div class="jumbotron">
         <div class="row">
             {%-
@@ -18,10 +27,12 @@
                 <div class="col-md-12 main-button">
                     {%-
                         if
+                        enabledButtons.menteesExternalSignup is defined
+                        or
                         enabledButtons.mentees is defined
                     -%}
                         {# be a mentee only #}
-                        <a href="{{ path('mentee_apply') }}" class="btn btn-primary btn-lg">
+                        <a href="{{ mentee_apply }}" class="btn btn-primary btn-lg">
                           {{- 'button.be_mentee' | trans -}}
                         </a>
                     {%-
@@ -49,11 +60,19 @@
                 {# 2 cols #}
                 {%-
                     if
-                    (enabledButtons.mentees is defined and enabledButtons.mentors is defined)
+                    (
+                        (
+                        enabledButtons.menteesExternalSignup is defined
+                        or
+                        enabledButtons.mentees is defined
+                        )
+                    and
+                    enabledButtons.mentors is defined
+                    )
                 -%}
                     {# be a mentee, be a mentor #}
                     <div class="col-md-6 main-button">
-                        <a href="{{ path('mentee_apply') }}" class="btn btn-primary btn-lg">
+                        <a href="{{ mentee_apply }}" class="btn btn-primary btn-lg">
                           {{- 'button.be_mentee' | trans -}}
                         </a>
                     </div>
@@ -64,11 +83,19 @@
                     </div>
                 {%-
                     elseif
-                    (enabledButtons.mentees is defined and enabledButtons.partners is defined)
+                    (
+                        (
+                        enabledButtons.menteesExternalSignup is defined
+                        or
+                        enabledButtons.mentees is defined
+                        )
+                    and
+                    enabledButtons.partners is defined
+                    )
                 -%}
                     {# be a mentee, be a partner #}
                     <div class="col-md-6 main-button">
-                        <a href="{{ path('mentee_apply') }}" class="btn btn-primary btn-lg">
+                        <a href="{{ mentee_apply }}" class="btn btn-primary btn-lg">
                           {{- 'button.be_mentee' | trans -}}
                         </a>
                     </div>
@@ -79,7 +106,11 @@
                     </div>
                 {%-
                     elseif
-                    (enabledButtons.mentors is defined and enabledButtons.partners is defined)
+                    (
+                    enabledButtons.mentors is defined
+                    and
+                    enabledButtons.partners is defined
+                    )
                 -%}
                     {# be a mentor, be a partner #}
                     <div class="col-md-6 main-button">
@@ -100,7 +131,7 @@
             -%}
                 {# 3 cols #}
                 <div class="col-md-4 main-button">
-                    <a href="{{ path('mentee_apply') }}" class="btn btn-primary btn-lg">
+                    <a href="{{ mentee_apply }}" class="btn btn-primary btn-lg">
                       {{- 'button.be_mentee' | trans -}}
                     </a>
                 </div>

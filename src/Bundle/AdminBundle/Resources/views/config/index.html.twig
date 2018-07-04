@@ -28,14 +28,14 @@
                             <td>{% if config.isSignupPartnersEnabled %}{{ 'yes' | trans }}{% else %}{{ 'no' | trans }}{% endif %}</td>
                         </tr>
                     {%- endif -%}
-                    {%- if buttonsSectionsEnabled.mentees is defined -%}
+                    {%- if
+                        buttonsSectionsEnabled.menteesExternalSignup is defined
+                        or
+                        buttonsSectionsEnabled.mentees is defined
+                    -%}
                         <tr>
                             <th>{{ 'config.signup.isSignupMenteesEnabled' | trans }}</th>
                             <td>{% if config.isSignupMenteesEnabled %}{{ 'yes' | trans }}{% else %}{{ 'no' | trans }}{% endif %}</td>
-                        </tr>
-                        <tr>
-                            <th>{{ 'config.signup.isChosenMenteesVisible' | trans }}</th>
-                            <td>{% if config.isChosenMenteesVisible %}{{ 'yes' | trans }}{% else %}{{ 'no' | trans }}{% endif %}</td>
                         </tr>
                     {%- endif -%}
                 </tbody>

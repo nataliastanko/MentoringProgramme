@@ -51,3 +51,6 @@ config:
     partners:
         email:
             notBlank: 'Żeby włączyć zapisy dla partnerów, wypełnij najpierw email dla partnerów w danych organizacji'
+    mentees:
+        externalSignupUrl:
+            notBlank: 'Żeby włączyć zapisy dla uczestniczek, wypełnij najpierw link do zewnętrznego formularza zapisów w danych organizacji'
