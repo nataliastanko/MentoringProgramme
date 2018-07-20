@@ -141,6 +141,7 @@ assetic:
                 - '%kernel.root_dir%/../src/Bundle/SiteBundle/Resources/public/vendors/font-awesome-4.5.0/css/font-awesome.min.css'
                 - '%kernel.root_dir%/../src/Bundle/SiteBundle/Resources/public/css/sticky-footer-navbar.css'
                 - '%kernel.root_dir%/../src/Bundle/SiteBundle/Resources/public/css/styles.css'
+                - '%kernel.root_dir%/../src/Bundle/SiteBundle/Resources/public/css/icons.css'
             filters:
                 - cssrewrite
 
