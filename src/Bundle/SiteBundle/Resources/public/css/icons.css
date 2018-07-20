@@ -1,0 +1,32 @@
+/**
+ * Adblock Plus can remove Font Awesome brand icons with their "Remove Social Media Buttons" setting.
+ * To work around this - modify the social icon class names.
+ */
+
+.ic-facebook-square:before {
+    content: "\f082";
+}
+
+.ic-twitter-square:before {
+    content: "\f081";
+}
+
+.ic-google-plus-square:before {
+    content: "\f0d4";
+}
+
+.ic-instagram:before {
+    content: "\f16d";
+}
+
+.ic-github-square:before {
+    content: "\f092";
+}
+
+.ic-linkedin-square:before {
+    content: "\f08c";
+}
+
+.ic-youtube-square:before {
+    content: "\f166";
+}
