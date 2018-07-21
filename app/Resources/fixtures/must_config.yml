@@ -4,3 +4,8 @@ Entity\Config:
         isSignupPartnersEnabled: 0
         isSignupMenteesEnabled: 0
         organization: '@poland'
+    config_usa:
+        isSignupMentorsEnabled: 0
+        isSignupPartnersEnabled: 0
+        isSignupMenteesEnabled: 0
+        organization: '@usa'

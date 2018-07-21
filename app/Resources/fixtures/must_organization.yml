@@ -17,7 +17,7 @@ Entity\Organization:
         requiredLocales: [en]
         contactEmail: russia@wit.tech
         isAccepted: 1
-    Kenya:
+    kenya:
         name: Tech Leaders Kenya
         subdomain: kenya
         country: Kenya
@@ -26,7 +26,7 @@ Entity\Organization:
         requiredLocales: [en]
         contactEmail: kenya@wit.tech
         isAccepted: 1
-    USA:
+    usa:
         name: Tech Leaders USA
         subdomain: us
         country: USA
@@ -35,7 +35,7 @@ Entity\Organization:
         requiredLocales: [en]
         contactEmail: us@wit.tech
         isAccepted: 1
-    India:
+    india:
         name: Tech Leaders India
         subdomain: India
         country: India
@@ -44,7 +44,7 @@ Entity\Organization:
         requiredLocales: [en]
         contactEmail: india@wit.tech
         isAccepted: 1
-    China:
+    china:
         name: Tech Leaders China
         subdomain: China
         country: China

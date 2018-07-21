@@ -4,7 +4,7 @@
     {% spaceless %}
         <div class="bglead">
             <h1>Tech Leaders</h1>
-            <h2>{{ organization.country |capitalize }}</h2>
+            <h2>{{ organization.country | upper }}</h2>
             <h3>{{ 'homepage.lead.program' | trans }}</h3>
         </div>
     {% endspaceless %}

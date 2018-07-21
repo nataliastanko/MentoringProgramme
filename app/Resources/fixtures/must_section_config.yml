@@ -1,5 +1,9 @@
 Entity\SectionConfig:
-    section_about:
+    section_about_poland:
         section: about
         isEnabled: 1
         organization: '@poland'
+    section_about_usa:
+        section: about
+        isEnabled: 1
+        organization: '@usa'

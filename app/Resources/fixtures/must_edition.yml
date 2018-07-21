@@ -1,5 +1,9 @@
 Entity\Edition:
-    edition1:
+    edition1poland:
         name: I
         organization: '@poland'
+        position: 0
+    edition1usa:
+        name: I
+        organization: '@usa'
         position: 0

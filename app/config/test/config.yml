@@ -1,5 +1,6 @@
 imports:
     - { resource: ../dev/config.yml }
+    - { resource: liip_functional_test.yml }
 
 framework:
     test: ~
