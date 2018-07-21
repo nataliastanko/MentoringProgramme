@@ -62,6 +62,8 @@ Load data:
 
     ./bin/console doctrine:fixtures:load
 
+    ./bin/console hautelook:fixtures:load -n
+
 ### Server
 
 Run server: [https://symfony.com/doc/current/setup/built_in_web_server.html]
@@ -121,7 +123,7 @@ TDD Tests PHPUnit 5.7.x
 
 #### HautelookAliceBundle
 
-  ./bin/console hautelook:fixtures:load --no-interaction
+    ./bin/console hautelook:fixtures:load -e dev -n
 
 ##### Writing fixtures
 
@@ -131,7 +133,12 @@ TDD Tests PHPUnit 5.7.x
 
 #### LiipFunctionalTestBundle
 
+    ./bin/console doctrine:database:create --env=test
+    ./bin/console doctrine:schema:create --env=test
+
     ./vendor/bin/simple-phpunit
+    ./vendor/bin/phpunit
+    ./vendor/bin/phpunit tests/LandingPageBundle/
 
 ### Tests all urls
 

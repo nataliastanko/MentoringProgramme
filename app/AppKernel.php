@@ -52,6 +52,7 @@ class AppKernel extends Kernel
             $bundles[] = new Nelmio\Alice\Bridge\Symfony\NelmioAliceBundle();
             $bundles[] = new Fidry\AliceDataFixtures\Bridge\Symfony\FidryAliceDataFixturesBundle();
             $bundles[] = new Hautelook\AliceBundle\HautelookAliceBundle();
+
             if ('test' === $this->getEnvironment()) {
                 $bundles[] = new Liip\FunctionalTestBundle\LiipFunctionalTestBundle();
             }

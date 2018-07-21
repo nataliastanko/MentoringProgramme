@@ -1,7 +1,7 @@
 imports:
     - { resource: ../config.yml }
     - { resource: swiftmailer.yml }
-    - { resource: hautelook_alice.yml }
+    - { resource: ../test/hautelook_alice.yml }
 
 framework:
     router:
@@ -36,24 +36,7 @@ doctrine:
         default_connection: default
         connections:
             default:
-                driver:   pdo_mysql
-                host:     "%database_host%"
-                port:     "%database_port%"
-                dbname:   "%database_name%"
-                user:     "%database_user%"
-                password: "%database_password%"
-                charset: utf8mb4
-                default_table_options:
-                    charset: utf8mb4
-                    collate: utf8mb4_unicode_ci
+                dbname:   "%database_name%_dev"
             translations:
-                driver:   pdo_mysql
-                host:     "%translations_database_host%"
-                port:     "%translations_database_port%"
-                dbname:   "%translations_database_name%"
-                user:     "%translations_database_user%"
-                password: "%translations_database_password%"
-                charset: utf8mb4
-                default_table_options:
-                    charset: utf8mb4
-                    collate: utf8mb4_unicode_ci
+                dbname:   "%translations_database_name%_dev"
+
