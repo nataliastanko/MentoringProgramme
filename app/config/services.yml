@@ -61,3 +61,8 @@ services:
     Service\Form\Extension\OrganizationFormTypeExtension:
         tags:
             - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }
+
+    Service\EventSubscriber\SubdomainAwareSubscriber:
+        autoconfigure: true
+        arguments: # inject the logger channel explicitly while still having all other dependencies of this service injected through autowiring
+            $loggerInterface: '@monolog.logger.subdomain'

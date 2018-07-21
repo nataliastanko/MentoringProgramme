@@ -29,7 +29,7 @@ class LandingpageController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('Entity:Organization');
 
-        $organizations = $repo->findAll();
+        $organizations = $repo->findBy(['isAccepted' => true]);
 
         $images = $em->getRepository('Entity:Image')->getAll();
 

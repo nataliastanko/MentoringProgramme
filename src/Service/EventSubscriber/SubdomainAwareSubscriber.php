@@ -2,6 +2,7 @@
 
 namespace Service\EventSubscriber;
 
+use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -42,13 +43,17 @@ class SubdomainAwareSubscriber implements EventSubscriberInterface
     /** @var AuthorizationChecker */
     private $authorizationChecker;
 
-    public function __construct(Router $router, Session $session, EntityManagerInterface $em, TokenStorage $token, AuthorizationCheckerInterface $authorization)
+    /** @var LoggerInterface */
+    private $subdomainLogger;
+
+    public function __construct(Router $router, Session $session, EntityManagerInterface $em, TokenStorage $token, AuthorizationCheckerInterface $authorization, LoggerInterface $loggerInterface)
     {
         $this->router = $router;
         $this->userToken = $token;
         $this->authorizationChecker = $authorization;
         $this->session = $session;
         $this->em = $em;
+        $this->subdomainLogger = $loggerInterface;
     }
 
     /**
@@ -128,6 +133,13 @@ class SubdomainAwareSubscriber implements EventSubscriberInterface
                         'isAccepted' => true
                         ]
                     );
+
+                // no such organization or organization not accepted
+                if (!$organization) {
+                    $this->subdomainLogger->info( // content: mail.CRITICAL:
+                        $subdomain.' - no such organization or organization not active.'
+                    );
+                }
 
                 $this->organization = $organization;
             }
