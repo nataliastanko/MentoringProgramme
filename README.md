@@ -92,7 +92,9 @@ Export translations from db to files (to use)
 Tests library included in composer ./vendor/bin/phpunit
 TDD Tests PHPUnit 5.7.x
 
-### Functional Tests
+## Functional Tests
+
+### PhpUnit
 
     ./vendor/bin/phpunit
     ./vendor/bin/phpunit --testdox
@@ -113,6 +115,19 @@ TDD Tests PHPUnit 5.7.x
   - I - Printed when the test is marked as being incomplete or not yet implemented
 
   - W - Warning
+
+### PhpUnit
+
+  LiipFunctionalTestBundle with HautelookAliceBundle
+
+
+#### HautelookAliceBundle
+
+  ./bin/console hautelook:fixtures:load --no-interaction
+
+
+#### LiipFunctionalTestBundle
+
 
 ### Tests all urls
 

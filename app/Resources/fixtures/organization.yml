@@ -1,0 +1,55 @@
+Entity\Organization:
+    poland:
+        name: Women in Technology
+        subdomain: poland
+        country: Poland
+        locales: [pl,en]
+        defaultLocale: pl
+        requiredLocales: [pl]
+        contactEmail: poland@wit.tech
+        isAccepted: 1
+    russia:
+        name: Women Techmakers Voronezh
+        subdomain: russia
+        country: Russia
+        locales: [ru,en]
+        defaultLocale: ru
+        requiredLocales: [en]
+        contactEmail: russia@wit.tech
+        isAccepted: 1
+    Kenya:
+        name: Tech Leaders Kenya
+        subdomain: kenya
+        country: Kenya
+        locales: [sw,en]
+        defaultLocale: en
+        requiredLocales: [en]
+        contactEmail: kenya@wit.tech
+        isAccepted: 1
+    USA:
+        name: Tech Leaders USA
+        subdomain: us
+        country: USA
+        locales: [en]
+        defaultLocale: en
+        requiredLocales: [en]
+        contactEmail: us@wit.tech
+        isAccepted: 1
+    India:
+        name: Tech Leaders India
+        subdomain: India
+        country: India
+        locales: [hi,en]
+        defaultLocale: en
+        requiredLocales: [en]
+        contactEmail: india@wit.tech
+        isAccepted: 1
+    China:
+        name: Tech Leaders China
+        subdomain: China
+        country: China
+        locales: [en,cn]
+        defaultLocale: cn
+        requiredLocales: [en]
+        contactEmail: china@wit.tech
+        isAccepted: 0

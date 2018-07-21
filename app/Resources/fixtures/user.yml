@@ -1,0 +1,7 @@
+# Entity\User:
+#     user_{1..10}:
+#         name: <firstName()>
+#         lastName: '<firstName()> <lastName()>'
+#         email: '<email()>'
+#         defaultLocale: <{framework.validation.enabled}>
+#         requiredLocales:

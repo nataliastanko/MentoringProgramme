@@ -1,6 +1,8 @@
 imports:
     - { resource: ../config.yml }
     - { resource: swiftmailer.yml }
+    - { resource: hautelook_alice.yml }
+    - { resource: liip_functional_test.yml }
 
 framework:
     router:
