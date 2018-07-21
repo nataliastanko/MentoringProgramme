@@ -1,0 +1,5 @@
+Entity\Edition:
+    edition1:
+        name: I
+        organization: '@poland'
+        position: 0

@@ -1,0 +1,5 @@
+Entity\SectionConfig:
+    section_about:
+        section: about
+        isEnabled: 1
+        organization: '@poland'

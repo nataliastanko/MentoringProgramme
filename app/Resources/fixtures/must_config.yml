@@ -1,0 +1,6 @@
+Entity\Config:
+    config_poland:
+        isSignupMentorsEnabled: 0
+        isSignupPartnersEnabled: 0
+        isSignupMenteesEnabled: 0
+        organization: '@poland'

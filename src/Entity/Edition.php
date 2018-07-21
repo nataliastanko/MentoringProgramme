@@ -152,6 +152,13 @@ class Edition
         return $this;
     }
 
+    public function setPosition($var)
+    {
+        $this->position = $var;
+
+        return $this;
+    }
+
     public function __call($method, $arguments)
     {
         return \Symfony\Component\PropertyAccess\PropertyAccess::createPropertyAccessor()
