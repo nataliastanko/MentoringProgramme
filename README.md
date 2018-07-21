@@ -116,8 +116,6 @@ TDD Tests PHPUnit 5.7.x
 
   - W - Warning
 
-### PhpUnit
-
   LiipFunctionalTestBundle with HautelookAliceBundle
 
 
@@ -133,6 +131,7 @@ TDD Tests PHPUnit 5.7.x
 
 #### LiipFunctionalTestBundle
 
+    ./vendor/bin/simple-phpunit
 
 ### Tests all urls
 

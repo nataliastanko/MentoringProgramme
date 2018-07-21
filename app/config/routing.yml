@@ -96,6 +96,7 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /account/profile
+    host: "{subdomain}.{domain_name}.{domain_ext}"
     defaults: { _locale: '%locale%', domain_name: '%domain_name%', domain_ext: '%domain_ext%'}
 
 fos_user_profile:

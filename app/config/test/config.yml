@@ -1,5 +1,5 @@
 imports:
-    - { resource: ../dev/config_dev.yml }
+    - { resource: ../dev/config.yml }
 
 framework:
     test: ~
@@ -14,3 +14,34 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+parameters:
+    router.request_context.base_url: ~
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        default_connection: default
+        connections:
+            default:
+                driver:   pdo_mysql
+                host:     "%database_host%"
+                port:     "%database_port%"
+                dbname:   "%database_name%"
+                user:     "%database_user%"
+                password: "%database_password%"
+                charset: utf8mb4
+                default_table_options:
+                    charset: utf8mb4
+                    collate: utf8mb4_unicode_ci
+            translations:
+                driver:   pdo_mysql
+                host:     "%translations_database_host%"
+                port:     "%translations_database_port%"
+                dbname:   "%translations_database_name%"
+                user:     "%translations_database_user%"
+                password: "%translations_database_password%"
+                charset: utf8mb4
+                default_table_options:
+                    charset: utf8mb4
+                    collate: utf8mb4_unicode_ci

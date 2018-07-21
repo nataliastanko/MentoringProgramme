@@ -38,6 +38,7 @@ security:
                 provider: fos_userbundle
                 default_target_path: account
                 check_path: fos_user_security_check
+            logout_on_user_change: true
 
     # https://symfony.com/doc/current/security/access_control.html
     access_control:
