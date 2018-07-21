@@ -34,6 +34,7 @@ class LandingPageControllerTest extends WebTestCase
     private $router; // consider that this holds the Symfony router service
 
     /**
+     * Load Fixtures Using Alice
      * {@inheritdoc}
      */
      public function setUp(): void
@@ -80,6 +81,37 @@ class LandingPageControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/');
         $this->isSuccessful($client->getResponse());
         $this->assertStatusCode(200, $client);
+
+        // There is one <body> tag
+        $this->assertSame(
+            1,
+            $crawler->filter('html > body')->count()
+        );
+
+        // There is one <h1> in .bglead
+        $this->assertSame(
+            1,
+            $crawler->filter('.bglead  > h1')->count()
+        );
+
+        // There is one <h1> in .bglead
+        $this->assertContains(
+            'Tech Leaders',
+            $crawler->filter('.bglead > h1')->text()
+        );
+        // There is one <h1> in .bglead
+        $this->assertContains(
+            'Mentoring program for women',
+            $crawler->filter('.bglead > h2')->text()
+        );
+
+        $content = $client->getResponse()->getContent();
+        // `filter()` can't be used since the output is HTML code,
+        // check the content directly
+        // $this->assertContains(
+        //     '<h2>Invest in yourself.</h2>',
+        //     $content
+        // );
 
         // subdomain
         $domain = 'poland' . '.' . $client->getContainer()->getParameter('domain_name') . '.' . $client->getContainer()->getParameter('domain_ext');
