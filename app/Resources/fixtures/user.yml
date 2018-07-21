@@ -1,7 +1,25 @@
-# Entity\User:
-#     user_{1..10}:
-#         name: <firstName()>
-#         lastName: '<firstName()> <lastName()>'
-#         email: '<email()>'
-#         defaultLocale: <{framework.validation.enabled}>
-#         requiredLocales:
+Entity\User:
+    user_{1..10}:
+        organization: '@poland'
+        roles: [ROLE_USER]
+        name: <firstName()>
+        lastName: '<lastName()>'
+        email: '<email()>'
+        plainPassword: 123
+        enabled: 0
+    user_admin_{11..15}:
+        organization: '@poland'
+        roles: [ROLE_USER, ROLE_ADMIN, ROLE_TRANSLATOR]
+        name: <firstName()>
+        lastName: '<lastName()>'
+        email: '<email()>'
+        plainPassword: 123
+        enabled: 1
+    user_super_admin:
+        organization: '@poland'
+        roles: [ROLE_USER, ROLE_ADMIN, ROLE_TRANSLATOR, ROLE_SUPER_ADMIN]
+        name: <firstName()>
+        lastName: '<lastName()>'
+        email: '<email()>'
+        plainPassword: 123
+        enabled: 1

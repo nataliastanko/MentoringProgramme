@@ -125,6 +125,11 @@ TDD Tests PHPUnit 5.7.x
 
   ./bin/console hautelook:fixtures:load --no-interaction
 
+##### Writing fixtures
+
+  Randomized entries using Faker:
+
+  * formatters - https://github.com/fzaninotto/Faker#formatters
 
 #### LiipFunctionalTestBundle
 

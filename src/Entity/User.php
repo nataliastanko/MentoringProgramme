@@ -154,12 +154,12 @@ class User extends FosUser
         $this->locale = 'en';
     }
 
-    // public function setEmail($email)
-    // {
-    //     $email = is_null($email) ? '' : $email;
-    //     parent::setEmail($email);
-    //     $this->setUsername($email);
-    // }
+    public function setEmail($email)
+    {
+        $email = is_null($email) ? '' : $email;
+        parent::setEmail($email);
+        $this->setUsername($email);
+    }
 
     /**
      * Get id.
