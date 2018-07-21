@@ -23,5 +23,8 @@
 /web/sitemap.default.xml
 deploy.php
 !.gitignore
-tests/*
+tests/.u*
+tests/u*
+tests/h*
+tests/a*
 .web-server-pid
