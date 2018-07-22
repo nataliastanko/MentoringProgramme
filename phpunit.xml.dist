@@ -28,8 +28,11 @@
     </php>
 
     <testsuites>
-        <testsuite name="Test Suite">
-            <directory>./tests</directory>
+        <testsuite name="Functional tests: landing page">
+            <directory>./tests/functional/landingpage</directory>
+        </testsuite>
+        <testsuite name="Functional tests: organization page">
+            <directory>./tests/functional/organizationpage</directory>
         </testsuite>
     </testsuites>
 

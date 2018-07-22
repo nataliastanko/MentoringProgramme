@@ -1,6 +1,6 @@
 <?php
 
-namespace LandingPageBundle\Tests\Controller;
+namespace Tests\LandingPage;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

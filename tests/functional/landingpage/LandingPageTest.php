@@ -1,6 +1,6 @@
 <?php
 
-namespace LandingPageBundle\Tests\Controller;
+namespace Tests\LandingPage;
 
 use Liip\FunctionalTestBundle\Test\WebTestCase;
 
@@ -9,17 +9,21 @@ use Liip\FunctionalTestBundle\Test\WebTestCase;
  *
  * == Functional Tests ==
  * @link https://symfony.com/doc/3.4/testing.html
+ * test a "suite" of functionalities - interactions, db interactions, web services
  * Define a functional test that at least checks if your application pages are successfully loading.
  * Hardcode the URLs used in the functional tests instead of using the URL generator.
- * ====
+ *
+ * Functional Tests have a very specific workflow:
  * Make a request;
  * Click on a link or submit a form;
  * Test the response;
  * Rinse and repeat.
- * ====
  *
  * LiipFunctionalTestBundle provides additional functional test-cases for Symfony applications
  * @link https://github.com/liip/LiipFunctionalTestBundle/tree/2.x
+ *
+ * == PhpInit Tests assertions ==
+ * @link https://phpunit.readthedocs.io/en/7.1/assertions.html
  *
  * @author Natalia Stanko <contact@nataliastanko.com>
  */
@@ -93,6 +97,9 @@ class LandingPageControllerTest extends WebTestCase
         // set it only once
         $client->setServerParameter('HTTP_HOST', $domain);
 
+        // enables the profiler for the very next request
+        $client->enableProfiler();
+
         // request
         $crawler = $client->request('GET', '/');
 
@@ -133,5 +140,26 @@ class LandingPageControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/');
         $this->isSuccessful($client->getResponse());
         $this->assertStatusCode(200, $client);
+
+        // access the Profiler Data
+        // check that the profiler is enabled
+        if ($profile = $client->getProfile()) {
+            // check the number of requests
+            $this->assertEquals(
+                2, // images and organizations
+                $profile->getCollector('db')->getQueryCount()
+            );
+
+            // too many DB queries for instance
+            // $this->assertLessThan(
+            //     20,
+            //     $profile->getCollector('db')->getQueryCount(),
+            //     sprintf(
+            //         'Checks that query count is less than 30 (token %s)',
+            //         $profile->getToken() // Web Profiler token
+            //     )
+            // );
+
+        }
     }
 }
