@@ -4,7 +4,6 @@ namespace SiteBundle\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Entity\Edition;
 use Annotation\Controller\SectionEnabled;
@@ -32,6 +31,7 @@ class HomepageController extends Controller
      * @Route(
      *     "/",
      *     name="homepage",
+     *     methods={"GET"},
      *     defaults=
      *     {
      *         "edition": "",
@@ -63,6 +63,7 @@ class HomepageController extends Controller
      * @Route(
      *     "/about",
      *     name="about",
+     *     methods={"GET"},
      *     options=
      *     {
      *         "sitemap" = {
@@ -98,6 +99,7 @@ class HomepageController extends Controller
      * @Route(
      *     "/contact",
      *     name="contact",
+     *     methods={"GET"},
      *     options=
      *     {
      *         "sitemap" = true
@@ -125,6 +127,7 @@ class HomepageController extends Controller
      * @Route(
      *     "/rules",
      *     name="rules",
+     *     methods={"GET"},
      *     options=
      *     {
      *         "sitemap" = true
@@ -157,6 +160,7 @@ class HomepageController extends Controller
      * @Route(
      *     "/faq",
      *     name="faq",
+     *     methods={"GET"},
      *     options=
      *     {
      *         "sitemap" = true
@@ -188,12 +192,12 @@ class HomepageController extends Controller
      * @Route(
      *     "/edition/{edition}/chosen",
      *     name="edition_chosen",
+     *     methods={"GET"},
      *     requirements=
      *     {
      *         "edition": "\d+",
      *     }
      * )
-     * @Method("GET")
      * @Template
      * @SectionEnabled(name="mentees")
      */

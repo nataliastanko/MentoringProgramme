@@ -3,7 +3,6 @@
 namespace SiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Entity\Edition;
@@ -21,12 +20,12 @@ class EditionController extends Controller
      * @Route(
      *     "/{edition}",
      *     name="edition_show",
+     *     methods={"GET"},
      *     requirements=
      *     {
      *         "edition": "\d+",
      *     }
      * )
-     * @Method("GET")
      * @Template("SiteBundle:homepage:index.html.twig")
      */
     public function showAction(Edition $edition)
@@ -61,12 +60,12 @@ class EditionController extends Controller
      * @Route(
      *     "/{edition}/mentors",
      *     name="edition_mentors",
+     *     methods={"GET"},
      *     requirements=
      *     {
      *         "edition": "\d+",
      *     }
      * )
-     * @Method("GET")
      * @Template("SiteBundle:homepage:mentors.html.twig")
      */
     public function mentorsAction(Edition $edition)
