@@ -1,7 +1,0 @@
-framework:
-    assets:
-        # This option is used to bust the browser cache on assets by globally adding a query parameter to all rendered asset paths (e.g. /images/logo.png?v2)
-        # https://symfony.com/doc/3.1/reference/configuration/framework.html#version
-        # you must manually increment the version value before each deployment so that the query parameters change
-        # version: 'v24'
-        version: "%assets_version%"

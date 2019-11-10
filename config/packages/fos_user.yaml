@@ -1,0 +1,28 @@
+# # https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/configuration_reference.md
+# fos_user:
+#     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+#     firewall_name: main
+#     user_class: Entity\User
+#     # emails https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/emails.md
+#     service:
+#         mailer: fos_user.mailer.twig_swift
+#     from_email:
+#         address: '%env(resolve:email_sender_address)%'
+#         sender_name: '%env(resolve:email_sender_name)%'
+#     registration:
+#         form:
+#             type: UserBundle\Form\RegistrationFormType
+#         confirmation:
+#             # no email confirmation (no need, register from email only)
+#             enabled: false # change to true for required email confirmation
+#             from_email:
+#                 address: '%env(resolve:email_sender_address)%'
+#                 sender_name: '%env(resolve:email_sender_name)%'
+#     profile:
+#         form:
+#             type: UserBundle\Form\ProfileFormType
+#     resetting:
+#         email:
+#             from_email:
+#                 address: '%env(resolve:email_sender_address)%'
+#                 sender_name: '%env(resolve:email_sender_name)%'

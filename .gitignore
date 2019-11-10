@@ -1,26 +1,24 @@
-/app/config/parameters.yml
-/build/
-/phpunit.xml
-/var/*
-!var/cache/.gitkeep
-!var/logs/.gitkeep
-!var/sessions/.gitkeep
-!var/SymfonyRequirements.php
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/public/bundles/
+/var/
 /vendor/
-/web/bundles/
-/web/css
-/web/images
-/web/assetic
-/web/img
-/web/js
-/web/fonts
-/web/media/*
-!web/media/.gitkeep
-/web/uploads/*
-!web/uploads/.gitkeep
-/web/sitemap.xml
-/web/sitemap.default.xml
-deploy.php
-!.gitignore
-tests/*
-.web-server-pid
+###< symfony/framework-bundle ###
+
+###> symfony/web-server-bundle ###
+/.web-server-pid
+###< symfony/web-server-bundle ###
+
+
+###> liip/imagine-bundle ###
+/public/media/cache/
+###< liip/imagine-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###

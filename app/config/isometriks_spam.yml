@@ -1,7 +1,0 @@
-isometriks_spam:
-    honeypot:
-        field: title
-        use_class: false
-        hide_class: hidden
-        global: false
-        message: 'bot.form.invalid'

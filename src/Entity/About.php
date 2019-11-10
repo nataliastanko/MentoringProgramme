@@ -1,28 +1,17 @@
 <?php
 
-namespace Entity;
+namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Knp\DoctrineBehaviors\Model\Translatable\Translatable;
-use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Validator\Constraints as Assert;
-use Annotation\Doctrine\OrganizationAware;
 
 /**
- * About.
- *
- * @author Natalia Stanko <contact@nataliastanko.com>
- *
+ * @ORM\Entity()
  * @ORM\Table(name="about")
- * @ORM\Entity(repositoryClass="Repository\MultifunctionalRepository")
- * @OrganizationAware(organizationFieldName="organization_id")
- * all queries on it (and even when the entity is used in joined queries) will add the WHERE condition.
  */
 class About
 {
-    use Translatable;
-
     /**
      * @var int
      *
@@ -33,53 +22,60 @@ class About
     private $id;
 
     /**
-     * @var int
      * @Gedmo\SortablePosition
      * @ORM\Column(type="integer")
      */
     private $position;
 
     /**
-     * Belongs to organization
-     *
-     * @Assert\NotNull
-     * @ORM\ManyToOne(targetEntity="Organization")
-     * @ORM\JoinColumn(name="organization_id", referencedColumnName="id", nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $organization;
+    private $title;
 
     /**
-     * Get id.
-     *
-     * @return int
+     * @ORM\Column(type="text", nullable=true)
      */
-    public function getId()
+    private $content;
+
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function setPosition($position)
+    public function setPosition($position): self
     {
         $this->position = $position;
 
         return $this;
     }
 
-    public function getPosition()
+    public function getPosition(): int
     {
         return $this->position;
     }
 
-    public function setOrganization($var)
+    public function setContent($content): self
     {
-        $this->organization = $var;
+        $this->content = $content;
 
         return $this;
     }
 
-    public function __call($method, $arguments)
+    public function getContent(): ?string
     {
-        return PropertyAccess::createPropertyAccessor()
-            ->getValue($this->translate(), $method);
+        return $this->content;
     }
+
+    public function setTitle($title): self
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
 }

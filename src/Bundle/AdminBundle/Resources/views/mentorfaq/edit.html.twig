@@ -1,9 +1,0 @@
-{% extends 'UserBundle::account.html.twig' %}
-
-{% block body %}
-    <div class="page-header">
-        <h1>{{ 'mentorfaq.edit' | trans }}</h1>
-    </div>
-
-    {% include 'AdminBundle:mentorfaq:_form.html.twig' with { 'form' : edit_form }%}
-{% endblock %}

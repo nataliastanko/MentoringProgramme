@@ -1,9 +1,0 @@
-{% extends 'UserBundle::account.html.twig' %}
-
-{% block body %}
-    <div class="page-header">
-        <h1>{{ 'rule.new' | trans }}</h1>
-    </div>
-
-    {% include 'AdminBundle:rule:_form.html.twig' with { 'form' : form }%}
-{% endblock %}

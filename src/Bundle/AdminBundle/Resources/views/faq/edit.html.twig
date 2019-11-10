@@ -1,9 +1,0 @@
-{% extends 'UserBundle::account.html.twig' %}
-
-{% block body %}
-    <div class="page-header">
-        <h1>{{ 'faq.edit' | trans }}</h1>
-    </div>
-
-    {% include 'AdminBundle:faq:_form.html.twig' with { 'form' : edit_form }%}
-{% endblock %}

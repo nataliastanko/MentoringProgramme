@@ -1,7 +1,0 @@
-kachkaev_assets_version:
-    # path to the file that contains the assets version parameter
-    file_path: '%kernel.root_dir%/config/parameters.yml'
-    # name of the parameter to work with
-    parameter_name: assets_version
-    # name of the class that reads and writes the assets version parameter
-    manager: Kachkaev\AssetsVersionBundle\AssetsVersionManager
