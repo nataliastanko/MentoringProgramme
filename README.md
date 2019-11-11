@@ -1,6 +1,26 @@
 Symfony 4 example app
 ----
 
+# Intallation
+
+## Composer
+
+    composer install
+
+## Node.js
+
+    npm install
+
+or
+
+    yarn install
+
+# Running
+
+## Dev server
+
+    ./bin/console server:run
+
 ## Fixtures
 
     .bin/console hautelook:fixtures:load
@@ -11,3 +31,7 @@ Symfony 4 example app
     ./bin/phpunit
 
 Tests loads hautelook fixtures.
+
+## Frontend
+
+    yarn encore dev

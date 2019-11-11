@@ -1,3 +1,5 @@
+# composer
+composer.lock
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -12,7 +14,6 @@
 /.web-server-pid
 ###< symfony/web-server-bundle ###
 
-
 ###> liip/imagine-bundle ###
 /public/media/cache/
 ###< liip/imagine-bundle ###
@@ -22,3 +23,19 @@
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
+
+###> symfony/webpack-encore-bundle ###
+# npm/yarn js packages
+/node_modules/
+
+# assets generated
+/public/build/
+
+# js packages lock files
+package-lock.json
+yarn.lock
+
+# js logs
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###
