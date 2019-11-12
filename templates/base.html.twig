@@ -1,24 +1,61 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome to Symfony 4.3{% endblock %}</title>
-        {% block stylesheets %}
-            {# 'app' must match the first argument to addEntry() in webpack.config.js #}
-            {{ encore_entry_link_tags('app') }}
+<!doctype html>
+{# HTML5 doctype #}
+<html lang="en">
+  <head>
+    {# Required meta tags #}
+    <meta charset="utf-8">
+    {# Responsive meta tag #}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-            <!-- Renders a link tag (if your module requires any CSS)
-                 <link rel="stylesheet" href="/build/app.css"> -->
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+    <title>{% block title %}Mentoring Programme app{% endblock %}</title>
+    {% block stylesheets %}
+      {# 'app' must match the first argument to addEntry() in webpack.config.js #}
+      {{ encore_entry_link_tags('app') }}
 
-            <!-- Renders app.js & a webpack runtime.js file
-                <script src="/build/runtime.js"></script>
-                <script src="/build/app.js"></script> -->
-        {% endblock %}
-    </body>
+      {# Renders a link tag (if your module requires any CSS)
+         <link rel="stylesheet" href="/build/app.css"> #}
+    {% endblock %}
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Mentoring Programme</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Mentors</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Rules</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+    <div class="container">
+    {% block body %}{% endblock %}
+    </div>
+    {% block javascripts %}
+      {{ encore_entry_script_tags('app') }}
+
+      {# Renders app.js & a webpack runtime.js file
+        <script src="/build/runtime.js"></script>
+        <script src="/build/app.js"></script> #}
+    {% endblock %}
+  </body>
 </html>

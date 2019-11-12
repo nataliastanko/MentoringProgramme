@@ -2,9 +2,28 @@
 
 {% block body %}
 
-<div class="container">
+<div class="jumbotron">
+  <h1 class="display-4">Welcome!</h1>
+  <blockquote class="blockquote">If you have knowledge, let others light their candles in it.</p>
+    <footer class="blockquote-footer">Journalist, critic and women's rights advocate - <cite title="Source Title">Margaret Fuller (1810 – 1850)</cite></footer>
+  </blockquote>
+  <hr class="my-4">
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="#" role="button">Apply</a>
+  </p>
+</div>
 
-Hello
+<h2>About</h2>
+<div class="list-group">
+  {% for about in abouts %}
+  <div href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{ about.title }}</h5>
+    </div>
+    <div class="mb-1">{{ about.content }}</div>
+  </div>
+  {% endfor %}
+</div>
 
 {% endblock %}
 

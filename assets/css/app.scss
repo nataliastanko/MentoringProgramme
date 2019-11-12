@@ -9,5 +9,17 @@
 @import "~bootswatch/dist/united/bootswatch";
 
 body {
-    background-color: #eee;
+}
+
+@include media-breakpoint-up(sm) {
+
+}
+@include media-breakpoint-up(md) {
+
+}
+@include media-breakpoint-up(lg) {
+
+}
+@include media-breakpoint-up(xl) {
+
 }

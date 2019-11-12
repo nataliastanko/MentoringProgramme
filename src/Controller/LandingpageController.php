@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\About;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -18,6 +19,12 @@ class LandingpageController extends AbstractController
      */
     public function indexAction()
     {
-        return [];
+        $abouts = $this->getDoctrine()
+            ->getRepository(About::class)
+            ->findAll();
+
+        return [
+            'abouts' => $abouts,
+        ];
     }
 }

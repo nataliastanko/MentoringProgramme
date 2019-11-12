@@ -35,3 +35,10 @@ Tests loads hautelook fixtures.
 ## Frontend
 
     yarn encore dev
+    yarn encore dev --watch
+
+
+# Spec
+
+* [Symfony 4.3](https://symfony.com/releases)
+* [bootstrap 4.3](https://getbootstrap.com/)

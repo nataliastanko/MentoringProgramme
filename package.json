@@ -1,7 +1,7 @@
 {
   "name": "mentoringprogramme",
   "version": "1.0.0",
-  "description": "Symfony 4 example app ----",
+  "description": "Mentoring Programme app",
   "main": "index.js",
   "directories": {
     "test": "tests"
