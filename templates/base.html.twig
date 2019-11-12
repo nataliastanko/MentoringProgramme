@@ -1,6 +1,6 @@
 <!doctype html>
 {# HTML5 doctype #}
-<html lang="en">
+<html lang="en" class="h-100">
   <head>
     {# Required meta tags #}
     <meta charset="utf-8">
@@ -16,9 +16,9 @@
          <link rel="stylesheet" href="/build/app.css"> #}
     {% endblock %}
 </head>
-<body>
+<body class="d-flex flex-column h-100">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Mentoring Programme</a>
+    <a class="navbar-brand" href="{{ path('landingpage') }}">Mentoring Programme</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -47,15 +47,24 @@
       </form>
     </div>
   </nav>
-    <div class="container">
+  <div class="container">
     {% block body %}{% endblock %}
+  </div>
+  <footer class="footer mt-auto py-3">
+    <div class="container">
+      <div class="row">
+      <div class="col-sm-12">
+        <a href="https://nataliastanko.com">Natalia Stanko</a>&nbsp;<small>© 2015 - <script>document.write(new Date().getFullYear());</script></small>
+      </div>
     </div>
-    {% block javascripts %}
-      {{ encore_entry_script_tags('app') }}
+    </div>
+  </footer>
+  {% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
 
-      {# Renders app.js & a webpack runtime.js file
-        <script src="/build/runtime.js"></script>
-        <script src="/build/app.js"></script> #}
-    {% endblock %}
+    {# Renders app.js & a webpack runtime.js file
+      <script src="/build/runtime.js"></script>
+      <script src="/build/app.js"></script> #}
+  {% endblock %}
   </body>
 </html>
