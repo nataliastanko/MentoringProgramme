@@ -3,5 +3,5 @@ App\Entity\About:
       title: How does it work?
       content: This programme is volunteer-led. It matches mentees with mentors so mentees can achieve their career goals.
     about_text_{1..10}:
-        title: <sentence()>
-        content: <text()>
+        title: 80%? <sentence()>
+        content: 80%? <text()>

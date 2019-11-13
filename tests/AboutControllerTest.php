@@ -4,6 +4,8 @@ namespace App\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DomCrawler\Crawler;
+// use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
+// use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 
 class AboutControllerTest extends WebTestCase
@@ -16,9 +18,7 @@ class AboutControllerTest extends WebTestCase
         $client = static::createClient();
         $crawlerIndex = $client->request('GET', '/about/');
 
-        $this->assertResponseIsSuccessful();
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
-
         $this->assertSelectorTextContains('h1', 'About index');
 
         /* Test list */
@@ -73,7 +73,25 @@ class AboutControllerTest extends WebTestCase
             ->reduce(function (Crawler $node) {
                 return $node->text() === 'Content';
             });
-        $this->assertContains('Pusheen the cat', $contentTh->siblings()->filter('td')->text());
+        $this->assertStringContainsString('Pusheen the cat', $contentTh->siblings()->filter('td')->text());
+
+        /* Test with purged database */
+        // $kernel = self::bootKernel();
+        // $em = $kernel->getContainer()
+        //     ->get('doctrine.orm.default_entity_manager');
+        // $purger = new ORMPurger();
+        // $executor = new ORMExecutor($em, $purger);
+        // // $executor->execute($loader->getFixtures());
+
+        // $crawlerIndex = $client->request('GET', '/about/');
+
+        // $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        // $this->assertCount(1, $crawlerIndex->filter('table tbody tr'));
+        // $this->assertEquals(
+        //     'no records found',
+        //     $crawlerIndex->filter('table tbody tr td')->first()->text()
+        // );
+        $this->markTestIncomplete();
     }
 
     public function testShowSingleView()
@@ -127,11 +145,6 @@ class AboutControllerTest extends WebTestCase
         $client->submit($form);
 
         // too long text, short text, no text, validation messages etc
-        $this->markTestIncomplete();
-    }
-
-    public function testListViewWhenNoRecords()
-    {
         $this->markTestIncomplete();
     }
 }

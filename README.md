@@ -23,7 +23,7 @@ or
 
 ## Fixtures
 
-    .bin/console hautelook:fixtures:load
+    ./bin/console hautelook:fixtures:load
 
 
 ## Tests

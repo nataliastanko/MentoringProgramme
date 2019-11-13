@@ -27,7 +27,7 @@ class LandingPageControllerTest extends WebTestCase
         //     $crawler->filter('nav ul li a')->count()
         // );
 
-        $this->assertCount(5, $crawler->filter('nav ul li a'));
+        $this->assertCount(4, $crawler->filter('nav ul li a'));
 
         /* Test footer */
         $this->assertSelectorTextContains('footer a', 'Natalia Stanko');
@@ -47,6 +47,7 @@ class LandingPageControllerTest extends WebTestCase
         // $this->assertEquals(200, $client->getResponse()->getStatusCode());
 
         /* Test about list */
+        $this->assertEquals('About', $crawler->filter('#about h2')->text());
         $this->assertCount(11, $crawler->filter('#about .list-group .list-group-item'));
     }
 }

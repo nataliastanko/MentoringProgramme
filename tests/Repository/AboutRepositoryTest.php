@@ -15,7 +15,7 @@ class AboutRepositoryTest extends KernelTestCase
      */
     private $entityManager;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $kernel = self::bootKernel();
 
@@ -39,7 +39,7 @@ class AboutRepositoryTest extends KernelTestCase
         $this->assertInstanceOf(About::class, $about);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
 
