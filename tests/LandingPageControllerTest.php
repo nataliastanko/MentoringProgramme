@@ -9,28 +9,12 @@ class LandingPageControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;
 
-    public function testTheMainPage(): void
+    public function testHomeage(): void
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/');
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
-
-        /* Test main nav */
-        // $homepageLink = $crawler
-        //     ->filter('nav a:contains("Mentoring Programme")')
-        //     ->eq(0)
-        //     ->link();
-
-        // $this->assertGreaterThan(
-        //     0,
-        //     $crawler->filter('nav ul li a')->count()
-        // );
-
-        $this->assertCount(4, $crawler->filter('nav ul li a'));
-
-        /* Test footer */
-        $this->assertSelectorTextContains('footer a', 'Natalia Stanko');
 
         /* Test jumbotron */
         $this->assertSelectorTextContains('.jumbotron h1', 'Welcome!');
@@ -42,6 +26,14 @@ class LandingPageControllerTest extends WebTestCase
             ->eq(0) // select the first link in the list // ->first()
             ->link()
         ;
+    }
+
+    public function testHomepageAbout(): void
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/about');
+
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
 
         // $crawler = $client->click($linkApply);
         // $this->assertEquals(200, $client->getResponse()->getStatusCode());
@@ -49,5 +41,36 @@ class LandingPageControllerTest extends WebTestCase
         /* Test about list */
         $this->assertEquals('About', $crawler->filter('#about h2')->text());
         $this->assertCount(11, $crawler->filter('#about .list-group .list-group-item'));
+    }
+
+    /**
+     * @dataProvider provideUrls
+     * successful, has nav, footer
+     */
+    public function testPageIsSuccessful($url)
+    {
+        $client = self::createClient();
+        $crawler = $client->request('GET', $url);
+
+        $this->assertTrue($client->getResponse()->isSuccessful());
+
+        /* Test main nav */
+        // $homepageLink = $crawler
+        //     ->filter('nav a:contains("Mentoring Programme")')
+        //     ->eq(0)
+        //     ->link();
+
+        $this->assertCount(5, $crawler->filter('nav ul li a'));
+
+        /* Test footer */
+        $this->assertSelectorTextContains('footer a', 'Natalia Stanko');
+    }
+
+    public function provideUrls()
+    {
+        return [
+            ['/'],
+            ['/about'],
+        ];
     }
 }

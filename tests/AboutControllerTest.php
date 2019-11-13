@@ -16,7 +16,7 @@ class AboutControllerTest extends WebTestCase
     public function testListView()
     {
         $client = static::createClient();
-        $crawlerIndex = $client->request('GET', '/about/');
+        $crawlerIndex = $client->request('GET', '/admin/about/');
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $this->assertSelectorTextContains('h1', 'About index');
@@ -38,7 +38,7 @@ class AboutControllerTest extends WebTestCase
         $formCreate['about[content]'] = '';
         $crawlerNew = $client->submit($formCreate);
 
-        $crawlerIndex = $client->request('GET', '/about/');
+        $crawlerIndex = $client->request('GET', '/admin/about/');
         $this->assertCount(12, $crawlerIndex->filter('table tbody tr'));
 
         /* Test 'edit' link */
@@ -83,7 +83,7 @@ class AboutControllerTest extends WebTestCase
         // $executor = new ORMExecutor($em, $purger);
         // // $executor->execute($loader->getFixtures());
 
-        // $crawlerIndex = $client->request('GET', '/about/');
+        // $crawlerIndex = $client->request('GET', '/admin/about/');
 
         // $this->assertEquals(200, $client->getResponse()->getStatusCode());
         // $this->assertCount(1, $crawlerIndex->filter('table tbody tr'));
@@ -97,7 +97,7 @@ class AboutControllerTest extends WebTestCase
     public function testShowSingleView()
     {
         $client = static::createClient();
-        $crawlerIndex = $client->request('GET', '/about/');
+        $crawlerIndex = $client->request('GET', '/admin/about/');
         $this->assertCount(12, $crawlerIndex->filter('table tbody tr'));
         $linkShow = $crawlerIndex->filter('table tbody tr td a:contains("show")')
             ->first()
@@ -110,7 +110,7 @@ class AboutControllerTest extends WebTestCase
         $form = $crawlerShow->selectButton('Delete')->form();
         $client->submit($form);
         $this->assertTrue(
-            $client->getResponse()->isRedirect('/about/')
+            $client->getResponse()->isRedirect('/admin/about/')
         );
         // $this->assertTrue($client->getResponse()->isRedirect());
 
@@ -121,14 +121,14 @@ class AboutControllerTest extends WebTestCase
     public function testCreation()
     {
         $client = static::createClient();
-        $crawlerNew = $client->request('GET', '/about/new');
+        $crawlerNew = $client->request('GET', '/admin/about/new');
 
         $form = $crawlerNew->selectButton('Save')->form();
         $form['about[title]'] = '😱';
         $form['about[content]'] = '';
         $client->submit($form);
 
-        $crawlerIndex = $client->request('GET', '/about/');
+        $crawlerIndex = $client->request('GET', '/admin/about/');
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $this->assertCount(12, $crawlerIndex->filter('table tbody tr'));
 

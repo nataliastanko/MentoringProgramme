@@ -19,6 +19,16 @@ class LandingpageController extends AbstractController
      */
     public function indexAction()
     {
+        return [
+        ];
+    }
+
+    /**
+     * @Route("/about", name="landingpage_about")
+     * @Template
+     */
+    public function aboutAction()
+    {
         $abouts = $this->getDoctrine()
             ->getRepository(About::class)
             ->findAll();
