@@ -6,6 +6,9 @@ use Entity\About;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
+/**
+ * https://symfony.com/doc/master/bundles/DoctrineFixturesBundle/index.html
+ */
 class AboutFixtures extends Fixture
 {
     public function load(ObjectManager $manager)

@@ -19,4 +19,13 @@ class LoadFixtures extends Fixture
 
         $manager->flush();
     }
+
+    /**
+     * {@inheritDoc}
+     * Environment Specific
+     */
+    protected function getEnvironments()
+    {
+        return ['test', 'dev'];
+    }
 }
