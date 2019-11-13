@@ -12,6 +12,13 @@
 body {
 }
 
+/* Nav */
+
+.btn-group-toggle form button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
 @include media-breakpoint-up(sm) {
 
 }

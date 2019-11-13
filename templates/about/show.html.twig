@@ -4,6 +4,11 @@
 
 {% block body %}
     <h1>About</h1>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <a href="{{ path('about_index') }}" class="btn btn-primary">Back to list</a>
+        <a href="{{ path('about_edit', { 'id': about.id }) }}" class="btn btn-primary">Edit</a>
+        {{ include('about/_delete_form.html.twig') }}
+    </div>
 
     <table class="table">
         <tbody>
@@ -26,9 +31,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('about_index') }}">back to list</a>
-
-    <a href="{{ path('about_edit', {'id': about.id}) }}">edit</a>
-
-    {{ include('about/_delete_form.html.twig') }}
 {% endblock %}
