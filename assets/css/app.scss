@@ -9,7 +9,13 @@
 @import "~bootswatch/dist/united/bootswatch";
 @import url(sticky-footer.css);
 
-body {
+body > .container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+section {
+    padding: 15px 0;
 }
 
 /* Nav */
