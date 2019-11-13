@@ -40,6 +40,7 @@ class LandingPageControllerTest extends WebTestCase
 
         /* Test about list */
         $this->assertEquals('About', $crawler->filter('#about h2')->text());
+        // traversing
         $this->assertCount(11, $crawler->filter('#about .list-group .list-group-item'));
     }
 
