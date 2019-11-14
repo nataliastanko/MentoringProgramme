@@ -5,7 +5,10 @@
 {% block body %}
     <h1>Create new About</h1>
 
+    <div class="nav-buttons btn-group btn-group-toggle" data-toggle="buttons">
+        <a href="{{ path('about_index') }}" class="btn btn-outline-primary">Back to list</a>
+    </div>
+
     {{ include('about/_form.html.twig') }}
 
-    <a href="{{ path('about_index') }}">back to list</a>
 {% endblock %}

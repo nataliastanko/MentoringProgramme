@@ -4,6 +4,9 @@
 
 {% block body %}
     <h1>About index</h1>
+    <div class="nav-buttons btn-group btn-group-toggle" data-toggle="buttons">
+        <a href="{{ path('about_new') }}" class="btn btn-primary">Create new</a>
+    </div>
 
     <table class="table">
         <thead>
@@ -35,5 +38,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('about_new') }}">Create new</a>
 {% endblock %}

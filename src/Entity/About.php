@@ -28,12 +28,18 @@ class About
     private $position;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      max = 255,
+     *      maxMessage = "Cannot be longer than {{ limit }} characters."
+     * )
+     * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @Assert\NotBlank()
+     * @ORM\Column(type="text")
      */
     private $content;
 

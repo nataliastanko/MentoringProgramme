@@ -16,7 +16,7 @@ class AboutType extends AbstractType
         $builder
             ->add('title', TextType::class,
                 [
-                    'required' => false,
+                    // 'required' => false,
                 ]
             )
             ->add('content', TextareaType::class,
@@ -24,7 +24,7 @@ class AboutType extends AbstractType
                     'attr' => [
                         'rows' => '10'
                     ],
-                    'required' => false,
+                    // 'required' => false,
                 ]
             )
         ;

@@ -6,12 +6,16 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DomCrawler\Crawler;
 // use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
 // use Doctrine\Common\DataFixtures\Purger\ORMPurger;
-use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use Hautelook\AliceBundle\PhpUnit\RecreateDatabaseTrait;
 
 class AboutControllerTest extends WebTestCase
 {
     // populates the database only one time, then wraps every tests in a transaction that will be rolled back at the end after its execution
-    use RefreshDatabaseTrait;
+    // use RefreshDatabaseTrait;
+
+    // if you're using in memory SQLite for your tests, use RecreateDatabaseTrait to create the database schema "on the fly":
+
+    use RecreateDatabaseTrait;
 
     public function testListView()
     {
@@ -33,9 +37,14 @@ class AboutControllerTest extends WebTestCase
         $crawlerNew = $client->click($linkCreate);
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
 
+        $faker = \Faker\Factory::create();
+        $titleExpected = $faker->text(255);
+
         $formCreate = $crawlerNew->selectButton('Save')->form();
-        $formCreate['about[title]'] = 'About it';
-        $formCreate['about[content]'] = '';
+        $formCreate->setValues([
+            'about[title]' => $titleExpected,
+            'about[content]' => $faker->text(),
+        ]);
         $crawlerNew = $client->submit($formCreate);
 
         $crawlerIndex = $client->request('GET', '/admin/about/');
@@ -50,15 +59,21 @@ class AboutControllerTest extends WebTestCase
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
 
         $formUpdate = $crawlerEdit->selectButton('Update')->form();
-        $title = $formUpdate->get('about[title]')->getValue();
-        $this->assertEquals($title, 'About it');
-        $formUpdate['about[content]'] = 'Pusheen the cat';
+        $this->assertEquals(
+            $formUpdate->get('about[title]')->getValue(),
+            $titleExpected
+        );
+
+        $contentExpected = $faker->text();
+        $formUpdate['about[content]'] = $contentExpected;
         $crawlerEdit = $client->submit($formUpdate);
 
         $crawlerEdit = $client->click($linkEdit);
         $formUpdate = $crawlerEdit->selectButton('Update')->form();
-        $content = $formUpdate->get('about[content]')->getValue();
-        $this->assertEquals($content, 'Pusheen the cat');
+        $this->assertEquals(
+            $formUpdate->get('about[content]')->getValue(),
+            $contentExpected
+        );
 
         /* Test 'show' link */
         $linkShow = $crawlerIndex->filter('table tbody tr td a:contains("show")')
@@ -73,8 +88,14 @@ class AboutControllerTest extends WebTestCase
             ->reduce(function (Crawler $node) {
                 return $node->text() === 'Content';
             });
-        $this->assertStringContainsString('Pusheen the cat', $contentTh->siblings()->filter('td')->text());
+        $this->assertStringContainsString(
+            $contentExpected,
+            $contentTh->siblings()->filter('td')->text()
+        );
+    }
 
+    public function testListViewNoRecords()
+    {
         /* Test with purged database */
         // $kernel = self::bootKernel();
         // $em = $kernel->getContainer()
@@ -92,13 +113,14 @@ class AboutControllerTest extends WebTestCase
         //     $crawlerIndex->filter('table tbody tr td')->first()->text()
         // );
         $this->markTestIncomplete();
+
     }
 
     public function testShowSingleView()
     {
         $client = static::createClient();
         $crawlerIndex = $client->request('GET', '/admin/about/');
-        $this->assertCount(12, $crawlerIndex->filter('table tbody tr'));
+        $this->assertCount(11, $crawlerIndex->filter('table tbody tr'));
         $linkShow = $crawlerIndex->filter('table tbody tr td a:contains("show")')
             ->first()
             ->link()
@@ -115,36 +137,72 @@ class AboutControllerTest extends WebTestCase
         // $this->assertTrue($client->getResponse()->isRedirect());
 
         $crawlerIndex = $client->followRedirect();
-        $this->assertCount(11, $crawlerIndex->filter('table tbody tr'));
+        $this->assertCount(10, $crawlerIndex->filter('table tbody tr'));
     }
 
-    public function testCreation()
+    public function testCreationEmoji()
     {
         $client = static::createClient();
         $crawlerNew = $client->request('GET', '/admin/about/new');
 
+        $faker = \Faker\Factory::create();
         $form = $crawlerNew->selectButton('Save')->form();
         $form['about[title]'] = '😱';
-        $form['about[content]'] = '';
+        $form['about[content]'] = $faker->text();
         $client->submit($form);
 
         $crawlerIndex = $client->request('GET', '/admin/about/');
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $this->assertCount(12, $crawlerIndex->filter('table tbody tr'));
+    }
 
-        $linkCreate = $crawlerIndex
-            ->filter('a:contains("Create new")')
-            ->eq(0) // select the first link in the list
-            ->link()
-        ;
-        $crawlerNew = $client->click($linkCreate);
+    public function testCreationEmptyFields()
+    {
+        $client = static::createClient();
+        $crawlerNew = $client->request('GET', '/admin/about/new');
 
         $form = $crawlerNew->selectButton('Save')->form();
-        $form['about[title]'] = '';
-        $form['about[content]'] = '';
-        $client->submit($form);
+        $form->setValues([
+            'about[title]' => '',
+            'about[content]' => '',
+        ]);
+        $crawlerNew = $client->submit($form);
 
-        // too long text, short text, no text, validation messages etc
-        $this->markTestIncomplete();
+        $this->assertStringContainsString(
+            'This value should not be blank.',
+            $crawlerNew->filter('label[for="about_title"] .form-error-message')->text()
+        );
+        $this->assertStringContainsString(
+            'This value should not be blank.',
+            $crawlerNew->filter('label[for="about_content"] .form-error-message')->text()
+        );
+
+        $crawlerIndex = $client->request('GET', '/admin/about/');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        // number of items is not changed
+        $this->assertCount(11, $crawlerIndex->filter('table tbody tr'));
+    }
+
+    public function testCreationTextTooLong()
+    {
+        $client = static::createClient();
+        $crawlerNew = $client->request('GET', '/admin/about/new');
+
+        $faker = \Faker\Factory::create();
+
+        $form = $crawlerNew->selectButton('Save')->form();
+        $form['about[title]'] = $faker->lexify(str_repeat('?', 256));
+
+        $crawlerNew = $client->submit($form);
+
+        $this->assertStringContainsString(
+            'Cannot be longer than 255 characters.',
+            $crawlerNew->filter('label[for="about_title"] .form-error-message')->text()
+        );
+
+        $crawlerIndex = $client->request('GET', '/admin/about/');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        // number of items is not changed
+        $this->assertCount(11, $crawlerIndex->filter('table tbody tr'));
     }
 }

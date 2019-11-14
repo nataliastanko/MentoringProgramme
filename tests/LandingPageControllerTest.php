@@ -5,6 +5,9 @@ namespace App\Tests;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 
+/**
+ * https://symfony.com/doc/current/components/var_dumper.html#using-the-vardumper-component-in-your-phpunit-test-suite
+ */
 class LandingPageControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;
@@ -34,9 +37,6 @@ class LandingPageControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/about');
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
-
-        // $crawler = $client->click($linkApply);
-        // $this->assertEquals(200, $client->getResponse()->getStatusCode());
 
         /* Test about list */
         $this->assertEquals('About', $crawler->filter('#about h2')->text());
