@@ -4,8 +4,8 @@ namespace App\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DomCrawler\Crawler;
-// use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
-// use Doctrine\Common\DataFixtures\Purger\ORMPurger;
+use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
+use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Hautelook\AliceBundle\PhpUnit\RecreateDatabaseTrait;
 
 class AboutControllerTest extends WebTestCase
@@ -97,23 +97,20 @@ class AboutControllerTest extends WebTestCase
     public function testListViewNoRecords()
     {
         /* Test with purged database */
-        // $kernel = self::bootKernel();
-        // $em = $kernel->getContainer()
-        //     ->get('doctrine.orm.default_entity_manager');
-        // $purger = new ORMPurger();
-        // $executor = new ORMExecutor($em, $purger);
-        // // $executor->execute($loader->getFixtures());
+        $client = static::createClient();
+        $em = self::$container->get('doctrine.orm.default_entity_manager');
+        $purger = new ORMPurger();
+        $executor = new ORMExecutor($em, $purger);
+        $executor->execute([]);
 
-        // $crawlerIndex = $client->request('GET', '/admin/about/');
+        $crawlerIndex = $client->request('GET', '/admin/about/');
 
-        // $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        // $this->assertCount(1, $crawlerIndex->filter('table tbody tr'));
-        // $this->assertEquals(
-        //     'no records found',
-        //     $crawlerIndex->filter('table tbody tr td')->first()->text()
-        // );
-        $this->markTestIncomplete();
-
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $this->assertCount(1, $crawlerIndex->filter('table tbody tr'));
+        $this->assertEquals(
+            'no records found',
+            $crawlerIndex->filter('table tbody tr td')->first()->text()
+        );
     }
 
     public function testShowSingleView()
