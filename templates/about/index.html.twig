@@ -24,7 +24,7 @@
                 <td>{{ about.id }}</td>
                 <td>{{ about.position }}</td>
                 <td>{{ about.title }}</td>
-                <td>{{ about.content }}</td>
+                <td>{{ about.content | truncate(50) }}</td>
                 <td>
                     <a href="{{ path('about_show', {'id': about.id}) }}">show</a>
                     <a href="{{ path('about_edit', {'id': about.id}) }}">edit</a>
