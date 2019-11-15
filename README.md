@@ -37,7 +37,6 @@ Tests loads hautelook fixtures.
     yarn encore dev
     yarn encore dev --watch
 
-
 # Spec
 
 * [Symfony 4.3](https://symfony.com/releases)
