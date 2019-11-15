@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "antishov/doctrine-extensions-bundle": "^1.4",
+        "easycorp/easyadmin-bundle": "^2.3",
         "friendsofsymfony/rest-bundle": "^2.6",
         "friendsofsymfony/user-bundle": "^2.1",
         "jms/serializer-bundle": "^3.4",

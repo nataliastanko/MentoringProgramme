@@ -1,0 +1,106 @@
+easy_admin:
+    # advanced layout design
+    # https://symfony.com/doc/master/bundles/EasyAdminBundle/book/list-search-show-configuration.html#advanced-design-configuration
+    site_name: 'Mentoring Programme'
+    formats:
+        date:     'd/m/Y'
+        time:     'H:i'
+        datetime: 'd/m/Y H:i:s'
+    user:
+        display_name: true
+        display_avatar: false
+        # this method/property must return the string representation of the user
+        # (Symfony will look for getFullName(), isFullName(), ..., and 'fullName' property)
+        # name_property_path: 'fullName'
+
+        # this method/property must return the absolute URL of the user avatar image
+        # (Symfony will look for getGravatar(), isGravatar(), ..., and 'gravatar' property)
+        # avatar_property_path: 'gravatar'
+    design:
+        assets:
+            # favicon: https://symfony.com/doc/master/bundles/EasyAdminBundle/book/design-configuration.html#changing-the-favicon
+            # all kinds of assets are supported and linked accordingly
+            css:
+                # - 'https://example.org/css/admin3.css'
+                - '/build/app.css'
+            js:
+                - '/build/app.js'
+        # this is the default form theme used by backends
+        form_theme: '@EasyAdmin/form/bootstrap_4.html.twig'
+
+        # you can also define an array of form themes to use all of them
+        # form_theme:
+        #     - 'admin/form/custom_layout.html.twig'
+        #     - 'form_div_layout.html.twig'
+        #     - '@EasyAdmin/form/bootstrap_4.html.twig'
+        #     - '@App/form/custom_layout.html.twig'
+
+    list:
+        max_results: 10
+        actions:
+            # The value of the icon option is the name of the FontAwesome icon without the fa- prefix
+            - { name: 'edit', icon: 'pencil', label: false, title: 'Edit'}
+            - { name: 'show', label: 'Show', title: 'Show'} # icon: 'eye'
+    edit:
+        actions: ['show', 'delete', '-list']
+        # optionally you can define a global permission applied to all entities
+        # each entity can later override this by defining their own item_permission option
+        # item_permission: 'ROLE_ADMIN'
+    entities:
+        # - App\Entity\About
+        About:
+            class: App\Entity\About
+            label: 'About'
+            list:
+                help: 'Rearrange items in this view.'
+                # if the field name contains a dot, it's the property of a Doctrine association
+                fields: ['title']
+                # Customize the Properties Appearance
+                # fields:
+                #     - id
+                #     - { property: 'dateOfBirth', label: 'Date of birth', sortable: true }
+                actions: ['-search', '-delete']
+                title: '%%entity_label%% list'
+                sort: ['position', 'ASC']
+            show:
+                title: '%%entity_name%% (id %%entity_id%%)'
+                fields:
+                    # https://symfony.com/doc/master/bundles/EasyAdminBundle/book/list-search-show-configuration.html#customize-the-properties-appearance
+                    # - { property: 'position', permission: 'ROLE_SUPER_ADMIN', template: 'xx', type: 'xx'}
+                    - { property: 'title', help: "The paragraph's header", css_class: 'lead'}
+                    - content
+
+        # User:
+        #     class: App\Entity\User
+        #     disabled_actions: ['new']
+        #     image_base_path: '%vich_uploader.mappings.user_image%'
+        #     edit:
+        #         # this completely overrides the global option (both options are not merged)
+        #         item_permission: ['ROLE_SUPER_ADMIN', 'ROLE_HUMAN_RESOURCES']
+        #     list:
+        #         fields:
+        #         # Formatting Dates and Numbers
+        #         # https://symfony.com/doc/master/bundles/EasyAdminBundle/book/list-search-show-configuration.html#formatting-dates-and-numbers
+        #         - { property: 'createdAt', label: "Created", format: 'j/n/Y', sortable: true}
+        #         - { property: 'is_active',  type: 'boolean' } # yes, no
+        #         - { property: 'is_active',  type: 'toggle' } # interactive switch
+        #         - { property: 'blogUrl', type: 'url' }
+        #         - { property: 'photo', type: 'image' }
+        #         # - { property: 'roles', type: 'raw' }
+        #         # - { property: 'photo', type: 'image', base_path: '%vich_uploader.mappings.product_image%' }
+
+        #         # filters: ['country', 'status', 'signupDate', 'numPurchases']
+        #     search:
+        #         sort: ['lastname', 'ASC']
+        #         # dql_filter: "entity.status != 'DELETED'"
+
+        # UrgentIssues:
+        #     class: App\Entity\Issue
+        #     list:
+        #         dql_filter: "entity.label = 'CRITICAL' OR entity.priority > 4"
+        # ImportantIssues:
+        #     class: App\Entity\Issue
+        #     list:
+        #         dql_filter: "entity.priority > 2 AND entity.numComments > 10"
+        # AllIssues:
+        #     class: App\Entity\Issue
