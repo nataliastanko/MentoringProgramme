@@ -1,0 +1,96 @@
+// customize variables
+   $dark: #772953;
+   $light: #e9ecef;
+   $primary: #E9541F;
+   $black: #333;
+
+/** Override easyadmin styles */
+
+/* general */
+
+.body {
+    font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+}
+
+.content {
+    box-shadow: none;
+}
+
+.content-header-title h1.title {
+    font-size: 2.5rem;
+}
+
+/* list */
+
+.datagrid thead {
+    background: $light;
+}
+
+/* sidebar */
+
+#sidebar-resizer-handler, #content-resizer-handler {
+    cursor: pointer;
+}
+
+.main-sidebar {
+    background: $dark;
+    padding: 10px;
+}
+
+.sidebar-menu li:not(.submenu-active).active .fa,
+.sidebar-menu li:not(.submenu-active).active a,
+.sidebar-menu a, .sidebar-menu .fa {
+    color: #fff;
+}
+
+/* show view */
+
+body.show .form-control {
+    background-color: unset;
+    border: unset;
+}
+
+.form-actions .action-list {
+
+}
+
+/* form */
+
+.form-group label,
+.form-group legend.col-form-label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    font-size: inherit;
+}
+
+/* media breakpoints */
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+    body.easyadmin-sidebar-width-compact .sidebar-menu li:hover,
+    .easyadmin-sidebar-width-compact .sidebar-menu>li:hover>.treeview-menu, .easyadmin-sidebar-width-compact .sidebar-menu>li:hover>a>span {
+        background: $dark;
+    }
+
+    body.easyadmin-sidebar-width-compact .wrapper {
+        grid-template-columns: 50px auto;
+    }
+
+    body.easyadmin-sidebar-width-compact .main-sidebar {
+        width: 50px;
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+}

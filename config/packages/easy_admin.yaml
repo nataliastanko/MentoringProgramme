@@ -1,7 +1,5 @@
 easy_admin:
-    # advanced layout design
-    # https://symfony.com/doc/master/bundles/EasyAdminBundle/book/list-search-show-configuration.html#advanced-design-configuration
-    site_name: 'Mentoring Programme'
+    site_name: 'Mentoring Programme Admin'
     formats:
         date:     'd/m/Y'
         time:     'H:i'
@@ -17,6 +15,9 @@ easy_admin:
         # (Symfony will look for getGravatar(), isGravatar(), ..., and 'gravatar' property)
         # avatar_property_path: 'gravatar'
     design:
+        menu:
+            - { label: 'Main page', route: 'landingpage' }
+            - About
         assets:
             # favicon: https://symfony.com/doc/master/bundles/EasyAdminBundle/book/design-configuration.html#changing-the-favicon
             # all kinds of assets are supported and linked accordingly
@@ -25,50 +26,46 @@ easy_admin:
                 - '/build/app.css'
             js:
                 - '/build/app.js'
-        # this is the default form theme used by backends
         form_theme: '@EasyAdmin/form/bootstrap_4.html.twig'
-
-        # you can also define an array of form themes to use all of them
-        # form_theme:
-        #     - 'admin/form/custom_layout.html.twig'
-        #     - 'form_div_layout.html.twig'
-        #     - '@EasyAdmin/form/bootstrap_4.html.twig'
-        #     - '@App/form/custom_layout.html.twig'
-
     list:
         max_results: 10
         actions:
             # The value of the icon option is the name of the FontAwesome icon without the fa- prefix
+            - { name: 'show', icon: 'eye', label: false, title: 'Show'}
             - { name: 'edit', icon: 'pencil', label: false, title: 'Edit'}
-            - { name: 'show', label: 'Show', title: 'Show'} # icon: 'eye'
+            # - { name: 'show', label: 'Show', title: 'Show'}
     edit:
-        actions: ['show', 'delete', '-list']
+        actions: ['-show', 'delete', '-list']
         # optionally you can define a global permission applied to all entities
         # each entity can later override this by defining their own item_permission option
         # item_permission: 'ROLE_ADMIN'
+        title: 'Edit %%entity_name%% entry'
+    show:
+        max_results: 20 # autocomplete suggestions
+        actions: ['edit', 'delete', '-list']
+        # title: '%%entity_name%% (id %%entity_id%%)'
+        title: '%%entity_name%% entry'
     entities:
-        # - App\Entity\About
         About:
             class: App\Entity\About
             label: 'About'
             list:
                 help: 'Rearrange items in this view.'
                 # if the field name contains a dot, it's the property of a Doctrine association
-                fields: ['title']
-                # Customize the Properties Appearance
-                # fields:
-                #     - id
-                #     - { property: 'dateOfBirth', label: 'Date of birth', sortable: true }
+                fields:
+                    - { property: 'title', sortable: false }
                 actions: ['-search', '-delete']
-                title: '%%entity_label%% list'
+                title: '%%entity_label%% entries list'
                 sort: ['position', 'ASC']
             show:
-                title: '%%entity_name%% (id %%entity_id%%)'
                 fields:
-                    # https://symfony.com/doc/master/bundles/EasyAdminBundle/book/list-search-show-configuration.html#customize-the-properties-appearance
-                    # - { property: 'position', permission: 'ROLE_SUPER_ADMIN', template: 'xx', type: 'xx'}
                     - { property: 'title', help: "The paragraph's header", css_class: 'lead'}
                     - content
+            form:
+                # help: (optional, string), text displayed to describe the form section or display helpful messages. It can include HTML elements. It does not translate variables like %entity_label% or %entity_id%
+                fields:
+                    - { property: 'title', help: "The paragraph's header", type_options: { required: false } }
+                    - { property: 'content', type_options: { required: false } }
 
         # User:
         #     class: App\Entity\User
